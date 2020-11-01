@@ -12,7 +12,6 @@ SOURCES += \
     form1.cpp \
     form2.cpp \
     form3.cpp \
-    form5.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -20,14 +19,12 @@ HEADERS += \
     form1.h \
     form2.h \
     form3.h \
-    form5.h \
     mainwindow.h
 
 FORMS += \
     form1.ui \
     form2.ui \
     form3.ui \
-    form5.ui \
     mainwindow.ui
 
 # Default rules for deployment.
