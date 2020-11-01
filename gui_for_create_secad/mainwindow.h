@@ -6,7 +6,11 @@
 #include "form1.h"
 #include "form2.h"
 #include "form3.h"
+<<<<<<< Updated upstream
 #include "form4.h"
+=======
+#include "gofuckyourself.h"
+>>>>>>> Stashed changes
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
