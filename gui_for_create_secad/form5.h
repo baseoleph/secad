@@ -7,13 +7,13 @@ namespace Ui {
 class GoFuckYourself;
 }
 
-class GoFuckYourself : public QWidget
+class Form5 : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit GoFuckYourself(QWidget *parent = nullptr);
-    ~GoFuckYourself();
+    explicit Form5(QWidget *parent = nullptr);
+    ~Form5();
 
 private:
     Ui::GoFuckYourself *ui;

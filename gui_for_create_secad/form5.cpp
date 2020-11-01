@@ -1,14 +1,14 @@
-#include "gofuckyourself.h"
+#include "form5.h"
 #include "ui_gofuckyourself.h"
 
-GoFuckYourself::GoFuckYourself(QWidget *parent) :
+Form5::Form5(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::GoFuckYourself)
 {
     ui->setupUi(this);
 }
 
-GoFuckYourself::~GoFuckYourself()
+Form5::~Form5()
 {
     delete ui;
 }
