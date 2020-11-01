@@ -23,5 +23,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    Form1 *form1;
+    Form2 *form2;
+    Form3 *form3;
 };
 #endif // MAINWINDOW_H
