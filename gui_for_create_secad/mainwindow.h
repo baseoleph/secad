@@ -6,7 +6,6 @@
 #include "form1.h"
 #include "form2.h"
 #include "form3.h"
-#include "form4.h"
 #include "form5.h"
 
 QT_BEGIN_NAMESPACE
@@ -23,9 +22,5 @@ public:
 
 private:
     Ui::MainWindow *ui;
-
-    Form1 *form1;
-    Form2 *form2;
-    Form3 *form3;
 };
 #endif // MAINWINDOW_H
