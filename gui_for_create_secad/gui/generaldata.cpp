@@ -7,11 +7,55 @@ GeneralData::GeneralData(QWidget *parent, SMainClass *m) :
 {
     ui->setupUi(this);
     general = m->general;
+
+    ui->lineEdit_wind_pressure->setText(QString::number(general->wind_pressure));
+    ui->lineEdit_wha->setText(QString::number(general->wha));
 }
 
 GeneralData::~GeneralData()
 {
     delete ui;
+}
+
+void GeneralData::fillForms()
+{
+    ui->lineEdit_project_name->setText(QString::fromStdString(general->project_name));
+    ui->lineEdit_length->setText(QString::number(general->length));
+    ui->lineEdit_wind_pressure->setText(QString::number(general->wind_pressure));
+    ui->lineEdit_wha->setText(QString::number(general->wha));
+    ui->lineEdit_length->setText(QString::number(general->length));
+    ui->lineEdit_deam->setText(QString::number(general->deam));
+    ui->lineEdit_depths->setText(QString::number(general->depths));
+    ui->lineEdit_height->setText(QString::number(general->height));
+    ui->lineEdit_cb->setText(QString::number(general->cb));
+    ui->lineEdit_csd->setText(QString::number(general->csd));
+    ui->lineEdit_gm->setText(QString::number(general->gm));
+    ui->lineEdit_sef_mea->setText(QString::number(general->sef_mea));
+    ui->lineEdit_sef_mro->setText(QString::number(general->sef_mro));
+    ui->lineEdit_sef_apra->setText(QString::number(general->sef_apra));
+    ui->lineEdit_freeboard->setText(QString::number(general->freeboard));
+}
+
+void GeneralData::unFillForms()
+{
+    ui->lineEdit_project_name->clear();
+    ui->lineEdit_length->clear();
+    ui->lineEdit_wind_pressure->clear();
+    ui->lineEdit_wha->clear();
+    ui->lineEdit_length->clear();
+    ui->lineEdit_deam->clear();
+    ui->lineEdit_depths->clear();
+    ui->lineEdit_height->clear();
+    ui->lineEdit_cb->clear();
+    ui->lineEdit_csd->clear();
+    ui->lineEdit_gm->clear();
+    ui->lineEdit_sef_mea->clear();
+    ui->lineEdit_sef_mro->clear();
+    ui->lineEdit_sef_apra->clear();
+    ui->lineEdit_freeboard->clear();
+
+    ui->lineEdit_wind_pressure->setText(QString::number(1200));
+    ui->lineEdit_wha->setText(QString::number(15));
 }
 
 void GeneralData::on_lineEdit_project_name_textChanged(const QString &arg1)
@@ -134,12 +178,13 @@ void GeneralData::saveJsonToFile(QString title)
     // С помощью диалогового окна получаем имя файла с абсолютным путём
     QString saveFileName = QFileDialog::getSaveFileName(this,
                                                         tr("Save Json File"),
-                                                        QString(),
-                                                        tr("JSON (*.json)"));
+                                                        QString::fromStdString(general->project_name),
+                                                        tr("*.json")) + ".json";
 
     QFileInfo fileInfo(saveFileName);   // С помощью QFileInfo
     QDir::setCurrent(fileInfo.path());  // установим текущую рабочую директорию, где будет файл, иначе может не заработать
-    // Создаём объект файла и открываем его на запись
+//    // Создаём объект файла и открываем его на запись
+//    qDebug() << saveFileName;
     QFile jsonFile(saveFileName);
     if (!jsonFile.open(QIODevice::WriteOnly))
     {

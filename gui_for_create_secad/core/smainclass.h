@@ -13,6 +13,8 @@ class SMainClass : SGeneralData
 public:
     SMainClass();
     ~SMainClass();
+
+    void restoreSGeneralData();
     SGeneralData *general;
     BlocksVector blocks;
 };

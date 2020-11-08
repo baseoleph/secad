@@ -23,6 +23,9 @@ public:
     explicit GeneralData(QWidget *parent = nullptr, SMainClass *m = nullptr);
     ~GeneralData();
 
+    void fillForms();
+    void unFillForms();
+
 private slots:
     void on_lineEdit_project_name_textChanged(const QString &arg1);
     void on_lineEdit_length_textChanged(const QString &arg1);
