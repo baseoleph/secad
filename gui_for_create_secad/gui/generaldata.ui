@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1081</width>
-    <height>934</height>
+    <width>689</width>
+    <height>725</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,14 +16,15 @@
   <layout class="QGridLayout" name="gridLayout">
    <item row="7" column="0">
     <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_17">
+       <property name="text">
+        <string>Надводный борт, м</string>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="1">
-      <widget class="QListView" name="listView"/>
-     </item>
-     <item row="2" column="1">
-      <widget class="QListView" name="listView_3"/>
-     </item>
-     <item row="2" column="2">
-      <spacer name="horizontalSpacer_4">
+      <spacer name="horizontalSpacer_5">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -35,7 +36,21 @@
        </property>
       </spacer>
      </item>
-     <item row="1" column="2">
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_19">
+       <property name="text">
+        <string>Пропорции золотого сечения по высоте</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_18">
+       <property name="text">
+        <string>Пропорции золотого сечения по длине</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
       <spacer name="horizontalSpacer_3">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -48,32 +63,8 @@
        </property>
       </spacer>
      </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_18">
-       <property name="text">
-        <string>Пропорции золотого сечения по длине</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_19">
-       <property name="text">
-        <string>Пропорции золотого сечения по высоте</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_17">
-       <property name="text">
-        <string>Надводный борт, м</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QListView" name="listView_2"/>
-     </item>
-     <item row="0" column="2">
-      <spacer name="horizontalSpacer_5">
+     <item row="2" column="1">
+      <spacer name="horizontalSpacer_4">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -166,6 +157,12 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string>Отрисовать огибающую</string>
          </property>
