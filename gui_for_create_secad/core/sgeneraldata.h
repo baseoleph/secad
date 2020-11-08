@@ -3,14 +3,19 @@
 
 #include <iomanip>
 #include <vector>
+#include <string>
 
 typedef std::vector<double> d_vector;
+typedef std::string string;
 
 class SGeneralData
 {
 public:
     SGeneralData();    
     ~SGeneralData();
+
+    // Имя проекта
+    string project_name;
 
     /* <const> (в процессе работы можно изменить) */
 
