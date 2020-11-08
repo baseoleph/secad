@@ -1,16 +1,35 @@
 #ifndef SGENERALDATA_H
 #define SGENERALDATA_H
 
+#include <iomanip>
+#include <vector>
+
+typedef std::vector<double> d_vector;
+
 class SGeneralData
 {
 public:
     SGeneralData();    
     ~SGeneralData();
 
+    /* <const> (в процессе работы можно изменить) */
+
+    // Давление ветра, Па
+    // Wind Pressure
+    // pascals
+    double wind_pressure = 1200;
+
+    // Максимально допустимый угол крена от действия ветра, градусы
+    // Wind Heel Angle
+    // degrees
+    double wha = 15;
+
+    /* </const> */
+
     // Длина
-    // Leight
+    // Length
     // meters
-    double leight;
+    double length;
 
     // Ширина, м
     // Beam
@@ -23,7 +42,7 @@ public:
     double depths;
 
     // Высота борта, м
-    // Freeboard
+    // Height
     // meters
     double height;
 
@@ -42,31 +61,51 @@ public:
     // meters
     double gm;
 
-    // Давление ветра, Па
-    // Wind Pressure
-    // pascals
-    double wind_pressure = 1200;
-
-    // Максимально допустимый угол крена от действия ветра, градусы
-    // Wind Heel Angle
-    // degrees
-    double wha = 15;
-
     // Заданное значение максимальной аппликаты огибающей силуэта, м
-    // SEFm - Silhouette Envelope Function max
+    // SEF - Silhouette Envelope Function
+    // MEA - Maximum Entering Applicate
     // meters
-    double sef_max;
+    double sef_mea;
 
     // Относительная абсцисса максимума огибающей силуэта (доли длины)
-    // ROSEFm - SEFm relative ordinate
+    // MRO - SEF Maxumum Relative Ordinate
     // proportion
-    double rosef_max;
+    double sef_mro;
 
     // Относительная аппликата огибающей силуэта на кормовом перпендикуляре (доля SEFm)
     // APRA - Aft Perpendicular Relative Applicate
     // proportion
-    double apra;
+    double sef_apra;
 
+    // Максимально допустимая длина мертвой зоны
+    // Visibility Zone Length
+    // meters
+    double visibility_zone;
+
+    // Надводный борт
+    // Freeboard
+    // meters
+    double freeboard;
+
+    double sef_ma;
+    double sef_mo;
+    double sef_apa;
+
+    // Золотое сечение по длине
+    // Golden Section by Leight
+    // proportions
+    d_vector gsl;
+
+    // Золотое сечение по высоте
+    // Golden Section by Height
+    // proportions
+    d_vector gsh;
+
+
+    // Коэффициенты в фукнции полинома
+    // SEF coefficients
+    // coefficients
+    d_vector sef_coef;
 };
 
 #endif // SGENERALDATA_H
