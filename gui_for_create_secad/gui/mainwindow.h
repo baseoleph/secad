@@ -4,7 +4,7 @@
 #include <QMainWindow>
 
 #include "enteringblocks.h"
-#include "form2.h"
+#include "projectmanager.h"
 #include "generaldata.h"
 #include "renamedform.h"
 
@@ -25,6 +25,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    ProjectManager *proj_man;
     GeneralData *gen_data;
     EnteringBlocks *ent_blocks;
 

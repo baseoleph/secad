@@ -13,9 +13,9 @@ SOURCES += \
     core/sgeneraldata.cpp \
     core/smainclass.cpp \
     gui/enteringblocks.cpp \
-    gui/form2.cpp \
     gui/generaldata.cpp \
     gui/mainwindow.cpp \
+    gui/projectmanager.cpp \
     gui/renamedform.cpp \
     main.cpp \
 
@@ -24,16 +24,16 @@ HEADERS += \
     core/sgeneraldata.h \
     core/smainclass.h \
     gui/enteringblocks.h \
-    gui/form2.h \
     gui/generaldata.h \
     gui/mainwindow.h \
+    gui/projectmanager.h \
     gui/renamedform.h
 
 FORMS += \
     gui/enteringblocks.ui \
-    gui/form2.ui \
     gui/generaldata.ui \
     gui/mainwindow.ui \
+    gui/projectmanager.ui \
     gui/renamedform.ui
 
 # Default rules for deployment.
