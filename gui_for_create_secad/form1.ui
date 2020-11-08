@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1229</width>
-    <height>799</height>
+    <width>1110</width>
+    <height>463</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -207,13 +207,6 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="QLabel" name="label_12">
-       <property name="text">
-        <string>Фиксированная</string>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_11">
        <property name="text">
@@ -222,10 +215,73 @@
       </widget>
      </item>
      <item row="4" column="2">
-      <layout class="QGridLayout" name="gridLayout_6"/>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="1" column="0">
+        <widget class="QLineEdit" name="lineEdit_9"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="lineEdit_11"/>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLineEdit" name="lineEdit_12"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLineEdit" name="lineEdit_7">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="lineEdit_8"/>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLineEdit" name="lineEdit_13"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLineEdit" name="lineEdit_10"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLineEdit" name="lineEdit_14"/>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="lineEdit_15"/>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="lineEdit_16"/>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="lineEdit_17"/>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="lineEdit_18"/>
+       </item>
+      </layout>
      </item>
      <item row="4" column="1">
-      <layout class="QGridLayout" name="gridLayout_8"/>
+      <layout class="QGridLayout" name="gridLayout_8">
+       <item row="3" column="0">
+        <widget class="QLineEdit" name="lineEdit_5"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLineEdit" name="lineEdit_2"/>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLineEdit" name="lineEdit_3"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLineEdit" name="lineEdit"/>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLineEdit" name="lineEdit_4"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLineEdit" name="lineEdit_6"/>
+       </item>
+      </layout>
      </item>
      <item row="1" column="2">
       <widget class="QLabel" name="label_13">
@@ -243,13 +299,6 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QFontComboBox" name="fontComboBox_5">
-         <property name="currentText">
-          <string>Перечень значений</string>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="2">
         <widget class="QPushButton" name="pushButton_4">
          <property name="text">
@@ -264,31 +313,10 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
-        <widget class="QFontComboBox" name="fontComboBox_8">
-         <property name="currentText">
-          <string>Перечень значений</string>
-         </property>
-        </widget>
-       </item>
        <item row="4" column="2">
         <widget class="QPushButton" name="pushButton_7">
          <property name="text">
           <string>Добавить значение</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QFontComboBox" name="fontComboBox_6">
-         <property name="currentText">
-          <string>Перечень значений</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QFontComboBox" name="fontComboBox_4">
-         <property name="currentText">
-          <string>Перечень значений</string>
          </property>
         </widget>
        </item>
@@ -299,24 +327,10 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
-        <widget class="QFontComboBox" name="fontComboBox_9">
-         <property name="currentText">
-          <string>Перечень значений</string>
-         </property>
-        </widget>
-       </item>
        <item row="3" column="2">
         <widget class="QPushButton" name="pushButton_6">
          <property name="text">
           <string>Добавить значение</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QFontComboBox" name="fontComboBox_7">
-         <property name="currentText">
-          <string>Перечень значений</string>
          </property>
         </widget>
        </item>
@@ -334,14 +348,25 @@
          </property>
         </widget>
        </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="comboBox_7"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="comboBox_8"/>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="comboBox_9"/>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="comboBox_10"/>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="comboBox_11"/>
+       </item>
+       <item row="5" column="1">
+        <widget class="QComboBox" name="comboBox_12"/>
+       </item>
       </layout>
-     </item>
-     <item row="2" column="1">
-      <widget class="QLabel" name="label_15">
-       <property name="text">
-        <string>Минимальное значение</string>
-       </property>
-      </widget>
      </item>
      <item row="2" column="2">
       <layout class="QGridLayout" name="gridLayout_9">
@@ -361,19 +386,19 @@
        </item>
       </layout>
      </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>Значение</string>
+       </property>
+      </widget>
+     </item>
     </layout>
-   </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QFontComboBox" name="fontComboBox">
-     <property name="currentText">
-      <string>Имя блока</string>
-     </property>
-    </widget>
    </item>
    <item row="0" column="2">
     <widget class="QPushButton" name="pushButton">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -473,18 +498,28 @@
     </widget>
    </item>
    <item row="1" column="0" colspan="3">
-    <layout class="QGridLayout" name="gridLayout_4">
-     <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
       <widget class="QLabel" name="label">
        <property name="text">
         <string>Имя блока</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QPlainTextEdit" name="plainTextEdit"/>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_19"/>
      </item>
     </layout>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QComboBox" name="comboBox_13">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
