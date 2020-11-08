@@ -286,6 +286,9 @@
        <property name="text">
         <string/>
        </property>
+       <property name="placeholderText">
+        <string>Имя проекта</string>
+       </property>
       </widget>
      </item>
      <item>
