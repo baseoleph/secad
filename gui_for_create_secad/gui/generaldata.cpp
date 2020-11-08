@@ -179,7 +179,7 @@ void GeneralData::saveJsonToFile(QString title)
     QString saveFileName = QFileDialog::getSaveFileName(this,
                                                         tr("Save Json File"),
                                                         QString::fromStdString(general->project_name),
-                                                        tr("*.json")) + ".json";
+                                                        tr("*.json"))/* + ".json"*/;
 
     QFileInfo fileInfo(saveFileName);   // С помощью QFileInfo
     QDir::setCurrent(fileInfo.path());  // установим текущую рабочую директорию, где будет файл, иначе может не заработать
