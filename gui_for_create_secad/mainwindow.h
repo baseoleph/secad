@@ -3,9 +3,9 @@
 
 #include <QMainWindow>
 
-#include "form1.h"
+#include "enteringblocks.h"
 #include "form2.h"
-#include "form3.h"
+#include "generaldata.h"
 #include "renamedform.h"
 
 QT_BEGIN_NAMESPACE
