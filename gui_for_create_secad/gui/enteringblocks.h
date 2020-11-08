@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+#include "../core/smainclass.h"
+
 namespace Ui {
 class EnteringBlocks;
 }
@@ -12,10 +14,11 @@ class EnteringBlocks : public QWidget
     Q_OBJECT
 
 public:
-    explicit EnteringBlocks(QWidget *parent = nullptr);
+    explicit EnteringBlocks(QWidget *parent = nullptr, SMainClass *m = nullptr);
     ~EnteringBlocks();
 
 private:
+    SMainClass *m;
     Ui::EnteringBlocks *ui;
 };
 

@@ -1,13 +1,12 @@
 #include "enteringblocks.h"
 #include "ui_enteringblocks.h"
 
-EnteringBlocks::EnteringBlocks(QWidget *parent) :
+EnteringBlocks::EnteringBlocks(QWidget *parent, SMainClass *m) :
     QWidget(parent),
     ui(new Ui::EnteringBlocks)
 {
     ui->setupUi(this);
-
-    ui->pushButton_8->setEnabled(false);
+    Q_UNUSED(m)
 }
 
 EnteringBlocks::~EnteringBlocks()

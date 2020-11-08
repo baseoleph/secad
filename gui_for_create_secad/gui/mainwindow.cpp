@@ -6,17 +6,22 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    m = new SMainClass();
 
-    ui->tabWidget->addTab(new GeneralData(this), "General Data");
-    ui->tabWidget->addTab(new EnteringBlocks(this), "Entering Blocks");
+    gen_data = new GeneralData(this, m);
+    ent_blocks = new EnteringBlocks(this, m);
+
+    ui->tabWidget->addTab(gen_data, "General Data");
+    ui->tabWidget->addTab(ent_blocks, "Entering Data");
     ui->tabWidget->addTab(new Form2(this), "Form 2");
     ui->tabWidget->addTab(new RenamedForm(this), "Form 4");
-
-
 }
 
 MainWindow::~MainWindow()
 {
+    delete m;
+    delete gen_data;
+    delete ent_blocks;
     delete ui;
 }
 
