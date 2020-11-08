@@ -10,14 +10,7 @@ ProjectManager::ProjectManager(QWidget *parent, SMainClass *m) :
 
     checkJsonsInDir();
     project_name = ui->comboBox->currentText();
-    if (ui->comboBox->currentText() == "")
-    {
-        ui->pushButton_go->setEnabled(false);
-    }
-    else
-    {
-        ui->pushButton_go->setEnabled(true);
-    }
+    checkCombobox();
 }
 
 ProjectManager::~ProjectManager()
@@ -37,9 +30,8 @@ void ProjectManager::checkJsonsInDir()
     }
 }
 
-void ProjectManager::on_comboBox_currentTextChanged(const QString &arg1)
+void ProjectManager::checkCombobox()
 {
-    project_name = arg1;
     if (ui->comboBox->currentText() == "")
     {
         ui->pushButton_go->setEnabled(false);
@@ -48,6 +40,12 @@ void ProjectManager::on_comboBox_currentTextChanged(const QString &arg1)
     {
         ui->pushButton_go->setEnabled(true);
     }
+}
+
+void ProjectManager::on_comboBox_currentTextChanged(const QString &arg1)
+{
+    project_name = arg1;
+    checkCombobox();
 }
 
 void ProjectManager::on_pushButton_create_new_proj_clicked()

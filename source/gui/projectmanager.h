@@ -19,14 +19,13 @@ public:
     ~ProjectManager();
 
 signals:
+    // Отправляет сигнал на открытие проекта из файла или нового
     void signalOpenProject(QString proj_name = "");
 
 private slots:
-
-    void on_pushButton_go_clicked();
-
     void on_comboBox_currentTextChanged(const QString &arg1);
 
+    void on_pushButton_go_clicked();
     void on_pushButton_create_new_proj_clicked();
 
 private:
@@ -35,8 +34,11 @@ private:
 
     QString project_name;
 
-    void loadJsonFromFile();
+    // Проверяет наличие готовых проектов *.json
     void checkJsonsInDir();
+
+    // Проверят пустоту combobox
+    void checkCombobox();
 };
 
 #endif // PROJECTMANAGER_H

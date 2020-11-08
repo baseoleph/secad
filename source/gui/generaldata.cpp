@@ -58,10 +58,85 @@ void GeneralData::unFillForms()
     ui->lineEdit_wha->setText(QString::number(15));
 }
 
+
+void GeneralData::saveJsonToFile(QString title)
+{
+    QJsonObject json_general_obj;
+    json_general_obj["project_name"] = title;
+    json_general_obj["length"] = general->length;
+    json_general_obj["wind_pressure"] = general->wind_pressure;
+    json_general_obj["wha"] = general->wha;
+    json_general_obj["length"] = general->length;
+    json_general_obj["deam"] = general->deam;
+    json_general_obj["depths"] = general->depths;
+    json_general_obj["height"] = general->height;
+    json_general_obj["cb"] = general->cb;
+    json_general_obj["csd"] = general->csd;
+    json_general_obj["gm"] = general->gm;
+    json_general_obj["sef_mea"] = general->sef_mea;
+    json_general_obj["sef_mro"] = general->sef_mro;
+    json_general_obj["sef_apra"] = general->sef_apra;
+    json_general_obj["visibility_zone"] = general->visibility_zone;
+    json_general_obj["freeboard"] = general->freeboard;
+    json_general_obj["sef_ma"] = general->sef_ma;
+    json_general_obj["sef_mo"] = general->sef_mo;
+    json_general_obj["sef_apa"] = general->sef_apa;
+
+    QJsonArray json_ar_gsl;
+    foreach (auto e, general->gsl)
+    {
+        json_ar_gsl.append(e);
+    }
+    json_general_obj["gsl"] = json_ar_gsl;
+
+    QJsonArray json_ar_gsh;
+    foreach (auto e, general->gsh)
+    {
+        json_ar_gsh.append(e);
+    }
+    json_general_obj["gsh"] = json_ar_gsh;
+
+    QJsonArray json_ar_sef_coef;
+    foreach (auto e, general->sef_coef)
+    {
+        json_ar_sef_coef.append(e);
+    }
+    json_general_obj["sef_coef"] = json_ar_sef_coef;
+
+    jsonobj["General Data"] = json_general_obj;
+
+    // С помощью диалогового окна получаем имя файла с абсолютным путём
+#ifdef Q_OS_LINUX
+    QString saveFileName = QFileDialog::getSaveFileName(this,
+                                                        tr("Save Json File"),
+                                                        QString::fromStdString(general->project_name),
+                                                        tr("*.json")) + ".json";
+#else
+    QString saveFileName = QFileDialog::getSaveFileName(this,
+                                                        tr("Save Json File"),
+                                                        QString::fromStdString(general->project_name),
+                                                        tr("*.json"));
+#endif
+
+    // Узнаем директорию для сохранения файла
+    QFileInfo fileInfo(saveFileName);
+    // Делаем ее текущей
+    QDir::setCurrent(fileInfo.path());
+
+    QFile jsonFile(saveFileName);
+    if (!jsonFile.open(QIODevice::WriteOnly))
+    {
+        return;
+    }
+
+    // Записываем текущий объект Json в файл
+    jsonFile.write(QJsonDocument(jsonobj).toJson(QJsonDocument::Indented));
+    jsonFile.close();
+}
+
 void GeneralData::on_lineEdit_project_name_textChanged(const QString &arg1)
 {
     general->project_name = arg1.toStdString();
-
 }
 
 void GeneralData::on_lineEdit_length_textChanged(const QString &arg1)
@@ -127,71 +202,4 @@ void GeneralData::on_lineEdit_sef_apra_textChanged(const QString &arg1)
 void GeneralData::on_pushButton_add_clicked()
 {
     saveJsonToFile(QString::fromStdString(general->project_name));
-}
-
-void GeneralData::saveJsonToFile(QString title)
-{
-    QJsonObject json_general_obj;
-    json_general_obj["project_name"] = title;
-    json_general_obj["length"] = general->length;
-    json_general_obj["wind_pressure"] = general->wind_pressure;
-    json_general_obj["wha"] = general->wha;
-    json_general_obj["length"] = general->length;
-    json_general_obj["deam"] = general->deam;
-    json_general_obj["depths"] = general->depths;
-    json_general_obj["height"] = general->height;
-    json_general_obj["cb"] = general->cb;
-    json_general_obj["csd"] = general->csd;
-    json_general_obj["gm"] = general->gm;
-    json_general_obj["sef_mea"] = general->sef_mea;
-    json_general_obj["sef_mro"] = general->sef_mro;
-    json_general_obj["sef_apra"] = general->sef_apra;
-    json_general_obj["visibility_zone"] = general->visibility_zone;
-    json_general_obj["freeboard"] = general->freeboard;
-    json_general_obj["sef_ma"] = general->sef_ma;
-    json_general_obj["sef_mo"] = general->sef_mo;
-    json_general_obj["sef_apa"] = general->sef_apa;
-
-    QJsonArray json_ar_gsl;
-    foreach (auto e, general->gsl)
-    {
-        json_ar_gsl.append(e);
-    }
-    json_general_obj["gsl"] = json_ar_gsl;
-
-    QJsonArray json_ar_gsh;
-    foreach (auto e, general->gsh)
-    {
-        json_ar_gsh.append(e);
-    }
-    json_general_obj["gsh"] = json_ar_gsh;
-
-    QJsonArray json_ar_sef_coef;
-    foreach (auto e, general->sef_coef)
-    {
-        json_ar_sef_coef.append(e);
-    }
-    json_general_obj["sef_coef"] = json_ar_sef_coef;
-
-    jsonobj["General Data"] = json_general_obj;
-
-    // С помощью диалогового окна получаем имя файла с абсолютным путём
-    QString saveFileName = QFileDialog::getSaveFileName(this,
-                                                        tr("Save Json File"),
-                                                        QString::fromStdString(general->project_name),
-                                                        tr("*.json"))/* + ".json"*/;
-
-    QFileInfo fileInfo(saveFileName);   // С помощью QFileInfo
-    QDir::setCurrent(fileInfo.path());  // установим текущую рабочую директорию, где будет файл, иначе может не заработать
-//    // Создаём объект файла и открываем его на запись
-//    qDebug() << saveFileName;
-    QFile jsonFile(saveFileName);
-    if (!jsonFile.open(QIODevice::WriteOnly))
-    {
-        return;
-    }
-
-    // Записываем текущий объект Json в файл
-    jsonFile.write(QJsonDocument(jsonobj).toJson(QJsonDocument::Indented));
-    jsonFile.close();   // Закрываем файл
 }

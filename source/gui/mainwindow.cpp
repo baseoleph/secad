@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent)
             this, &MainWindow::slotOpenProject);
 }
 
+
 MainWindow::~MainWindow()
 {
     delete m;

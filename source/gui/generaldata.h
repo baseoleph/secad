@@ -51,4 +51,4 @@ private:
     void saveJsonToFile(QString title);
 };
 
-#endif // FORM3_H
+#endif // GENERALDATA_H
