@@ -6,6 +6,8 @@ Form1::Form1(QWidget *parent) :
     ui(new Ui::Form1)
 {
     ui->setupUi(this);
+
+    ui->pushButton_8->setEnabled(false);
 }
 
 Form1::~Form1()
