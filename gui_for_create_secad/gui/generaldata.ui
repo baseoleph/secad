@@ -78,9 +78,9 @@
      <item row="3" column="1">
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="pushButton_add">
          <property name="text">
-          <string>Посчитать</string>
+          <string>Добавить все в проект</string>
          </property>
         </widget>
        </item>

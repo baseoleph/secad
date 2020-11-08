@@ -1,0 +1,28 @@
+{
+    "General Data": {
+        "cb": 6,
+        "csd": 7,
+        "deam": 2,
+        "depths": 3,
+        "freeboard": 4.65830082277817e-310,
+        "gm": 5,
+        "gsh": [
+        ],
+        "gsl": [
+        ],
+        "height": 4,
+        "length": 1,
+        "project name": "asdf",
+        "sef_apa": 4.65830091634946e-310,
+        "sef_apra": 12,
+        "sef_coef": [
+        ],
+        "sef_ma": 4.6583008470451e-310,
+        "sef_mea": 10,
+        "sef_mo": 4.6583009714872e-310,
+        "sef_mro": 11,
+        "visibility_zone": 4.6583007799652e-310,
+        "wha": 9,
+        "wind_pressure": 8
+    }
+}

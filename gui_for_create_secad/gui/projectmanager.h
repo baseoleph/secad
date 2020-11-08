@@ -2,6 +2,12 @@
 #define PROJECTMANAGER_H
 
 #include <QWidget>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QFileDialog>
+#include <QFile>
+#include <QDir>
 
 #include "../core/smainclass.h"
 namespace Ui {
@@ -18,6 +24,9 @@ public:
 
 private:
     Ui::ProjectManager *ui;
+    SGeneralData *general;
+
+    void loadJsonFromFile();
 };
 
 #endif // PROJECTMANAGER_H
