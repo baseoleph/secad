@@ -15,12 +15,12 @@ void SGeneralData::calcData()
 {
    visibility_zone = calcVisibilityZone(length);
    freeboard = calcFreeboard(depths, height);
-   gsl = calcGoldenSecionByLength(length);
-   gsh = calcGoldenSecionByHeight(sef_ma);
    sef_ma = calcSEFMA(depths, sef_mea);
    sef_mo = calcSEFMO(length, sef_mro);
    sef_apa = calcSEFAPA(sef_ma, sef_apra);
    sef_coef = calcSEFCoef(length, depths, sef_ma, sef_mo, sef_apa);
+   gsl = calcGoldenSecionByLength(length);
+   gsh = calcGoldenSecionByHeight(sef_ma);
 }
 
 double SGeneralData::calcVisibilityZone(const double length)
