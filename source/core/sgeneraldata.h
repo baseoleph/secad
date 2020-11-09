@@ -31,6 +31,8 @@ public:
 
     /* </const> */
 
+    /* Вводимые переменные */
+
     // Длина
     // Length
     // meters
@@ -81,6 +83,8 @@ public:
     // APRA - Aft Perpendicular Relative Applicate
     // proportion
     double sef_apra;
+
+    /* Расчетные переменные */
 
     // Максимально допустимая длина мертвой зоны
     // Visibility Zone Length
