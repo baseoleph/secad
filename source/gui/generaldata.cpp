@@ -10,6 +10,8 @@ GeneralData::GeneralData(QWidget *parent, SMainClass *m) :
 
     ui->lineEdit_wind_pressure->setText(QString::number(general->wind_pressure));
     ui->lineEdit_wha->setText(QString::number(general->wha));
+
+    scene = new QGraphicsScene(this);
 }
 
 GeneralData::~GeneralData()
@@ -157,6 +159,15 @@ void GeneralData::saveJsonToFile(QString title)
     jsonFile.close();
 }
 
+double GeneralData::sef_function(double x)
+{
+    double a0 = general->sef_coef[0];
+    double a1 = general->sef_coef[1];
+    double a2 = general->sef_coef[2];
+    double a3 = general->sef_coef[3];
+    return a3 * pow(x, 3) + a2 * pow(x, 2) + a1 * x + a0;
+}
+
 void GeneralData::on_lineEdit_project_name_textChanged(const QString &arg1)
 {
     general->project_name = arg1.toStdString();
@@ -231,4 +242,25 @@ void GeneralData::on_pushButton_calc_clicked()
 {
     general->calcData();
     fillForms();
+
+    scene->clear();
+    qreal width = ui->graphicsView->width();
+    qreal height = ui->graphicsView->height();
+    scene->setSceneRect(0, 0, width, height);
+    ui->graphicsView->setScene(scene);
+    ui->graphicsView->setRenderHint(QPainter::Antialiasing);
+    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    scene->addLine(-1, height/2, width+10, height/2);
+    scene->addLine(10, -1, 10, height+10);
+    qreal xscale = width / general->length;
+    QPointF origin_p(10, height/2);
+    QPainterPath path;
+    path.moveTo(origin_p + QPointF(0, -sef_function(0)));
+    for (double i = 0; i <= general->length; ++i)
+    {
+        path.lineTo(origin_p + QPointF(i * xscale, -sef_function(i)));
+    }
+    scene->addPath(path);
 }

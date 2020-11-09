@@ -14,6 +14,7 @@ SOURCES += \
     core/smainclass.cpp \
     gui/enteringblocks.cpp \
     gui/generaldata.cpp \
+    gui/generaldatapainter.cpp \
     gui/mainwindow.cpp \
     gui/projectmanager.cpp \
     gui/renamedform.cpp \
@@ -25,6 +26,7 @@ HEADERS += \
     core/smainclass.h \
     gui/enteringblocks.h \
     gui/generaldata.h \
+    gui/generaldatapainter.h \
     gui/mainwindow.h \
     gui/projectmanager.h \
     gui/renamedform.h
@@ -32,6 +34,7 @@ HEADERS += \
 FORMS += \
     gui/enteringblocks.ui \
     gui/generaldata.ui \
+    gui/generaldatapainter.ui \
     gui/mainwindow.ui \
     gui/projectmanager.ui \
     gui/renamedform.ui

@@ -9,7 +9,10 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QDir>
+#include <QGraphicsScene>
+#include <QPainterPath>
 #include "../core/smainclass.h"
+
 
 namespace Ui {
 class GeneralData;
@@ -48,8 +51,9 @@ private:
     Ui::GeneralData *ui;
     SGeneralData *general;
     QJsonObject jsonobj;
-
+    QGraphicsScene *scene;
     void saveJsonToFile(QString title);
+    double sef_function(double x);
 };
 
 #endif // GENERALDATA_H
