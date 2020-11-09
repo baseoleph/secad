@@ -54,8 +54,8 @@ void GeneralData::unFillForms()
     ui->lineEdit_sef_apra->clear();
     ui->lineEdit_freeboard->clear();
 
-    ui->lineEdit_wind_pressure->setText(QString::number(1200));
-    ui->lineEdit_wha->setText(QString::number(15));
+    ui->lineEdit_wind_pressure->setText(QString::number(WIND_PRESSURE));
+    ui->lineEdit_wha->setText(QString::number(WHA));
 }
 
 

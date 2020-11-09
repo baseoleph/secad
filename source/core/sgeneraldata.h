@@ -1,6 +1,9 @@
 #ifndef SGENERALDATA_H
 #define SGENERALDATA_H
 
+#define WIND_PRESSURE 1200
+#define WHA 15
+
 #include <iomanip>
 #include <vector>
 #include <string>
@@ -22,12 +25,12 @@ public:
     // Давление ветра, Па
     // Wind Pressure
     // pascals
-    double wind_pressure = 1200;
+    double wind_pressure;
 
     // Максимально допустимый угол крена от действия ветра, градусы
     // Wind Heel Angle
     // degrees
-    double wha = 15;
+    double wha;
 
     /* </const> */
 

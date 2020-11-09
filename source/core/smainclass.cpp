@@ -13,6 +13,6 @@ SMainClass::~SMainClass()
 void SMainClass::restoreSGeneralData()
 {
     // clear data;
-    general->wha = 15;
-    general->wind_pressure = 1200;
+    general->wha = WHA;
+    general->wind_pressure = WIND_PRESSURE;
 }
