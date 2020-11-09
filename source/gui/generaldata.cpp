@@ -254,7 +254,7 @@ void GeneralData::on_pushButton_calc_clicked()
 
     scene->addLine(-1, height/2, width+10, height/2);
     scene->addLine(10, -1, 10, height+10);
-    qreal xscale = width / general->length;
+//    qreal xscale = width / general->length;
     QPointF origin_p(10, height/2);
     QPainterPath path;
     path.moveTo(origin_p + QPointF(0, -sef_function(0)));

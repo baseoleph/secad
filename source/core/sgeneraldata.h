@@ -24,7 +24,7 @@ public:
     double calcVisibilityZone(const double length);
     double calcFreeboard(const double depths, const double height);
     d_vector calcGoldenSecionByLength(const double length);
-    d_vector calcGoldenSecionByHeight(const double length, double freeboard);
+    d_vector calcGoldenSecionByHeight(const double sef_mea);
     double calcSEFMA(const double depths, const double sef_mea);
     double calcSEFMO(const double length, const double sef_mro);
     double calcSEFAPA(const double sef_ma, const double sef_apra);
