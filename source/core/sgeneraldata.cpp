@@ -45,7 +45,6 @@ d_vector SGeneralData::calcGoldenSecionByLength(const double length)
         gsl.push_back(gsl_next);
         gsl_next = gsl[gsl.size() - 2] - gsl[gsl.size() - 1];
     }
-    qDebug() << gsl;
     return gsl;
 }
 

@@ -75,7 +75,7 @@ void MainWindow::fillGeneralData(QString proj_name)
         // Из которого выделяем объект в текущий рабочий QJsonObject
         QJsonObject json = jsonDocument.object();
         QJsonValue general_from_json = json.value("General Data");
-        QJsonObject general_obj = general_from_json.toObject();
+        QJsonObject general_obj = general_from_json.toObject().value("user").toObject();
         m->general->project_name = general_obj.value("project_name").toString().toStdString();
         m->general->wind_pressure = general_obj.value("wind_pressure").toDouble();
         m->general->wha = general_obj.value("wha").toDouble();
@@ -89,6 +89,9 @@ void MainWindow::fillGeneralData(QString proj_name)
         m->general->sef_mea = general_obj.value("sef_mea").toDouble();
         m->general->sef_mro = general_obj.value("sef_mro").toDouble();
         m->general->sef_apra = general_obj.value("sef_apra").toDouble();
+
+        general_obj = general_from_json.toObject().value("calc").toObject();
+
         m->general->visibility_zone = general_obj.value("visibility_zone").toDouble();
         m->general->freeboard = general_obj.value("freeboard").toDouble();
         m->general->sef_ma = general_obj.value("sef_ma").toDouble();
