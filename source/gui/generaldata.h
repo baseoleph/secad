@@ -41,7 +41,8 @@ private slots:
     void on_lineEdit_sef_mro_textChanged(const QString &arg1);
     void on_lineEdit_sef_apra_textChanged(const QString &arg1);
 
-    void on_pushButton_add_clicked();
+    void on_pushButton_save_clicked();
+    void on_pushButton_calc_clicked();
 
 private:
     Ui::GeneralData *ui;

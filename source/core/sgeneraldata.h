@@ -9,6 +9,8 @@
 #include <string>
 #include <math.h>
 
+#include <QDebug>
+
 typedef std::vector<double> d_vector;
 typedef std::string string;
 

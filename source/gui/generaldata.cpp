@@ -34,6 +34,24 @@ void GeneralData::fillForms()
     ui->lineEdit_sef_mro->setText(QString::number(general->sef_mro));
     ui->lineEdit_sef_apra->setText(QString::number(general->sef_apra));
     ui->lineEdit_freeboard->setText(QString::number(general->freeboard));
+
+    QString str_gsl = "{";
+    foreach (auto e, general->gsl)
+    {
+       str_gsl += QString::number(e) + ", ";
+    }
+    str_gsl.chop(2);
+    str_gsl += "}";
+    ui->lineEdit_gsl->setText(str_gsl);
+
+    QString str_gsh = "{";
+    foreach (auto e, general->gsh)
+    {
+       str_gsh += QString::number(e) + ", ";
+    }
+    str_gsh.chop(2);
+    str_gsh += "}";
+    ui->lineEdit_gsh->setText(str_gsh);
 }
 
 void GeneralData::unFillForms()
@@ -199,8 +217,13 @@ void GeneralData::on_lineEdit_sef_apra_textChanged(const QString &arg1)
     general->sef_apra = arg1.toDouble();
 }
 
-void GeneralData::on_pushButton_add_clicked()
+void GeneralData::on_pushButton_save_clicked()
+{
+    saveJsonToFile(QString::fromStdString(general->project_name));
+}
+
+void GeneralData::on_pushButton_calc_clicked()
 {
     general->calcData();
-    saveJsonToFile(QString::fromStdString(general->project_name));
+    fillForms();
 }

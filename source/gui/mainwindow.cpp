@@ -95,23 +95,24 @@ void MainWindow::fillGeneralData(QString proj_name)
         m->general->sef_mo = general_obj.value("sef_mo").toDouble();
         m->general->sef_apa = general_obj.value("sef_apa").toDouble();
 
-    // Золотое сечение по длине
-    // Golden Section by Leight
-    // proportions
-        m->general->wind_pressure = general_obj.value("wind_pressure").toDouble();
-    d_vector gsl;
+        QJsonArray json_gsl = general_obj.value("gsl").toArray();
+        m->general->gsl.clear();
+        foreach (auto e, json_gsl)
+        {
+            m->general->gsl.push_back(e.toDouble());
+        }
+        QJsonArray json_gsh = general_obj.value("gsh").toArray();
+        m->general->gsh.clear();
+        foreach (auto e, json_gsh)
+        {
+            m->general->gsh.push_back(e.toDouble());
+        }
 
-    // Золотое сечение по высоте
-    // Golden Section by Height
-    // proportions
-        m->general->wind_pressure = general_obj.value("wind_pressure").toDouble();
-    d_vector gsh;
-
-
-    // Коэффициенты в фукнции полинома
-    // SEF coefficients
-    // coefficients
-        m->general->wind_pressure = general_obj.value("wind_pressure").toDouble();
-        d_vector sef_coef;
+        QJsonArray json_sef_coef = general_obj.value("sef_coef").toArray();
+        m->general->sef_coef.clear();
+        foreach (auto e, json_sef_coef)
+        {
+            m->general->sef_coef.push_back(e.toDouble());
+        }
 }
 

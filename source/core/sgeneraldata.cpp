@@ -43,21 +43,21 @@ d_vector SGeneralData::calcGoldenSecionByLength(const double length)
     while (gsl_next >= criterion)
     {
         gsl.push_back(gsl_next);
-        gsl_next = gsl[gsl.back() - 1] - gsl[gsl.back()];
+        gsl_next = gsl[gsl.size() - 2] - gsl[gsl.size() - 1];
     }
-
+    qDebug() << gsl;
     return gsl;
 }
 
 d_vector SGeneralData::calcGoldenSecionByHeight(const double length, double freeboard)
 {
     d_vector gsh = {0.618, 1};
-    double gsl_next = gsh[0] + gsh[1];
+    double gsh_next = gsh[0] + gsh[1];
     double criterion = freeboard/length;
-    while (gsl_next <= criterion)
+    while (gsh_next <= criterion)
     {
-        gsh.push_back(gsl_next);
-        gsl_next = gsh[gsh.back() - 1] + gsh[gsh.back()];
+        gsh.push_back(gsh_next);
+        gsh_next = gsh[gsh.size() - 2] + gsh[gsh.size() - 1];
     }
 
     return gsh;
