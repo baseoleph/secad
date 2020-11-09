@@ -80,7 +80,7 @@ void MainWindow::fillGeneralData(QString proj_name)
         m->general->wind_pressure = general_obj.value("wind_pressure").toDouble();
         m->general->wha = general_obj.value("wha").toDouble();
         m->general->length = general_obj.value("length").toDouble();
-        m->general->deam = general_obj.value("deam").toDouble();
+        m->general->beam = general_obj.value("beam").toDouble();
         m->general->depths = general_obj.value("depths").toDouble();
         m->general->height = general_obj.value("height").toDouble();
         m->general->cb = general_obj.value("cb").toDouble();

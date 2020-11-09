@@ -61,7 +61,7 @@ public:
     // Ширина, м
     // Beam
     // meters
-    double deam;
+    double beam;
 
     // Осадка, м
     // Depths

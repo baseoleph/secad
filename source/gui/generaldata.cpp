@@ -24,7 +24,7 @@ void GeneralData::fillForms()
     ui->lineEdit_wind_pressure->setText(QString::number(general->wind_pressure));
     ui->lineEdit_wha->setText(QString::number(general->wha));
     ui->lineEdit_length->setText(QString::number(general->length));
-    ui->lineEdit_deam->setText(QString::number(general->deam));
+    ui->lineEdit_beam->setText(QString::number(general->beam));
     ui->lineEdit_depths->setText(QString::number(general->depths));
     ui->lineEdit_height->setText(QString::number(general->height));
     ui->lineEdit_cb->setText(QString::number(general->cb));
@@ -43,7 +43,7 @@ void GeneralData::unFillForms()
     ui->lineEdit_wind_pressure->clear();
     ui->lineEdit_wha->clear();
     ui->lineEdit_length->clear();
-    ui->lineEdit_deam->clear();
+    ui->lineEdit_beam->clear();
     ui->lineEdit_depths->clear();
     ui->lineEdit_height->clear();
     ui->lineEdit_cb->clear();
@@ -67,7 +67,7 @@ void GeneralData::saveJsonToFile(QString title)
     json_general_obj["wind_pressure"] = general->wind_pressure;
     json_general_obj["wha"] = general->wha;
     json_general_obj["length"] = general->length;
-    json_general_obj["deam"] = general->deam;
+    json_general_obj["beam"] = general->beam;
     json_general_obj["depths"] = general->depths;
     json_general_obj["height"] = general->height;
     json_general_obj["cb"] = general->cb;
@@ -144,9 +144,9 @@ void GeneralData::on_lineEdit_length_textChanged(const QString &arg1)
     general->length = arg1.toDouble();
 }
 
-void GeneralData::on_lineEdit_deam_textChanged(const QString &arg1)
+void GeneralData::on_lineEdit_beam_textChanged(const QString &arg1)
 {
-    general->deam = arg1.toDouble();
+    general->beam = arg1.toDouble();
 }
 
 void GeneralData::on_lineEdit_depths_textChanged(const QString &arg1)

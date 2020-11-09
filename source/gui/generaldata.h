@@ -29,7 +29,7 @@ public:
 private slots:
     void on_lineEdit_project_name_textChanged(const QString &arg1);
     void on_lineEdit_length_textChanged(const QString &arg1);
-    void on_lineEdit_deam_textChanged(const QString &arg1);
+    void on_lineEdit_beam_textChanged(const QString &arg1);
     void on_lineEdit_depths_textChanged(const QString &arg1);
     void on_lineEdit_height_textChanged(const QString &arg1);
     void on_lineEdit_gm_textChanged(const QString &arg1);
