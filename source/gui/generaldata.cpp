@@ -260,7 +260,7 @@ void GeneralData::on_pushButton_calc_clicked()
     path.moveTo(origin_p + QPointF(0, -sef_function(0)));
     for (double i = 0; i <= general->length; ++i)
     {
-        path.lineTo(origin_p + QPointF(i * xscale, -sef_function(i)));
+        path.lineTo(origin_p + QPointF(i/* * xscale*/, -sef_function(i)));
     }
     scene->addPath(path);
 }
