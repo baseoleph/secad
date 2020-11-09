@@ -1,0 +1,28 @@
+{
+    "General Data": {
+        "cb": 6,
+        "csd": 7,
+        "deam": 2,
+        "depths": 3,
+        "freeboard": 8.6829427e-315,
+        "gm": 5,
+        "gsh": [
+        ],
+        "gsl": [
+        ],
+        "height": 4,
+        "length": 1.2,
+        "project_name": "test_project",
+        "sef_apa": 8.6829427e-315,
+        "sef_apra": 6,
+        "sef_coef": [
+        ],
+        "sef_ma": 8.6829427e-315,
+        "sef_mea": 4,
+        "sef_mo": 8.6829427e-315,
+        "sef_mro": 56,
+        "visibility_zone": 8.6829427e-315,
+        "wha": 15,
+        "wind_pressure": 1201
+    }
+}

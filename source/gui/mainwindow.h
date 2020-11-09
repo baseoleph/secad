@@ -40,6 +40,8 @@ private:
     GeneralData *gen_data;
     EnteringBlocks *ent_blocks;
 
+    QString dir_to_projects = "../projects";
+
     SMainClass *m;
 };
 

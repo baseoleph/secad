@@ -6,11 +6,11 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    if (not QDir("projects").exists())
+    if (not QDir(dir_to_projects).exists())
     {
-        QDir().mkdir("projects");
+        QDir().mkdir(dir_to_projects);
     }
-    QDir::setCurrent(QDir::currentPath() + "/projects");
+    QDir::setCurrent(QDir::currentPath() + "/" + dir_to_projects);
 
     m = new SMainClass();
 
