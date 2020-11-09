@@ -16,7 +16,7 @@ void SGeneralData::calcData()
    visibility_zone = calcVisibilityZone(length);
    freeboard = calcFreeboard(depths, height);
    gsl = calcGoldenSecionByLength(length);
-   gsh = calcGoldenSecionByHeight(sef_mea);
+   gsh = calcGoldenSecionByHeight(sef_ma);
    sef_ma = calcSEFMA(depths, sef_mea);
    sef_mo = calcSEFMO(length, sef_mro);
    sef_apa = calcSEFAPA(sef_ma, sef_apra);
@@ -48,17 +48,17 @@ d_vector SGeneralData::calcGoldenSecionByLength(const double length)
     return gsl;
 }
 
-d_vector SGeneralData::calcGoldenSecionByHeight(const double sef_mea)
+d_vector SGeneralData::calcGoldenSecionByHeight(const double sef_ma)
 {
     d_vector gsh = {0.618, 1};
     double gsh_next = gsh[0] + gsh[1];
-    double criterion = sef_mea;
+    double criterion = sef_ma;
     while (gsh_next <= criterion)
     {
         gsh.push_back(gsh_next);
         gsh_next = gsh[gsh.size() - 2] + gsh[gsh.size() - 1];
     }
-
+    gsh.push_back(gsh_next);
     return gsh;
 }
 
