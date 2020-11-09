@@ -1,0 +1,28 @@
+{
+    "General Data": {
+        "cb": 0.5,
+        "csd": 0.8,
+        "deam": 12.5,
+        "depths": 3.2,
+        "freeboard": 8.68300436e-315,
+        "gm": 1.25,
+        "gsh": [
+        ],
+        "gsl": [
+        ],
+        "height": 6.5,
+        "length": 100,
+        "project_name": "test_gaik",
+        "sef_apa": 8.68300436e-315,
+        "sef_apra": 0.1,
+        "sef_coef": [
+        ],
+        "sef_ma": 8.68300436e-315,
+        "sef_mea": 20,
+        "sef_mo": 8.68300436e-315,
+        "sef_mro": 0.55,
+        "visibility_zone": 8.68300436e-315,
+        "wha": 15,
+        "wind_pressure": 1200
+    }
+}
