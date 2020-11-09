@@ -6,11 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    if (not QDir(dir_to_projects).exists())
-    {
-        QDir().mkdir(dir_to_projects);
-    }
-    QDir::setCurrent(QDir::currentPath() + "/" + dir_to_projects);
+    changeCurrentDir();
 
     m = new SMainClass();
 
@@ -37,6 +33,15 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::changeCurrentDir()
+{
+    if (not QDir(dir_to_projects).exists())
+    {
+        QDir().mkdir(dir_to_projects);
+    }
+    QDir::setCurrent(QDir::currentPath() + "/" + dir_to_projects);
+}
+
 void MainWindow::slotOpenProject(QString proj_name)
 {
     if (proj_name != "")
@@ -54,7 +59,7 @@ void MainWindow::slotOpenProject(QString proj_name)
 
 void MainWindow::fillGeneralData(QString proj_name)
 {
-    // Выбираем файл
+        // Выбираем файл
         QString openFileName = proj_name + ".json";
         QFile jsonFile(openFileName);
         if (!jsonFile.open(QIODevice::ReadOnly))

@@ -30,10 +30,15 @@ public:
     ~MainWindow();
 
 private slots:
+    // Слот, который открывает General Data; пустой или из файла
     void slotOpenProject(QString proj_name = "");
 
 private:
+    // Передаем значения из .json в объект класса SGeneralData
     void fillGeneralData(QString proj_name);
+
+    // Установка рабочей директории для сохранения файлов проекта
+    void changeCurrentDir();
 
     Ui::MainWindow *ui;
     ProjectManager *proj_man;
