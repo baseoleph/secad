@@ -2,7 +2,7 @@
     "General Data": {
         "cb": 0.5,
         "csd": 0.8,
-        "deam": 12.5,
+        "beam": 12.5,
         "depths": 3.2,
         "freeboard": 8.68300436e-315,
         "gm": 1.25,
