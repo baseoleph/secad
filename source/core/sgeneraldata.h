@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <vector>
 #include <string>
+#include <math.h>
 
 typedef std::vector<double> d_vector;
 typedef std::string string;
@@ -16,6 +17,22 @@ class SGeneralData
 public:
     SGeneralData();    
     ~SGeneralData();
+
+    void calcData();
+    double calcVisibilityZone(const double length);
+    double calcFreeboard(const double depths, const double height);
+    d_vector calcGoldenSecionByLength(const double length);
+    d_vector calcGoldenSecionByHeight(const double length, double freeboard);
+    double calcSEFMA(const double depths, const double sef_mea);
+    double calcSEFMO(const double length, const double sef_mro);
+    double calcSEFAPA(const double sef_ma, const double sef_apra);
+
+    d_vector calcSEFCoef(const double length, const double depths,
+                         const double sef_ma, const double sef_mo, const double sef_apa);
+    double calcA0(const double depths, const double t);
+    double calcA1(const double q, const double a2, const double a3);
+    double calcA2(const double length, const double t, const double q, const double p);
+    double calcA3(const double a2, const double length, const double q, const double p);
 
     // Имя проекта
     string project_name;

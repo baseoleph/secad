@@ -201,5 +201,6 @@ void GeneralData::on_lineEdit_sef_apra_textChanged(const QString &arg1)
 
 void GeneralData::on_pushButton_add_clicked()
 {
+    general->calcData();
     saveJsonToFile(QString::fromStdString(general->project_name));
 }
