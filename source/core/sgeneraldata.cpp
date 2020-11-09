@@ -84,16 +84,16 @@ d_vector SGeneralData::calcSEFCoef(const double length, const double depths, con
     double q = sef_mo;
     double p = sef_apa;
     d_vector sef_coef(4);
-    sef_coef[0] = calcA0(depths, t);
+    sef_coef[0] = calcA0(depths, p);
     sef_coef[2] = calcA2(length, t, q, p);
     sef_coef[3] = calcA3(sef_coef[2], length, q, p);
     sef_coef[1] = calcA1(q, sef_coef[2], sef_coef[3]);
     return sef_coef;
 }
 
-double SGeneralData::calcA0(const double depths, const double t)
+double SGeneralData::calcA0(const double depths, const double p)
 {
-    return t + depths;
+    return p + depths;
 }
 
 double SGeneralData::calcA1(const double q, const double a2, const double a3)
