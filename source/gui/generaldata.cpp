@@ -27,7 +27,7 @@ void GeneralData::fillForms()
     ui->lineEdit_wha->setText(QString::number(general->wha));
     ui->lineEdit_length->setText(QString::number(general->length));
     ui->lineEdit_beam->setText(QString::number(general->beam));
-    ui->lineEdit_depths->setText(QString::number(general->depths));
+    ui->lineEdit_draft->setText(QString::number(general->draft));
     ui->lineEdit_height->setText(QString::number(general->height));
     ui->lineEdit_cb->setText(QString::number(general->cb));
     ui->lineEdit_csd->setText(QString::number(general->csd));
@@ -64,7 +64,7 @@ void GeneralData::unFillForms()
     ui->lineEdit_wha->clear();
     ui->lineEdit_length->clear();
     ui->lineEdit_beam->clear();
-    ui->lineEdit_depths->clear();
+    ui->lineEdit_draft->clear();
     ui->lineEdit_height->clear();
     ui->lineEdit_cb->clear();
     ui->lineEdit_csd->clear();
@@ -90,7 +90,7 @@ void GeneralData::saveJsonToFile(QString title)
     json_general_user_data["wha"] = general->wha;
     json_general_user_data["length"] = general->length;
     json_general_user_data["beam"] = general->beam;
-    json_general_user_data["depths"] = general->depths;
+    json_general_user_data["draft"] = general->draft;
     json_general_user_data["height"] = general->height;
     json_general_user_data["cb"] = general->cb;
     json_general_user_data["csd"] = general->csd;
@@ -183,9 +183,9 @@ void GeneralData::on_lineEdit_beam_textChanged(const QString &arg1)
     general->beam = arg1.toDouble();
 }
 
-void GeneralData::on_lineEdit_depths_textChanged(const QString &arg1)
+void GeneralData::on_lineEdit_draft_textChanged(const QString &arg1)
 {
-    general->depths = arg1.toDouble();
+    general->draft = arg1.toDouble();
 }
 
 void GeneralData::on_lineEdit_height_textChanged(const QString &arg1)

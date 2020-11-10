@@ -81,7 +81,7 @@ void MainWindow::fillGeneralData(QString proj_name)
         m->general->wha = general_obj.value("wha").toDouble();
         m->general->length = general_obj.value("length").toDouble();
         m->general->beam = general_obj.value("beam").toDouble();
-        m->general->depths = general_obj.value("depths").toDouble();
+        m->general->draft = general_obj.value("draft").toDouble();
         m->general->height = general_obj.value("height").toDouble();
         m->general->cb = general_obj.value("cb").toDouble();
         m->general->csd = general_obj.value("csd").toDouble();

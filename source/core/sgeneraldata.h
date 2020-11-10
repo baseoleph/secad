@@ -22,19 +22,19 @@ public:
 
     void calcData();
     double calcVisibilityZone(const double length);
-    double calcFreeboard(const double depths, const double height);
+    double calcFreeboard(const double draft, const double height);
     d_vector calcGoldenSecionByLength(const double length);
     d_vector calcGoldenSecionByHeight(const double sef_ma);
-    double calcSEFMA(const double depths, const double sef_mea);
+    double calcSEFMA(const double draft, const double sef_mea);
     double calcSEFMO(const double length, const double sef_mro);
     double calcSEFAPA(const double sef_ma, const double sef_apra);
 
-    d_vector calcSEFCoef(const double length, const double depths,
+    d_vector calcSEFCoef(const double length, const double draft,
                          const double sef_ma, const double sef_mo, const double sef_apa);
-    double calcA0(const double depths, const double t);
-    double calcA1(const double q, const double a2, const double a3);
-    double calcA2(const double length, const double t, const double q, const double p);
-    double calcA3(const double a2, const double length, const double q, const double p);
+    double calcC0(const double draft, const double t);
+    double calcC1(const double q, const double a2, const double a3);
+    double calcC2(const double length, const double t, const double q, const double p);
+    double calcC3(const double a2, const double length, const double q, const double p);
 
     // Имя проекта
     string project_name;
@@ -66,9 +66,9 @@ public:
     double beam;
 
     // Осадка, м
-    // Depths
+    // Draft
     // meters
-    double depths;
+    double draft;
 
     // Высота борта, м
     // Height
@@ -123,7 +123,7 @@ public:
     double sef_apa;
 
     // Золотое сечение по длине
-    // Golden Section by Leight
+    // Golden Section by Length
     // proportions
     d_vector gsl;
 
