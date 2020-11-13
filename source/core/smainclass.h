@@ -14,6 +14,7 @@ public:
     SMainClass();
     ~SMainClass();
 
+    void addBlock();
     void restoreSGeneralData();
     SGeneralData *general;
     BlocksVector blocks;

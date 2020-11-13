@@ -10,8 +10,12 @@ CONFIG += c++11
 
 SOURCES += \
     core/sblockdata.cpp \
+    core/varclasses/sconstantvar.cpp \
+    core/varclasses/scontinuousvar.cpp \
+    core/varclasses/sdiscretevar.cpp \
     core/sgeneraldata.cpp \
     core/smainclass.cpp \
+    core/svarparent.cpp \
     gui/enteringblocks.cpp \
     gui/generaldata.cpp \
     gui/generaldatapainter.cpp \
@@ -22,8 +26,12 @@ SOURCES += \
 
 HEADERS += \
     core/sblockdata.h \
+    core/varclasses/sconstantvar.h \
+    core/varclasses/scontinuousvar.h \
+    core/varclasses/sdiscretevar.h \
     core/sgeneraldata.h \
     core/smainclass.h \
+    core/svarparent.h \
     gui/enteringblocks.h \
     gui/generaldata.h \
     gui/generaldatapainter.h \
