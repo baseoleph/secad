@@ -57,22 +57,22 @@ public:
 
     // Длина
     // Length
-    // meters
+    // metres
     double length;
 
     // Ширина, м
     // Beam
-    // meters
+    // metres
     double beam;
 
     // Осадка, м
     // Draft
-    // meters
+    // metres
     double draft;
 
     // Высота борта, м
     // Height
-    // meters
+    // metres
     double height;
 
     // Коэффициент общей полноты
@@ -87,13 +87,13 @@ public:
 
     // Поперечная метацентрическая высота (МЦВ), м
     // Metacentric Height
-    // meters
+    // metres
     double gm;
 
     // Заданное значение максимальной аппликаты огибающей силуэта, м
     // SEF - Silhouette Envelope Function
     // MEA - Maximum Entering Applicate
-    // meters
+    // metres
     double sef_mea;
 
     // Относительная абсцисса максимума огибающей силуэта (доли длины)
@@ -110,16 +110,27 @@ public:
 
     // Максимально допустимая длина мертвой зоны
     // Visibility Zone Length
-    // meters
+    // metres
     double visibility_zone;
 
     // Надводный борт
     // Freeboard
-    // meters
+    // metres
     double freeboard;
 
+    // Аппликата максимума огибающей
+    // MA - SEF Maximum Applicate
+    // metres
     double sef_ma;
+
+    // Абсцисса максимума огибающей
+    // MO - SEF Maximum Ordinate
+    // metres
     double sef_mo;
+
+    // Аппликата огибающей на кормовом перпендикуляре
+    // APA - SEF Aft Perpendicular Applicate
+    // metres
     double sef_apa;
 
     // Золотое сечение по длине
