@@ -24,32 +24,32 @@ public:
     // Коэффициент пропорциональности длины блока
     // Length Ratio Coefficient
     // proportion
-    double lrc = NOTHING_VALUE;
+    SVarParent lrc;
 
     // Коэффициент пропорциональности высоты блока
     // Height Ratio Coefficient
     // proportion
-    double hrc = NOTHING_VALUE;
+    SVarParent hrc;
 
     // Угол наклона носовой стенки блока
     // Fore Wall Inclination Heel
     // degrees
-    double fwih = NOTHING_VALUE;
+    SVarParent fwih;
 
     // Угол наклона кормовой стенки блока
     // Aft Wall Inclination Heel
     // degrees
-    double awih = NOTHING_VALUE;
+    SVarParent awih;
 
     // Ордината размещения блока
     // Block Positioning Ordinate
     // metres
-    double x = NOTHING_VALUE;
+    SVarParent x;
 
     // Аппликата размещения блока
     // Block Positioning Applicate
     // metres
-    double z = NOTHING_VALUE;
+    SVarParent z;
 
     // Обитаемый блок
     // Habitabilical Block

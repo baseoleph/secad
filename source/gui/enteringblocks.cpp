@@ -41,6 +41,8 @@ void EnteringBlocks::fillForms()
         ui->checkBox_pap->setChecked(block_data->pap);
         ui->checkBox_mainmast->setChecked(block_data->mainmast);
         ui->checkBox_wheelhouse->setChecked(block_data->wheelhause);
+
+        updateWidgetsDCC();
     }
 }
 
@@ -51,6 +53,7 @@ void EnteringBlocks::setUpForms()
         ui->widget_block->setEnabled(true);
         block_data = m->blocks[0];
         updateComboBlocks(QString::fromStdString(block_data->titleblock));
+        updateWidgetsDCC();
     }
 }
 
@@ -118,6 +121,7 @@ void EnteringBlocks::on_pushButton_addBlock_clicked()
     block_data->hb_h = "";
     block_data->hb_l = "";
     updateComboBlocks(new_title);
+    updateWidgetsDCC();
 }
 
 void EnteringBlocks::on_comboBox_blocks_textActivated(const QString &arg1)
@@ -196,6 +200,35 @@ void EnteringBlocks::updateComboHBBlocks()
 void EnteringBlocks::updateWidgetsDCC()
 {
 
+    SVarParent lrc;
+
+    // Коэффициент пропорциональности высоты блока
+    // Height Ratio Coefficient
+    // proportion
+    SVarParent hrc;
+
+    // Угол наклона носовой стенки блока
+    // Fore Wall Inclination Heel
+    // degrees
+    SVarParent fwih;
+
+    // Угол наклона кормовой стенки блока
+    // Aft Wall Inclination Heel
+    // degrees
+    SVarParent awih;
+
+    // Ордината размещения блока
+    // Block Positioning Ordinate
+    // metres
+    SVarParent x;
+
+    // Аппликата размещения блока
+    // Block Positioning Applicate
+    // metres
+    SVarParent z;
+
+    ui->comboBox_lrc->setCurrentIndex(block_data->lrc.type);
+    ui->comboBox_lrc->activated(block_data->lrc.type);
 }
 
 void EnteringBlocks::on_comboBox_hb_h_textActivated(const QString &arg1)
@@ -221,4 +254,28 @@ void EnteringBlocks::on_lineEdit_l_hb_l_textChanged(const QString &arg1)
 
 void EnteringBlocks::on_pushButton_optimize_clicked()
 {
+}
+
+void EnteringBlocks::on_comboBox_lrc_activated(int index)
+{
+    if (index == CONS)
+    {
+        ui->horizontalWidget_lrc_cons->setVisible(true);
+        ui->horizontalWidget_lrc_cont->setVisible(false);
+        ui->horizontalWidget_lrc_desc->setVisible(false);
+
+    }
+    else if (index == CONT)
+    {
+        ui->horizontalWidget_lrc_cons->setVisible(false);
+        ui->horizontalWidget_lrc_cont->setVisible(true);
+        ui->horizontalWidget_lrc_desc->setVisible(false);
+    }
+    else
+    {
+        ui->horizontalWidget_lrc_cons->setVisible(false);
+        ui->horizontalWidget_lrc_cont->setVisible(false);
+        ui->horizontalWidget_lrc_desc->setVisible(true);
+    }
+    block_data->lrc.setType(index);
 }

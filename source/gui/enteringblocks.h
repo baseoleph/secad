@@ -52,6 +52,8 @@ private slots:
 
     void on_pushButton_optimize_clicked();
 
+    void on_comboBox_lrc_activated(int index);
+
 private:
     SMainClass *m;
     SBlockData *block_data;
