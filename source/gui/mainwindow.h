@@ -43,10 +43,14 @@ private:
     // Установка рабочей директории для сохранения файлов проекта
     void changeCurrentDir();
 
+    void removeAll();
+    void clearAll();
+
     Ui::MainWindow *ui;
     ProjectManager *proj_man;
     GeneralData *gen_data;
     EnteringBlocks *ent_blocks;
+    RenamedForm *ren_form;
     JsonParserClass jpc;
 
     QString dir_to_projects = "../projects";

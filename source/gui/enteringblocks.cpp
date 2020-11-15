@@ -31,16 +31,17 @@ void EnteringBlocks::fillForms()
         }
 
         ui->lineEdit_titleblock->setText(current_block_title);
-        ui->lineEdit_l_hb_l->setText(QString::number(block_data->l_hb_l));
+
+        if (block_data->l_hb_l != NOTHING_VALUE) ui->lineEdit_l_hb_l->setText(QString::number(block_data->l_hb_l));
+        else ui->lineEdit_l_hb_l->setText("");
+
         ui->checkBox_foremast->setChecked(block_data->foremast);
         ui->checkBox_funnel->setChecked(block_data->funnel);
         ui->checkBox_habitability->setChecked(block_data->habitability);
         ui->checkBox_pap->setChecked(block_data->pap);
         ui->checkBox_mainmast->setChecked(block_data->mainmast);
         ui->checkBox_wheelhouse->setChecked(block_data->wheelhause);
-
     }
-
 }
 
 void EnteringBlocks::setUpForms()
@@ -206,4 +207,13 @@ void EnteringBlocks::on_comboBox_hb_l_textActivated(const QString &arg1)
 {
     block_data->hb_l = arg1.toStdString();
     updateComboHBBlocks();
+}
+
+void EnteringBlocks::on_lineEdit_l_hb_l_textChanged(const QString &arg1)
+{
+    block_data->l_hb_l = arg1.toDouble();
+}
+
+void EnteringBlocks::on_pushButton_optimize_clicked()
+{
 }

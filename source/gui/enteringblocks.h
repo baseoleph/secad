@@ -48,6 +48,10 @@ private slots:
 
     void on_comboBox_hb_l_textActivated(const QString &arg1);
 
+    void on_lineEdit_l_hb_l_textChanged(const QString &arg1);
+
+    void on_pushButton_optimize_clicked();
+
 private:
     SMainClass *m;
     SBlockData *block_data;
