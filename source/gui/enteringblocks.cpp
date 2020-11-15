@@ -39,8 +39,6 @@ void EnteringBlocks::fillForms()
         ui->checkBox_mainmast->setChecked(block_data->mainmast);
         ui->checkBox_wheelhouse->setChecked(block_data->wheelhause);
 
-        ui->comboBox_hb_h->setCurrentText(QString::fromStdString(block_data->hb_h));
-        ui->comboBox_hb_l->setCurrentText(QString::fromStdString(block_data->hb_l));
     }
 
 }
@@ -159,6 +157,20 @@ QString EnteringBlocks::generateNewTemplateTitle()
 void EnteringBlocks::updateComboBlocks(QString current_item)
 {
     ui->comboBox_blocks->clear();
+
+    foreach (auto e, m->blocks)
+    {
+        ui->comboBox_blocks->addItem(QString::fromStdString(e->titleblock));
+    }
+
+    updateComboHBBlocks();
+
+    ui->comboBox_blocks->setCurrentText(current_item);
+    ui->comboBox_blocks->textActivated(current_item);
+}
+
+void EnteringBlocks::updateComboHBBlocks()
+{
     ui->comboBox_hb_h->clear();
     ui->comboBox_hb_l->clear();
     ui->comboBox_hb_h->addItem("");
@@ -166,24 +178,32 @@ void EnteringBlocks::updateComboBlocks(QString current_item)
 
     foreach (auto e, m->blocks)
     {
-        if (QString::fromStdString(e->titleblock) != current_item)
+        if (e->titleblock != block_data->titleblock)
         {
             ui->comboBox_hb_h->addItem(QString::fromStdString(e->titleblock));
-            ui->comboBox_hb_l->addItem(QString::fromStdString(e->titleblock));
+            if (e->titleblock != block_data->hb_h)
+            {
+                ui->comboBox_hb_l->addItem(QString::fromStdString(e->titleblock));
+            }
         }
-        ui->comboBox_blocks->addItem(QString::fromStdString(e->titleblock));
     }
 
-    ui->comboBox_blocks->setCurrentText(current_item);
-    ui->comboBox_blocks->textActivated(current_item);
+    ui->comboBox_hb_h->setCurrentText(QString::fromStdString(block_data->hb_h));
+    ui->comboBox_hb_l->setCurrentText(QString::fromStdString(block_data->hb_l));
 }
 
 void EnteringBlocks::on_comboBox_hb_h_textActivated(const QString &arg1)
 {
     block_data->hb_h = arg1.toStdString();
+    if (block_data->hb_h == block_data->hb_l)
+    {
+        block_data->hb_l = "";
+    }
+    updateComboHBBlocks();
 }
 
 void EnteringBlocks::on_comboBox_hb_l_textActivated(const QString &arg1)
 {
     block_data->hb_l = arg1.toStdString();
+    updateComboHBBlocks();
 }

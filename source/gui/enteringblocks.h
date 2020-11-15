@@ -56,6 +56,7 @@ private:
 
     QString generateNewTemplateTitle();
     void updateComboBlocks(QString current_item);
+    void updateComboHBBlocks();
     const QString TEMPLATE_TITLE = "Новый блок";
 };
 
