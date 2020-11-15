@@ -26,7 +26,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_12">
         <item>
-         <widget class="QComboBox" name="comboBox_13">
+         <widget class="QComboBox" name="comboBox_blocks">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -64,7 +64,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="pushButton_addBlock">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -2018,7 +2018,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_38">
         <item>
-         <widget class="QPushButton" name="pushButton_9">
+         <widget class="QPushButton" name="pushButton_saveEnteringData">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
