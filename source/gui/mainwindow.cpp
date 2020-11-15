@@ -53,6 +53,7 @@ void MainWindow::slotOpenProject(QString proj_name)
     {
         fillGeneralData(proj_name);
         gen_data->fillForms();
+        ent_blocks->setUpForms();
     }
     else
     {

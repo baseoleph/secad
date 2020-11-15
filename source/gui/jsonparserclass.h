@@ -20,15 +20,19 @@ public:
     void saveBlocksData();
     void saveData();
     void loadGeneralData(QJsonObject general_json);
+    void loadBlocksData(QJsonArray blocks_json);
     void loadData(QString proj_name);
 
     QWidget *parent;
     SMainClass *m;
     SGeneralData *general;
-    std::vector<SBlockData *> block_data;
+    std::vector<SBlockData *> blocks;
 
 private:
     QJsonObject json_main;
+
+    QString GENERAL = "General";
+    QString BLOCKS = "Blocks";
 };
 
 #endif // JSONPARSERCLASS_H

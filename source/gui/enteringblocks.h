@@ -18,6 +18,7 @@ public:
     ~EnteringBlocks();
 
     void fillForms();
+    void setUpForms();
 
 signals:
     void signalSaveEnteringBlocks();

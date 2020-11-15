@@ -59,18 +59,19 @@ void JsonParserClass::saveGeneralData()
     json_main_general["user"] = json_general_user_data;
     json_main_general["calc"] = json_general_calc_data;
 
-    json_main["General"] = json_main_general;
+    json_main[GENERAL] = json_main_general;
 }
 
 void JsonParserClass::saveBlocksData()
 {
-    QJsonObject jsonobj;
-    block_data = m->blocks;
+    QJsonArray jsonar;
+    blocks = m->blocks;
 
-    foreach (auto e, block_data)
+    foreach (auto e, blocks)
     {
         if (e->titleblock != "")
         {
+            QJsonObject jsonobj;
             QJsonObject json_block;
             json_block["titleblock"] = QString::fromStdString(e->titleblock);
             json_block["lrc"] = e->lrc;
@@ -101,10 +102,11 @@ void JsonParserClass::saveBlocksData()
             json_block["sb_h"] = QString::fromStdString(e->sb_h);
             json_block["sb_l"] = QString::fromStdString(e->sb_l);
 
-            jsonobj[QString::fromStdString(e->titleblock)] = json_block;
+//            jsonobj[QString::fromStdString(e->titleblock)] = json_block;
+            jsonar.append(json_block);
         }
     }
-    json_main["Blocks"] = jsonobj;
+    json_main[BLOCKS] = jsonar;
 }
 
 void JsonParserClass::saveData()
@@ -180,6 +182,45 @@ void JsonParserClass::loadGeneralData(QJsonObject general_json)
     }
 }
 
+void JsonParserClass::loadBlocksData(QJsonArray blocks_json)
+{
+    blocks.clear();
+    foreach (auto e, blocks_json)
+    {
+        m->addBlock();
+        blocks = m->blocks;
+        SBlockData *block_data = blocks[blocks.size() - 1];
+        block_data->titleblock = e.toObject()["titleblock"].toString().toStdString();
+        block_data->lrc = e.toObject()["lrc"].isDouble();
+        block_data->hrc = e.toObject()["hrc"].toDouble();
+        block_data->fwih = e.toObject()["fwih"].toDouble();
+        block_data->awih = e.toObject()["awih"].toDouble();
+        block_data->x = e.toObject()["x"].toDouble();
+        block_data->z = e.toObject()["z"].toDouble();
+        block_data->habitability = e.toObject()["habitability"].toBool();
+        block_data->pap = e.toObject()["pap"].toBool();
+        block_data->foremast = e.toObject()["foremast"].toBool();
+        block_data->mainmast = e.toObject()["mainmast"].toBool();
+        block_data->funnel = e.toObject()["funnel"].toBool();
+        block_data->wheelhause = e.toObject()["wheelhause"].toBool();
+        block_data->l_hb_l = e.toObject()["l_hb_l"].toDouble();
+        block_data->bb_l = e.toObject()["bb_l"].toDouble();
+        block_data->bb_u = e.toObject()["bb_u"].toDouble();
+        block_data->h = e.toObject()["h"].toDouble();
+        block_data->s = e.toObject()["s"].toDouble();
+        block_data->m_a = e.toObject()["m_a"].toDouble();
+        block_data->m_b = e.toObject()["m_b"].toDouble();
+        block_data->x_g = e.toObject()["x_g"].toDouble();
+        block_data->z_g = e.toObject()["z_g"].toDouble();
+        block_data->uxa = e.toObject()["uxa"].toDouble();
+        block_data->uxf = e.toObject()["uxf"].toDouble();
+        block_data->hb_h = e.toObject()["hb_h"].toString().toStdString();
+        block_data->hb_l = e.toObject()["hb_l"].toString().toStdString();
+        block_data->sb_h = e.toObject()["sb_h"].toString().toStdString();
+        block_data->sb_l = e.toObject()["sb_l"].toString().toStdString();
+    }
+}
+
 void JsonParserClass::loadData(QString proj_name)
 {
         // Выбираем файл
@@ -198,5 +239,6 @@ void JsonParserClass::loadData(QString proj_name)
         // Из которого выделяем объект в текущий рабочий QJsonObject
         QJsonObject json = jsonDocument.object();
 
-        loadGeneralData(json.value("General Data").toObject());
+        loadGeneralData(json.value(GENERAL).toObject());
+        loadBlocksData(json.value(BLOCKS).toArray());
 }

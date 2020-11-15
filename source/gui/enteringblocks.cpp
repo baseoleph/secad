@@ -29,19 +29,30 @@ void EnteringBlocks::fillForms()
                 break;
             }
         }
+
+        ui->lineEdit_titleblock->setText(current_block_title);
+        ui->lineEdit_l_hb_l->setText(QString::number(block_data->l_hb_l));
+        ui->checkBox_foremast->setChecked(block_data->foremast);
+        ui->checkBox_funnel->setChecked(block_data->funnel);
+        ui->checkBox_habitability->setChecked(block_data->habitability);
+        ui->checkBox_pap->setChecked(block_data->pap);
+        ui->checkBox_mainmast->setChecked(block_data->mainmast);
+        ui->checkBox_wheelhouse->setChecked(block_data->wheelhause);
+
+        ui->comboBox_hb_h->setCurrentText(QString::fromStdString(block_data->hb_h));
+        ui->comboBox_hb_l->setCurrentText(QString::fromStdString(block_data->hb_l));
     }
 
-    ui->lineEdit_titleblock->setText(current_block_title);
-    ui->lineEdit_l_hb_l->setText(QString::number(block_data->l_hb_l));
-    ui->checkBox_foremast->setChecked(block_data->foremast);
-    ui->checkBox_funnel->setChecked(block_data->funnel);
-    ui->checkBox_habitability->setChecked(block_data->habitability);
-    ui->checkBox_pap->setChecked(block_data->pap);
-    ui->checkBox_mainmast->setChecked(block_data->mainmast);
-    ui->checkBox_wheelhouse->setChecked(block_data->wheelhause);
+}
 
-    ui->comboBox_hb_h->setCurrentText(QString::fromStdString(block_data->hb_h));
-    ui->comboBox_hb_l->setCurrentText(QString::fromStdString(block_data->hb_l));
+void EnteringBlocks::setUpForms()
+{
+    if (m->blocks.size() != 0)
+    {
+        ui->widget_block->setEnabled(true);
+        block_data = m->blocks[0];
+        updateComboBlocks(QString::fromStdString(block_data->titleblock));
+    }
 }
 
 void EnteringBlocks::on_lineEdit_titleblock_textChanged(const QString &arg1)
