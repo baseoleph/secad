@@ -2,7 +2,6 @@
 #include <QDebug>
 SVarParent::SVarParent()
 {
-    qDebug() << 10;
 }
 
 void SVarParent::setType(int type)
@@ -12,7 +11,7 @@ void SVarParent::setType(int type)
 
 int SVarParent::getInt(int type)
 {
-    if (type == CONST)
+    if (type == CONS)
     {
         return constant.t;
     }

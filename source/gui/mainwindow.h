@@ -15,6 +15,7 @@
 #include "renamedform.h"
 
 #include "../core/smainclass.h"
+#include "jsonparserclass.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -32,6 +33,7 @@ public:
 private slots:
     // Слот, который открывает General Data; пустой или из файла
     void slotOpenProject(QString proj_name = "");
+    void slotSaveGeneralData();
 
 private:
     // Передаем значения из .json в объект класса SGeneralData

@@ -14,6 +14,7 @@ public:
 
     std::vector<SVarParent *> optimize_vect;
 
+    string titleblock;
     double lrc;
     double hrc;
     double fwih;

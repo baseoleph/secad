@@ -21,6 +21,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(proj_man, &ProjectManager::signalOpenProject,
             this, &MainWindow::slotOpenProject);
+    connect(gen_data, &GeneralData::signalSaveGeneralData,
+            this, &MainWindow::slotSaveGeneralData);
 }
 
 
@@ -55,6 +57,12 @@ void MainWindow::slotOpenProject(QString proj_name)
         gen_data->unFillForms();
     }
     ui->tabWidget->setCurrentWidget(gen_data);
+}
+
+void MainWindow::slotSaveGeneralData()
+{
+    JsonParserClass jpc = JsonParserClass(gen_data, m);
+    jpc.saveGeneralData();
 }
 
 void MainWindow::fillGeneralData(QString proj_name)

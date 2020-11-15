@@ -18,10 +18,23 @@ public:
     ~EnteringBlocks();
 
 private slots:
-    void on_comboBox_currentIndexChanged(int index);
+    void on_lineEdit_titleblock_textChanged(const QString &arg1);
+
+    void on_checkBox_habitability_toggled(bool checked);
+
+    void on_checkBox_wheelhouse_toggled(bool checked);
+
+    void on_checkBox_pap_toggled(bool checked);
+
+    void on_checkBox_mainmast_toggled(bool checked);
+
+    void on_checkBox_foremast_toggled(bool checked);
+
+    void on_checkBox_funnel_toggled(bool checked);
 
 private:
-    SMainClass *m;
+    SBlockData *block_data;
+
     Ui::EnteringBlocks *ui;
 };
 

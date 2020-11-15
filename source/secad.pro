@@ -19,6 +19,7 @@ SOURCES += \
     gui/enteringblocks.cpp \
     gui/generaldata.cpp \
     gui/generaldatapainter.cpp \
+    gui/jsonparserclass.cpp \
     gui/mainwindow.cpp \
     gui/projectmanager.cpp \
     gui/renamedform.cpp \
@@ -35,6 +36,7 @@ HEADERS += \
     gui/enteringblocks.h \
     gui/generaldata.h \
     gui/generaldatapainter.h \
+    gui/jsonparserclass.h \
     gui/mainwindow.h \
     gui/projectmanager.h \
     gui/renamedform.h

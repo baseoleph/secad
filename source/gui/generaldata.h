@@ -3,12 +3,6 @@
 
 #include <QWidget>
 #include <QDebug>
-#include <QJsonObject>
-#include <QJsonArray>
-#include <QJsonDocument>
-#include <QFileDialog>
-#include <QFile>
-#include <QDir>
 #include <QGraphicsScene>
 #include <QPainterPath>
 #include "../core/smainclass.h"
@@ -28,6 +22,9 @@ public:
 
     void fillForms();
     void unFillForms();
+
+signals:
+    void signalSaveGeneralData();
 
 private slots:
     void on_lineEdit_project_name_textChanged(const QString &arg1);
@@ -50,9 +47,7 @@ private slots:
 private:
     Ui::GeneralData *ui;
     SGeneralData *general;
-    QJsonObject jsonobj;
     QGraphicsScene *scene;
-    void saveJsonToFile(QString title);
     double sef_function(double x);
 };
 

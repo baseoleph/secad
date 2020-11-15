@@ -7,9 +7,7 @@ EnteringBlocks::EnteringBlocks(QWidget *parent, SMainClass *m) :
 {
     ui->setupUi(this);
     m->addBlock();
-    qDebug() << "size" << m->blocks.size();
-    m->blocks[m->blocks.size()-1]->optimize_vect[0]->setType(2);
-    qDebug() << m->blocks[m->blocks.size()-1]->optimize_vect[0]->type;
+    block_data = m->blocks[m->blocks.size()-1];
 }
 
 EnteringBlocks::~EnteringBlocks()
@@ -17,25 +15,37 @@ EnteringBlocks::~EnteringBlocks()
     delete ui;
 }
 
-void EnteringBlocks::on_comboBox_currentIndexChanged(int index)
+void EnteringBlocks::on_lineEdit_titleblock_textChanged(const QString &arg1)
 {
-    if (index == 0)
-    {
-        ui->horizontalWidget_3->show();
-        ui->horizontalWidget_2->hide();
-        ui->horizontalWidget->hide();
+    block_data->titleblock = arg1.toStdString();
+}
 
-    }
-    else if (index == 1)
-    {
-        ui->horizontalWidget_3->hide();
-        ui->horizontalWidget_2->show();
-        ui->horizontalWidget->hide();
-    }
-    else
-    {
-        ui->horizontalWidget_3->hide();
-        ui->horizontalWidget_2->hide();
-        ui->horizontalWidget->show();
-   }
+void EnteringBlocks::on_checkBox_habitability_toggled(bool checked)
+{
+    block_data->habitability = checked;
+}
+
+void EnteringBlocks::on_checkBox_wheelhouse_toggled(bool checked)
+{
+    block_data->wheelhause = checked;
+}
+
+void EnteringBlocks::on_checkBox_pap_toggled(bool checked)
+{
+    block_data->pap = checked;
+}
+
+void EnteringBlocks::on_checkBox_mainmast_toggled(bool checked)
+{
+    block_data->mainmast = checked;
+}
+
+void EnteringBlocks::on_checkBox_foremast_toggled(bool checked)
+{
+    block_data->foremast = checked;
+}
+
+void EnteringBlocks::on_checkBox_funnel_toggled(bool checked)
+{
+    block_data->funnel = checked;
 }
