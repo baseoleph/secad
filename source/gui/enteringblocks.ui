@@ -413,7 +413,7 @@
            </layout>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_lrc_cons_3" native="true">
+           <widget class="QWidget" name="horizontalWidget_hrc_cons" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_15">
              <property name="leftMargin">
               <number>6</number>
@@ -456,7 +456,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_lrc_cont_3" native="true">
+           <widget class="QWidget" name="horizontalWidget_hrc_cont" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_16">
              <property name="leftMargin">
               <number>6</number>
@@ -524,7 +524,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_lrc_desc_3" native="true">
+           <widget class="QWidget" name="horizontalWidget_hrc_desc" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_17">
              <property name="leftMargin">
               <number>6</number>
@@ -679,7 +679,7 @@
            </layout>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_lrc_cons_5" native="true">
+           <widget class="QWidget" name="horizontalWidget_awih_cons" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_25">
              <property name="leftMargin">
               <number>6</number>
@@ -722,7 +722,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_lrc_cont_5" native="true">
+           <widget class="QWidget" name="horizontalWidget_awih_cont" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_26">
              <property name="leftMargin">
               <number>6</number>
@@ -790,7 +790,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_lrc_desc_5" native="true">
+           <widget class="QWidget" name="horizontalWidget_awih_desc" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_27">
              <property name="leftMargin">
               <number>6</number>
@@ -1217,7 +1217,7 @@
            </layout>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_lrc_cons_4" native="true">
+           <widget class="QWidget" name="horizontalWidget_fwih_cons" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_20">
              <property name="leftMargin">
               <number>6</number>
@@ -1260,7 +1260,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_lrc_cont_4" native="true">
+           <widget class="QWidget" name="horizontalWidget_fwih_cont" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_21">
              <property name="leftMargin">
               <number>6</number>
@@ -1328,7 +1328,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_lrc_desc_4" native="true">
+           <widget class="QWidget" name="horizontalWidget_fwih_desc" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_22">
              <property name="leftMargin">
               <number>6</number>
@@ -1483,7 +1483,7 @@
            </layout>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_lrc_cons_6" native="true">
+           <widget class="QWidget" name="horizontalWidget_x_cons" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_30">
              <property name="leftMargin">
               <number>6</number>
@@ -1526,7 +1526,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_lrc_cont_6" native="true">
+           <widget class="QWidget" name="horizontalWidget_x_cont" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_31">
              <property name="leftMargin">
               <number>6</number>
@@ -1594,7 +1594,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_lrc_desc_6" native="true">
+           <widget class="QWidget" name="horizontalWidget_x_desc" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_32">
              <property name="leftMargin">
               <number>6</number>
@@ -1749,7 +1749,7 @@
            </layout>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_lrc_cons_7" native="true">
+           <widget class="QWidget" name="horizontalWidget_z_cons" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_35">
              <property name="leftMargin">
               <number>6</number>
@@ -1792,7 +1792,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_lrc_cont_7" native="true">
+           <widget class="QWidget" name="horizontalWidget_z_cont" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_36">
              <property name="leftMargin">
               <number>6</number>
@@ -1860,7 +1860,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_lrc_desc_7" native="true">
+           <widget class="QWidget" name="horizontalWidget_z_desc" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_37">
              <property name="leftMargin">
               <number>6</number>

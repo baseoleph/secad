@@ -61,6 +61,9 @@ private:
     QString generateNewTemplateTitle();
     void updateComboBlocks(QString current_item);
     void updateComboHBBlocks();
+
+    // blocks with disc cont and cons values
+    void updateWidgetsDCC();
     const QString TEMPLATE_TITLE = "Новый блок";
 };
 

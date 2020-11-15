@@ -193,6 +193,11 @@ void EnteringBlocks::updateComboHBBlocks()
     ui->comboBox_hb_l->setCurrentText(QString::fromStdString(block_data->hb_l));
 }
 
+void EnteringBlocks::updateWidgetsDCC()
+{
+
+}
+
 void EnteringBlocks::on_comboBox_hb_h_textActivated(const QString &arg1)
 {
     block_data->hb_h = arg1.toStdString();
