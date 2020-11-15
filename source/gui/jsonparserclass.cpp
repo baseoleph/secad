@@ -11,7 +11,7 @@ void JsonParserClass::saveGeneralData()
     QJsonObject jsonobj;
     general = m->general;
 
-    QJsonObject json_main;
+    QJsonObject json_main_general;
     QJsonObject json_general_calc_data;
     QJsonObject json_general_user_data;
     json_general_user_data["project_name"] = QString::fromStdString(general->project_name);
@@ -56,38 +56,10 @@ void JsonParserClass::saveGeneralData()
     }
     json_general_calc_data["sef_coef"] = json_ar_sef_coef;
 
-    json_main["user"] = json_general_user_data;
-    json_main["calc"] = json_general_calc_data;
+    json_main_general["user"] = json_general_user_data;
+    json_main_general["calc"] = json_general_calc_data;
 
-    jsonobj["General Data"] = json_main;
-
-    // С помощью диалогового окна получаем имя файла с абсолютным путём
-#ifdef Q_OS_LINUX
-    QString saveFileName = QFileDialog::getSaveFileName(parent,
-                                                        QObject::tr("Save Json File"),
-                                                        QString::fromStdString(general->project_name),
-                                                        QObject::tr("*.json")) + ".json";
-#else
-    QString saveFileName = QFileDialog::getSaveFileName(parent,
-                                                        QObject::tr("Save Json File"),
-                                                        QString::fromStdString(general->project_name),
-                                                        QObject::tr("*.json"));
-#endif
-
-    // Узнаем директорию для сохранения файла
-    QFileInfo fileInfo(saveFileName);
-    // Делаем ее текущей
-    QDir::setCurrent(fileInfo.path());
-
-    QFile jsonFile(saveFileName);
-    if (!jsonFile.open(QIODevice::WriteOnly))
-    {
-        return;
-    }
-
-    // Записываем текущий объект Json в файл
-    jsonFile.write(QJsonDocument(jsonobj).toJson(QJsonDocument::Indented));
-    jsonFile.close();
+    json_main["General"] = json_main_general;
 }
 
 void JsonParserClass::saveBlocksData()
@@ -132,7 +104,13 @@ void JsonParserClass::saveBlocksData()
             jsonobj[QString::fromStdString(e->titleblock)] = json_block;
         }
     }
+    json_main["Blocks"] = jsonobj;
+}
 
+void JsonParserClass::saveData()
+{
+    saveGeneralData();
+    saveBlocksData();
 
     QString saveFileName = QFileDialog::getSaveFileName(parent,
                                                         QObject::tr("Save Json File"),
@@ -151,7 +129,7 @@ void JsonParserClass::saveBlocksData()
     }
 
     // Записываем текущий объект Json в файл
-    jsonFile.write(QJsonDocument(jsonobj).toJson(QJsonDocument::Indented));
+    jsonFile.write(QJsonDocument(json_main).toJson(QJsonDocument::Indented));
     jsonFile.close();
 }
 
@@ -219,5 +197,6 @@ void JsonParserClass::loadData(QString proj_name)
         QJsonDocument jsonDocument(QJsonDocument::fromJson(saveData));
         // Из которого выделяем объект в текущий рабочий QJsonObject
         QJsonObject json = jsonDocument.object();
+
         loadGeneralData(json.value("General Data").toObject());
 }

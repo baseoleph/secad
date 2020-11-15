@@ -39,10 +39,25 @@ void EnteringBlocks::fillForms()
     ui->checkBox_pap->setChecked(block_data->pap);
     ui->checkBox_mainmast->setChecked(block_data->mainmast);
     ui->checkBox_wheelhouse->setChecked(block_data->wheelhause);
+
+    ui->comboBox_hb_h->setCurrentText(QString::fromStdString(block_data->hb_h));
+    ui->comboBox_hb_l->setCurrentText(QString::fromStdString(block_data->hb_l));
 }
 
 void EnteringBlocks::on_lineEdit_titleblock_textChanged(const QString &arg1)
 {
+    foreach (auto e, m->blocks)
+    {
+        if (e->hb_h == block_data->titleblock)
+        {
+           e->hb_h = arg1.toStdString();
+        }
+        if (e->hb_l == block_data->titleblock)
+        {
+           e->hb_l = arg1.toStdString();
+        }
+    }
+
     block_data->titleblock = arg1.toStdString();
     updateComboBlocks(arg1);
 }
@@ -90,6 +105,8 @@ void EnteringBlocks::on_pushButton_addBlock_clicked()
     block_data = m->blocks[m->blocks.size()-1];
     QString new_title = generateNewTemplateTitle();
     block_data->titleblock = new_title.toStdString();
+    block_data->hb_h = "";
+    block_data->hb_l = "";
     updateComboBlocks(new_title);
 }
 
@@ -131,12 +148,31 @@ QString EnteringBlocks::generateNewTemplateTitle()
 void EnteringBlocks::updateComboBlocks(QString current_item)
 {
     ui->comboBox_blocks->clear();
+    ui->comboBox_hb_h->clear();
+    ui->comboBox_hb_l->clear();
+    ui->comboBox_hb_h->addItem("");
+    ui->comboBox_hb_l->addItem("");
+
     foreach (auto e, m->blocks)
     {
+        if (QString::fromStdString(e->titleblock) != current_item)
+        {
+            ui->comboBox_hb_h->addItem(QString::fromStdString(e->titleblock));
+            ui->comboBox_hb_l->addItem(QString::fromStdString(e->titleblock));
+        }
         ui->comboBox_blocks->addItem(QString::fromStdString(e->titleblock));
     }
+
     ui->comboBox_blocks->setCurrentText(current_item);
     ui->comboBox_blocks->textActivated(current_item);
+}
 
+void EnteringBlocks::on_comboBox_hb_h_textActivated(const QString &arg1)
+{
+    block_data->hb_h = arg1.toStdString();
+}
 
+void EnteringBlocks::on_comboBox_hb_l_textActivated(const QString &arg1)
+{
+    block_data->hb_l = arg1.toStdString();
 }

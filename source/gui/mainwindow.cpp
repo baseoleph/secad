@@ -64,12 +64,12 @@ void MainWindow::slotOpenProject(QString proj_name)
 
 void MainWindow::slotSaveGeneralData()
 {
-    jpc.saveGeneralData();
+    jpc.saveData();
 }
 
 void MainWindow::slotSaveEnteringData()
 {
-    jpc.saveBlocksData();
+    jpc.saveData();
 }
 
 void MainWindow::fillGeneralData(QString proj_name)

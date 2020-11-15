@@ -18,6 +18,7 @@ public:
 
     void saveGeneralData();
     void saveBlocksData();
+    void saveData();
     void loadGeneralData(QJsonObject general_json);
     void loadData(QString proj_name);
 
@@ -25,6 +26,9 @@ public:
     SMainClass *m;
     SGeneralData *general;
     std::vector<SBlockData *> block_data;
+
+private:
+    QJsonObject json_main;
 };
 
 #endif // JSONPARSERCLASS_H

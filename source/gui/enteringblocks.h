@@ -43,6 +43,10 @@ private slots:
 
     void on_comboBox_blocks_textActivated(const QString &arg1);
 
+    void on_comboBox_hb_h_textActivated(const QString &arg1);
+
+    void on_comboBox_hb_l_textActivated(const QString &arg1);
+
 private:
     SMainClass *m;
     SBlockData *block_data;
