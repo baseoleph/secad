@@ -17,6 +17,8 @@ public:
     explicit EnteringBlocks(QWidget *parent = nullptr, SMainClass *m = nullptr);
     ~EnteringBlocks();
 
+    void fillForms();
+
 signals:
     void signalSaveEnteringBlocks();
 
@@ -39,11 +41,17 @@ private slots:
 
     void on_pushButton_addBlock_clicked();
 
+    void on_comboBox_blocks_textActivated(const QString &arg1);
+
 private:
     SMainClass *m;
     SBlockData *block_data;
 
     Ui::EnteringBlocks *ui;
+
+    QString generateNewTemplateTitle();
+    void updateComboBlocks(QString current_item);
+    const QString TEMPLATE_TITLE = "Новый блок";
 };
 
 #endif // ENTERINGBLOCKS_H
