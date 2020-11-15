@@ -6,7 +6,7 @@
 #include "varclasses/sdiscretevar.h"
 
 enum {
-CONST,
+CONS,
 CONT,
 DISC
 };

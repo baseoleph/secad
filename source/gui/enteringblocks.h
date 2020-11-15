@@ -18,7 +18,9 @@ public:
     ~EnteringBlocks();
 
 private slots:
-    void on_comboBox_currentIndexChanged(int index);
+
+
+    void on_comboBox_lrc_currentIndexChanged(int index);
 
 private:
     SMainClass *m;

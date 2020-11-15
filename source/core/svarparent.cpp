@@ -12,7 +12,7 @@ void SVarParent::setType(int type)
 
 int SVarParent::getInt(int type)
 {
-    if (type == CONST)
+    if (type == CONS)
     {
         return constant.t;
     }

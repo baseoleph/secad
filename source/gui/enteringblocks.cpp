@@ -17,25 +17,25 @@ EnteringBlocks::~EnteringBlocks()
     delete ui;
 }
 
-void EnteringBlocks::on_comboBox_currentIndexChanged(int index)
+
+void EnteringBlocks::on_comboBox_lrc_currentIndexChanged(int index)
 {
     if (index == 0)
     {
-        ui->horizontalWidget_3->show();
-        ui->horizontalWidget_2->hide();
-        ui->horizontalWidget->hide();
-
+        ui->horizontalWidget_lrc_cons->show();
+        ui->horizontalWidget_lrc_cont->hide();
+        ui->horizontalWidget_lrc_desc->hide();
     }
     else if (index == 1)
     {
-        ui->horizontalWidget_3->hide();
-        ui->horizontalWidget_2->show();
-        ui->horizontalWidget->hide();
+        ui->horizontalWidget_lrc_cons->hide();
+        ui->horizontalWidget_lrc_cont->show();
+        ui->horizontalWidget_lrc_desc->hide();
     }
     else
     {
-        ui->horizontalWidget_3->hide();
-        ui->horizontalWidget_2->hide();
-        ui->horizontalWidget->show();
+        ui->horizontalWidget_lrc_cons->hide();
+        ui->horizontalWidget_lrc_cont->hide();
+        ui->horizontalWidget_lrc_desc->show();
    }
 }
