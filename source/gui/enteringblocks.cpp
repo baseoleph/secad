@@ -6,6 +6,7 @@ EnteringBlocks::EnteringBlocks(QWidget *parent, SMainClass *m) :
     ui(new Ui::EnteringBlocks)
 {
     ui->setupUi(this);
+    this->m = m;
     m->addBlock();
     block_data = m->blocks[m->blocks.size()-1];
 }
@@ -48,4 +49,20 @@ void EnteringBlocks::on_checkBox_foremast_toggled(bool checked)
 void EnteringBlocks::on_checkBox_funnel_toggled(bool checked)
 {
     block_data->funnel = checked;
+}
+
+void EnteringBlocks::on_pushButton_saveEnteringData_clicked()
+{
+    signalSaveEnteringBlocks();
+}
+
+void EnteringBlocks::on_pushButton_addBlock_clicked()
+{
+    ui->comboBox_blocks->clear();
+    foreach (auto e, m->blocks)
+    {
+        ui->comboBox_blocks->addItem(QString::fromStdString(e->titleblock));
+    }
+    m->addBlock();
+    block_data = m->blocks[m->blocks.size()-1];
 }

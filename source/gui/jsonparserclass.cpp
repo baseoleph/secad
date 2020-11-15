@@ -6,11 +6,6 @@ JsonParserClass::JsonParserClass(QWidget *parent, SMainClass *m)
     this->m = m;
 }
 
-void JsonParserClass::saveToFile(SMainClass *m)
-{
-    Q_UNUSED(m)
-}
-
 void JsonParserClass::saveGeneralData()
 {
     QJsonObject jsonobj;
@@ -93,4 +88,136 @@ void JsonParserClass::saveGeneralData()
     // Записываем текущий объект Json в файл
     jsonFile.write(QJsonDocument(jsonobj).toJson(QJsonDocument::Indented));
     jsonFile.close();
+}
+
+void JsonParserClass::saveBlocksData()
+{
+    QJsonObject jsonobj;
+    block_data = m->blocks;
+
+    foreach (auto e, block_data)
+    {
+        if (e->titleblock != "")
+        {
+            QJsonObject json_block;
+            json_block["titleblock"] = QString::fromStdString(e->titleblock);
+            json_block["lrc"] = e->lrc;
+            json_block["hrc"] = e->hrc;
+            json_block["fwih"] = e->fwih;
+            json_block["awih"] = e->awih;
+            json_block["x"] = e->x;
+            json_block["z"] = e->z;
+            json_block["habitability"] = e->habitability;
+            json_block["pap"] = e->pap;
+            json_block["foremast"] = e->foremast;
+            json_block["mainmast"] = e->mainmast;
+            json_block["funnel"] = e->funnel;
+            json_block["wheelhause"] = e->wheelhause;
+            json_block["l_hb_l"] = e->l_hb_l;
+            json_block["bb_l"] = e->bb_l;
+            json_block["bb_u"] = e->bb_u;
+            json_block["h"] = e->h;
+            json_block["s"] = e->s;
+            json_block["m_a"] = e->m_a;
+            json_block["m_b"] = e->m_b;
+            json_block["x_g"] = e->x_g;
+            json_block["z_g"] = e->z_g;
+            json_block["uxa"] = e->uxa;
+            json_block["uxf"] = e->uxf;
+            json_block["hb_h"] = QString::fromStdString(e->hb_h);
+            json_block["hb_l"] = QString::fromStdString(e->hb_l);
+            json_block["sb_h"] = QString::fromStdString(e->sb_h);
+            json_block["sb_l"] = QString::fromStdString(e->sb_l);
+
+            jsonobj[QString::fromStdString(e->titleblock)] = json_block;
+        }
+    }
+
+
+    QString saveFileName = QFileDialog::getSaveFileName(parent,
+                                                        QObject::tr("Save Json File"),
+                                                        QString::fromStdString(m->general->project_name),
+                                                        QObject::tr("*.json"));
+
+    // Узнаем директорию для сохранения файла
+    QFileInfo fileInfo(saveFileName);
+    // Делаем ее текущей
+    QDir::setCurrent(fileInfo.path());
+
+    QFile jsonFile(saveFileName);
+    if (!jsonFile.open(QIODevice::WriteOnly))
+    {
+        return;
+    }
+
+    // Записываем текущий объект Json в файл
+    jsonFile.write(QJsonDocument(jsonobj).toJson(QJsonDocument::Indented));
+    jsonFile.close();
+}
+
+void JsonParserClass::loadGeneralData(QJsonObject general_json)
+{
+    QJsonObject general_obj = general_json.value("user").toObject();
+
+    m->general->project_name = general_obj.value("project_name").toString().toStdString();
+    m->general->wind_pressure = general_obj.value("wind_pressure").toDouble();
+    m->general->wha = general_obj.value("wha").toDouble();
+    m->general->length = general_obj.value("length").toDouble();
+    m->general->beam = general_obj.value("beam").toDouble();
+    m->general->draft = general_obj.value("draft").toDouble();
+    m->general->height = general_obj.value("height").toDouble();
+    m->general->cb = general_obj.value("cb").toDouble();
+    m->general->csd = general_obj.value("csd").toDouble();
+    m->general->gm = general_obj.value("gm").toDouble();
+    m->general->sef_mea = general_obj.value("sef_mea").toDouble();
+    m->general->sef_mro = general_obj.value("sef_mro").toDouble();
+    m->general->sef_apra = general_obj.value("sef_apra").toDouble();
+
+    general_obj = general_json.value("calc").toObject();
+
+    m->general->visibility_zone = general_obj.value("visibility_zone").toDouble();
+    m->general->freeboard = general_obj.value("freeboard").toDouble();
+    m->general->sef_ma = general_obj.value("sef_ma").toDouble();
+    m->general->sef_mo = general_obj.value("sef_mo").toDouble();
+    m->general->sef_apa = general_obj.value("sef_apa").toDouble();
+
+    QJsonArray json_gsl = general_obj.value("gsl").toArray();
+    m->general->gsl.clear();
+    foreach (auto e, json_gsl)
+    {
+        m->general->gsl.push_back(e.toDouble());
+    }
+    QJsonArray json_gsh = general_obj.value("gsh").toArray();
+    m->general->gsh.clear();
+    foreach (auto e, json_gsh)
+    {
+        m->general->gsh.push_back(e.toDouble());
+    }
+
+    QJsonArray json_sef_coef = general_obj.value("sef_coef").toArray();
+    m->general->sef_coef.clear();
+    foreach (auto e, json_sef_coef)
+    {
+        m->general->sef_coef.push_back(e.toDouble());
+    }
+}
+
+void JsonParserClass::loadData(QString proj_name)
+{
+        // Выбираем файл
+        QString openFileName = proj_name + ".json";
+        QFile jsonFile(openFileName);
+        if (!jsonFile.open(QIODevice::ReadOnly))
+        {
+            return;
+        }
+
+        // Считываем весь файл
+        QByteArray saveData = jsonFile.readAll();
+        jsonFile.close();
+        // Создаём QJsonDocument
+        QJsonDocument jsonDocument(QJsonDocument::fromJson(saveData));
+        // Из которого выделяем объект в текущий рабочий QJsonObject
+        QJsonObject json = jsonDocument.object();
+        loadGeneralData(json.value("General Data").toObject());
 }

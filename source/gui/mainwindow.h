@@ -34,6 +34,7 @@ private slots:
     // Слот, который открывает General Data; пустой или из файла
     void slotOpenProject(QString proj_name = "");
     void slotSaveGeneralData();
+    void slotSaveEnteringData();
 
 private:
     // Передаем значения из .json в объект класса SGeneralData

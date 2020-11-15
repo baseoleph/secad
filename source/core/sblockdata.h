@@ -21,12 +21,12 @@ public:
     double awih;
     double x;
     double z;
-    bool habitability;
-    bool pap;
-    bool foremast;
-    bool mainmast;
-    bool funnel;
-    bool wheelhause;
+    bool habitability = false;
+    bool pap = false;
+    bool foremast = false;
+    bool mainmast = false;
+    bool funnel = false;
+    bool wheelhause = false;
     string hb_h;
     string hb_l;
     double l_hb_l;

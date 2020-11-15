@@ -16,13 +16,15 @@ class JsonParserClass
 public:
     JsonParserClass(QWidget *parent = nullptr, SMainClass *m = nullptr);
 
-    void saveToFile(SMainClass *m);
     void saveGeneralData();
+    void saveBlocksData();
+    void loadGeneralData(QJsonObject general_json);
+    void loadData(QString proj_name);
 
     QWidget *parent;
     SMainClass *m;
     SGeneralData *general;
-    SBlockData *block_data;
+    std::vector<SBlockData *> block_data;
 };
 
 #endif // JSONPARSERCLASS_H

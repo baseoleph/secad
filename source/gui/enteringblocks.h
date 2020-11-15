@@ -17,6 +17,9 @@ public:
     explicit EnteringBlocks(QWidget *parent = nullptr, SMainClass *m = nullptr);
     ~EnteringBlocks();
 
+signals:
+    void signalSaveEnteringBlocks();
+
 private slots:
     void on_lineEdit_titleblock_textChanged(const QString &arg1);
 
@@ -32,7 +35,12 @@ private slots:
 
     void on_checkBox_funnel_toggled(bool checked);
 
+    void on_pushButton_saveEnteringData_clicked();
+
+    void on_pushButton_addBlock_clicked();
+
 private:
+    SMainClass *m;
     SBlockData *block_data;
 
     Ui::EnteringBlocks *ui;
