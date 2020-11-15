@@ -47,7 +47,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_19">
+      <widget class="QLineEdit" name="lineEdit_titleblock">
        <property name="minimumSize">
         <size>
          <width>100</width>
@@ -95,7 +95,7 @@
       </widget>
      </item>
      <item row="1" column="3">
-      <widget class="QLineEdit" name="lineEdit_20"/>
+      <widget class="QLineEdit" name="lineEdit_l_hb_l"/>
      </item>
      <item row="1" column="4">
       <spacer name="horizontalSpacer_2">
@@ -111,10 +111,10 @@
       </spacer>
      </item>
      <item row="0" column="1">
-      <widget class="QComboBox" name="comboBox_14"/>
+      <widget class="QComboBox" name="comboBox_hb_h"/>
      </item>
      <item row="1" column="1">
-      <widget class="QComboBox" name="comboBox_15"/>
+      <widget class="QComboBox" name="comboBox_hb_l"/>
      </item>
     </layout>
    </item>
@@ -127,43 +127,43 @@
    </item>
    <item row="4" column="0" colspan="2">
     <layout class="QGridLayout" name="gridLayout_2">
-     <item row="1" column="1">
-      <widget class="QCheckBox" name="checkBox">
-       <property name="text">
-        <string>Обитаемость</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QCheckBox" name="checkBox_3">
-       <property name="text">
-        <string>Фок-мачта</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <widget class="QCheckBox" name="checkBox_6">
-       <property name="text">
-        <string>Рулевая рубка</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QCheckBox" name="checkBox_2">
-       <property name="text">
-        <string>Фазированная антенная решётка</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QCheckBox" name="checkBox_4">
+     <item row="5" column="0">
+      <widget class="QCheckBox" name="checkBox_mainmast">
        <property name="text">
         <string>Грот-мачта</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
-      <widget class="QCheckBox" name="checkBox_5">
+     <item row="2" column="0">
+      <widget class="QCheckBox" name="checkBox_habitability">
+       <property name="text">
+        <string>Обитаемость</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QCheckBox" name="checkBox_wheelhouse">
+       <property name="text">
+        <string>Рулевая рубка</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QCheckBox" name="checkBox_pap">
+       <property name="text">
+        <string>Фазированная антенная решётка</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QCheckBox" name="checkBox_foremast">
+       <property name="text">
+        <string>Фок-мачта</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QCheckBox" name="checkBox_funnel">
        <property name="text">
         <string>Дымовая труба</string>
        </property>
@@ -180,295 +180,7 @@
    </item>
    <item row="6" column="0" rowspan="2" colspan="3">
     <layout class="QGridLayout" name="gridLayout">
-     <item row="3" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout_22">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_23">
-         <item>
-          <widget class="QLabel" name="label_6">
-           <property name="text">
-            <string>Коэффициент пропорциональности длины</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_5">
-           <item>
-            <property name="text">
-             <string>Фиксированная</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Непрерывная</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Дискретная</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_24">
-         <item>
-          <widget class="QLineEdit" name="lineEdit_5"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_25">
-         <item>
-          <widget class="QLineEdit" name="lineEdit_17"/>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_12"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_26">
-         <item>
-          <widget class="QCheckBox" name="checkBox_11">
-           <property name="text">
-            <string>Пропорции золотого сечения</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_11"/>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_7">
-           <property name="text">
-            <string>Добавить значение</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item row="2" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout_32">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_33">
-         <item>
-          <widget class="QLabel" name="label_11">
-           <property name="text">
-            <string>Коэффициент пропорциональности длины</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_16">
-           <item>
-            <property name="text">
-             <string>Фиксированная</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Непрерывная</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Дискретная</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_34">
-         <item>
-          <widget class="QLineEdit" name="lineEdit_7"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_35">
-         <item>
-          <widget class="QLineEdit" name="lineEdit_22"/>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_23"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_36">
-         <item>
-          <widget class="QCheckBox" name="checkBox_13">
-           <property name="text">
-            <string>Пропорции золотого сечения</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_17"/>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_10">
-           <property name="text">
-            <string>Добавить значение</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item row="4" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout_17">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_18">
-         <item>
-          <widget class="QLabel" name="label_5">
-           <property name="text">
-            <string>Коэффициент пропорциональности длины</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_4">
-           <item>
-            <property name="text">
-             <string>Фиксированная</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Непрерывная</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Дискретная</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_19">
-         <item>
-          <widget class="QLineEdit" name="lineEdit_4"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_20">
-         <item>
-          <widget class="QLineEdit" name="lineEdit_16"/>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_11"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_21">
-         <item>
-          <widget class="QCheckBox" name="checkBox_10">
-           <property name="text">
-            <string>Пропорции золотого сечения</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_10"/>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_6">
-           <property name="text">
-            <string>Добавить значение</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
      <item row="1" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout_7">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_8">
-         <item>
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>Коэффициент пропорциональности длины</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_2">
-           <item>
-            <property name="text">
-             <string>Фиксированная</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Непрерывная</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Дискретная</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_9">
-         <item>
-          <widget class="QLineEdit" name="lineEdit_2"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_10">
-         <item>
-          <widget class="QLineEdit" name="lineEdit_14"/>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_9"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_11">
-         <item>
-          <widget class="QCheckBox" name="checkBox_8">
-           <property name="text">
-            <string>Пропорции золотого сечения</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_8"/>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_4">
-           <property name="text">
-            <string>Добавить значение</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item row="0" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -480,7 +192,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="comboBox">
+          <widget class="QComboBox" name="comboBox_lrc">
            <item>
             <property name="text">
              <string>Фиксированная</string>
@@ -501,120 +213,91 @@
         </layout>
        </item>
        <item>
-        <widget class="QWidget" name="horizontalWidget_3" native="true">
+        <widget class="QWidget" name="horizontalWidget_lrc_cons" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
-           <widget class="QLineEdit" name="lineEdit"/>
+           <widget class="QLineEdit" name="lineEdit_lrc_cons">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="placeholderText">
+             <string>Значение</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="horizontalWidget_2" native="true">
+        <widget class="QWidget" name="horizontalWidget_lrc_cont" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="QLineEdit" name="lineEdit_13"/>
+           <widget class="QLineEdit" name="lineEdit_lrc_cont_min">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="placeholderText">
+             <string>Минимальное значение</string>
+            </property>
+           </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_8"/>
+           <widget class="QLineEdit" name="lineEdit_lrc_cont_max">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="placeholderText">
+             <string>Максимальное значение</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="horizontalWidget" native="true">
+        <widget class="QWidget" name="horizontalWidget_lrc_desc" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QCheckBox" name="checkBox_7">
+           <widget class="QCheckBox" name="checkBox_lrc_desc_gsl">
             <property name="text">
              <string>Пропорции золотого сечения</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox_7"/>
+           <widget class="QComboBox" name="comboBox_lrc_desc_var"/>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_3">
+           <widget class="QPushButton" name="pushButton_lrc_desc">
             <property name="text">
              <string>Добавить значение</string>
             </property>
            </widget>
           </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
         </widget>
-       </item>
-      </layout>
-     </item>
-     <item row="5" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout_12">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_13">
-         <item>
-          <widget class="QLabel" name="label_4">
-           <property name="text">
-            <string>Коэффициент пропорциональности длины</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_3">
-           <item>
-            <property name="text">
-             <string>Фиксированная</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Непрерывная</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Дискретная</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_14">
-         <item>
-          <widget class="QLineEdit" name="lineEdit_3"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_15">
-         <item>
-          <widget class="QLineEdit" name="lineEdit_15"/>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_10"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_16">
-         <item>
-          <widget class="QCheckBox" name="checkBox_9">
-           <property name="text">
-            <string>Пропорции золотого сечения</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_9"/>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_5">
-           <property name="text">
-            <string>Добавить значение</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
        </item>
       </layout>
      </item>
