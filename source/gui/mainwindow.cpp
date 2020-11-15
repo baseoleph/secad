@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     changeCurrentDir();
 
     m = new SMainClass();
+    jpc = JsonParserClass(this, m);
 
     proj_man = new ProjectManager(this, m);
     gen_data = new GeneralData(this, m);
@@ -61,7 +62,6 @@ void MainWindow::slotOpenProject(QString proj_name)
 
 void MainWindow::slotSaveGeneralData()
 {
-    JsonParserClass jpc = JsonParserClass(gen_data, m);
     jpc.saveGeneralData();
 }
 

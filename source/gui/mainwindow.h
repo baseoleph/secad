@@ -46,6 +46,7 @@ private:
     ProjectManager *proj_man;
     GeneralData *gen_data;
     EnteringBlocks *ent_blocks;
+    JsonParserClass jpc;
 
     QString dir_to_projects = "../projects";
 
