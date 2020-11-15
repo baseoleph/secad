@@ -19,5 +19,23 @@ EnteringBlocks::~EnteringBlocks()
 
 void EnteringBlocks::on_comboBox_currentIndexChanged(int index)
 {
-    m->blocks[m->blocks.size()-1]->optimize_vect[0]->setType(index);
+    if (index == 0)
+    {
+        ui->horizontalWidget_3->show();
+        ui->horizontalWidget_2->hide();
+        ui->horizontalWidget->hide();
+
+    }
+    else if (index == 1)
+    {
+        ui->horizontalWidget_3->hide();
+        ui->horizontalWidget_2->show();
+        ui->horizontalWidget->hide();
+    }
+    else
+    {
+        ui->horizontalWidget_3->hide();
+        ui->horizontalWidget_2->hide();
+        ui->horizontalWidget->show();
+   }
 }
