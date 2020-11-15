@@ -7,8 +7,8 @@ EnteringBlocks::EnteringBlocks(QWidget *parent, SMainClass *m) :
 {
     ui->setupUi(this);
     this->m = m;
-    m->addBlock();
-    block_data = m->blocks[m->blocks.size()-1];
+
+    ui->widget_block->setEnabled(false);
 }
 
 EnteringBlocks::~EnteringBlocks()
@@ -58,11 +58,39 @@ void EnteringBlocks::on_pushButton_saveEnteringData_clicked()
 
 void EnteringBlocks::on_pushButton_addBlock_clicked()
 {
+    ui->widget_block->setEnabled(true);
+
+    m->addBlock();
+    block_data = m->blocks[m->blocks.size()-1];
+    QStringList list_of_block_titles;
+    foreach (auto e, m->blocks)
+    {
+       list_of_block_titles.append(QString::fromStdString(e->titleblock));
+    }
+    QString new_title = "Новый блок";
+    QStringList words_in_new_title = new_title.split(" ");
+
+    while (list_of_block_titles.contains(new_title))
+    {
+       if (words_in_new_title.size() == 2)
+       {
+           words_in_new_title.append("1");
+       }
+       else
+       {
+            int cnt = words_in_new_title.back().toInt();
+            cnt += 1;
+            words_in_new_title.pop_back();
+            words_in_new_title.push_back(QString::number(cnt));
+       }
+       new_title = words_in_new_title.join(" ");
+    }
+    block_data->titleblock = new_title.toStdString();
+    ui->lineEdit_titleblock->setText(new_title);
     ui->comboBox_blocks->clear();
     foreach (auto e, m->blocks)
     {
         ui->comboBox_blocks->addItem(QString::fromStdString(e->titleblock));
     }
-    m->addBlock();
-    block_data = m->blocks[m->blocks.size()-1];
+    ui->comboBox_blocks->setCurrentText(new_title);
 }
