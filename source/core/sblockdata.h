@@ -1,19 +1,36 @@
 #ifndef SBLOCKDATA_H
 #define SBLOCKDATA_H
 
-#include "svarparent.h"
 #include <vector>
 #include <string>
 
 #define NOTHING_VALUE -6000000
 typedef std::string string;
+typedef std::vector<double> d_vector;
+
+enum {
+CONS,
+CONT,
+DISC
+};
+
+struct types_of_optimize_var{
+    int type = CONS;
+    double cons = NOTHING_VALUE;
+    double cont_min = NOTHING_VALUE;
+    double cont_max = NOTHING_VALUE;
+    bool is_golden_section = false;
+
+    d_vector *desc_link;
+    d_vector desc_not_gs;
+};
 
 class SBlockData
 {
 public:
     SBlockData();
 
-    std::vector<SVarParent *> optimize_vect;
+    std::vector<types_of_optimize_var *> optimize_vect;
 
     // ЗАМЕНИТЬ
     // Название блока
@@ -24,32 +41,32 @@ public:
     // Коэффициент пропорциональности длины блока
     // Length Ratio Coefficient
     // proportion
-    SVarParent lrc;
+    types_of_optimize_var lrc;
 
     // Коэффициент пропорциональности высоты блока
     // Height Ratio Coefficient
     // proportion
-    SVarParent hrc;
+    types_of_optimize_var hrc;
 
     // Угол наклона носовой стенки блока
     // Fore Wall Inclination Heel
     // degrees
-    SVarParent fwih;
+    types_of_optimize_var fwih;
 
     // Угол наклона кормовой стенки блока
     // Aft Wall Inclination Heel
     // degrees
-    SVarParent awih;
+    types_of_optimize_var awih;
 
     // Ордината размещения блока
     // Block Positioning Ordinate
     // metres
-    SVarParent x;
+    types_of_optimize_var x;
 
     // Аппликата размещения блока
     // Block Positioning Applicate
     // metres
-    SVarParent z;
+    types_of_optimize_var z;
 
     // Обитаемый блок
     // Habitabilical Block

@@ -42,6 +42,12 @@ void EnteringBlocks::fillForms()
         ui->checkBox_mainmast->setChecked(block_data->mainmast);
         ui->checkBox_wheelhouse->setChecked(block_data->wheelhause);
 
+        ui->lineEdit_lrc_cons->setText(QString::number(block_data->lrc.cons));
+        ui->lineEdit_lrc_cont_max->setText(QString::number(block_data->lrc.cont_max));
+        ui->lineEdit_lrc_cont_min->setText(QString::number(block_data->lrc.cont_min));
+
+        updateWidgetsDCC();
+        updateLrcCombo();
         updateWidgetsDCC();
     }
 }
@@ -197,36 +203,25 @@ void EnteringBlocks::updateComboHBBlocks()
     ui->comboBox_hb_l->setCurrentText(QString::fromStdString(block_data->hb_l));
 }
 
+void EnteringBlocks::updateLrcCombo()
+{
+    if (block_data->lrc.is_golden_section)
+    {
+        block_data->lrc.desc_link = &m->general->gsl;
+    }
+    else
+    {
+        block_data->lrc.desc_link = &block_data->lrc.desc_not_gs;
+    }
+    ui->comboBox_lrc_disc_var->clear();
+    foreach (auto e, *block_data->lrc.desc_link)
+    {
+        ui->comboBox_lrc_disc_var->addItem(QString::number(e));
+    }
+}
+
 void EnteringBlocks::updateWidgetsDCC()
 {
-
-    SVarParent lrc;
-
-    // Коэффициент пропорциональности высоты блока
-    // Height Ratio Coefficient
-    // proportion
-    SVarParent hrc;
-
-    // Угол наклона носовой стенки блока
-    // Fore Wall Inclination Heel
-    // degrees
-    SVarParent fwih;
-
-    // Угол наклона кормовой стенки блока
-    // Aft Wall Inclination Heel
-    // degrees
-    SVarParent awih;
-
-    // Ордината размещения блока
-    // Block Positioning Ordinate
-    // metres
-    SVarParent x;
-
-    // Аппликата размещения блока
-    // Block Positioning Applicate
-    // metres
-    SVarParent z;
-
     ui->comboBox_lrc->setCurrentIndex(block_data->lrc.type);
     ui->comboBox_lrc->activated(block_data->lrc.type);
 }
@@ -277,5 +272,86 @@ void EnteringBlocks::on_comboBox_lrc_activated(int index)
         ui->horizontalWidget_lrc_cont->setVisible(false);
         ui->horizontalWidget_lrc_disc->setVisible(true);
     }
-    block_data->lrc.setType(index);
+    block_data->lrc.type = index;
 }
+
+void EnteringBlocks::on_lineEdit_lrc_cons_textChanged(const QString &arg1)
+{
+    block_data->lrc.cons = arg1.toDouble();
+}
+
+void EnteringBlocks::on_lineEdit_lrc_cont_min_textChanged(const QString &arg1)
+{
+    block_data->lrc.cont_min = arg1.toDouble();
+}
+
+void EnteringBlocks::on_lineEdit_lrc_cont_max_textChanged(const QString &arg1)
+{
+    block_data->lrc.cont_max = arg1.toDouble();
+}
+
+void EnteringBlocks::on_checkBox_lrc_disc_gsl_toggled(bool checked)
+{
+    block_data->lrc.is_golden_section = checked;
+    ui->lineEdit_lrc_disc->setEnabled(not checked);
+    ui->pushButton_lrc_disc_add->setEnabled(not checked);
+    ui->pushButton_lcr_disc_delete->setEnabled(not checked);
+
+    updateLrcCombo();
+}
+
+void EnteringBlocks::on_lineEdit_lrc_disc_textChanged(const QString &arg1)
+{
+    if (arg1 != "")
+    {
+        lrc_desc_temp = arg1.toDouble();
+        ui->pushButton_lrc_disc_add->setEnabled(true);
+    }
+    else
+    {
+        lrc_desc_temp = 0;
+        ui->pushButton_lrc_disc_add->setEnabled(false);
+    }
+}
+
+void EnteringBlocks::on_pushButton_lrc_disc_add_clicked()
+{
+    block_data->lrc.desc_not_gs.push_back(lrc_desc_temp);
+    ui->lineEdit_lrc_disc->clear();
+    std::sort(block_data->lrc.desc_not_gs.begin(), block_data->lrc.desc_not_gs.end());
+    updateLrcCombo();
+}
+
+void EnteringBlocks::on_comboBox_lrc_disc_var_currentTextChanged(const QString &arg1)
+{
+    Q_UNUSED(arg1)
+    if (not block_data->lrc.is_golden_section &&
+            ui->comboBox_lrc_disc_var->currentText() != "")
+    {
+        ui->pushButton_lcr_disc_delete->setEnabled(true);
+    }
+    else
+    {
+        ui->pushButton_lcr_disc_delete->setEnabled(false);
+    }
+}
+
+void EnteringBlocks::on_pushButton_lcr_disc_delete_clicked()
+{
+    double el_for_del = ui->comboBox_lrc_disc_var->currentText().toDouble();
+    int pos = -1;
+    for (unsigned int i = 0; i < block_data->lrc.desc_not_gs.size(); ++i)
+    {
+        if (block_data->lrc.desc_not_gs[i] == el_for_del)
+        {
+            pos = i;
+            break;
+        }
+    }
+    if (pos != -1)
+    {
+        block_data->lrc.desc_not_gs.erase(block_data->lrc.desc_not_gs.begin() + pos);
+        updateLrcCombo();
+    }
+}
+

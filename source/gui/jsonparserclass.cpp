@@ -102,7 +102,22 @@ void JsonParserClass::saveBlocksData()
             json_block["sb_h"] = QString::fromStdString(e->sb_h);
             json_block["sb_l"] = QString::fromStdString(e->sb_l);
 
-//            jsonobj[QString::fromStdString(e->titleblock)] = json_block;
+            QJsonObject json_lrc;
+            json_lrc["type"] = e->lrc.type;
+            json_lrc["cons"] = e->lrc.cons;
+            json_lrc["cont_min"] = e->lrc.cont_min;
+            json_lrc["cont_max"] = e->lrc.cont_max;
+            json_lrc["is_golden_section"] = e->lrc.is_golden_section;
+
+            QJsonArray json_lrc_arr;
+            foreach (auto e_arr, e->lrc.desc_not_gs)
+            {
+                json_lrc_arr.append(e_arr);
+            }
+
+            json_lrc["desc_not_gs"] = json_lrc_arr;
+
+            json_block["lrc"] = json_lrc;
             jsonar.append(json_block);
         }
     }
@@ -218,6 +233,20 @@ void JsonParserClass::loadBlocksData(QJsonArray blocks_json)
         block_data->hb_l = e.toObject()["hb_l"].toString().toStdString();
         block_data->sb_h = e.toObject()["sb_h"].toString().toStdString();
         block_data->sb_l = e.toObject()["sb_l"].toString().toStdString();
+
+            QJsonObject json_lrc = e.toObject()["lrc"].toObject();
+            block_data->lrc.type = json_lrc["type"].toInt();
+            block_data->lrc.cons = json_lrc["cons"].toDouble();
+            block_data->lrc.cont_min = json_lrc["cont_min"].toDouble();
+            block_data->lrc.cont_max = json_lrc["cont_max"].toDouble();
+            block_data->lrc.is_golden_section = json_lrc["is_golden_section"].toBool();
+
+            QJsonArray json_lrc_arr = json_lrc["desc_not_gs"].toArray();
+            block_data->lrc.desc_not_gs.clear();
+            foreach (auto e_arr, json_lrc_arr)
+            {
+                block_data->lrc.desc_not_gs.push_back(e_arr.toDouble());
+            }
     }
 }
 
