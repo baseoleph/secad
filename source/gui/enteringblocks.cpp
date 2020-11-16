@@ -32,8 +32,7 @@ void EnteringBlocks::fillForms()
 
         ui->lineEdit_titleblock->setText(current_block_title);
 
-        if (block_data->l_hb_l != NOTHING_VALUE) ui->lineEdit_l_hb_l->setText(QString::number(block_data->l_hb_l));
-        else ui->lineEdit_l_hb_l->setText("");
+        setTextInLineEdit(ui->lineEdit_l_hb_l, block_data->l_hb_l);
 
         ui->checkBox_foremast->setChecked(block_data->foremast);
         ui->checkBox_funnel->setChecked(block_data->funnel);
@@ -42,9 +41,9 @@ void EnteringBlocks::fillForms()
         ui->checkBox_mainmast->setChecked(block_data->mainmast);
         ui->checkBox_wheelhouse->setChecked(block_data->wheelhause);
 
-        ui->lineEdit_lrc_cons->setText(QString::number(block_data->lrc.cons));
-        ui->lineEdit_lrc_cont_max->setText(QString::number(block_data->lrc.cont_max));
-        ui->lineEdit_lrc_cont_min->setText(QString::number(block_data->lrc.cont_min));
+        setTextInLineEdit(ui->lineEdit_lrc_cons, block_data->lrc.cons);
+        setTextInLineEdit(ui->lineEdit_lrc_cont_max, block_data->lrc.cont_max);
+        setTextInLineEdit(ui->lineEdit_lrc_cont_min, block_data->lrc.cont_min);
 
         updateWidgetsDCC();
         updateLrcCombo();
@@ -201,6 +200,18 @@ void EnteringBlocks::updateComboHBBlocks()
 
     ui->comboBox_hb_h->setCurrentText(QString::fromStdString(block_data->hb_h));
     ui->comboBox_hb_l->setCurrentText(QString::fromStdString(block_data->hb_l));
+}
+
+void EnteringBlocks::setTextInLineEdit(QLineEdit *line, double val)
+{
+    if (val == NOTHING_VALUE)
+    {
+        line->setText("");
+    }
+    else
+    {
+        line->setText(QString::number(val));
+    }
 }
 
 void EnteringBlocks::updateLrcCombo()

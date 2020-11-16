@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <iterator>
+#include <QLineEdit>
 #include <QtAlgorithms>
 
 #include "../core/smainclass.h"
@@ -81,7 +82,7 @@ private:
     QString generateNewTemplateTitle();
     void updateComboBlocks(QString current_item);
     void updateComboHBBlocks();
-
+    void setTextInLineEdit(QLineEdit *line, double val);
     void updateLrcCombo();
     // blocks with disc cont and cons values
     void updateWidgetsDCC();
