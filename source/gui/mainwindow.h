@@ -12,7 +12,7 @@
 #include "enteringblocks.h"
 #include "projectmanager.h"
 #include "generaldata.h"
-#include "renamedform.h"
+#include "resultswidget.h"
 
 #include "../core/smainclass.h"
 #include "jsonparserclass.h"
@@ -50,7 +50,7 @@ private:
     ProjectManager *proj_man;
     GeneralData *gen_data;
     EnteringBlocks *ent_blocks;
-    RenamedForm *ren_form;
+    ResultsWidget *res_widget;
     JsonParserClass jpc;
 
     QString dir_to_projects = "../projects";

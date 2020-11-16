@@ -33,7 +33,7 @@ void MainWindow::removeAll()
     delete proj_man;
     delete gen_data;
     delete ent_blocks;
-    delete ren_form;
+    delete res_widget;
 }
 
 void MainWindow::clearAll()
@@ -44,12 +44,12 @@ void MainWindow::clearAll()
     proj_man = new ProjectManager(this, m);
     gen_data = new GeneralData(this, m);
     ent_blocks = new EnteringBlocks(this, m);
-    ren_form = new RenamedForm(this);
+    res_widget = new ResultsWidget(this);
 
     ui->tabWidget->addTab(proj_man, "Project Manager");
     ui->tabWidget->addTab(gen_data, "General Data");
     ui->tabWidget->addTab(ent_blocks, "Entering Data");
-    ui->tabWidget->addTab(ren_form, "Form 4");
+    ui->tabWidget->addTab(res_widget, "Results");
 
     connect(proj_man, &ProjectManager::signalOpenProject,
             this, &MainWindow::slotOpenProject);

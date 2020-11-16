@@ -22,7 +22,7 @@ SOURCES += \
     gui/jsonparserclass.cpp \
     gui/mainwindow.cpp \
     gui/projectmanager.cpp \
-    gui/renamedform.cpp \
+    gui/resultswidget.cpp \
     main.cpp \
 
 HEADERS += \
@@ -39,7 +39,7 @@ HEADERS += \
     gui/jsonparserclass.h \
     gui/mainwindow.h \
     gui/projectmanager.h \
-    gui/renamedform.h
+    gui/resultswidget.h
 
 FORMS += \
     gui/enteringblocks.ui \
@@ -47,7 +47,7 @@ FORMS += \
     gui/generaldatapainter.ui \
     gui/mainwindow.ui \
     gui/projectmanager.ui \
-    gui/renamedform.ui
+    gui/resultswidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

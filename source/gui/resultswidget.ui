@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>RenamedForm</class>
- <widget class="QWidget" name="RenamedForm">
+ <class>ResultsWidget</class>
+ <widget class="QWidget" name="ResultsWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
