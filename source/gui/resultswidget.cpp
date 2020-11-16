@@ -1,5 +1,5 @@
 #include "resultswidget.h"
-#include "ui_renamedform.h"
+#include "ui_resultswidget.h"
 
 ResultsWidget::ResultsWidget(QWidget *parent) :
     QWidget(parent),

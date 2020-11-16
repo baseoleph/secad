@@ -262,20 +262,20 @@ void EnteringBlocks::on_comboBox_lrc_activated(int index)
     {
         ui->horizontalWidget_lrc_cons->setVisible(true);
         ui->horizontalWidget_lrc_cont->setVisible(false);
-        ui->horizontalWidget_lrc_desc->setVisible(false);
+        ui->horizontalWidget_lrc_disc->setVisible(false);
 
     }
     else if (index == CONT)
     {
         ui->horizontalWidget_lrc_cons->setVisible(false);
         ui->horizontalWidget_lrc_cont->setVisible(true);
-        ui->horizontalWidget_lrc_desc->setVisible(false);
+        ui->horizontalWidget_lrc_disc->setVisible(false);
     }
     else
     {
         ui->horizontalWidget_lrc_cons->setVisible(false);
         ui->horizontalWidget_lrc_cont->setVisible(false);
-        ui->horizontalWidget_lrc_desc->setVisible(true);
+        ui->horizontalWidget_lrc_disc->setVisible(true);
     }
     block_data->lrc.setType(index);
 }
