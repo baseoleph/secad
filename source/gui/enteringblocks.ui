@@ -524,7 +524,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_hrc_desc" native="true">
+           <widget class="QWidget" name="horizontalWidget_hrc_disc" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_17">
              <property name="leftMargin">
               <number>6</number>
@@ -539,7 +539,7 @@
               <number>6</number>
              </property>
              <item>
-              <widget class="QCheckBox" name="checkBox_hrc_desc_gsl">
+              <widget class="QCheckBox" name="checkBox_hrc_disc_gsl">
                <property name="minimumSize">
                 <size>
                  <width>170</width>
@@ -558,7 +558,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_hrc_desc">
+              <widget class="QLineEdit" name="lineEdit_hrc_disc">
                <property name="minimumSize">
                 <size>
                  <width>40</width>
@@ -574,7 +574,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_hrc_desc">
+              <widget class="QPushButton" name="pushButton_hrc_disc">
                <property name="minimumSize">
                 <size>
                  <width>110</width>
@@ -593,7 +593,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="comboBox_hrc_desc_var">
+              <widget class="QComboBox" name="comboBox_hrc_disc_var">
                <property name="minimumSize">
                 <size>
                  <width>80</width>
@@ -806,7 +806,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_awih_desc" native="true">
+           <widget class="QWidget" name="horizontalWidget_awih_disc" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_27">
              <property name="leftMargin">
               <number>6</number>
@@ -821,7 +821,7 @@
               <number>6</number>
              </property>
              <item>
-              <widget class="QLineEdit" name="lineEdit_awih_desc">
+              <widget class="QLineEdit" name="lineEdit_awih_disc">
                <property name="minimumSize">
                 <size>
                  <width>40</width>
@@ -837,7 +837,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_awih_desc">
+              <widget class="QPushButton" name="pushButton_awih_disc">
                <property name="minimumSize">
                 <size>
                  <width>110</width>
@@ -856,7 +856,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="comboBox_awih_desc_var">
+              <widget class="QComboBox" name="comboBox_awih_disc_var">
                <property name="minimumSize">
                 <size>
                  <width>80</width>
@@ -1069,7 +1069,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_lrc_desc" native="true">
+           <widget class="QWidget" name="horizontalWidget_lrc_disc" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <property name="leftMargin">
               <number>6</number>
@@ -1084,7 +1084,7 @@
               <number>6</number>
              </property>
              <item>
-              <widget class="QCheckBox" name="checkBox_lrc_desc_gsl">
+              <widget class="QCheckBox" name="checkBox_lrc_disc_gsl">
                <property name="minimumSize">
                 <size>
                  <width>170</width>
@@ -1103,7 +1103,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_lrc_desc">
+              <widget class="QLineEdit" name="lineEdit_lrc_disc">
                <property name="minimumSize">
                 <size>
                  <width>40</width>
@@ -1119,7 +1119,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_lrc_desc">
+              <widget class="QPushButton" name="pushButton_lrc_disc">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1144,7 +1144,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="comboBox_lrc_desc_var">
+              <widget class="QComboBox" name="comboBox_lrc_disc_var">
                <property name="minimumSize">
                 <size>
                  <width>80</width>
@@ -1357,7 +1357,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_fwih_desc" native="true">
+           <widget class="QWidget" name="horizontalWidget_fwih_disc" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_22">
              <property name="leftMargin">
               <number>6</number>
@@ -1372,7 +1372,7 @@
               <number>6</number>
              </property>
              <item>
-              <widget class="QLineEdit" name="lineEdit_fwih_desc">
+              <widget class="QLineEdit" name="lineEdit_fwih_disc">
                <property name="minimumSize">
                 <size>
                  <width>40</width>
@@ -1388,7 +1388,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_fwih_desc">
+              <widget class="QPushButton" name="pushButton_fwih_disc">
                <property name="minimumSize">
                 <size>
                  <width>110</width>
@@ -1407,7 +1407,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="comboBox_fwih_desc_var">
+              <widget class="QComboBox" name="comboBox_fwih_disc_var">
                <property name="minimumSize">
                 <size>
                  <width>80</width>
@@ -1620,7 +1620,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_x_desc" native="true">
+           <widget class="QWidget" name="horizontalWidget_x_disc" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_32">
              <property name="leftMargin">
               <number>6</number>
@@ -1635,7 +1635,7 @@
               <number>6</number>
              </property>
              <item>
-              <widget class="QLineEdit" name="lineEdit_x_desc">
+              <widget class="QLineEdit" name="lineEdit_x_disc">
                <property name="minimumSize">
                 <size>
                  <width>40</width>
@@ -1651,7 +1651,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_x_desc">
+              <widget class="QPushButton" name="pushButton_x_disc">
                <property name="minimumSize">
                 <size>
                  <width>110</width>
@@ -1670,7 +1670,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="comboBox_x_desc_var">
+              <widget class="QComboBox" name="comboBox_x_disc_var">
                <property name="minimumSize">
                 <size>
                  <width>80</width>
@@ -1883,7 +1883,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="horizontalWidget_z_desc" native="true">
+           <widget class="QWidget" name="horizontalWidget_z_disc" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_37">
              <property name="leftMargin">
               <number>6</number>
@@ -1898,7 +1898,7 @@
               <number>6</number>
              </property>
              <item>
-              <widget class="QLineEdit" name="lineEdit_z_desc">
+              <widget class="QLineEdit" name="lineEdit_z_disc">
                <property name="minimumSize">
                 <size>
                  <width>40</width>
@@ -1914,7 +1914,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_z_desc">
+              <widget class="QPushButton" name="pushButton_z_disc">
                <property name="minimumSize">
                 <size>
                  <width>110</width>
@@ -1933,7 +1933,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="comboBox_z_desc_var">
+              <widget class="QComboBox" name="comboBox_z_disc_var">
                <property name="minimumSize">
                 <size>
                  <width>80</width>
