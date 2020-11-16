@@ -437,18 +437,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Значение</string>
+                <string/>
                </property>
               </widget>
              </item>
@@ -480,18 +480,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Минимальное значение</string>
+                <string>МИН</string>
                </property>
               </widget>
              </item>
@@ -505,18 +505,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Максимальное значение</string>
+                <string>МАКС</string>
                </property>
               </widget>
              </item>
@@ -558,16 +558,16 @@
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="comboBox_hrc_desc_var">
+              <widget class="QLineEdit" name="lineEdit_hrc_desc">
                <property name="minimumSize">
                 <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
@@ -589,6 +589,22 @@
                </property>
                <property name="text">
                 <string>Добавить значение</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_hrc_desc_var">
+               <property name="minimumSize">
+                <size>
+                 <width>80</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>80</width>
+                 <height>25</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -635,7 +651,7 @@
                </size>
               </property>
               <property name="text">
-               <string>Угол наклона кормовой стенки</string>
+               <string>Угол наклона кормовой стенки, градус</string>
               </property>
              </widget>
             </item>
@@ -703,18 +719,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Значение</string>
+                <string/>
                </property>
               </widget>
              </item>
@@ -746,18 +762,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Минимальное значение</string>
+                <string>МИН</string>
                </property>
               </widget>
              </item>
@@ -771,18 +787,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Максимальное значение</string>
+                <string>МАКС</string>
                </property>
               </widget>
              </item>
@@ -805,35 +821,16 @@
               <number>6</number>
              </property>
              <item>
-              <widget class="QCheckBox" name="checkBox_awih_desc_gsl">
+              <widget class="QLineEdit" name="lineEdit_awih_desc">
                <property name="minimumSize">
                 <size>
-                 <width>170</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>170</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Пропорции золотого сечения</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_awih_desc_var">
-               <property name="minimumSize">
-                <size>
-                 <width>80</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
@@ -855,6 +852,22 @@
                </property>
                <property name="text">
                 <string>Добавить значение</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_awih_desc_var">
+               <property name="minimumSize">
+                <size>
+                 <width>80</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>80</width>
+                 <height>25</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -969,18 +982,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Значение</string>
+                <string/>
                </property>
               </widget>
              </item>
@@ -1012,18 +1025,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Минимальное значение</string>
+                <string>МИН</string>
                </property>
               </widget>
              </item>
@@ -1037,18 +1050,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Максимальное значение</string>
+                <string>МАКС</string>
                </property>
               </widget>
              </item>
@@ -1090,16 +1103,16 @@
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="comboBox_lrc_desc_var">
+              <widget class="QLineEdit" name="lineEdit_lrc_desc">
                <property name="minimumSize">
                 <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
@@ -1127,6 +1140,22 @@
                </property>
                <property name="text">
                 <string>Добавить значение</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_lrc_desc_var">
+               <property name="minimumSize">
+                <size>
+                 <width>80</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>80</width>
+                 <height>25</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -1173,7 +1202,7 @@
                </size>
               </property>
               <property name="text">
-               <string>Угол наклона носовой стенки</string>
+               <string>Угол наклона носовой стенки, градус</string>
               </property>
              </widget>
             </item>
@@ -1241,18 +1270,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Значение</string>
+                <string/>
                </property>
               </widget>
              </item>
@@ -1284,18 +1313,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Минимальное значение</string>
+                <string>МИН</string>
                </property>
               </widget>
              </item>
@@ -1309,18 +1338,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Максимальное значение</string>
+                <string>МАКС</string>
                </property>
               </widget>
              </item>
@@ -1343,35 +1372,16 @@
               <number>6</number>
              </property>
              <item>
-              <widget class="QCheckBox" name="checkBox_fwih_desc_gsl">
+              <widget class="QLineEdit" name="lineEdit_fwih_desc">
                <property name="minimumSize">
                 <size>
-                 <width>170</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>170</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Пропорции золотого сечения</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_fwih_desc_var">
-               <property name="minimumSize">
-                <size>
-                 <width>80</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
@@ -1393,6 +1403,22 @@
                </property>
                <property name="text">
                 <string>Добавить значение</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_fwih_desc_var">
+               <property name="minimumSize">
+                <size>
+                 <width>80</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>80</width>
+                 <height>25</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -1439,7 +1465,7 @@
                </size>
               </property>
               <property name="text">
-               <string>Ордината размещения</string>
+               <string>Ордината размещения, м</string>
               </property>
              </widget>
             </item>
@@ -1507,18 +1533,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Значение</string>
+                <string/>
                </property>
               </widget>
              </item>
@@ -1550,18 +1576,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Минимальное значение</string>
+                <string>МИН</string>
                </property>
               </widget>
              </item>
@@ -1575,18 +1601,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Максимальное значение</string>
+                <string>МАКС</string>
                </property>
               </widget>
              </item>
@@ -1609,35 +1635,16 @@
               <number>6</number>
              </property>
              <item>
-              <widget class="QCheckBox" name="checkBox_x_desc_gsl">
+              <widget class="QLineEdit" name="lineEdit_x_desc">
                <property name="minimumSize">
                 <size>
-                 <width>170</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>170</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Пропорции золотого сечения</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_x_desc_var">
-               <property name="minimumSize">
-                <size>
-                 <width>80</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
@@ -1659,6 +1666,22 @@
                </property>
                <property name="text">
                 <string>Добавить значение</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_x_desc_var">
+               <property name="minimumSize">
+                <size>
+                 <width>80</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>80</width>
+                 <height>25</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -1705,7 +1728,7 @@
                </size>
               </property>
               <property name="text">
-               <string>Аппликата размещения</string>
+               <string>Аппликата размещения, м</string>
               </property>
              </widget>
             </item>
@@ -1773,18 +1796,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Значение</string>
+                <string/>
                </property>
               </widget>
              </item>
@@ -1816,18 +1839,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Минимальное значение</string>
+                <string>МИН</string>
                </property>
               </widget>
              </item>
@@ -1841,18 +1864,18 @@
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>130</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="placeholderText">
-                <string>Максимальное значение</string>
+                <string>МАКС</string>
                </property>
               </widget>
              </item>
@@ -1875,35 +1898,16 @@
               <number>6</number>
              </property>
              <item>
-              <widget class="QCheckBox" name="checkBox_z_desc_gsl">
+              <widget class="QLineEdit" name="lineEdit_z_desc">
                <property name="minimumSize">
                 <size>
-                 <width>170</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>170</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Пропорции золотого сечения</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_z_desc_var">
-               <property name="minimumSize">
-                <size>
-                 <width>80</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>80</width>
+                 <width>40</width>
                  <height>25</height>
                 </size>
                </property>
@@ -1925,6 +1929,22 @@
                </property>
                <property name="text">
                 <string>Добавить значение</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_z_desc_var">
+               <property name="minimumSize">
+                <size>
+                 <width>80</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>80</width>
+                 <height>25</height>
+                </size>
                </property>
               </widget>
              </item>
