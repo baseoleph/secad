@@ -11,6 +11,12 @@ CONT,
 DISC
 };
 
+struct var_values{
+    SConstantVar cons;
+    SContinuousVar cont;
+    SDiscreteVar disc;
+};
+
 class SVarParent
 {
 public:
