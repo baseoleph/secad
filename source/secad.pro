@@ -23,6 +23,7 @@ SOURCES += \
 
 HEADERS += \
     core/sblockdata.h \
+    core/sconstants.h \
     core/sgeneraldata.h \
     core/smainclass.h \
     gui/enteringblocks.h \

@@ -3,8 +3,8 @@
 
 #include <vector>
 #include <string>
+#include "sconstants.h"
 
-#define NOTHING_VALUE -6000000
 typedef std::string string;
 typedef std::vector<double> d_vector;
 
