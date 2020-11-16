@@ -25,9 +25,7 @@ public:
     int getInt(int type);
 
     int type = 0;
-    SConstantVar constant;
-    SDiscreteVar discrete;
-    SContinuousVar continuous;
+    var_values val;
 };
 
 #endif // SVARPARENT_H

@@ -54,6 +54,8 @@ private slots:
 
     void on_comboBox_lrc_activated(int index);
 
+    void on_lineEdit_lrc_cons_textChanged(const QString &arg1);
+
 private:
     SMainClass *m;
     SBlockData *block_data;
