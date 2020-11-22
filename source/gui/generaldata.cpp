@@ -21,7 +21,7 @@ GeneralData::~GeneralData()
 
 void GeneralData::fillForms()
 {
-    ui->lineEdit_project_name->setText(QString::fromStdString(general->project_name));
+    ui->lineEdit_project_name->setText(general->project_name);
     ui->lineEdit_length->setText(QString::number(general->length));
     ui->lineEdit_wind_pressure->setText(QString::number(general->wind_pressure));
     ui->lineEdit_wha->setText(QString::number(general->wha));
@@ -89,7 +89,7 @@ double GeneralData::sef_function(double x)
 
 void GeneralData::on_lineEdit_project_name_textChanged(const QString &arg1)
 {
-    general->project_name = arg1.toStdString();
+    general->project_name = arg1;
 }
 
 void GeneralData::on_lineEdit_length_textChanged(const QString &arg1)

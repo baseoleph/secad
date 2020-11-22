@@ -14,7 +14,7 @@ void JsonParserClass::saveGeneralData()
     QJsonObject json_main_general;
     QJsonObject json_general_calc_data;
     QJsonObject json_general_user_data;
-    json_general_user_data["project_name"] = QString::fromStdString(general->project_name);
+    json_general_user_data["project_name"] = general->project_name;
     json_general_user_data["length"] = general->length;
     json_general_user_data["wind_pressure"] = general->wind_pressure;
     json_general_user_data["wha"] = general->wha;
@@ -73,7 +73,7 @@ void JsonParserClass::saveBlocksData()
         {
             QJsonObject jsonobj;
             QJsonObject json_block;
-            json_block["titleblock"] = QString::fromStdString(e->titleblock);
+            json_block["titleblock"] = e->titleblock;
 //            json_block["lrc"] = e->lrc;
 //            json_block["hrc"] = e->hrc;
 //            json_block["fwih"] = e->fwih;
@@ -97,10 +97,10 @@ void JsonParserClass::saveBlocksData()
             json_block["z_g"] = e->z_g;
             json_block["uxa"] = e->uxa;
             json_block["uxf"] = e->uxf;
-            json_block["hb_h"] = QString::fromStdString(e->hb_h);
-            json_block["hb_l"] = QString::fromStdString(e->hb_l);
-            json_block["sb_h"] = QString::fromStdString(e->sb_h);
-            json_block["sb_l"] = QString::fromStdString(e->sb_l);
+            json_block["hb_h"] = e->hb_h;
+            json_block["hb_l"] = e->hb_l;
+            json_block["sb_h"] = e->sb_h;
+            json_block["sb_l"] = e->sb_l;
 
             QJsonObject json_lrc;
             json_lrc["type"] = e->lrc.type;
@@ -131,7 +131,7 @@ void JsonParserClass::saveData()
 
     QString saveFileName = QFileDialog::getSaveFileName(parent,
                                                         QObject::tr("Save Json File"),
-                                                        QString::fromStdString(m->general->project_name),
+                                                        m->general->project_name,
                                                         QObject::tr("*.json"));
 
     // Узнаем директорию для сохранения файла
@@ -154,7 +154,7 @@ void JsonParserClass::loadGeneralData(QJsonObject general_json)
 {
     QJsonObject general_obj = general_json.value("user").toObject();
 
-    m->general->project_name = general_obj.value("project_name").toString().toStdString();
+    m->general->project_name = general_obj.value("project_name").toString();
     m->general->wind_pressure = general_obj.value("wind_pressure").toDouble();
     m->general->wha = general_obj.value("wha").toDouble();
     m->general->length = general_obj.value("length").toDouble();
@@ -205,7 +205,7 @@ void JsonParserClass::loadBlocksData(QJsonArray blocks_json)
         m->addBlock();
         blocks = m->blocks;
         SBlockData *block_data = blocks[blocks.size() - 1];
-        block_data->titleblock = e.toObject()["titleblock"].toString().toStdString();
+        block_data->titleblock = e.toObject()["titleblock"].toString();
 //        block_data->lrc = e.toObject()["lrc"].isDouble();
 //        block_data->hrc = e.toObject()["hrc"].toDouble();
 //        block_data->fwih = e.toObject()["fwih"].toDouble();
@@ -229,10 +229,10 @@ void JsonParserClass::loadBlocksData(QJsonArray blocks_json)
         block_data->z_g = e.toObject()["z_g"].toDouble();
         block_data->uxa = e.toObject()["uxa"].toDouble();
         block_data->uxf = e.toObject()["uxf"].toDouble();
-        block_data->hb_h = e.toObject()["hb_h"].toString().toStdString();
-        block_data->hb_l = e.toObject()["hb_l"].toString().toStdString();
-        block_data->sb_h = e.toObject()["sb_h"].toString().toStdString();
-        block_data->sb_l = e.toObject()["sb_l"].toString().toStdString();
+        block_data->hb_h = e.toObject()["hb_h"].toInt();
+        block_data->hb_l = e.toObject()["hb_l"].toInt();
+        block_data->sb_h = e.toObject()["sb_h"].toString();
+        block_data->sb_l = e.toObject()["sb_l"].toString();
 
             QJsonObject json_lrc = e.toObject()["lrc"].toObject();
             block_data->lrc.type = json_lrc["type"].toInt();

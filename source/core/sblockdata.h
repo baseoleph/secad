@@ -2,10 +2,9 @@
 #define SBLOCKDATA_H
 
 #include <vector>
-#include <string>
+#include <QString>
 #include "sconstants.h"
 
-typedef std::string string;
 typedef std::vector<double> d_vector;
 
 enum {
@@ -36,7 +35,7 @@ public:
     // Название блока
     // Block Title
     //
-    string titleblock = "";
+    QString titleblock = "";
 
     // Коэффициент пропорциональности длины блока
     // Length Ratio Coefficient
@@ -101,12 +100,12 @@ public:
     // Родительский блок по высоте
     // Head Block by Height
     //
-    string hb_h = "";
+    int hb_h = NOTHING_VALUE;
 
     // Родительский блок по длине
     // Head Block by Length
     //
-    string hb_l = "";
+    int hb_l = NOTHING_VALUE;
 
     // Расстояние до родительского блока по длине
     // Distance To Head Block by Length
@@ -116,12 +115,12 @@ public:
     // Дочерний блок по высоте
     // Slave Block by Height
     //
-    string sb_h = "";
+    QString sb_h = "";
 
     // Дочерний блок по длине
     // Slave Block by Length
     //
-    string sb_l = "";
+    QString sb_l = "";
 
     // Длина нижнего основания блока
     // Block's Lower Base Length

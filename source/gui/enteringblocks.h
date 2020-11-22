@@ -45,12 +45,6 @@ private slots:
 
     void on_pushButton_addBlock_clicked();
 
-    void on_comboBox_blocks_textActivated(const QString &arg1);
-
-    void on_comboBox_hb_h_textActivated(const QString &arg1);
-
-    void on_comboBox_hb_l_textActivated(const QString &arg1);
-
     void on_lineEdit_l_hb_l_textChanged(const QString &arg1);
 
     void on_pushButton_optimize_clicked();
@@ -73,6 +67,12 @@ private slots:
 
     void on_pushButton_lcr_disc_delete_clicked();
 
+    void on_comboBox_blocks_activated(int index);
+
+    void on_comboBox_hb_h_activated(int index);
+
+    void on_comboBox_hb_l_activated(int index);
+
 private:
     SMainClass *m;
     SBlockData *block_data;
@@ -80,7 +80,7 @@ private:
     Ui::EnteringBlocks *ui;
 
     QString generateNewTemplateTitle();
-    void updateComboBlocks(QString current_item);
+    void updateComboBlocks();
     void updateComboHBBlocks();
     void setTextInLineEdit(QLineEdit *line, double val);
     void updateLrcCombo();
@@ -89,6 +89,10 @@ private:
     const QString TEMPLATE_TITLE = "Новый блок";
 
     double lrc_desc_temp;
+
+    QList<QString*> titles;
+    QVector<unsigned> hbh_really_vector;
+    unsigned current_block_index;
 };
 
 #endif // ENTERINGBLOCKS_H

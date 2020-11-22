@@ -4,13 +4,12 @@
 
 #include <iomanip>
 #include <vector>
-#include <string>
+#include <QString>
 #include <math.h>
 #include "sconstants.h"
 #include <QDebug>
 
 typedef std::vector<double> d_vector;
-typedef std::string string;
 
 class SGeneralData
 {
@@ -35,7 +34,7 @@ public:
     double calcC3(const double a2, const double length, const double q, const double p);
 
     // Имя проекта
-    string project_name;
+    QString project_name;
 
     /* <const> (в процессе работы можно изменить) */
 

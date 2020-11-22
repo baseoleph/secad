@@ -18,37 +18,26 @@ EnteringBlocks::~EnteringBlocks()
 
 void EnteringBlocks::fillForms()
 {
-    QString current_block_title = ui->comboBox_blocks->currentText();
-    if (current_block_title != "")
-    {
-        foreach (auto e, m->blocks)
-        {
-            if (QString::fromStdString(e->titleblock) == current_block_title)
-            {
-                block_data = e;
-                break;
-            }
-        }
+    block_data = m->blocks[current_block_index];
 
-        ui->lineEdit_titleblock->setText(current_block_title);
+    ui->lineEdit_titleblock->setText(block_data->titleblock);
 
-        setTextInLineEdit(ui->lineEdit_l_hb_l, block_data->l_hb_l);
+    setTextInLineEdit(ui->lineEdit_l_hb_l, block_data->l_hb_l);
 
-        ui->checkBox_foremast->setChecked(block_data->foremast);
-        ui->checkBox_funnel->setChecked(block_data->funnel);
-        ui->checkBox_habitability->setChecked(block_data->habitability);
-        ui->checkBox_pap->setChecked(block_data->pap);
-        ui->checkBox_mainmast->setChecked(block_data->mainmast);
-        ui->checkBox_wheelhouse->setChecked(block_data->wheelhause);
+    ui->checkBox_foremast->setChecked(block_data->foremast);
+    ui->checkBox_funnel->setChecked(block_data->funnel);
+    ui->checkBox_habitability->setChecked(block_data->habitability);
+    ui->checkBox_pap->setChecked(block_data->pap);
+    ui->checkBox_mainmast->setChecked(block_data->mainmast);
+    ui->checkBox_wheelhouse->setChecked(block_data->wheelhause);
 
-        setTextInLineEdit(ui->lineEdit_lrc_cons, block_data->lrc.cons);
-        setTextInLineEdit(ui->lineEdit_lrc_cont_max, block_data->lrc.cont_max);
-        setTextInLineEdit(ui->lineEdit_lrc_cont_min, block_data->lrc.cont_min);
+    setTextInLineEdit(ui->lineEdit_lrc_cons, block_data->lrc.cons);
+    setTextInLineEdit(ui->lineEdit_lrc_cont_max, block_data->lrc.cont_max);
+    setTextInLineEdit(ui->lineEdit_lrc_cont_min, block_data->lrc.cont_min);
 
-        updateWidgetsDCC();
-        updateLrcCombo();
-        updateWidgetsDCC();
-    }
+    updateWidgetsDCC();
+    updateLrcCombo();
+    updateWidgetsDCC();
 }
 
 void EnteringBlocks::setUpForms()
@@ -56,28 +45,34 @@ void EnteringBlocks::setUpForms()
     if (m->blocks.size() != 0)
     {
         ui->widget_block->setEnabled(true);
-        block_data = m->blocks[0];
-        updateComboBlocks(QString::fromStdString(block_data->titleblock));
+        current_block_index = 0;
+        block_data = m->blocks[current_block_index];
+        foreach (auto e, m->blocks)
+        {
+            titles.append(&e->titleblock);
+        }
+
+        updateComboBlocks();
         updateWidgetsDCC();
     }
 }
 
 void EnteringBlocks::on_lineEdit_titleblock_textChanged(const QString &arg1)
 {
-    foreach (auto e, m->blocks)
-    {
-        if (e->hb_h == block_data->titleblock)
-        {
-           e->hb_h = arg1.toStdString();
-        }
-        if (e->hb_l == block_data->titleblock)
-        {
-           e->hb_l = arg1.toStdString();
-        }
-    }
+//    foreach (auto e, m->blocks)
+//    {
+//        if (e->hb_h == block_data->titleblock)
+//        {
+//           e->hb_h = arg1;
+//        }
+//        if (e->hb_l == block_data->titleblock)
+//        {
+//           e->hb_l = arg1;
+//        }
+//    }
 
-    block_data->titleblock = arg1.toStdString();
-    updateComboBlocks(arg1);
+    block_data->titleblock = arg1;
+    updateComboBlocks();
 }
 
 void EnteringBlocks::on_checkBox_habitability_toggled(bool checked)
@@ -120,18 +115,19 @@ void EnteringBlocks::on_pushButton_addBlock_clicked()
     ui->widget_block->setEnabled(true);
 
     m->addBlock();
-    block_data = m->blocks[m->blocks.size()-1];
+    current_block_index = m->blocks.size()-1;
+    block_data = m->blocks[current_block_index];
     QString new_title = generateNewTemplateTitle();
-    block_data->titleblock = new_title.toStdString();
-    block_data->hb_h = "";
-    block_data->hb_l = "";
-    updateComboBlocks(new_title);
+    block_data->titleblock = new_title;
+    block_data->hb_h = NOTHING_VALUE;
+    block_data->hb_l = NOTHING_VALUE;
+    updateComboBlocks();
     updateWidgetsDCC();
 }
 
-void EnteringBlocks::on_comboBox_blocks_textActivated(const QString &arg1)
+void EnteringBlocks::on_comboBox_blocks_activated(int index)
 {
-    Q_UNUSED(arg1)
+    current_block_index = index;
     fillForms();
 }
 
@@ -141,7 +137,7 @@ QString EnteringBlocks::generateNewTemplateTitle()
     QStringList list_of_block_titles;
     foreach (auto e, m->blocks)
     {
-       list_of_block_titles.append(QString::fromStdString(e->titleblock));
+       list_of_block_titles.append(e->titleblock);
     }
     QStringList words_in_new_title = new_title.split(" ");
 
@@ -164,19 +160,19 @@ QString EnteringBlocks::generateNewTemplateTitle()
     return new_title;
 }
 
-void EnteringBlocks::updateComboBlocks(QString current_item)
+void EnteringBlocks::updateComboBlocks()
 {
     ui->comboBox_blocks->clear();
 
     foreach (auto e, m->blocks)
     {
-        ui->comboBox_blocks->addItem(QString::fromStdString(e->titleblock));
+        ui->comboBox_blocks->addItem(e->titleblock);
     }
 
     updateComboHBBlocks();
 
-    ui->comboBox_blocks->setCurrentText(current_item);
-    ui->comboBox_blocks->textActivated(current_item);
+    ui->comboBox_blocks->setCurrentIndex(current_block_index);
+    ui->comboBox_blocks->activated(current_block_index);
 }
 
 void EnteringBlocks::updateComboHBBlocks()
@@ -186,20 +182,15 @@ void EnteringBlocks::updateComboHBBlocks()
     ui->comboBox_hb_h->addItem("");
     ui->comboBox_hb_l->addItem("");
 
-    foreach (auto e, m->blocks)
+    for (unsigned i = 0; i < m->blocks.size(); ++i)
     {
-        if (e->titleblock != block_data->titleblock)
-        {
-            ui->comboBox_hb_h->addItem(QString::fromStdString(e->titleblock));
-            if (e->titleblock != block_data->hb_h)
-            {
-                ui->comboBox_hb_l->addItem(QString::fromStdString(e->titleblock));
-            }
-        }
+        ui->comboBox_hb_h->addItem(m->blocks[i]->titleblock);
+        ui->comboBox_hb_l->addItem(m->blocks[i]->titleblock);
     }
 
-    ui->comboBox_hb_h->setCurrentText(QString::fromStdString(block_data->hb_h));
-    ui->comboBox_hb_l->setCurrentText(QString::fromStdString(block_data->hb_l));
+
+    ui->comboBox_hb_h->setCurrentIndex(block_data->hb_h);
+    ui->comboBox_hb_l->setCurrentIndex(block_data->hb_l);
 }
 
 void EnteringBlocks::setTextInLineEdit(QLineEdit *line, double val)
@@ -231,26 +222,22 @@ void EnteringBlocks::updateLrcCombo()
     }
 }
 
+
+
 void EnteringBlocks::updateWidgetsDCC()
 {
     ui->comboBox_lrc->setCurrentIndex(block_data->lrc.type);
     ui->comboBox_lrc->activated(block_data->lrc.type);
 }
 
-void EnteringBlocks::on_comboBox_hb_h_textActivated(const QString &arg1)
+void EnteringBlocks::on_comboBox_hb_h_activated(int index)
 {
-    block_data->hb_h = arg1.toStdString();
-    if (block_data->hb_h == block_data->hb_l)
-    {
-        block_data->hb_l = "";
-    }
-    updateComboHBBlocks();
+    block_data->hb_h = index;
 }
 
-void EnteringBlocks::on_comboBox_hb_l_textActivated(const QString &arg1)
+void EnteringBlocks::on_comboBox_hb_l_activated(int index)
 {
-    block_data->hb_l = arg1.toStdString();
-    updateComboHBBlocks();
+    block_data->hb_l = index;
 }
 
 void EnteringBlocks::on_lineEdit_l_hb_l_textChanged(const QString &arg1)
@@ -365,4 +352,6 @@ void EnteringBlocks::on_pushButton_lcr_disc_delete_clicked()
         updateLrcCombo();
     }
 }
+
+
 
