@@ -17,6 +17,8 @@ SOURCES += \
     gui/generaldatapainter.cpp \
     gui/jsonparserclass.cpp \
     gui/mainwindow.cpp \
+    gui/optimizewidget.cpp \
+    gui/optimizewidgetprocessing.cpp \
     gui/projectmanager.cpp \
     gui/resultswidget.cpp \
     main.cpp \
@@ -31,6 +33,8 @@ HEADERS += \
     gui/generaldatapainter.h \
     gui/jsonparserclass.h \
     gui/mainwindow.h \
+    gui/optimizewidget.h \
+    gui/optimizewidgetprocessing.h \
     gui/projectmanager.h \
     gui/resultswidget.h
 
@@ -39,6 +43,7 @@ FORMS += \
     gui/generaldata.ui \
     gui/generaldatapainter.ui \
     gui/mainwindow.ui \
+    gui/optimizewidget.ui \
     gui/projectmanager.ui \
     gui/resultswidget.ui
 

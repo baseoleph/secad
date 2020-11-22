@@ -9,10 +9,18 @@ EnteringBlocks::EnteringBlocks(QWidget *parent, SMainClass *m) :
     this->m = m;
 
     ui->widget_block->setEnabled(false);
+
+    opt = new OptimizeWidget(this);
+    QGridLayout *vbox = new QGridLayout(opt);
+    ui->widget->layout()->addItem(vbox);
+//    ui->widget->
+//    vbox->addWidget(opt, 0);
+//    ui->widget->setLayout(vbox);
 }
 
 EnteringBlocks::~EnteringBlocks()
 {
+    delete opt;
     delete ui;
 }
 
@@ -59,18 +67,6 @@ void EnteringBlocks::setUpForms()
 
 void EnteringBlocks::on_lineEdit_titleblock_textChanged(const QString &arg1)
 {
-//    foreach (auto e, m->blocks)
-//    {
-//        if (e->hb_h == block_data->titleblock)
-//        {
-//           e->hb_h = arg1;
-//        }
-//        if (e->hb_l == block_data->titleblock)
-//        {
-//           e->hb_l = arg1;
-//        }
-//    }
-
     block_data->titleblock = arg1;
     updateComboBlocks();
 }

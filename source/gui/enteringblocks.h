@@ -7,6 +7,7 @@
 #include <QtAlgorithms>
 
 #include "../core/smainclass.h"
+#include "optimizewidget.h"
 
 namespace Ui {
 class EnteringBlocks;
@@ -76,6 +77,8 @@ private slots:
 private:
     SMainClass *m;
     SBlockData *block_data;
+
+    OptimizeWidget *opt;
 
     Ui::EnteringBlocks *ui;
 
