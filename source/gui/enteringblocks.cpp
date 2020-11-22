@@ -10,9 +10,28 @@ EnteringBlocks::EnteringBlocks(QWidget *parent, SMainClass *m) :
 
     ui->widget_block->setEnabled(false);
 
-    opt = new OptimizeWidget(this);
-    QGridLayout *vbox = new QGridLayout(opt);
-    ui->widget->layout()->addItem(vbox);
+//    opt = new OptimizeWidget(this, "asdf");
+    QString lrc = "lrc";
+    QString hrc = "hrc";
+    QString fwih = "fwih";
+    QString awih = "awih";
+    QString x = "x";
+
+    opt_vector.insert(lrc, new OptimizeWidget(this, "Коэффициент пропорциональности длины"));
+    opt_vector.insert(hrc, new OptimizeWidget(this, "Коэффициент пропорциональности высоты"));
+    opt_vector.insert(fwih, new OptimizeWidget(this, "Угол наклона носовой стенки, градус"));
+    opt_vector.insert(awih, new OptimizeWidget(this, "Угол наклона кормовой стенки, градус"));
+    opt_vector.insert(x, new OptimizeWidget(this, "Ордината размещения, м"));
+
+    ui->widget->layout()->addWidget(opt_vector[lrc]);
+    ui->widget->layout()->addWidget(opt_vector[hrc]);
+    ui->widget->layout()->addWidget(opt_vector[fwih]);
+    ui->widget->layout()->addWidget(opt_vector[awih]);
+    ui->widget->layout()->addWidget(opt_vector[x]);
+//    QHBoxLayout *vbox = new QHBoxLayout(opt);
+//    ui->widget->layout()->addItem(vbox);
+//    ui->widget->layout()->addWidget(opt);
+
 //    ui->widget->
 //    vbox->addWidget(opt, 0);
 //    ui->widget->setLayout(vbox);
@@ -20,7 +39,6 @@ EnteringBlocks::EnteringBlocks(QWidget *parent, SMainClass *m) :
 
 EnteringBlocks::~EnteringBlocks()
 {
-    delete opt;
     delete ui;
 }
 

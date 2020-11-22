@@ -19,7 +19,7 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="label">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -39,7 +39,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Коэффициент пропорциональности длины</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -98,7 +98,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLineEdit" name="lineEdit_lrc_cons">
+         <widget class="QLineEdit" name="lineEdit_cons">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -141,7 +141,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLineEdit" name="lineEdit_lrc_cont_min">
+         <widget class="QLineEdit" name="lineEdit_cont_min">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -166,7 +166,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_lrc_cont_max">
+         <widget class="QLineEdit" name="lineEdit_cont_max">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -209,7 +209,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_lrc_disc_gsl">
+         <widget class="QCheckBox" name="checkBox_disc_gsl">
           <property name="minimumSize">
            <size>
             <width>170</width>
@@ -228,7 +228,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_lrc_disc">
+         <widget class="QLineEdit" name="lineEdit_disc">
           <property name="minimumSize">
            <size>
             <width>40</width>
@@ -244,7 +244,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_lrc_disc_add">
+         <widget class="QPushButton" name="pushButton_disc_add">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -272,7 +272,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox_lrc_disc_var">
+         <widget class="QComboBox" name="comboBox_disc_var">
           <property name="minimumSize">
            <size>
             <width>60</width>
@@ -288,7 +288,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_lcr_disc_delete">
+         <widget class="QPushButton" name="pushButton_disc_delete">
           <property name="enabled">
            <bool>false</bool>
           </property>

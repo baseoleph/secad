@@ -2,6 +2,7 @@
 #define ENTERINGBLOCKS_H
 
 #include <QWidget>
+#include <QMap>
 #include <iterator>
 #include <QLineEdit>
 #include <QtAlgorithms>
@@ -79,6 +80,7 @@ private:
     SBlockData *block_data;
 
     OptimizeWidget *opt;
+    QMap<QString, OptimizeWidget *> opt_vector;
 
     Ui::EnteringBlocks *ui;
 
