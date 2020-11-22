@@ -44,7 +44,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox_lrc">
+        <widget class="QComboBox" name="comboBox">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -83,7 +83,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QWidget" name="horizontalWidget_lrc_cons" native="true">
+      <widget class="QWidget" name="horizontalWidget_cons" native="true">
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <property name="leftMargin">
          <number>6</number>
@@ -126,7 +126,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QWidget" name="horizontalWidget_lrc_cont" native="true">
+      <widget class="QWidget" name="horizontalWidget_cont" native="true">
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <property name="leftMargin">
          <number>6</number>
@@ -194,7 +194,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QWidget" name="horizontalWidget_lrc_disc" native="true">
+      <widget class="QWidget" name="horizontalWidget_disc" native="true">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <property name="leftMargin">
          <number>6</number>

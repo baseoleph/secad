@@ -25,6 +25,9 @@ public:
     void fillForms();
     void setUpForms();
 
+protected:
+    SMainClass* getM();
+
 signals:
     void signalSaveEnteringBlocks();
 

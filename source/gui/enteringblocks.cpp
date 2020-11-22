@@ -17,11 +17,11 @@ EnteringBlocks::EnteringBlocks(QWidget *parent, SMainClass *m) :
     QString awih = "awih";
     QString x = "x";
 
-    opt_vector.insert(lrc, new OptimizeWidget(this, "Коэффициент пропорциональности длины"));
-    opt_vector.insert(hrc, new OptimizeWidget(this, "Коэффициент пропорциональности высоты"));
-    opt_vector.insert(fwih, new OptimizeWidget(this, "Угол наклона носовой стенки, градус"));
-    opt_vector.insert(awih, new OptimizeWidget(this, "Угол наклона кормовой стенки, градус"));
-    opt_vector.insert(x, new OptimizeWidget(this, "Ордината размещения, м"));
+    opt_vector.insert(lrc, new OptimizeWidget(this, m, block_data, "Коэффициент пропорциональности длины"));
+    opt_vector.insert(hrc, new OptimizeWidget(this, m, block_data, "Коэффициент пропорциональности высоты"));
+    opt_vector.insert(fwih, new OptimizeWidget(this, m, block_data, "Угол наклона носовой стенки, градус"));
+    opt_vector.insert(awih, new OptimizeWidget(this, m, block_data, "Угол наклона кормовой стенки, градус"));
+    opt_vector.insert(x, new OptimizeWidget(this, m, block_data, "Ордината размещения, м"));
 
     ui->widget->layout()->addWidget(opt_vector[lrc]);
     ui->widget->layout()->addWidget(opt_vector[hrc]);
@@ -39,6 +39,10 @@ EnteringBlocks::EnteringBlocks(QWidget *parent, SMainClass *m) :
 
 EnteringBlocks::~EnteringBlocks()
 {
+    foreach (auto e, opt_vector)
+    {
+        delete e;
+    }
     delete ui;
 }
 
@@ -61,6 +65,11 @@ void EnteringBlocks::fillForms()
     setTextInLineEdit(ui->lineEdit_lrc_cont_max, block_data->lrc.cont_max);
     setTextInLineEdit(ui->lineEdit_lrc_cont_min, block_data->lrc.cont_min);
 
+    foreach (auto e, opt_vector)
+    {
+        e->updateWidgetsDCC();
+    }
+
     updateWidgetsDCC();
     updateLrcCombo();
     updateWidgetsDCC();
@@ -79,8 +88,17 @@ void EnteringBlocks::setUpForms()
         }
 
         updateComboBlocks();
+        foreach (auto e, opt_vector)
+        {
+            e->updateWidgetsDCC();
+        }
         updateWidgetsDCC();
     }
+}
+
+SMainClass *EnteringBlocks::getM()
+{
+    return m;
 }
 
 void EnteringBlocks::on_lineEdit_titleblock_textChanged(const QString &arg1)
@@ -136,6 +154,10 @@ void EnteringBlocks::on_pushButton_addBlock_clicked()
     block_data->hb_h = NOTHING_VALUE;
     block_data->hb_l = NOTHING_VALUE;
     updateComboBlocks();
+    foreach (auto e, opt_vector)
+    {
+        e->updateWidgetsDCC();
+    }
     updateWidgetsDCC();
 }
 
