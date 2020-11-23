@@ -11,23 +11,6 @@ EnteringBlocks::EnteringBlocks(QWidget *parent, SMainClass *m) :
     ui->widget_block->setEnabled(false);
 
 //    opt = new OptimizeWidget(this, "asdf");
-    QString lrc = "lrc";
-    QString hrc = "hrc";
-    QString fwih = "fwih";
-    QString awih = "awih";
-    QString x = "x";
-
-    opt_vector.insert(lrc, new OptimizeWidget(this, m, block_data, "Коэффициент пропорциональности длины"));
-    opt_vector.insert(hrc, new OptimizeWidget(this, m, block_data, "Коэффициент пропорциональности высоты"));
-    opt_vector.insert(fwih, new OptimizeWidget(this, m, block_data, "Угол наклона носовой стенки, градус"));
-    opt_vector.insert(awih, new OptimizeWidget(this, m, block_data, "Угол наклона кормовой стенки, градус"));
-    opt_vector.insert(x, new OptimizeWidget(this, m, block_data, "Ордината размещения, м"));
-
-    ui->widget->layout()->addWidget(opt_vector[lrc]);
-    ui->widget->layout()->addWidget(opt_vector[hrc]);
-    ui->widget->layout()->addWidget(opt_vector[fwih]);
-    ui->widget->layout()->addWidget(opt_vector[awih]);
-    ui->widget->layout()->addWidget(opt_vector[x]);
 //    QHBoxLayout *vbox = new QHBoxLayout(opt);
 //    ui->widget->layout()->addItem(vbox);
 //    ui->widget->layout()->addWidget(opt);
@@ -50,6 +33,26 @@ void EnteringBlocks::fillForms()
 {
     block_data = m->blocks[current_block_index];
 
+    if (not is_optimize_widgets_created)
+    {
+        QString lrc = "lrc";
+        QString hrc = "hrc";
+        QString fwih = "fwih";
+        QString awih = "awih";
+        QString x = "x";
+
+        opt_vector.insert(lrc, new OptimizeWidget(this, m, block_data, "Коэффициент пропорциональности длины"));
+        opt_vector.insert(hrc, new OptimizeWidget(this, m, block_data, "Коэффициент пропорциональности высоты"));
+        opt_vector.insert(fwih, new OptimizeWidget(this, m, block_data, "Угол наклона носовой стенки, градус"));
+        opt_vector.insert(awih, new OptimizeWidget(this, m, block_data, "Угол наклона кормовой стенки, градус"));
+        opt_vector.insert(x, new OptimizeWidget(this, m, block_data, "Ордината размещения, м"));
+
+        ui->widget->layout()->addWidget(opt_vector[lrc]);
+        ui->widget->layout()->addWidget(opt_vector[hrc]);
+        ui->widget->layout()->addWidget(opt_vector[fwih]);
+        ui->widget->layout()->addWidget(opt_vector[awih]);
+        ui->widget->layout()->addWidget(opt_vector[x]);
+    }
     ui->lineEdit_titleblock->setText(block_data->titleblock);
 
     setTextInLineEdit(ui->lineEdit_l_hb_l, block_data->l_hb_l);
@@ -68,11 +71,12 @@ void EnteringBlocks::fillForms()
     foreach (auto e, opt_vector)
     {
         e->updateWidgetsDCC();
+        e->updateCombo();
     }
 
     updateWidgetsDCC();
     updateLrcCombo();
-    updateWidgetsDCC();
+//    updateWidgetsDCC();
 }
 
 void EnteringBlocks::setUpForms()

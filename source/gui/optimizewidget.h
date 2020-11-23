@@ -38,6 +38,7 @@ private:
     SBlockData *block_data;
 
     types_of_optimize_var *current_type;
+    int test = 0;
     double desc_temp;
 };
 

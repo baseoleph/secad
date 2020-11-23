@@ -13,22 +13,27 @@ OptimizeWidget::OptimizeWidget(QWidget *parent, SMainClass *m, SBlockData *block
 
     if (label_text == "Коэффициент пропорциональности длины")
     {
+        test = 1;
         current_type = &block_data->lrc;
     }
     else if ( label_text == "Коэффициент пропорциональности высоты")
     {
+        test = 2;
         current_type = &block_data->hrc;
     }
     else if ( label_text == "Угол наклона носовой стенки, градус")
     {
+        test = 3;
         current_type = &block_data->fwih;
     }
     else if ( label_text == "Угол наклона кормовой стенки, градус")
     {
+        test = 4;
         current_type = &block_data->awih;
     }
     else if ( label_text == "Ордината размещения, м")
     {
+        test = 5;
         current_type = &block_data->x;
     }
 }
@@ -82,6 +87,7 @@ void OptimizeWidget::on_comboBox_activated(int index)
 
 void OptimizeWidget::updateWidgetsDCC()
 {
+    qDebug() << "1 " << test;
     ui->comboBox->setCurrentIndex(current_type->type);
     ui->comboBox->activated(current_type->type);
 }

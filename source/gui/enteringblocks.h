@@ -101,6 +101,8 @@ private:
     QList<QString*> titles;
     QVector<unsigned> hbh_really_vector;
     unsigned current_block_index;
+
+    bool is_optimize_widgets_created = false;
 };
 
 #endif // ENTERINGBLOCKS_H
