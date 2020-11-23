@@ -9,6 +9,11 @@ OptimizeWidget::OptimizeWidget(QWidget *parent, SMainClass *m, SBlockData *block
     this->label_text = label_text;
     this->m = m;
     ui->label->setText(label_text);
+    setBlock(block);
+}
+
+void OptimizeWidget::setBlock(SBlockData *block)
+{
     block_data = block;
 
     if (label_text == "Коэффициент пропорциональности длины")
@@ -27,22 +32,34 @@ OptimizeWidget::OptimizeWidget(QWidget *parent, SMainClass *m, SBlockData *block
     {
         test = 3;
         current_type = &block_data->fwih;
+        with_golden_section = false;
     }
     else if ( label_text == "Угол наклона кормовой стенки, градус")
     {
         test = 4;
         current_type = &block_data->awih;
+        with_golden_section = false;
     }
     else if ( label_text == "Ордината размещения, м")
     {
         test = 5;
         current_type = &block_data->x;
+        with_golden_section = false;
     }
 
     if (not with_golden_section)
     {
         ui->checkBox_disc_gsl->hide();
     }
+    else
+    {
+        ui->checkBox_disc_gsl->show();
+    }
+}
+
+void OptimizeWidget::setGSState(int state)
+{
+    state_of_gs = state;
 }
 
 OptimizeWidget::~OptimizeWidget()
@@ -54,7 +71,14 @@ void OptimizeWidget::updateCombo()
 {
     if (current_type->is_golden_section)
     {
-        current_type->desc_link = &m->general->gsl;
+        if (state_of_gs == GSL)
+        {
+            current_type->desc_link = &m->general->gsl;
+        }
+        else
+        {
+            current_type->desc_link = &m->general->gsh;
+        }
     }
     else
     {
@@ -66,6 +90,7 @@ void OptimizeWidget::updateCombo()
         ui->comboBox_disc_var->addItem(QString::number(e));
     }
 }
+
 
 void OptimizeWidget::on_comboBox_activated(int index)
 {

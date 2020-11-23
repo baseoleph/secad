@@ -9,6 +9,11 @@ namespace Ui {
 class OptimizeWidget;
 }
 
+enum
+{
+GSH,
+GSL
+};
 
 class OptimizeWidget : public QWidget
 {
@@ -20,6 +25,8 @@ public:
 
     void updateWidgetsDCC();
     void updateCombo();
+    void setBlock(SBlockData *block);
+    void setGSState(int state);
 
     void setTextInLineEditWidgets();
     void setTextInLineEdit(QLineEdit *line, double val);
@@ -44,6 +51,7 @@ private:
     int test = 0;
     double desc_temp;
     bool with_golden_section = false;
+    int state_of_gs = GSH;
 };
 
 #endif // OPTIMIZEWIDGET_H

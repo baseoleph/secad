@@ -48,6 +48,9 @@ void EnteringBlocks::fillForms()
         opt_vector.insert(awih, new OptimizeWidget(this, m, block_data, "Угол наклона кормовой стенки, градус"));
         opt_vector.insert(x, new OptimizeWidget(this, m, block_data, "Ордината размещения, м"));
 
+        opt_vector[lrc]->setGSState(GSL);
+        opt_vector[hrc]->setGSState(GSH);
+
         ui->widget->layout()->addWidget(opt_vector[lrc]);
         ui->widget->layout()->addWidget(opt_vector[hrc]);
         ui->widget->layout()->addWidget(opt_vector[fwih]);
@@ -67,6 +70,7 @@ void EnteringBlocks::fillForms()
 
     foreach (auto e, opt_vector)
     {
+        e->setBlock(block_data);
         e->setTextInLineEditWidgets();
         e->updateWidgetsDCC();
         e->updateCombo();
