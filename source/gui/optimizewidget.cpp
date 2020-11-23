@@ -87,7 +87,6 @@ void OptimizeWidget::on_comboBox_activated(int index)
 
 void OptimizeWidget::updateWidgetsDCC()
 {
-    qDebug() << "1 " << test;
     ui->comboBox->setCurrentIndex(current_type->type);
     ui->comboBox->activated(current_type->type);
 }
@@ -169,5 +168,24 @@ void OptimizeWidget::on_pushButton_disc_delete_clicked()
     {
         current_type->desc_not_gs.erase(current_type->desc_not_gs.begin() + pos);
         updateCombo();
+    }
+}
+
+void OptimizeWidget::setTextInLineEditWidgets()
+{
+    setTextInLineEdit(ui->lineEdit_cons, current_type->cons);
+    setTextInLineEdit(ui->lineEdit_cont_max, current_type->cont_max);
+    setTextInLineEdit(ui->lineEdit_cont_min, current_type->cont_min);
+}
+
+void OptimizeWidget::setTextInLineEdit(QLineEdit *line, double val)
+{
+    if (val == NOTHING_VALUE)
+    {
+        line->setText("");
+    }
+    else
+    {
+        line->setText(QString::number(val));
     }
 }

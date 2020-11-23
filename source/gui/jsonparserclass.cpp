@@ -74,12 +74,6 @@ void JsonParserClass::saveBlocksData()
             QJsonObject jsonobj;
             QJsonObject json_block;
             json_block["titleblock"] = e->titleblock;
-//            json_block["lrc"] = e->lrc;
-//            json_block["hrc"] = e->hrc;
-//            json_block["fwih"] = e->fwih;
-//            json_block["awih"] = e->awih;
-//            json_block["x"] = e->x;
-//            json_block["z"] = e->z;
             json_block["habitability"] = e->habitability;
             json_block["pap"] = e->pap;
             json_block["foremast"] = e->foremast;
@@ -102,22 +96,11 @@ void JsonParserClass::saveBlocksData()
             json_block["sb_h"] = e->sb_h;
             json_block["sb_l"] = e->sb_l;
 
-            QJsonObject json_lrc;
-            json_lrc["type"] = e->lrc.type;
-            json_lrc["cons"] = e->lrc.cons;
-            json_lrc["cont_min"] = e->lrc.cont_min;
-            json_lrc["cont_max"] = e->lrc.cont_max;
-            json_lrc["is_golden_section"] = e->lrc.is_golden_section;
-
-            QJsonArray json_lrc_arr;
-            foreach (auto e_arr, e->lrc.desc_not_gs)
-            {
-                json_lrc_arr.append(e_arr);
-            }
-
-            json_lrc["desc_not_gs"] = json_lrc_arr;
-
-            json_block["lrc"] = json_lrc;
+            json_block["lrc"] = addToJsonOptimizeObject(&e->lrc);
+            json_block["hrc"] = addToJsonOptimizeObject(&e->hrc);
+            json_block["fwih"] = addToJsonOptimizeObject(&e->fwih);
+            json_block["awih"] = addToJsonOptimizeObject(&e->awih);
+            json_block["x"] = addToJsonOptimizeObject(&e->x);
             jsonar.append(json_block);
         }
     }
@@ -206,12 +189,6 @@ void JsonParserClass::loadBlocksData(QJsonArray blocks_json)
         blocks = m->blocks;
         SBlockData *block_data = blocks[blocks.size() - 1];
         block_data->titleblock = e.toObject()["titleblock"].toString();
-//        block_data->lrc = e.toObject()["lrc"].isDouble();
-//        block_data->hrc = e.toObject()["hrc"].toDouble();
-//        block_data->fwih = e.toObject()["fwih"].toDouble();
-//        block_data->awih = e.toObject()["awih"].toDouble();
-//        block_data->x = e.toObject()["x"].toDouble();
-//        block_data->z = e.toObject()["z"].toDouble();
         block_data->habitability = e.toObject()["habitability"].toBool();
         block_data->pap = e.toObject()["pap"].toBool();
         block_data->foremast = e.toObject()["foremast"].toBool();
@@ -234,19 +211,11 @@ void JsonParserClass::loadBlocksData(QJsonArray blocks_json)
         block_data->sb_h = e.toObject()["sb_h"].toString();
         block_data->sb_l = e.toObject()["sb_l"].toString();
 
-            QJsonObject json_lrc = e.toObject()["lrc"].toObject();
-            block_data->lrc.type = json_lrc["type"].toInt();
-            block_data->lrc.cons = json_lrc["cons"].toDouble();
-            block_data->lrc.cont_min = json_lrc["cont_min"].toDouble();
-            block_data->lrc.cont_max = json_lrc["cont_max"].toDouble();
-            block_data->lrc.is_golden_section = json_lrc["is_golden_section"].toBool();
-
-            QJsonArray json_lrc_arr = json_lrc["desc_not_gs"].toArray();
-            block_data->lrc.desc_not_gs.clear();
-            foreach (auto e_arr, json_lrc_arr)
-            {
-                block_data->lrc.desc_not_gs.push_back(e_arr.toDouble());
-            }
+        loadFromJsonOptimizeObject(&block_data->lrc, e.toObject()["lrc"].toObject());
+        loadFromJsonOptimizeObject(&block_data->hrc, e.toObject()["hrc"].toObject());
+        loadFromJsonOptimizeObject(&block_data->fwih, e.toObject()["fwih"].toObject());
+        loadFromJsonOptimizeObject(&block_data->awih, e.toObject()["awih"].toObject());
+        loadFromJsonOptimizeObject(&block_data->x, e.toObject()["x"].toObject());
     }
 }
 
@@ -270,4 +239,40 @@ void JsonParserClass::loadData(QString proj_name)
 
         loadGeneralData(json.value(GENERAL).toObject());
         loadBlocksData(json.value(BLOCKS).toArray());
+}
+
+QJsonObject JsonParserClass::addToJsonOptimizeObject(types_of_optimize_var *types)
+{
+    QJsonObject optimize_json;
+    optimize_json["type"] = types->type;
+    optimize_json["cons"] = types->cons;
+    optimize_json["cont_min"] = types->cont_min;
+    optimize_json["cont_max"] = types->cont_max;
+    optimize_json["is_golden_section"] = types->is_golden_section;
+
+    QJsonArray json_arr;
+    foreach (auto e_arr, types->desc_not_gs)
+    {
+        json_arr.append(e_arr);
+    }
+
+    optimize_json["desc_not_gs"] = json_arr;
+
+    return optimize_json;
+}
+
+void JsonParserClass::loadFromJsonOptimizeObject(types_of_optimize_var *types, QJsonObject object)
+{
+    types->type = object["type"].toInt();
+    types->cons = object["cons"].toDouble();
+    types->cont_min = object["cont_min"].toDouble();
+    types->cont_max = object["cont_max"].toDouble();
+    types->is_golden_section = object["is_golden_section"].toBool();
+
+    QJsonArray object_arr = object["desc_not_gs"].toArray();
+    types->desc_not_gs.clear();
+    foreach (auto e_arr, object_arr)
+    {
+        types->desc_not_gs.push_back(e_arr.toDouble());
+    }
 }

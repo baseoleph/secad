@@ -2,6 +2,7 @@
 #define OPTIMIZEWIDGET_H
 
 #include <QWidget>
+#include <QLineEdit>
 
 #include "../core/smainclass.h"
 namespace Ui {
@@ -18,7 +19,11 @@ public:
     ~OptimizeWidget();
 
     void updateWidgetsDCC();
+    void updateCombo();
 
+    void setTextInLineEditWidgets();
+    void setTextInLineEdit(QLineEdit *line, double val);
+private slots:
     void on_lineEdit_cons_textChanged(const QString &arg1);
     void on_lineEdit_cont_min_textChanged(const QString &arg1);
     void on_lineEdit_cont_max_textChanged(const QString &arg1);
@@ -27,8 +32,6 @@ public:
     void on_pushButton_disc_add_clicked();
     void on_comboBox_disc_var_currentTextChanged(const QString &arg1);
     void on_pushButton_disc_delete_clicked();
-    void updateCombo();
-private slots:
     void on_comboBox_activated(int index);
 
 private:

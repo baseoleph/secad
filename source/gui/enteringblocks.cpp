@@ -35,6 +35,7 @@ void EnteringBlocks::fillForms()
 
     if (not is_optimize_widgets_created)
     {
+        is_optimize_widgets_created = true;
         QString lrc = "lrc";
         QString hrc = "hrc";
         QString fwih = "fwih";
@@ -70,6 +71,7 @@ void EnteringBlocks::fillForms()
 
     foreach (auto e, opt_vector)
     {
+        e->setTextInLineEditWidgets();
         e->updateWidgetsDCC();
         e->updateCombo();
     }
