@@ -15,11 +15,13 @@ OptimizeWidget::OptimizeWidget(QWidget *parent, SMainClass *m, SBlockData *block
     {
         test = 1;
         current_type = &block_data->lrc;
+        with_golden_section = true;
     }
     else if ( label_text == "Коэффициент пропорциональности высоты")
     {
         test = 2;
         current_type = &block_data->hrc;
+        with_golden_section = true;
     }
     else if ( label_text == "Угол наклона носовой стенки, градус")
     {
@@ -35,6 +37,11 @@ OptimizeWidget::OptimizeWidget(QWidget *parent, SMainClass *m, SBlockData *block
     {
         test = 5;
         current_type = &block_data->x;
+    }
+
+    if (not with_golden_section)
+    {
+        ui->checkBox_disc_gsl->hide();
     }
 }
 

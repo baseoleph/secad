@@ -65,20 +65,12 @@ void EnteringBlocks::fillForms()
     ui->checkBox_mainmast->setChecked(block_data->mainmast);
     ui->checkBox_wheelhouse->setChecked(block_data->wheelhause);
 
-    setTextInLineEdit(ui->lineEdit_lrc_cons, block_data->lrc.cons);
-    setTextInLineEdit(ui->lineEdit_lrc_cont_max, block_data->lrc.cont_max);
-    setTextInLineEdit(ui->lineEdit_lrc_cont_min, block_data->lrc.cont_min);
-
     foreach (auto e, opt_vector)
     {
         e->setTextInLineEditWidgets();
         e->updateWidgetsDCC();
         e->updateCombo();
     }
-
-    updateWidgetsDCC();
-    updateLrcCombo();
-//    updateWidgetsDCC();
 }
 
 void EnteringBlocks::setUpForms()
@@ -98,7 +90,6 @@ void EnteringBlocks::setUpForms()
         {
             e->updateWidgetsDCC();
         }
-        updateWidgetsDCC();
     }
 }
 
@@ -164,7 +155,6 @@ void EnteringBlocks::on_pushButton_addBlock_clicked()
     {
         e->updateWidgetsDCC();
     }
-    updateWidgetsDCC();
 }
 
 void EnteringBlocks::on_comboBox_blocks_activated(int index)
@@ -247,30 +237,6 @@ void EnteringBlocks::setTextInLineEdit(QLineEdit *line, double val)
     }
 }
 
-void EnteringBlocks::updateLrcCombo()
-{
-    if (block_data->lrc.is_golden_section)
-    {
-        block_data->lrc.desc_link = &m->general->gsl;
-    }
-    else
-    {
-        block_data->lrc.desc_link = &block_data->lrc.desc_not_gs;
-    }
-    ui->comboBox_lrc_disc_var->clear();
-    foreach (auto e, *block_data->lrc.desc_link)
-    {
-        ui->comboBox_lrc_disc_var->addItem(QString::number(e));
-    }
-}
-
-
-
-void EnteringBlocks::updateWidgetsDCC()
-{
-    ui->comboBox_lrc->setCurrentIndex(block_data->lrc.type);
-    ui->comboBox_lrc->activated(block_data->lrc.type);
-}
 
 void EnteringBlocks::on_comboBox_hb_h_activated(int index)
 {
@@ -290,110 +256,3 @@ void EnteringBlocks::on_lineEdit_l_hb_l_textChanged(const QString &arg1)
 void EnteringBlocks::on_pushButton_optimize_clicked()
 {
 }
-
-void EnteringBlocks::on_comboBox_lrc_activated(int index)
-{
-    if (index == CONS)
-    {
-        ui->horizontalWidget_lrc_cons->setVisible(true);
-        ui->horizontalWidget_lrc_cont->setVisible(false);
-        ui->horizontalWidget_lrc_disc->setVisible(false);
-
-    }
-    else if (index == CONT)
-    {
-        ui->horizontalWidget_lrc_cons->setVisible(false);
-        ui->horizontalWidget_lrc_cont->setVisible(true);
-        ui->horizontalWidget_lrc_disc->setVisible(false);
-    }
-    else
-    {
-        ui->horizontalWidget_lrc_cons->setVisible(false);
-        ui->horizontalWidget_lrc_cont->setVisible(false);
-        ui->horizontalWidget_lrc_disc->setVisible(true);
-    }
-    block_data->lrc.type = index;
-}
-
-void EnteringBlocks::on_lineEdit_lrc_cons_textChanged(const QString &arg1)
-{
-    block_data->lrc.cons = arg1.toDouble();
-}
-
-void EnteringBlocks::on_lineEdit_lrc_cont_min_textChanged(const QString &arg1)
-{
-    block_data->lrc.cont_min = arg1.toDouble();
-}
-
-void EnteringBlocks::on_lineEdit_lrc_cont_max_textChanged(const QString &arg1)
-{
-    block_data->lrc.cont_max = arg1.toDouble();
-}
-
-void EnteringBlocks::on_checkBox_lrc_disc_gsl_toggled(bool checked)
-{
-    block_data->lrc.is_golden_section = checked;
-    ui->lineEdit_lrc_disc->setEnabled(not checked);
-    ui->pushButton_lrc_disc_add->setEnabled(not checked);
-    ui->pushButton_lcr_disc_delete->setEnabled(not checked);
-
-    updateLrcCombo();
-}
-
-void EnteringBlocks::on_lineEdit_lrc_disc_textChanged(const QString &arg1)
-{
-    if (arg1 != "")
-    {
-        lrc_desc_temp = arg1.toDouble();
-        ui->pushButton_lrc_disc_add->setEnabled(true);
-    }
-    else
-    {
-        lrc_desc_temp = 0;
-        ui->pushButton_lrc_disc_add->setEnabled(false);
-    }
-}
-
-void EnteringBlocks::on_pushButton_lrc_disc_add_clicked()
-{
-    block_data->lrc.desc_not_gs.push_back(lrc_desc_temp);
-    ui->lineEdit_lrc_disc->clear();
-    std::sort(block_data->lrc.desc_not_gs.begin(), block_data->lrc.desc_not_gs.end());
-    updateLrcCombo();
-}
-
-void EnteringBlocks::on_comboBox_lrc_disc_var_currentTextChanged(const QString &arg1)
-{
-    Q_UNUSED(arg1)
-    if (not block_data->lrc.is_golden_section &&
-            ui->comboBox_lrc_disc_var->currentText() != "")
-    {
-        ui->pushButton_lcr_disc_delete->setEnabled(true);
-    }
-    else
-    {
-        ui->pushButton_lcr_disc_delete->setEnabled(false);
-    }
-}
-
-void EnteringBlocks::on_pushButton_lcr_disc_delete_clicked()
-{
-    double el_for_del = ui->comboBox_lrc_disc_var->currentText().toDouble();
-    int pos = -1;
-    for (unsigned int i = 0; i < block_data->lrc.desc_not_gs.size(); ++i)
-    {
-        if (block_data->lrc.desc_not_gs[i] == el_for_del)
-        {
-            pos = i;
-            break;
-        }
-    }
-    if (pos != -1)
-    {
-        block_data->lrc.desc_not_gs.erase(block_data->lrc.desc_not_gs.begin() + pos);
-        updateLrcCombo();
-    }
-}
-
-
-

@@ -43,6 +43,7 @@ private:
     types_of_optimize_var *current_type;
     int test = 0;
     double desc_temp;
+    bool with_golden_section = false;
 };
 
 #endif // OPTIMIZEWIDGET_H
