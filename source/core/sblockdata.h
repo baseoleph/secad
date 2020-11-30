@@ -62,7 +62,7 @@ public:
     // Аппликата размещения блока
     // Block Positioning Applicate
     // metres
-    types_of_optimize_var z;
+    double z;
 
     // Обитаемый блок
     // Habitabilical Block
