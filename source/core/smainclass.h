@@ -14,6 +14,12 @@ public:
     SMainClass();
     ~SMainClass();
 
+
+    void calculateData();
+    void setSubstractureZ(SBlockData &block);
+    void setH(SBlockData &block);
+
+
     void addBlock();
     void restoreSGeneralData();
     SGeneralData *general;

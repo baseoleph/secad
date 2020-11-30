@@ -1,7 +1,6 @@
 #ifndef SGENERALDATA_H
 #define SGENERALDATA_H
 
-
 #include <iomanip>
 #include <vector>
 #include <QString>
