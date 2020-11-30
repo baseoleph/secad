@@ -243,7 +243,7 @@ void JsonParserClass::loadData(QString proj_name)
         loadBlocksData(json.value(BLOCKS).toArray());
 }
 
-QJsonObject JsonParserClass::addToJsonOptimizeObject(types_of_optimize_var *types)
+QJsonObject JsonParserClass::addToJsonOptimizeObject(TypesOfOptimizeVar *types)
 {
     QJsonObject optimize_json;
     optimize_json["type"] = types->type;
@@ -265,7 +265,7 @@ QJsonObject JsonParserClass::addToJsonOptimizeObject(types_of_optimize_var *type
     return optimize_json;
 }
 
-void JsonParserClass::loadFromJsonOptimizeObject(types_of_optimize_var *types, QJsonObject object)
+void JsonParserClass::loadFromJsonOptimizeObject(TypesOfOptimizeVar *types, QJsonObject object)
 {
     types->type = object["type"].toInt();
     types->cons = object["cons"].toDouble();

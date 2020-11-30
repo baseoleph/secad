@@ -23,14 +23,14 @@ public:
     void loadBlocksData(QJsonArray blocks_json);
     void loadData(QString proj_name);
 
-    QJsonObject addToJsonOptimizeObject(types_of_optimize_var* types);
+    QJsonObject addToJsonOptimizeObject(TypesOfOptimizeVar* types);
     QWidget *parent;
 
     SMainClass *m;
     SGeneralData *general;
     std::vector<SBlockData *> blocks;
 
-    void loadFromJsonOptimizeObject(types_of_optimize_var *types, QJsonObject object);
+    void loadFromJsonOptimizeObject(TypesOfOptimizeVar *types, QJsonObject object);
 private:
     QJsonObject json_main;
 

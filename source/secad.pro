@@ -12,6 +12,7 @@ SOURCES += \
     core/sblockdata.cpp \
     core/sgeneraldata.cpp \
     core/smainclass.cpp \
+    core/typesofoptimizevar.cpp \
     gui/enteringblocks.cpp \
     gui/generaldata.cpp \
     gui/generaldatapainter.cpp \
@@ -28,6 +29,7 @@ HEADERS += \
     core/sconstants.h \
     core/sgeneraldata.h \
     core/smainclass.h \
+    core/typesofoptimizevar.h \
     gui/enteringblocks.h \
     gui/generaldata.h \
     gui/generaldatapainter.h \

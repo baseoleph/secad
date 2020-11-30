@@ -3,35 +3,30 @@
 
 #include <vector>
 #include <QString>
-#include "sconstants.h"
+#include "typesofoptimizevar.h"
 
 typedef std::vector<double> d_vector;
 
-enum {
-CONS,
-CONT,
-DISC
-};
+//struct TypesOfOptimizeVar{
+//    int type = CONS;
+//    double cons = NOTHING_VALUE;
+//    double av = NOTHING_VALUE;
+//    double iv = NOTHING_VALUE;
+//    double cont_min = NOTHING_VALUE;
+//    double cont_max = NOTHING_VALUE;
+//    bool is_golden_section = false;
 
-struct types_of_optimize_var{
-    int type = CONS;
-    double cons = NOTHING_VALUE;
-    double av = NOTHING_VALUE;
-    double iv = NOTHING_VALUE;
-    double cont_min = NOTHING_VALUE;
-    double cont_max = NOTHING_VALUE;
-    bool is_golden_section = false;
-
-    d_vector *desc_link;
-    d_vector desc_not_gs;
-};
+//    d_vector *desc_link;
+//    d_vector desc_not_gs;
+//};
 
 class SBlockData
 {
 public:
     SBlockData();
 
-    std::vector<types_of_optimize_var *> optimize_vect;
+
+    std::vector<TypesOfOptimizeVar *> optimize_vect;
 
     // ЗАМЕНИТЬ
     // Название блока
@@ -42,27 +37,27 @@ public:
     // Коэффициент пропорциональности длины блока
     // Length Ratio Coefficient
     // proportion
-    types_of_optimize_var lrc;
+    TypesOfOptimizeVar lrc;
 
     // Коэффициент пропорциональности высоты блока
     // Height Ratio Coefficient
     // proportion
-    types_of_optimize_var hrc;
+    TypesOfOptimizeVar hrc;
 
     // Угол наклона носовой стенки блока
     // Fore Wall Inclination Heel
     // degrees
-    types_of_optimize_var fwih;
+    TypesOfOptimizeVar fwih;
 
     // Угол наклона кормовой стенки блока
     // Aft Wall Inclination Heel
     // degrees
-    types_of_optimize_var awih;
+    TypesOfOptimizeVar awih;
 
     // Ордината размещения блока
     // Block Positioning Ordinate
     // metres
-    types_of_optimize_var x;
+    TypesOfOptimizeVar x;
 
     // Аппликата размещения блока
     // Block Positioning Applicate

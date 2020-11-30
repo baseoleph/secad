@@ -47,7 +47,7 @@ private:
     SMainClass *m;
     SBlockData *block_data;
 
-    types_of_optimize_var *current_type;
+    TypesOfOptimizeVar *current_type;
     int test = 0;
     double desc_temp;
     bool with_golden_section = false;

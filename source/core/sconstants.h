@@ -5,4 +5,10 @@
 #define WIND_PRESSURE 1200
 #define WHA 15
 
+enum {
+CONS,
+CONT,
+DISC
+};
+
 #endif // SCONSTANTS_H
