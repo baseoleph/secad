@@ -16,6 +16,15 @@ SMainClass::~SMainClass()
 
 void SMainClass::calculateData()
 {
+    foreach (auto e, blocks)
+    {
+        if (true || e->hrc.av == NOTHING_VALUE) e->hrc.setRandomAvValue();
+        if (e->lrc.av == NOTHING_VALUE) e->lrc.setRandomAvValue();
+        if (e->fwih.av == NOTHING_VALUE) e->fwih.setRandomAvValue();
+        if (e->awih.av == NOTHING_VALUE) e->awih.setRandomAvValue();
+        if (e->x.av == NOTHING_VALUE) e->x.setRandomAvValue();
+        qDebug() << e->hrc.av;
+    }
 }
 
 void SMainClass::setSubstractureZ(SBlockData &block)

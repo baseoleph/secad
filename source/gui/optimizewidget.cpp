@@ -73,19 +73,19 @@ void OptimizeWidget::updateCombo()
     {
         if (state_of_gs == GSL)
         {
-            current_type->desc_link = &m->general->gsl;
+            current_type->desc_link = m->general->gsl;
         }
         else
         {
-            current_type->desc_link = &m->general->gsh;
+            current_type->desc_link = m->general->gsh;
         }
     }
     else
     {
-        current_type->desc_link = &current_type->desc_not_gs;
+        current_type->desc_link = current_type->desc_not_gs;
     }
     ui->comboBox_disc_var->clear();
-    foreach (auto e, *current_type->desc_link)
+    foreach (auto e, current_type->desc_link)
     {
         ui->comboBox_disc_var->addItem(QString::number(e));
     }
