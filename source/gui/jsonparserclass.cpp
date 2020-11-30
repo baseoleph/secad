@@ -251,6 +251,8 @@ QJsonObject JsonParserClass::addToJsonOptimizeObject(types_of_optimize_var *type
     optimize_json["cont_min"] = types->cont_min;
     optimize_json["cont_max"] = types->cont_max;
     optimize_json["is_golden_section"] = types->is_golden_section;
+    optimize_json["av"] = types->av;
+    optimize_json["iv"] = types->iv;
 
     QJsonArray json_arr;
     foreach (auto e_arr, types->desc_not_gs)
@@ -270,6 +272,8 @@ void JsonParserClass::loadFromJsonOptimizeObject(types_of_optimize_var *types, Q
     types->cont_min = object["cont_min"].toDouble();
     types->cont_max = object["cont_max"].toDouble();
     types->is_golden_section = object["is_golden_section"].toBool();
+    types->av = object["av"].toDouble();
+    types->iv = object["iv"].toDouble();
 
     QJsonArray object_arr = object["desc_not_gs"].toArray();
     types->desc_not_gs.clear();
