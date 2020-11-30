@@ -445,6 +445,13 @@
             </widget>
            </item>
            <item>
+            <widget class="QPushButton" name="pushButton_calc">
+             <property name="text">
+              <string>Посчитать</string>
+             </property>
+            </widget>
+           </item>
+           <item>
             <spacer name="horizontalSpacer_5">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
