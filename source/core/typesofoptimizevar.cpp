@@ -20,9 +20,7 @@ void TypesOfOptimizeVar::setRandomAvValue()
     }
     else if (type == DISC)
     {
-        int l = desc_link.size();
         int i = rand.global()->bounded(0, desc_link.size());
         av = desc_link[i];
-//        av = (*desc_link)[0];
     }
 }
