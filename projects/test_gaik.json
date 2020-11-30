@@ -19,9 +19,11 @@
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
+                    4,
+                    7
                 ],
                 "is_golden_section": false,
-                "type": 0
+                "type": 2
             },
             "h": -5.486129293930126e+303,
             "habitability": true,
@@ -29,16 +31,17 @@
             "hb_l": 0,
             "hrc": {
                 "cons": 0,
-                "cont_max": 0,
-                "cont_min": 0,
+                "cont_max": 9,
+                "cont_min": 5,
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "type": 0
+                "type": 1
             },
+            "is_hull": true,
             "l_hb_l": -5.48635e+303,
             "lrc": {
-                "cons": 0,
+                "cons": 3,
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
@@ -85,12 +88,12 @@
             "funnel": false,
             "fwih": {
                 "cons": 0,
-                "cont_max": 0,
-                "cont_min": 0,
+                "cont_max": 8,
+                "cont_min": 5,
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "type": 0
+                "type": 1
             },
             "h": -4.2813444857983805e+304,
             "habitability": true,
@@ -98,22 +101,23 @@
             "hb_l": 0,
             "hrc": {
                 "cons": 0,
-                "cont_max": 0,
-                "cont_min": 0,
+                "cont_max": 3,
+                "cont_min": 8,
                 "desc_not_gs": [
                 ],
-                "is_golden_section": false,
-                "type": 0
+                "is_golden_section": true,
+                "type": 2
             },
+            "is_hull": false,
             "l_hb_l": 0,
             "lrc": {
-                "cons": 0,
+                "cons": 1,
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
                 ],
-                "is_golden_section": false,
-                "type": 0
+                "is_golden_section": true,
+                "type": 2
             },
             "m_a": -4.281344479131182e+304,
             "m_b": -4.281344479131182e+304,
@@ -174,6 +178,7 @@
                 "is_golden_section": false,
                 "type": 0
             },
+            "is_hull": false,
             "l_hb_l": 10,
             "lrc": {
                 "cons": 0,
@@ -243,6 +248,7 @@
                 "is_golden_section": false,
                 "type": 0
             },
+            "is_hull": false,
             "l_hb_l": 1,
             "lrc": {
                 "cons": 0,

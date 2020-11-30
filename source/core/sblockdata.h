@@ -171,6 +171,9 @@ public:
     // Block's Fore Upper Point
     // metres
     double uxf = NOTHING_VALUE;
+
+
+    bool is_hull = false;
 };
 
 #endif // SBLOCKDATA_H

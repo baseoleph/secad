@@ -17,6 +17,10 @@ SMainClass::~SMainClass()
 void SMainClass::addBlock()
 {
     blocks.push_back(new SBlockData());
+    if (blocks.size() == 1)
+    {
+        blocks[0]->is_hull = true;
+    }
 }
 
 void SMainClass::restoreSGeneralData()
