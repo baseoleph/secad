@@ -19,31 +19,31 @@ void OptimizeWidget::setBlock(SBlockData *block)
     if (label_text == "Коэффициент пропорциональности длины")
     {
         test = 1;
-        current_type = &block_data->lrc;
+        current_type = &block_data->K_L;
         with_golden_section = true;
     }
     else if ( label_text == "Коэффициент пропорциональности высоты")
     {
         test = 2;
-        current_type = &block_data->hrc;
+        current_type = &block_data->K_H;
         with_golden_section = true;
     }
     else if ( label_text == "Угол наклона носовой стенки, градус")
     {
         test = 3;
-        current_type = &block_data->fwih;
+        current_type = &block_data->alpha_F;
         with_golden_section = false;
     }
     else if ( label_text == "Угол наклона кормовой стенки, градус")
     {
         test = 4;
-        current_type = &block_data->awih;
+        current_type = &block_data->alpha_A;
         with_golden_section = false;
     }
     else if ( label_text == "Ордината размещения, м")
     {
         test = 5;
-        current_type = &block_data->x;
+        current_type = &block_data->X;
         with_golden_section = false;
     }
 
@@ -73,11 +73,11 @@ void OptimizeWidget::updateCombo()
     {
         if (state_of_gs == GSL)
         {
-            current_type->desc_link = m->general->gsl;
+            current_type->desc_link = m->general->GS_L;
         }
         else
         {
-            current_type->desc_link = m->general->gsh;
+            current_type->desc_link = m->general->GS_H;
         }
     }
     else

@@ -2,8 +2,8 @@
 
 SGeneralData::SGeneralData()
 {
-    wind_pressure = WIND_PRESSURE;
-    wha = WHA;
+    p_w = WIND_PRESSURE;
+    theta = WHA;
 }
 
 SGeneralData::~SGeneralData()
@@ -13,14 +13,14 @@ SGeneralData::~SGeneralData()
 
 void SGeneralData::calcData()
 {
-   visibility_zone = calcVisibilityZone(length);
-   freeboard = calcFreeboard(draft, height);
-   sef_ma = calcSEFMA(draft, sef_mea);
-   sef_mo = calcSEFMO(length, sef_mro);
-   sef_apa = calcSEFAPA(sef_ma, sef_apra);
-   sef_coef = calcSEFCoef(length, draft, sef_ma, sef_mo, sef_apa);
-   gsl = calcGoldenSecionByLength(length);
-   gsh = calcGoldenSecionByHeight(sef_ma);
+   L_V_max = calcVisibilityZone(L);
+   FB = calcFreeboard(T, H);
+   t = calcSEFMA(FB, t_);
+   q = calcSEFMO(L, q_);
+   p = calcSEFAPA(t, p_);
+   cn = calcSEFCoef(L, T, t, q, p);
+   GS_L = calcGoldenSecionByLength(L);
+   GS_H = calcGoldenSecionByHeight(t);
 }
 
 double SGeneralData::calcVisibilityZone(const double length)
@@ -62,9 +62,9 @@ d_vector SGeneralData::calcGoldenSecionByHeight(const double sef_ma)
     return gsh;
 }
 
-double SGeneralData::calcSEFMA(const double draft, const double sef_mea)
+double SGeneralData::calcSEFMA(const double freeboard, const double sef_mea)
 {
-    return sef_mea - draft;
+    return sef_mea - freeboard;
 }
 
 double SGeneralData::calcSEFMO(const double length, const double sef_mro)
@@ -74,7 +74,7 @@ double SGeneralData::calcSEFMO(const double length, const double sef_mro)
 
 double SGeneralData::calcSEFAPA(const double sef_ma, const double sef_apra)
 {
-    return sef_ma * sef_apra;
+    return -sef_ma * sef_apra;
 }
 
 d_vector SGeneralData::calcSEFCoef(const double length, const double draft, const double sef_ma, const double sef_mo, const double sef_apa)

@@ -24,32 +24,32 @@ public:
     // Коэффициент пропорциональности длины блока
     // Length Ratio Coefficient
     // proportion
-    TypesOfOptimizeVar lrc;
+    TypesOfOptimizeVar K_L;
 
     // Коэффициент пропорциональности высоты блока
     // Height Ratio Coefficient
     // proportion
-    TypesOfOptimizeVar hrc;
+    TypesOfOptimizeVar K_H;
 
     // Угол наклона носовой стенки блока
     // Fore Wall Inclination Heel
     // degrees
-    TypesOfOptimizeVar fwih;
+    TypesOfOptimizeVar alpha_F;
 
     // Угол наклона кормовой стенки блока
     // Aft Wall Inclination Heel
     // degrees
-    TypesOfOptimizeVar awih;
+    TypesOfOptimizeVar alpha_A;
 
     // Ордината размещения блока
     // Block Positioning Ordinate
     // metres
-    TypesOfOptimizeVar x;
+    TypesOfOptimizeVar X;
 
     // Аппликата размещения блока
     // Block Positioning Applicate
     // metres
-    double z;
+    double Z;
 
     // Обитаемый блок
     // Habitabilical Block
@@ -84,17 +84,17 @@ public:
     // Родительский блок по высоте
     // Head Block by Height
     //
-    int hb_h = NOTHING_VALUE;
+    int HB_H = NOTHING_VALUE;
 
     // Родительский блок по длине
     // Head Block by Length
     //
-    int hb_l = NOTHING_VALUE;
+    int HB_L = NOTHING_VALUE;
 
     // Расстояние до родительского блока по длине
     // Distance To Head Block by Length
     // metres
-    double l_hb_l = NOTHING_VALUE;
+    double L_HB_L = NOTHING_VALUE;
 
     // Дочерний блок по высоте
     // Slave Block by Height
@@ -109,12 +109,12 @@ public:
     // Длина нижнего основания блока
     // Block's Lower Base Length
     // metres
-    double bb_l = NOTHING_VALUE;
+    double a = NOTHING_VALUE;
 
     // Длина верхнего основания блока
     // Block's Upper Base Length
     // metres
-    double bb_u = NOTHING_VALUE;
+    double b = NOTHING_VALUE;
 
     // Высота блока
     // Block's Height
@@ -124,17 +124,17 @@ public:
     // Площадь проекции блока на диаметральную плоскость (ДП)
     // Block's Proection Area to centerline plane (CL)
     // sq.metres
-    double s = NOTHING_VALUE;
+    double S = NOTHING_VALUE;
 
     // Статический момент по оси абсцисс нижнего основания блока
     // Block's Lower Base Statical Moment
     // sq.metres
-    double m_a = NOTHING_VALUE;
+    double M_a = NOTHING_VALUE;
 
     // Статический момент по оси абсцисс верхнего основания блока
     // Block's Upper Base Statical Moment
     // sq.metres
-    double m_b = NOTHING_VALUE;
+    double M_b = NOTHING_VALUE;
 
     // Абсцисса центра тяжести (ЦТ) площади проекции блока на ДП
     // Block's Proection Area to CL Gravity Center (CG) Ordinate
@@ -149,12 +149,12 @@ public:
     // Верхняя кормовая точка блока
     // Block's Aft Upper Point
     // metres
-    double uxa = NOTHING_VALUE;
+    double X_U_A = NOTHING_VALUE;
 
     // Верхняя носовая точка блока
     // Block's Fore Upper Point
     // metres
-    double uxf = NOTHING_VALUE;
+    double X_U_F = NOTHING_VALUE;
 
 
     bool is_hull = false;

@@ -59,7 +59,7 @@ void EnteringBlocks::fillForms()
     }
     ui->lineEdit_titleblock->setText(block_data->titleblock);
 
-    setTextInLineEdit(ui->lineEdit_l_hb_l, block_data->l_hb_l);
+    setTextInLineEdit(ui->lineEdit_l_hb_l, block_data->L_HB_L);
 
     ui->checkBox_foremast->setChecked(block_data->foremast);
     ui->checkBox_funnel->setChecked(block_data->funnel);
@@ -153,8 +153,8 @@ void EnteringBlocks::on_pushButton_addBlock_clicked()
     block_data = m->blocks[current_block_index];
     QString new_title = generateNewTemplateTitle();
     block_data->titleblock = new_title;
-    block_data->hb_h = NOTHING_VALUE;
-    block_data->hb_l = NOTHING_VALUE;
+    block_data->HB_H = NOTHING_VALUE;
+    block_data->HB_L = NOTHING_VALUE;
     updateComboBlocks();
     foreach (auto e, opt_vector)
     {
@@ -226,8 +226,8 @@ void EnteringBlocks::updateComboHBBlocks()
     }
 
 
-    ui->comboBox_hb_h->setCurrentIndex(block_data->hb_h);
-    ui->comboBox_hb_l->setCurrentIndex(block_data->hb_l);
+    ui->comboBox_hb_h->setCurrentIndex(block_data->HB_H);
+    ui->comboBox_hb_l->setCurrentIndex(block_data->HB_L);
 }
 
 void EnteringBlocks::setTextInLineEdit(QLineEdit *line, double val)
@@ -245,17 +245,17 @@ void EnteringBlocks::setTextInLineEdit(QLineEdit *line, double val)
 
 void EnteringBlocks::on_comboBox_hb_h_activated(int index)
 {
-    block_data->hb_h = index;
+    block_data->HB_H = index;
 }
 
 void EnteringBlocks::on_comboBox_hb_l_activated(int index)
 {
-    block_data->hb_l = index;
+    block_data->HB_L = index;
 }
 
 void EnteringBlocks::on_lineEdit_l_hb_l_textChanged(const QString &arg1)
 {
-    block_data->l_hb_l = arg1.toDouble();
+    block_data->L_HB_L = arg1.toDouble();
 }
 
 void EnteringBlocks::on_pushButton_optimize_clicked()

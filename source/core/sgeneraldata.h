@@ -22,7 +22,7 @@ public:
     double calcFreeboard(const double draft, const double height);
     d_vector calcGoldenSecionByLength(const double length);
     d_vector calcGoldenSecionByHeight(const double sef_ma);
-    double calcSEFMA(const double draft, const double sef_mea);
+    double calcSEFMA(const double freeboard, const double sef_mea);
     double calcSEFMO(const double length, const double sef_mro);
     double calcSEFAPA(const double sef_ma, const double sef_apra);
 
@@ -41,12 +41,12 @@ public:
     // Давление ветра, Па
     // Wind Pressure
     // pascals
-    double wind_pressure = NOTHING_VALUE;
+    double p_w = NOTHING_VALUE;
 
     // Максимально допустимый угол крена от действия ветра, градусы
     // Wind Heel Angle
     // degrees
-    double wha = NOTHING_VALUE;
+    double theta = NOTHING_VALUE;
 
     /* </const> */
 
@@ -55,96 +55,96 @@ public:
     // Длина
     // Length
     // metres
-    double length = NOTHING_VALUE;
+    double L = NOTHING_VALUE;
 
     // Ширина, м
     // Beam
     // metres
-    double beam = NOTHING_VALUE;
+    double B = NOTHING_VALUE;
 
     // Осадка, м
     // Draft
     // metres
-    double draft = NOTHING_VALUE;
+    double T = NOTHING_VALUE;
 
     // Высота борта, м
     // Height
     // metres
-    double height = NOTHING_VALUE;
+    double H = NOTHING_VALUE;
 
     // Коэффициент общей полноты
     // Block Coefficient
     //
-    double cb = NOTHING_VALUE;
+    double delta = NOTHING_VALUE;
 
     // Коэффициент развитости надстроек
     // Superstructure Development Coefficient
     //
-    double csd = NOTHING_VALUE;
+    double k_DS = NOTHING_VALUE;
 
     // Поперечная метацентрическая высота (МЦВ), м
     // Metacentric Height
     // metres
-    double gm = NOTHING_VALUE;
+    double GM = NOTHING_VALUE;
 
     // Заданное значение максимальной аппликаты огибающей силуэта, м
     // SEF - Silhouette Envelope Function
     // MEA - Maximum Entering Applicate
     // metres
-    double sef_mea = NOTHING_VALUE;
+    double t_ = NOTHING_VALUE;
 
     // Относительная абсцисса максимума огибающей силуэта (доли длины)
     // MRO - SEF Maxumum Relative Ordinate
     // proportion
-    double sef_mro = NOTHING_VALUE;
+    double q_ = NOTHING_VALUE;
 
     // Относительная аппликата огибающей силуэта на кормовом перпендикуляре (доля SEFm)
     // APRA - Aft Perpendicular Relative Applicate
     // proportion
-    double sef_apra = NOTHING_VALUE;
+    double p_ = NOTHING_VALUE;
 
     /* Расчетные переменные */
 
     // Максимально допустимая длина мертвой зоны
     // Visibility Zone Length
     // metres
-    double visibility_zone = NOTHING_VALUE;
+    double L_V_max = NOTHING_VALUE;
 
     // Надводный борт
     // Freeboard
     // metres
-    double freeboard = NOTHING_VALUE;
+    double FB = NOTHING_VALUE;
 
     // Аппликата максимума огибающей
     // MA - SEF Maximum Applicate
     // metres
-    double sef_ma = NOTHING_VALUE;
+    double t = NOTHING_VALUE;
 
     // Абсцисса максимума огибающей
     // MO - SEF Maximum Ordinate
     // metres
-    double sef_mo = NOTHING_VALUE;
+    double q = NOTHING_VALUE;
 
     // Аппликата огибающей на кормовом перпендикуляре
     // APA - SEF Aft Perpendicular Applicate
     // metres
-    double sef_apa = NOTHING_VALUE;
+    double p = NOTHING_VALUE;
 
     // Золотое сечение по длине
     // Golden Section by Length
     // proportions
-    d_vector gsl;
+    d_vector GS_L;
 
     // Золотое сечение по высоте
     // Golden Section by Height
     // proportions
-    d_vector gsh;
+    d_vector GS_H;
 
 
     // Коэффициенты в фукнции полинома
     // SEF coefficients
     // coefficients
-    d_vector sef_coef;
+    d_vector cn;
 };
 
 #endif // SGENERALDATA_H

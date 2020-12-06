@@ -14,50 +14,55 @@ void JsonParserClass::saveGeneralData()
     QJsonObject json_main_general;
     QJsonObject json_general_calc_data;
     QJsonObject json_general_user_data;
-    json_general_user_data["project_name"] = general->project_name;
-    json_general_user_data["length"] = general->length;
-    json_general_user_data["wind_pressure"] = general->wind_pressure;
-    json_general_user_data["wha"] = general->wha;
-    json_general_user_data["length"] = general->length;
-    json_general_user_data["beam"] = general->beam;
-    json_general_user_data["draft"] = general->draft;
-    json_general_user_data["height"] = general->height;
-    json_general_user_data["cb"] = general->cb;
-    json_general_user_data["csd"] = general->csd;
-    json_general_user_data["gm"] = general->gm;
-    json_general_user_data["sef_mea"] = general->sef_mea;
-    json_general_user_data["sef_mro"] = general->sef_mro;
-    json_general_user_data["sef_apra"] = general->sef_apra;
+    json_general_user_data[s_project_name] = general->project_name;
+    json_general_user_data[s_L] = general->L;
+    json_general_user_data[s_p_w] = general->p_w;
+    json_general_user_data[s_theta] = general->theta;
+    json_general_user_data[s_B] = general->B;
+    json_general_user_data[s_T] = general->T;
+    json_general_user_data[s_H] = general->H;
+    json_general_user_data[s_delta] = general->delta;
+    json_general_user_data[s_k_DS] = general->k_DS;
+    json_general_user_data[s_GM] = general->GM;
+    json_general_user_data[s_t_] = general->t_;
+    json_general_user_data[s_q_] = general->q_;
+    json_general_user_data[s_p_] = general->p_;
 
-    json_general_calc_data["visibility_zone"] = general->visibility_zone;
-    json_general_calc_data["freeboard"] = general->freeboard;
-    json_general_calc_data["sef_ma"] = general->sef_ma;
-    json_general_calc_data["sef_mo"] = general->sef_mo;
-    json_general_calc_data["sef_apa"] = general->sef_apa;
+
+
+    json_general_calc_data[s_L_V_max] = general->L_V_max;
+    json_general_calc_data[s_FB] = general->FB;
+    json_general_calc_data[s_t] = general->t;
+    json_general_calc_data[s_q] = general->q;
+    json_general_calc_data[s_p] = general->p;
+
 
     QJsonArray json_ar_gsl;
-    foreach (auto e, general->gsl)
+    foreach (auto e, general->GS_L)
     {
         json_ar_gsl.append(e);
     }
-    json_general_calc_data["gsl"] = json_ar_gsl;
+    json_general_calc_data[s_GS_L] = json_ar_gsl;
+
 
     QJsonArray json_ar_gsh;
-    foreach (auto e, general->gsh)
+    foreach (auto e, general->GS_H)
     {
         json_ar_gsh.append(e);
     }
-    json_general_calc_data["gsh"] = json_ar_gsh;
+    json_general_calc_data[s_GS_H] = json_ar_gsh;
+
 
     QJsonArray json_ar_sef_coef;
-    foreach (auto e, general->sef_coef)
+    foreach (auto e, general->cn)
     {
         json_ar_sef_coef.append(e);
     }
-    json_general_calc_data["sef_coef"] = json_ar_sef_coef;
+    json_general_calc_data[s_cn] = json_ar_sef_coef;
 
-    json_main_general["user"] = json_general_user_data;
-    json_main_general["calc"] = json_general_calc_data;
+
+    json_main_general[s_user] = json_general_user_data;
+    json_main_general[s_calc] = json_general_calc_data;
 
     json_main[GENERAL] = json_main_general;
 }
@@ -73,35 +78,35 @@ void JsonParserClass::saveBlocksData()
         {
             QJsonObject jsonobj;
             QJsonObject json_block;
-            json_block["titleblock"] = e->titleblock;
-            json_block["habitability"] = e->habitability;
-            json_block["pap"] = e->pap;
-            json_block["foremast"] = e->foremast;
-            json_block["mainmast"] = e->mainmast;
-            json_block["funnel"] = e->funnel;
-            json_block["wheelhause"] = e->wheelhause;
-            json_block["l_hb_l"] = e->l_hb_l;
-            json_block["bb_l"] = e->bb_l;
-            json_block["bb_u"] = e->bb_u;
-            json_block["h"] = e->h;
-            json_block["s"] = e->s;
-            json_block["m_a"] = e->m_a;
-            json_block["m_b"] = e->m_b;
-            json_block["x_g"] = e->x_g;
-            json_block["z_g"] = e->z_g;
-            json_block["uxa"] = e->uxa;
-            json_block["uxf"] = e->uxf;
-            json_block["hb_h"] = e->hb_h;
-            json_block["hb_l"] = e->hb_l;
-            json_block["sb_h"] = e->sb_h;
-            json_block["sb_l"] = e->sb_l;
-            json_block["is_hull"] = e->is_hull;
-            json_block["z"] = e->z;
-            json_block["lrc"] = addToJsonOptimizeObject(&e->lrc);
-            json_block["hrc"] = addToJsonOptimizeObject(&e->hrc);
-            json_block["fwih"] = addToJsonOptimizeObject(&e->fwih);
-            json_block["awih"] = addToJsonOptimizeObject(&e->awih);
-            json_block["x"] = addToJsonOptimizeObject(&e->x);
+            json_block[s_titleblock] = e->titleblock;
+            json_block[s_habitability] = e->habitability;
+            json_block[s_pap] = e->pap;
+            json_block[s_foremast] = e->foremast;
+            json_block[s_mainmast] = e->mainmast;
+            json_block[s_funnel] = e->funnel;
+            json_block[s_wheelhause] = e->wheelhause;
+            json_block[s_L_HB_L] = e->L_HB_L;
+            json_block[s_a] = e->a;
+            json_block[s_b] = e->b;
+            json_block[s_h] = e->h;
+            json_block[s_S] = e->S;
+            json_block[s_M_a] = e->M_a;
+            json_block[s_M_b] = e->M_b;
+            json_block[s_x_g] = e->x_g;
+            json_block[s_z_g] = e->z_g;
+            json_block[s_X_U_A] = e->X_U_A;
+            json_block[s_X_U_F] = e->X_U_F;
+            json_block[s_HB_H] = e->HB_H;
+            json_block[s_HB_L] = e->HB_L;
+            json_block[s_sb_h] = e->sb_h;
+            json_block[s_sb_l] = e->sb_l;
+            json_block[s_is_hull] = e->is_hull;
+            json_block[s_Z] = e->Z;
+            json_block[s_K_L] = addToJsonOptimizeObject(&e->K_L);
+            json_block[s_K_H] = addToJsonOptimizeObject(&e->K_H);
+            json_block[s_alpha_F] = addToJsonOptimizeObject(&e->alpha_F);
+            json_block[s_alpha_A] = addToJsonOptimizeObject(&e->alpha_A);
+            json_block[s_X] = addToJsonOptimizeObject(&e->X);
             jsonar.append(json_block);
         }
     }
@@ -136,48 +141,48 @@ void JsonParserClass::saveData()
 
 void JsonParserClass::loadGeneralData(QJsonObject general_json)
 {
-    QJsonObject general_obj = general_json.value("user").toObject();
+    QJsonObject general_obj = general_json.value(s_user).toObject();
 
-    m->general->project_name = general_obj.value("project_name").toString();
-    m->general->wind_pressure = general_obj.value("wind_pressure").toDouble();
-    m->general->wha = general_obj.value("wha").toDouble();
-    m->general->length = general_obj.value("length").toDouble();
-    m->general->beam = general_obj.value("beam").toDouble();
-    m->general->draft = general_obj.value("draft").toDouble();
-    m->general->height = general_obj.value("height").toDouble();
-    m->general->cb = general_obj.value("cb").toDouble();
-    m->general->csd = general_obj.value("csd").toDouble();
-    m->general->gm = general_obj.value("gm").toDouble();
-    m->general->sef_mea = general_obj.value("sef_mea").toDouble();
-    m->general->sef_mro = general_obj.value("sef_mro").toDouble();
-    m->general->sef_apra = general_obj.value("sef_apra").toDouble();
+    m->general->project_name = general_obj.value(s_project_name).toString();
+    m->general->p_w = general_obj.value(s_p_w).toDouble();
+    m->general->theta = general_obj.value(s_theta).toDouble();
+    m->general->L = general_obj.value(s_L).toDouble();
+    m->general->B = general_obj.value(s_B).toDouble();
+    m->general->T = general_obj.value(s_T).toDouble();
+    m->general->H = general_obj.value(s_H).toDouble();
+    m->general->delta = general_obj.value(s_delta).toDouble();
+    m->general->k_DS = general_obj.value(s_k_DS).toDouble();
+    m->general->GM = general_obj.value(s_GM).toDouble();
+    m->general->t_ = general_obj.value(s_t_).toDouble();
+    m->general->q_ = general_obj.value(s_q_).toDouble();
+    m->general->p_ = general_obj.value(s_p_).toDouble();
 
-    general_obj = general_json.value("calc").toObject();
+    general_obj = general_json.value(s_calc).toObject();
 
-    m->general->visibility_zone = general_obj.value("visibility_zone").toDouble();
-    m->general->freeboard = general_obj.value("freeboard").toDouble();
-    m->general->sef_ma = general_obj.value("sef_ma").toDouble();
-    m->general->sef_mo = general_obj.value("sef_mo").toDouble();
-    m->general->sef_apa = general_obj.value("sef_apa").toDouble();
+    m->general->L_V_max = general_obj.value(s_L_V_max).toDouble();
+    m->general->FB = general_obj.value(s_FB).toDouble();
+    m->general->t = general_obj.value(s_t).toDouble();
+    m->general->q = general_obj.value(s_q).toDouble();
+    m->general->p = general_obj.value(s_p).toDouble();
 
-    QJsonArray json_gsl = general_obj.value("gsl").toArray();
-    m->general->gsl.clear();
+    QJsonArray json_gsl = general_obj.value(s_GS_L).toArray();
+    m->general->GS_L.clear();
     foreach (auto e, json_gsl)
     {
-        m->general->gsl.push_back(e.toDouble());
+        m->general->GS_L.push_back(e.toDouble());
     }
-    QJsonArray json_gsh = general_obj.value("gsh").toArray();
-    m->general->gsh.clear();
+    QJsonArray json_gsh = general_obj.value(s_GS_H).toArray();
+    m->general->GS_H.clear();
     foreach (auto e, json_gsh)
     {
-        m->general->gsh.push_back(e.toDouble());
+        m->general->GS_H.push_back(e.toDouble());
     }
 
-    QJsonArray json_sef_coef = general_obj.value("sef_coef").toArray();
-    m->general->sef_coef.clear();
+    QJsonArray json_sef_coef = general_obj.value(s_cn).toArray();
+    m->general->cn.clear();
     foreach (auto e, json_sef_coef)
     {
-        m->general->sef_coef.push_back(e.toDouble());
+        m->general->cn.push_back(e.toDouble());
     }
 }
 
@@ -189,35 +194,38 @@ void JsonParserClass::loadBlocksData(QJsonArray blocks_json)
         m->addBlock();
         blocks = m->blocks;
         SBlockData *block_data = blocks[blocks.size() - 1];
-        block_data->titleblock = e.toObject()["titleblock"].toString();
-        block_data->habitability = e.toObject()["habitability"].toBool();
-        block_data->pap = e.toObject()["pap"].toBool();
-        block_data->foremast = e.toObject()["foremast"].toBool();
-        block_data->mainmast = e.toObject()["mainmast"].toBool();
-        block_data->funnel = e.toObject()["funnel"].toBool();
-        block_data->wheelhause = e.toObject()["wheelhause"].toBool();
-        block_data->l_hb_l = e.toObject()["l_hb_l"].toDouble();
-        block_data->bb_l = e.toObject()["bb_l"].toDouble();
-        block_data->bb_u = e.toObject()["bb_u"].toDouble();
-        block_data->h = e.toObject()["h"].toDouble();
-        block_data->s = e.toObject()["s"].toDouble();
-        block_data->m_a = e.toObject()["m_a"].toDouble();
-        block_data->m_b = e.toObject()["m_b"].toDouble();
-        block_data->x_g = e.toObject()["x_g"].toDouble();
-        block_data->z_g = e.toObject()["z_g"].toDouble();
-        block_data->uxa = e.toObject()["uxa"].toDouble();
-        block_data->uxf = e.toObject()["uxf"].toDouble();
-        block_data->hb_h = e.toObject()["hb_h"].toInt();
-        block_data->hb_l = e.toObject()["hb_l"].toInt();
-        block_data->sb_h = e.toObject()["sb_h"].toString();
-        block_data->sb_l = e.toObject()["sb_l"].toString();
-        block_data->is_hull = e.toObject()["is_hull"].toBool();
-        block_data->z = e.toObject()["z"].toDouble();
-        loadFromJsonOptimizeObject(&block_data->lrc, e.toObject()["lrc"].toObject());
-        loadFromJsonOptimizeObject(&block_data->hrc, e.toObject()["hrc"].toObject());
-        loadFromJsonOptimizeObject(&block_data->fwih, e.toObject()["fwih"].toObject());
-        loadFromJsonOptimizeObject(&block_data->awih, e.toObject()["awih"].toObject());
-        loadFromJsonOptimizeObject(&block_data->x, e.toObject()["x"].toObject());
+        block_data->titleblock = e.toObject()[s_titleblock].toString();
+        block_data->habitability = e.toObject()[s_habitability].toBool();
+        block_data->pap = e.toObject()[s_pap].toBool();
+        block_data->foremast = e.toObject()[s_foremast].toBool();
+        block_data->mainmast = e.toObject()[s_mainmast].toBool();
+        block_data->funnel = e.toObject()[s_funnel].toBool();
+        block_data->wheelhause = e.toObject()[s_wheelhause].toBool();
+        block_data->L_HB_L = e.toObject()[s_L_HB_L].toDouble();
+        block_data->a = e.toObject()[s_a].toDouble();
+        block_data->b = e.toObject()[s_b].toDouble();
+        block_data->h = e.toObject()[s_h].toDouble();
+        block_data->S = e.toObject()[s_S].toDouble();
+
+        block_data->M_a = e.toObject()[s_M_a].toDouble();
+        block_data->M_b = e.toObject()[s_M_b].toDouble();
+        block_data->x_g = e.toObject()[s_x_g].toDouble();
+        block_data->z_g = e.toObject()[s_z_g].toDouble();
+        block_data->X_U_A = e.toObject()[s_X_U_A].toDouble();
+        block_data->X_U_F = e.toObject()[s_X_U_F].toDouble();
+        block_data->HB_H = e.toObject()[s_HB_H].toInt();
+        block_data->HB_L = e.toObject()[s_HB_L].toInt();
+        block_data->sb_h = e.toObject()[s_sb_h].toString();
+        block_data->sb_l = e.toObject()[s_sb_l].toString();
+        block_data->is_hull = e.toObject()[s_is_hull].toBool();
+        block_data->Z = e.toObject()[s_Z].toDouble();
+        loadFromJsonOptimizeObject(&block_data->K_L, e.toObject()[s_K_L].toObject());
+        loadFromJsonOptimizeObject(&block_data->K_H, e.toObject()[s_K_H].toObject());
+        loadFromJsonOptimizeObject(&block_data->alpha_F, e.toObject()[s_alpha_F].toObject());
+        loadFromJsonOptimizeObject(&block_data->alpha_A, e.toObject()[s_alpha_A].toObject());
+        loadFromJsonOptimizeObject(&block_data->X, e.toObject()[s_X].toObject());
+
+
     }
 }
 
@@ -246,13 +254,14 @@ void JsonParserClass::loadData(QString proj_name)
 QJsonObject JsonParserClass::addToJsonOptimizeObject(TypesOfOptimizeVar *types)
 {
     QJsonObject optimize_json;
-    optimize_json["type"] = types->type;
-    optimize_json["cons"] = types->cons;
-    optimize_json["cont_min"] = types->cont_min;
-    optimize_json["cont_max"] = types->cont_max;
-    optimize_json["is_golden_section"] = types->is_golden_section;
-    optimize_json["av"] = types->av;
-    optimize_json["iv"] = types->iv;
+    optimize_json[s_type] = types->type;
+    optimize_json[s_cons] = types->cons;
+    optimize_json[s_cont_min] = types->cont_min;
+    optimize_json[s_cont_max] = types->cont_max;
+    optimize_json[s_is_golden_section] = types->is_golden_section;
+    optimize_json[s_av] = types->av;
+    optimize_json[s_iv] = types->iv;
+
 
     QJsonArray json_arr;
     foreach (auto e_arr, types->desc_not_gs)
@@ -260,22 +269,23 @@ QJsonObject JsonParserClass::addToJsonOptimizeObject(TypesOfOptimizeVar *types)
         json_arr.append(e_arr);
     }
 
-    optimize_json["desc_not_gs"] = json_arr;
+    optimize_json[s_desc_not_gs] = json_arr;
+
 
     return optimize_json;
 }
 
 void JsonParserClass::loadFromJsonOptimizeObject(TypesOfOptimizeVar *types, QJsonObject object)
 {
-    types->type = object["type"].toInt();
-    types->cons = object["cons"].toDouble();
-    types->cont_min = object["cont_min"].toDouble();
-    types->cont_max = object["cont_max"].toDouble();
-    types->is_golden_section = object["is_golden_section"].toBool();
-    types->av = object["av"].toDouble();
-    types->iv = object["iv"].toDouble();
+    types->type = object[s_type].toInt();
+    types->cons = object[s_cons].toDouble();
+    types->cont_min = object[s_cont_min].toDouble();
+    types->cont_max = object[s_cont_max].toDouble();
+    types->is_golden_section = object[s_is_golden_section].toBool();
+    types->av = object[s_av].toDouble();
+    types->iv = object[s_iv].toDouble();
 
-    QJsonArray object_arr = object["desc_not_gs"].toArray();
+    QJsonArray object_arr = object[s_desc_not_gs].toArray();
     types->desc_not_gs.clear();
     foreach (auto e_arr, object_arr)
     {
