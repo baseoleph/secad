@@ -39,10 +39,10 @@ d_vector SGeneralData::calcGoldenSecionByLength(const double length)
 {
     d_vector gsl = {1, 0.618};
     double gsl_next = gsl[0] - gsl[1];
-    double criterion = 0.1/length;
+    double criterion = my_trunc(0.1/length);
     while (gsl_next >= criterion)
     {
-        gsl.push_back(gsl_next);
+        gsl.push_back(my_trunc(gsl_next));
         gsl_next = gsl[gsl.size() - 2] - gsl[gsl.size() - 1];
     }
     return gsl;
@@ -52,13 +52,13 @@ d_vector SGeneralData::calcGoldenSecionByHeight(const double sef_ma)
 {
     d_vector gsh = {0.618, 1};
     double gsh_next = gsh[0] + gsh[1];
-    double criterion = sef_ma;
+    double criterion = my_trunc(sef_ma);
     while (gsh_next <= criterion)
     {
-        gsh.push_back(gsh_next);
+        gsh.push_back(my_trunc(gsh_next));
         gsh_next = gsh[gsh.size() - 2] + gsh[gsh.size() - 1];
     }
-    gsh.push_back(gsh_next);
+    gsh.push_back(my_trunc(gsh_next));
     return gsh;
 }
 
