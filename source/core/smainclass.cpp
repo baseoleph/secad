@@ -66,47 +66,47 @@ void SMainClass::set_18(SBlockData &block)
 {
     qreal fwih_av = qDegreesToRadians(block.fwih.av);
     qreal awih_av = qDegreesToRadians(block.awih.av);
-    block.bb_u = block.bb_l - block.h * (qCos(fwih_av)/qSin(fwih_av) +
-                                         qCos(awih_av)/qSin(awih_av));
+    block.bb_u = my_trunc(block.bb_l - block.h * (qCos(fwih_av)/qSin(fwih_av) +
+                                         qCos(awih_av)/qSin(awih_av)));
 }
 
 void SMainClass::set_20(SBlockData &block)
 {
-    block.s = (block.bb_l + block.bb_u)/2*block.h;
+    block.s = my_trunc((block.bb_l + block.bb_u)/2*block.h);
 }
 
 void SMainClass::set_21(SBlockData &block)
 {
-    block.m_a = qPow(block.bb_l, 2)/2;
+    block.m_a = my_trunc(qPow(block.bb_l, 2)/2);
 }
 
 void SMainClass::set_22(SBlockData &block)
 {
     qreal awih_av = qDegreesToRadians(block.awih.av);
-    block.m_b = block.bb_u * (block.h * qCos(awih_av)/qSin(awih_av) + block.bb_u/2);
+    block.m_b = my_trunc(block.bb_u * (block.h * qCos(awih_av)/qSin(awih_av) + block.bb_u/2));
 }
 
 void SMainClass::set_23(SBlockData &block)
 {
-    block.x_g = (block.m_a + block.m_b)/(block.bb_l + block.bb_u)+ block.x.av;
+    block.x_g = my_trunc((block.m_a + block.m_b)/(block.bb_l + block.bb_u)+ block.x.av);
 }
 
 void SMainClass::set_24(SBlockData &block)
 {
-    block.z_g = block.h - block.h/3 * (2* block.bb_u + block.bb_l)/
-            (block.bb_l + block.bb_u) + block.z;
+    block.z_g = my_trunc(block.h - block.h/3 * (2* block.bb_u + block.bb_l)/
+            (block.bb_l + block.bb_u) + block.z);
 }
 
 void SMainClass::set_25(SBlockData &block)
 {
     qreal awih_av = qDegreesToRadians(block.awih.av);
-    block.uxa = block.x.av + block.h * qCos(awih_av)/qSin(awih_av);
+    block.uxa = my_trunc(block.x.av + block.h * qCos(awih_av)/qSin(awih_av));
 }
 
 void SMainClass::set_26(SBlockData &block)
 {
     qreal fwih_av = qDegreesToRadians(block.fwih.av);
-    block.uxf = block.x.av + block.bb_l - block.h * qCos(fwih_av)/qSin(fwih_av);
+    block.uxf = my_trunc(block.x.av + block.bb_l - block.h * qCos(fwih_av)/qSin(fwih_av));
 }
 
 void SMainClass::addBlock()
