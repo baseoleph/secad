@@ -30,6 +30,8 @@ public:
 
     void setTextInLineEditWidgets();
     void setTextInLineEdit(QLineEdit *line, double val);
+    void setCheckBoxState();
+
 private slots:
     void on_lineEdit_cons_textChanged(const QString &arg1);
     void on_lineEdit_cont_min_textChanged(const QString &arg1);

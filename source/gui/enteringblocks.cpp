@@ -74,6 +74,7 @@ void EnteringBlocks::fillForms()
         e->setTextInLineEditWidgets();
         e->updateWidgetsDCC();
         e->updateCombo();
+        e->setCheckBoxState();
     }
 }
 

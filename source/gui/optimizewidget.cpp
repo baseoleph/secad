@@ -221,3 +221,8 @@ void OptimizeWidget::setTextInLineEdit(QLineEdit *line, double val)
         line->setText(QString::number(val));
     }
 }
+
+void OptimizeWidget::setCheckBoxState()
+{
+    ui->checkBox_disc_gsl->setChecked(current_type->is_golden_section);
+}
