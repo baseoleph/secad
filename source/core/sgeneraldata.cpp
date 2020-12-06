@@ -69,7 +69,7 @@ double SGeneralData::calcSEFMA(const double draft, const double sef_mea)
 
 double SGeneralData::calcSEFMO(const double length, const double sef_mro)
 {
-    return sef_mro * length;
+    return my_trunc(sef_mro * length);
 }
 
 double SGeneralData::calcSEFAPA(const double sef_ma, const double sef_apra)
