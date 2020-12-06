@@ -33,6 +33,8 @@ void SMainClass::calculateData()
         set_22(*e);
         set_23(*e);
         set_24(*e);
+        set_25(*e);
+        set_26(*e);
     }
 }
 
