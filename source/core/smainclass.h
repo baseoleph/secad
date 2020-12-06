@@ -1,6 +1,7 @@
 #ifndef SMAINCLASS_H
 #define SMAINCLASS_H
 
+#include "sm_algorithms.h"
 #include "sblockdata.h"
 #include "sgeneraldata.h"
 #include <QtMath>

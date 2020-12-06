@@ -5,6 +5,7 @@
 #include <vector>
 #include <QString>
 #include <math.h>
+#include "sm_algorithms.h"
 #include "sconstants.h"
 #include <QDebug>
 

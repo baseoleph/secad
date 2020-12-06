@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     core/sblockdata.cpp \
     core/sgeneraldata.cpp \
+    core/sm_algorithms.cpp \
     core/smainclass.cpp \
     core/typesofoptimizevar.cpp \
     gui/enteringblocks.cpp \
@@ -28,6 +29,7 @@ HEADERS += \
     core/sblockdata.h \
     core/sconstants.h \
     core/sgeneraldata.h \
+    core/sm_algorithms.h \
     core/smainclass.h \
     core/typesofoptimizevar.h \
     gui/enteringblocks.h \
