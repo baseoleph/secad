@@ -52,18 +52,20 @@ void SMainClass::setSubstractureZ_16(SBlockData &block)
 
 void SMainClass::setH_19(SBlockData &block)
 {
-    block.h = block.hrc.av + general->freeboard;
+    block.h = block.hrc.av * general->freeboard;
 }
 
 void SMainClass::setA_17(SBlockData &block)
 {
-    block.bb_l = block.lrc.av + general->length;
+    block.bb_l = block.lrc.av * general->length;
 }
 
 void SMainClass::set_18(SBlockData &block)
 {
-    block.bb_u = block.bb_l - block.h * (qCos(block.fwih.av)/qSin(block.fwih.av) +
-                                         qCos(block.awih.av)/qSin(block.awih.av));
+    qreal fwih_av = qDegreesToRadians(block.fwih.av);
+    qreal awih_av = qDegreesToRadians(block.awih.av);
+    block.bb_u = block.bb_l - block.h * (qCos(fwih_av)/qSin(fwih_av) +
+                                         qCos(awih_av)/qSin(awih_av));
 }
 
 void SMainClass::set_20(SBlockData &block)
@@ -78,7 +80,8 @@ void SMainClass::set_21(SBlockData &block)
 
 void SMainClass::set_22(SBlockData &block)
 {
-    block.m_b = block.bb_u * (block.h * qCos(block.awih.av)/qSin(block.awih.av) + block.bb_u/2);
+    qreal awih_av = qDegreesToRadians(block.awih.av);
+    block.m_b = block.bb_u * (block.h * qCos(awih_av)/qSin(awih_av) + block.bb_u/2);
 }
 
 void SMainClass::set_23(SBlockData &block)
@@ -89,7 +92,19 @@ void SMainClass::set_23(SBlockData &block)
 void SMainClass::set_24(SBlockData &block)
 {
     block.z_g = block.h - block.h/3 * (2* block.bb_u + block.bb_l)/
-                                        (block.bb_l + block.bb_u) + block.z;
+            (block.bb_l + block.bb_u) + block.z;
+}
+
+void SMainClass::set_25(SBlockData &block)
+{
+    qreal awih_av = qDegreesToRadians(block.awih.av);
+    block.uxa = block.x.av + block.h * qCos(awih_av)/qSin(awih_av);
+}
+
+void SMainClass::set_26(SBlockData &block)
+{
+    qreal fwih_av = qDegreesToRadians(block.fwih.av);
+    block.uxf = block.x.av + block.bb_l - block.h * qCos(fwih_av)/qSin(fwih_av);
 }
 
 void SMainClass::addBlock()

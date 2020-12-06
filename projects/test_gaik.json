@@ -12,13 +12,13 @@
                 "iv": -6000000,
                 "type": 0
             },
-            "bb_l": 101,
-            "bb_u": 110.25747075178782,
+            "bb_l": 100,
+            "bb_u": 100,
             "foremast": false,
             "funnel": false,
             "fwih": {
-                "av": 100,
-                "cons": 100,
+                "av": 90,
+                "cons": 90,
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
@@ -29,7 +29,7 @@
                 "iv": -6000000,
                 "type": 0
             },
-            "h": 4.2,
+            "h": 3.2,
             "habitability": true,
             "hb_h": 0,
             "hb_l": 0,
@@ -62,11 +62,11 @@
                 "iv": -6000000,
                 "type": 0
             },
-            "m_a": 5100.5,
-            "m_b": 5846.257253127816,
+            "m_a": 5000,
+            "m_b": 5000,
             "mainmast": false,
             "pap": false,
-            "s": 443.64068857875446,
+            "s": 320,
             "sb_h": "",
             "sb_l": "",
             "titleblock": "Корпус",
@@ -84,13 +84,14 @@
                 "iv": -6000000,
                 "type": 0
             },
-            "x_g": 51.81713675815735,
-            "z_g": 2.0693254420627554
+            "x_g": 50,
+            "z": 0,
+            "z_g": 1.6
         },
         {
             "awih": {
-                "av": 0,
-                "cons": 0,
+                "av": 90,
+                "cons": 90,
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
@@ -99,13 +100,13 @@
                 "iv": -6000000,
                 "type": 0
             },
-            "bb_l": 101,
-            "bb_u": null,
+            "bb_l": 20,
+            "bb_u": 20,
             "foremast": false,
             "funnel": false,
             "fwih": {
-                "av": 0,
-                "cons": 0,
+                "av": 90,
+                "cons": 90,
                 "cont_max": 8,
                 "cont_min": 5,
                 "desc_not_gs": [
@@ -114,13 +115,13 @@
                 "iv": -6000000,
                 "type": 0
             },
-            "h": 3.2,
+            "h": 6.4,
             "habitability": true,
             "hb_h": 1,
             "hb_l": 0,
             "hrc": {
-                "av": 0,
-                "cons": 0,
+                "av": 2,
+                "cons": 2,
                 "cont_max": 3,
                 "cont_min": 8,
                 "desc_not_gs": [
@@ -132,8 +133,8 @@
             "is_hull": false,
             "l_hb_l": 0,
             "lrc": {
-                "av": 1,
-                "cons": 1,
+                "av": 0.2,
+                "cons": 0.2,
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
@@ -142,20 +143,20 @@
                 "iv": -6000000,
                 "type": 0
             },
-            "m_a": 5100.5,
-            "m_b": null,
+            "m_a": 200,
+            "m_b": 200,
             "mainmast": false,
-            "pap": false,
-            "s": null,
+            "pap": true,
+            "s": 128,
             "sb_h": "",
             "sb_l": "",
             "titleblock": "Блок А",
             "uxa": -4.281344479131182e+304,
             "uxf": 1.03764918154e-311,
-            "wheelhause": false,
+            "wheelhause": true,
             "x": {
-                "av": 0,
-                "cons": 0,
+                "av": 10,
+                "cons": 10,
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
@@ -164,13 +165,14 @@
                 "iv": -6000000,
                 "type": 0
             },
-            "x_g": null,
-            "z_g": null
+            "x_g": 20,
+            "z": 3.2,
+            "z_g": 6.4
         },
         {
             "awih": {
-                "av": 0,
-                "cons": 0,
+                "av": 90,
+                "cons": 90,
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
@@ -179,13 +181,13 @@
                 "iv": -6000000,
                 "type": 0
             },
-            "bb_l": 100,
-            "bb_u": null,
+            "bb_l": 20,
+            "bb_u": 20,
             "foremast": false,
             "funnel": false,
             "fwih": {
-                "av": 0,
-                "cons": 0,
+                "av": 90,
+                "cons": 90,
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
@@ -199,8 +201,8 @@
             "hb_h": 1,
             "hb_l": 2,
             "hrc": {
-                "av": 0,
-                "cons": 0,
+                "av": 1,
+                "cons": 1,
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
@@ -210,10 +212,10 @@
                 "type": 0
             },
             "is_hull": false,
-            "l_hb_l": 10,
+            "l_hb_l": 0,
             "lrc": {
-                "av": 0,
-                "cons": 0,
+                "av": 0.2,
+                "cons": 0.2,
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
@@ -222,11 +224,11 @@
                 "iv": -6000000,
                 "type": 0
             },
-            "m_a": 5000,
-            "m_b": null,
+            "m_a": 200,
+            "m_b": 200,
             "mainmast": false,
             "pap": false,
-            "s": null,
+            "s": 64,
             "sb_h": "",
             "sb_l": "",
             "titleblock": "Блок Б",
@@ -244,13 +246,14 @@
                 "iv": -6000000,
                 "type": 0
             },
-            "x_g": null,
-            "z_g": null
+            "x_g": 10,
+            "z": 3.2,
+            "z_g": 4.800000000000001
         },
         {
             "awih": {
-                "av": 0,
-                "cons": 0,
+                "av": 90,
+                "cons": 90,
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
@@ -259,13 +262,13 @@
                 "iv": -6000000,
                 "type": 0
             },
-            "bb_l": 100,
-            "bb_u": null,
+            "bb_l": 20,
+            "bb_u": 20,
             "foremast": false,
             "funnel": false,
             "fwih": {
-                "av": 0,
-                "cons": 0,
+                "av": 90,
+                "cons": 90,
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
@@ -276,11 +279,11 @@
             },
             "h": 3.2,
             "habitability": true,
-            "hb_h": 0,
-            "hb_l": 0,
+            "hb_h": 1,
+            "hb_l": 3,
             "hrc": {
-                "av": 0,
-                "cons": 0,
+                "av": 1,
+                "cons": 1,
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
@@ -290,10 +293,10 @@
                 "type": 0
             },
             "is_hull": false,
-            "l_hb_l": 1,
+            "l_hb_l": 0,
             "lrc": {
-                "av": 0,
-                "cons": 0,
+                "av": 0.2,
+                "cons": 0.2,
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
@@ -302,17 +305,17 @@
                 "iv": -6000000,
                 "type": 0
             },
-            "m_a": 5000,
-            "m_b": null,
+            "m_a": 200,
+            "m_b": 200,
             "mainmast": false,
-            "pap": true,
-            "s": null,
+            "pap": false,
+            "s": 64,
             "sb_h": "",
             "sb_l": "",
             "titleblock": "Блок В",
             "uxa": 0,
             "uxf": 0,
-            "wheelhause": true,
+            "wheelhause": false,
             "x": {
                 "av": 0,
                 "cons": 0,
@@ -324,8 +327,9 @@
                 "iv": -6000000,
                 "type": 0
             },
-            "x_g": null,
-            "z_g": null
+            "x_g": 10,
+            "z": 3.2,
+            "z_g": 4.800000000000001
         }
     ],
     "General": {

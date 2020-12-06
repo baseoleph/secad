@@ -63,6 +63,9 @@
            <height>25</height>
           </size>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::ClickFocus</enum>
+         </property>
          <item>
           <property name="text">
            <string>Фиксированная</string>

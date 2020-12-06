@@ -96,7 +96,7 @@ void JsonParserClass::saveBlocksData()
             json_block["sb_h"] = e->sb_h;
             json_block["sb_l"] = e->sb_l;
             json_block["is_hull"] = e->is_hull;
-
+            json_block["z"] = e->z;
             json_block["lrc"] = addToJsonOptimizeObject(&e->lrc);
             json_block["hrc"] = addToJsonOptimizeObject(&e->hrc);
             json_block["fwih"] = addToJsonOptimizeObject(&e->fwih);
@@ -212,7 +212,7 @@ void JsonParserClass::loadBlocksData(QJsonArray blocks_json)
         block_data->sb_h = e.toObject()["sb_h"].toString();
         block_data->sb_l = e.toObject()["sb_l"].toString();
         block_data->is_hull = e.toObject()["is_hull"].toBool();
-
+        block_data->z = e.toObject()["z"].toDouble();
         loadFromJsonOptimizeObject(&block_data->lrc, e.toObject()["lrc"].toObject());
         loadFromJsonOptimizeObject(&block_data->hrc, e.toObject()["hrc"].toObject());
         loadFromJsonOptimizeObject(&block_data->fwih, e.toObject()["fwih"].toObject());
