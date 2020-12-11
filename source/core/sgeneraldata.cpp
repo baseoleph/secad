@@ -103,14 +103,14 @@ double SGeneralData::calcC1()
 
 double SGeneralData::calcC2()
 {
-    double num = - (pow(L, 3) * t - 3 * L * pow(q, 2) * t + 2 * p * pow(q, 2));
-    double den = L * q * (pow(L, 2) - 2 * q * L + pow(q, 2));
+    double num = - (pow(L, 3) * t - 3 * L * pow(q, 2) * t + 2 * p * pow(q, 3));
+    double den = L * pow(q, 2) * (pow(L, 2) - 2 * q * L + pow(q, 2));
     return num/den;
 }
 
 double SGeneralData::calcC3()
 {
     double num = pow(L,2) * t - 2 * L * q * t + p * pow(q, 2);
-    double den = L * q * (pow(L, 2) - 2 * q * L + pow(q, 2));
+    double den = L * pow(q, 2) * (pow(L, 2) - 2 * q * L + pow(q, 2));
     return num/den;
 }
