@@ -177,7 +177,7 @@ void GeneralData::on_pushButton_calc_clicked()
 //    chart->setTitle("Это полином");
     chart->createDefaultAxes();
     chart->axes(Qt::Vertical).first()->setRange(0, general->t_ * 1.1);
-    chart->axes(Qt::Horizontal).first()->setRange(0, general->L * 1.1);
+    chart->axes(Qt::Horizontal).first()->setRange(0, general->L);
 
     QChartView *chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
