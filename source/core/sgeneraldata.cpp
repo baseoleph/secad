@@ -13,33 +13,34 @@ SGeneralData::~SGeneralData()
 
 void SGeneralData::calcData()
 {
-   L_V_max = calcVisibilityZone(L);
-   FB = calcFreeboard(T, H);
-   t = calcSEFMA(FB, t_);
-   q = calcSEFMO(L, q_);
-   p = calcSEFAPA(t, p_);
-   cn = calcSEFCoef(L, T, t, q, p);
-   GS_L = calcGoldenSecionByLength(L);
-   GS_H = calcGoldenSecionByHeight(t);
+   L_V_max = calcVisibilityZone_32();
+   FB = calcFreeboard_10();
+   t = calc_t_13();
+   q = calc_q_14();
+   p = calc_p_15();
+   cn = calcSEFCoef_27();
+   GS_L = calcGoldenSecionByLength_11();
+   GS_H = calcGoldenSecionByHeight_12();
 }
 
-double SGeneralData::calcVisibilityZone(const double length)
+double SGeneralData::calcVisibilityZone_32()
 {
-    if (length < 45) return 0;
-    else if (length >= 45 and length <= 250) return 2*length;
+    if (L < 45) return 0;
+    else if (L >= 45 and L <= 250) return 2*L;
     else return 500;
 }
 
-double SGeneralData::calcFreeboard(const double draft, const double height)
+double SGeneralData::calcFreeboard_10()
 {
-    return height - draft;
+    return H - T;
 }
 
-d_vector SGeneralData::calcGoldenSecionByLength(const double length)
+d_vector SGeneralData::calcGoldenSecionByLength_11()
 {
+    // there is my trunc
     d_vector gsl = {1, 0.618};
     double gsl_next = gsl[0] - gsl[1];
-    double criterion = my_trunc(0.1/length);
+    double criterion = my_trunc(0.1/L);
     while (gsl_next >= criterion)
     {
         gsl.push_back(my_trunc(gsl_next));
@@ -48,11 +49,12 @@ d_vector SGeneralData::calcGoldenSecionByLength(const double length)
     return gsl;
 }
 
-d_vector SGeneralData::calcGoldenSecionByHeight(const double sef_ma)
+d_vector SGeneralData::calcGoldenSecionByHeight_12()
 {
+    // there is my trunc
     d_vector gsh = {0.618, 1};
     double gsh_next = gsh[0] + gsh[1];
-    double criterion = my_trunc(sef_ma);
+    double criterion = my_trunc(t);
     while (gsh_next <= criterion)
     {
         gsh.push_back(my_trunc(gsh_next));
@@ -62,55 +64,53 @@ d_vector SGeneralData::calcGoldenSecionByHeight(const double sef_ma)
     return gsh;
 }
 
-double SGeneralData::calcSEFMA(const double freeboard, const double sef_mea)
+double SGeneralData::calc_t_13()
 {
-    return sef_mea - freeboard;
+    return t_ - FB;
 }
 
-double SGeneralData::calcSEFMO(const double length, const double sef_mro)
+double SGeneralData::calc_q_14()
 {
-    return my_trunc(sef_mro * length);
+    return q_ * L;
 }
 
-double SGeneralData::calcSEFAPA(const double sef_ma, const double sef_apra)
+double SGeneralData::calc_p_15()
 {
-    return -sef_ma * sef_apra;
+    return -t * p_;
 }
 
-d_vector SGeneralData::calcSEFCoef(const double length, const double draft, const double sef_ma, const double sef_mo, const double sef_apa)
+d_vector SGeneralData::calcSEFCoef_27()
 {
-    double t = sef_ma;
-    double q = sef_mo;
-    double p = sef_apa;
     d_vector sef_coef(4);
-    sef_coef[0] = calcC0(draft, p);
-    sef_coef[2] = calcC2(length, t, q, p);
-    sef_coef[3] = calcC3(sef_coef[2], length, q, p);
-    sef_coef[1] = calcC1(q, sef_coef[2], sef_coef[3]);
+    sef_coef[0] = calcC0();
+    sef_coef[2] = calcC2();
+    sef_coef[3] = calcC3();
+    sef_coef[1] = calcC1();
     return sef_coef;
 }
 
-double SGeneralData::calcC0(const double draft, const double p)
+double SGeneralData::calcC0()
 {
-    return p + draft;
+    return FB;
 }
 
-double SGeneralData::calcC1(const double q, const double c2, const double c3)
+double SGeneralData::calcC1()
 {
-    return -3 * c3 * pow(q, 2) - 2 * c2 * q;
+    double num = 2 * pow(L, 3) * t - 3 * pow(L, 2) * q * t + p * pow(q, 3);
+    double den = L * q * (pow(L, 2) - 2 * q * L + pow(q, 2));
+    return num/den;
 }
 
-double SGeneralData::calcC2(const double length, const double t, const double q, const double p)
+double SGeneralData::calcC2()
 {
-    double numerator = t * pow(length, 3) - 3 * t * length * pow(q, 2) - 2 * pow(q, 3) * p
-                        - p * pow(length, 3) + 3 * p * length * pow(q, 2);
-    double denominator = 2 * pow(q, 3) * pow(length, 2) - pow(q, 4) * length - pow(q, 2) * pow(length, 3);
-    return numerator/denominator;
+    double num = - (pow(L, 3) * t - 3 * L * pow(q, 2) * t + 2 * p * pow(q, 2));
+    double den = L * q * (pow(L, 2) - 2 * q * L + pow(q, 2));
+    return num/den;
 }
 
-double SGeneralData::calcC3(const double c2, const double length, const double q, const double p)
+double SGeneralData::calcC3()
 {
-    double numerator = 2 * c2 * q * length - c2 * pow(length, 2) - p;
-    double denominator = pow(length, 3) - 3 * length * pow(q, 2);
-    return numerator/denominator;
+    double num = pow(L,2) * t - 2 * L * q * t + p * pow(q, 2);
+    double den = L * q * (pow(L, 2) - 2 * q * L + pow(q, 2));
+    return num/den;
 }

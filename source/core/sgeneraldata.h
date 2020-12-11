@@ -18,20 +18,19 @@ public:
     ~SGeneralData();
 
     void calcData();
-    double calcVisibilityZone(const double length);
-    double calcFreeboard(const double draft, const double height);
-    d_vector calcGoldenSecionByLength(const double length);
-    d_vector calcGoldenSecionByHeight(const double sef_ma);
-    double calcSEFMA(const double freeboard, const double sef_mea);
-    double calcSEFMO(const double length, const double sef_mro);
-    double calcSEFAPA(const double sef_ma, const double sef_apra);
+    double calcVisibilityZone_32();
+    double calcFreeboard_10();
+    d_vector calcGoldenSecionByLength_11();
+    d_vector calcGoldenSecionByHeight_12();
+    double calc_t_13();
+    double calc_q_14();
+    double calc_p_15();
 
-    d_vector calcSEFCoef(const double length, const double draft,
-                         const double sef_ma, const double sef_mo, const double sef_apa);
-    double calcC0(const double draft, const double t);
-    double calcC1(const double q, const double a2, const double a3);
-    double calcC2(const double length, const double t, const double q, const double p);
-    double calcC3(const double a2, const double length, const double q, const double p);
+    d_vector calcSEFCoef_27();
+    double calcC0();
+    double calcC1();
+    double calcC2();
+    double calcC3();
 
     // Имя проекта
     QString project_name;

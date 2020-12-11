@@ -64,10 +64,10 @@ void SMainClass::setA_17(SBlockData &block)
 
 void SMainClass::set_18(SBlockData &block)
 {
-    qreal fwih_av = qDegreesToRadians(block.alpha_F.av);
-    qreal awih_av = qDegreesToRadians(block.alpha_A.av);
-    block.b = my_trunc(block.a - block.h * (qCos(fwih_av)/qSin(fwih_av) +
-                                         qCos(awih_av)/qSin(awih_av)));
+    qreal alpha_F_av = qDegreesToRadians(block.alpha_F.av);
+    qreal alpha_A_av = qDegreesToRadians(block.alpha_A.av);
+    block.b = my_trunc(block.a - block.h * (qCos(alpha_F_av)/qSin(alpha_F_av) +
+                                         qCos(alpha_A_av)/qSin(alpha_A_av)));
 }
 
 void SMainClass::set_20(SBlockData &block)
@@ -82,8 +82,8 @@ void SMainClass::set_21(SBlockData &block)
 
 void SMainClass::set_22(SBlockData &block)
 {
-    qreal awih_av = qDegreesToRadians(block.alpha_A.av);
-    block.M_b = my_trunc(block.b * (block.h * qCos(awih_av)/qSin(awih_av) + block.b/2));
+    qreal alpha_F_av = qDegreesToRadians(block.alpha_F.av);
+    block.M_b = my_trunc(block.b * (block.h * qCos(alpha_F_av)/qSin(alpha_F_av) + block.b/2));
 }
 
 void SMainClass::set_23(SBlockData &block)
@@ -99,14 +99,14 @@ void SMainClass::set_24(SBlockData &block)
 
 void SMainClass::set_25(SBlockData &block)
 {
-    qreal awih_av = qDegreesToRadians(block.alpha_A.av);
-    block.X_U_A = my_trunc(block.X.av + block.h * qCos(awih_av)/qSin(awih_av));
+    qreal alpha_A_av = qDegreesToRadians(block.alpha_A.av);
+    block.X_U_A = my_trunc(block.X.av + block.a - block.h * qCos(alpha_A_av)/qSin(alpha_A_av));
 }
 
 void SMainClass::set_26(SBlockData &block)
 {
-    qreal fwih_av = qDegreesToRadians(block.alpha_F.av);
-    block.X_U_F = my_trunc(block.X.av + block.a - block.h * qCos(fwih_av)/qSin(fwih_av));
+    qreal alpha_F_av = qDegreesToRadians(block.alpha_F.av);
+    block.X_U_F = my_trunc(block.X.av + block.h * qCos(alpha_F_av)/qSin(alpha_F_av));
 }
 
 void SMainClass::addBlock()
