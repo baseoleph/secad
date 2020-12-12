@@ -8,7 +8,6 @@ SAlgorithm::SAlgorithm()
 void SAlgorithm::init()
 {
     M = 1;
-    Y = generateRandomForY();
 
     qDebug() << "Init Opt";
     qDebug() << "M = " << M;
@@ -24,6 +23,7 @@ double SAlgorithm::generateRandomForY()
 
 void SAlgorithm::optimizeVal(TypesOfOptimizeVar *var)
 {
+    Y = generateRandomForY();
     if (var->type == DISC)
     {
         qDebug() << "--------------------------";
@@ -73,20 +73,26 @@ void SAlgorithm::discOpt(TypesOfOptimizeVar *var)
     int max_i = var->desc_link.size() - 1;
     int min_i = 0;
     var->iv_i = var->av_i + max_i * pow(Y, M);
+    var->iv = var->desc_link[var->iv_i];
     qDebug() << "min_i = " << 0;
     qDebug() << "max_i = " << var->desc_link.size()-1;
     qDebug() << "pow(Y, M) = " << pow(Y, M);
+    qDebug() << "iv = " << var->iv;
     qDebug() << "iv_i = " << var->iv_i;
 
     if (var->iv_i > max_i)
     {
         var->iv_i = max_i;
+        var->iv = var->desc_link[var->iv_i];
         qDebug() << "was overflow iv_i = " << var->iv_i;
+        qDebug() << "iv = " << var->iv;
     }
     else if (var->iv_i < min_i)
     {
         var->iv_i = min_i;
+        var->iv = var->desc_link[var->iv_i];
         qDebug() << "was overflow iv_i = " << var->iv_i;
+        qDebug() << "iv = " << var->iv;
     }
     qDebug() << "--------------------------";
     qDebug() << "";
