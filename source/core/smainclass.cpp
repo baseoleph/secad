@@ -14,6 +14,16 @@ SMainClass::~SMainClass()
     }
 }
 
+void SMainClass::optimizeData()
+{
+    if (alg != nullptr) delete alg;
+    alg = new SAlgorithm;
+    alg->init();
+    foreach (auto e, blocks)
+    {
+    }
+}
+
 void SMainClass::calculateData()
 {
     foreach (auto e, blocks)

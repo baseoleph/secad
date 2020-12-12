@@ -251,6 +251,7 @@ void EnteringBlocks::on_lineEdit_l_hb_l_textChanged(const QString &arg1)
 
 void EnteringBlocks::on_pushButton_optimize_clicked()
 {
+    m->optimizeData();
 }
 
 void EnteringBlocks::on_pushButton_calc_clicked()

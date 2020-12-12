@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    core/salgorithm.cpp \
     core/sblockdata.cpp \
     core/sgeneraldata.cpp \
     core/sm_algorithms.cpp \
@@ -24,6 +25,7 @@ SOURCES += \
     main.cpp \
 
 HEADERS += \
+    core/salgorithm.h \
     core/sblockdata.h \
     core/sconstants.h \
     core/sgeneraldata.h \

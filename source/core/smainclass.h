@@ -4,6 +4,7 @@
 #include "sm_algorithms.h"
 #include "sblockdata.h"
 #include "sgeneraldata.h"
+#include "salgorithm.h"
 #include <QtMath>
 #include <vector>
 
@@ -16,6 +17,7 @@ public:
     ~SMainClass();
 
 
+    void optimizeData();
     void calculateData();
     void setSubstractureZ_16(SBlockData &block);
     void setH_19(SBlockData &block);
@@ -32,8 +34,9 @@ public:
 
     void addBlock();
     void restoreSGeneralData();
-    SGeneralData *general;
+    SGeneralData *general = nullptr;
     BlocksVector blocks;
+    SAlgorithm *alg = nullptr;
 };
 
 #endif // SMAINCLASS_H
