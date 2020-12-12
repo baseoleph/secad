@@ -8,6 +8,7 @@
 #include "sm_algorithms.h"
 #include "sconstants.h"
 #include <QDebug>
+#include <QObject>
 
 typedef std::vector<double> d_vector;
 

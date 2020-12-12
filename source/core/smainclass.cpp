@@ -14,37 +14,16 @@ SMainClass::~SMainClass()
     }
 }
 
-
-
 void SMainClass::optimizeData()
 {
-    if (alg != nullptr) delete alg;
-    alg = new SAlgorithm(blocks);
-    alg->startOpt();
-}
-
-void SMainClass::calculateData()
-{
-    foreach (auto e, blocks)
+    if (alg != nullptr)
     {
-        if (true || e->K_H.av == NOTHING_VALUE) e->K_H.setRandomAvValue();
-        if (true || e->K_L.av == NOTHING_VALUE) e->K_L.setRandomAvValue();
-        if (true || e->alpha_F.av == NOTHING_VALUE) e->alpha_F.setRandomAvValue();
-        if (true || e->alpha_A.av == NOTHING_VALUE) e->alpha_A.setRandomAvValue();
-        if (true || e->X.av == NOTHING_VALUE) e->X.setRandomAvValue();
-
-        setH_19(*e);
-        setSubstractureZ_16(*e);
-        setA_17(*e);
-        set_18(*e);
-        set_20(*e);
-        set_21(*e);
-        set_22(*e);
-        set_23(*e);
-        set_24(*e);
-        set_25(*e);
-        set_26(*e);
+        disconnect(alg, &SAlgorithm::emitUpdateFormulaeSignal, this, &SMainClass::updateFormulaeSlot);
+        delete alg;
     }
+    alg = new SAlgorithm(blocks);
+    connect(alg, &SAlgorithm::emitUpdateFormulaeSignal, this, &SMainClass::updateFormulaeSlot);
+    alg->startOpt();
 }
 
 void SMainClass::setSubstractureZ_16(SBlockData &block)
@@ -63,20 +42,20 @@ void SMainClass::setSubstractureZ_16(SBlockData &block)
 
 void SMainClass::setH_19(SBlockData &block)
 {
-    block.h = block.K_H.av * general->FB;
+    block.h = block.K_H.iv * general->FB;
 }
 
 void SMainClass::setA_17(SBlockData &block)
 {
-    block.a = block.K_L.av * general->L;
+    block.a = block.K_L.iv * general->L;
 }
 
 void SMainClass::set_18(SBlockData &block)
 {
-    qreal alpha_F_av = qDegreesToRadians(block.alpha_F.av);
-    qreal alpha_A_av = qDegreesToRadians(block.alpha_A.av);
-    block.b = my_trunc(block.a - block.h * (qCos(alpha_F_av)/qSin(alpha_F_av) +
-                                         qCos(alpha_A_av)/qSin(alpha_A_av)));
+    qreal alpha_F_iv = qDegreesToRadians(block.alpha_F.iv);
+    qreal alpha_A_iv = qDegreesToRadians(block.alpha_A.iv);
+    block.b = my_trunc(block.a - block.h * (qCos(alpha_F_iv)/qSin(alpha_F_iv) +
+                                         qCos(alpha_A_iv)/qSin(alpha_A_iv)));
 }
 
 void SMainClass::set_20(SBlockData &block)
@@ -91,13 +70,13 @@ void SMainClass::set_21(SBlockData &block)
 
 void SMainClass::set_22(SBlockData &block)
 {
-    qreal alpha_F_av = qDegreesToRadians(block.alpha_F.av);
-    block.M_b = my_trunc(block.b * (block.h * qCos(alpha_F_av)/qSin(alpha_F_av) + block.b/2));
+    qreal alpha_F_iv = qDegreesToRadians(block.alpha_F.iv);
+    block.M_b = my_trunc(block.b * (block.h * qCos(alpha_F_iv)/qSin(alpha_F_iv) + block.b/2));
 }
 
 void SMainClass::set_23(SBlockData &block)
 {
-    block.x_g = my_trunc((block.M_a + block.M_b)/(block.a + block.b)+ block.X.av);
+    block.x_g = my_trunc((block.M_a + block.M_b)/(block.a + block.b)+ block.X.iv);
 }
 
 void SMainClass::set_24(SBlockData &block)
@@ -108,14 +87,14 @@ void SMainClass::set_24(SBlockData &block)
 
 void SMainClass::set_25(SBlockData &block)
 {
-    qreal alpha_A_av = qDegreesToRadians(block.alpha_A.av);
-    block.X_U_A = my_trunc(block.X.av + block.a - block.h * qCos(alpha_A_av)/qSin(alpha_A_av));
+    qreal alpha_A_iv = qDegreesToRadians(block.alpha_A.iv);
+    block.X_U_A = my_trunc(block.X.iv + block.a - block.h * qCos(alpha_A_iv)/qSin(alpha_A_iv));
 }
 
 void SMainClass::set_26(SBlockData &block)
 {
-    qreal alpha_F_av = qDegreesToRadians(block.alpha_F.av);
-    block.X_U_F = my_trunc(block.X.av + block.h * qCos(alpha_F_av)/qSin(alpha_F_av));
+    qreal alpha_F_iv = qDegreesToRadians(block.alpha_F.iv);
+    block.X_U_F = my_trunc(block.X.iv + block.h * qCos(alpha_F_iv)/qSin(alpha_F_iv));
 }
 
 void SMainClass::addBlock()
@@ -132,4 +111,22 @@ void SMainClass::restoreSGeneralData()
     // clear data;
     general->theta = WHA;
     general->p_w = WIND_PRESSURE;
+}
+
+void SMainClass::updateFormulaeSlot()
+{
+    foreach (auto e, blocks)
+    {
+        setH_19(*e);
+        setSubstractureZ_16(*e);
+        setA_17(*e);
+        set_18(*e);
+        set_20(*e);
+        set_21(*e);
+        set_22(*e);
+        set_23(*e);
+        set_24(*e);
+        set_25(*e);
+        set_26(*e);
+    }
 }

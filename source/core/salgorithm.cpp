@@ -32,6 +32,8 @@ void SAlgorithm::optimizationStep()
         qDebug() << "alpha_F";
         optimizeVal(&e->alpha_F);
     }
+
+    emitUpdateFormulaeSignal();
 }
 
 double SAlgorithm::generateRandomForY()

@@ -256,5 +256,5 @@ void EnteringBlocks::on_pushButton_optimize_clicked()
 
 void EnteringBlocks::on_pushButton_calc_clicked()
 {
-    m->calculateData();
+    m->updateFormulaeSlot();
 }
