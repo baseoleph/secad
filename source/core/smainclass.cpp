@@ -19,8 +19,13 @@ void SMainClass::optimizeData()
     if (alg != nullptr) delete alg;
     alg = new SAlgorithm;
     alg->init();
+
     foreach (auto e, blocks)
     {
+        alg->optimizeVal(&e->K_L);
+        alg->optimizeVal(&e->K_H);
+        alg->optimizeVal(&e->alpha_A);
+        alg->optimizeVal(&e->alpha_F);
     }
 }
 
