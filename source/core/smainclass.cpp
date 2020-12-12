@@ -22,9 +22,15 @@ void SMainClass::optimizeData()
 
     foreach (auto e, blocks)
     {
+        qDebug() << "!!!!!!!!!!!!!!!!!";
+        qDebug() << "Block " << e->titleblock;
+        qDebug() << "K_L";
         alg->optimizeVal(&e->K_L);
+        qDebug() << "K_H";
         alg->optimizeVal(&e->K_H);
+        qDebug() << "alpha_A";
         alg->optimizeVal(&e->alpha_A);
+        qDebug() << "alpha_F";
         alg->optimizeVal(&e->alpha_F);
     }
 }

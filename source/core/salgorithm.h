@@ -5,6 +5,7 @@
 #include <random>
 #include <QDebug>
 #include "typesofoptimizevar.h"
+#include "sm_algorithms.h"
 
 class SAlgorithm
 {
@@ -19,7 +20,7 @@ private:
 
     double generateRandomForY();
     void contOpt(TypesOfOptimizeVar *var);
-    void consOpt(TypesOfOptimizeVar *var);
+    void discOpt(TypesOfOptimizeVar *var);
 };
 
 #endif // SALGORITHM_H
