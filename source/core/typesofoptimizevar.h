@@ -14,10 +14,15 @@ public:
     TypesOfOptimizeVar();
     int type = CONS;
     double cons = NOTHING_VALUE;
-    double av = NOTHING_VALUE;
-    double iv = NOTHING_VALUE;
     double cont_min = NOTHING_VALUE;
     double cont_max = NOTHING_VALUE;
+
+    double av = NOTHING_VALUE;
+    int av_i = NOTHING_VALUE;
+
+    double iv = NOTHING_VALUE;
+    int iv_i = NOTHING_VALUE;
+
     bool is_golden_section = false;
 
     d_vector desc_link;

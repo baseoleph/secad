@@ -102,7 +102,9 @@ private:
     QString s_cont_max = "cont_max";
     QString s_is_golden_section = "is_golden_section";
     QString s_av = "av";
+    QString s_av_i = "av_i";
     QString s_iv = "iv";
+    QString s_iv_i = "iv_i";
 };
 
 #endif // JSONPARSERCLASS_H
