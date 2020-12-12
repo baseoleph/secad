@@ -76,7 +76,7 @@ double SGeneralData::calc_q_14()
 
 double SGeneralData::calc_p_15()
 {
-    return -t * p_;
+    return t * p_;
 }
 
 d_vector SGeneralData::calcSEFCoef_27()
