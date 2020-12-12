@@ -5,9 +5,16 @@ SAlgorithm::SAlgorithm()
 
 }
 
-void SAlgorithm::init()
+void SAlgorithm::init(BlocksVector p_blocks)
 {
     M = 1;
+
+    blocks.clear();
+    foreach (auto e, p_blocks)
+    {
+        blocks.push_back(e);
+        qDebug() << blocks.last()->titleblock;
+    }
 
     qDebug() << "Init Opt";
     qDebug() << "M = " << M;

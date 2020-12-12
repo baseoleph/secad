@@ -160,4 +160,5 @@ public:
     bool is_hull = false;
 };
 
+typedef  QVector<SBlockData *> BlocksVector;
 #endif // SBLOCKDATA_H

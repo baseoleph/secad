@@ -22,5 +22,7 @@ void TypesOfOptimizeVar::setRandomAvValue()
     {
         av_i = rand.global()->bounded(0, desc_link.size());
         av = desc_link[av_i];
+        iv_i = av_i;
     }
+    iv = av;
 }

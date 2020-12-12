@@ -8,7 +8,6 @@
 #include <QtMath>
 #include <vector>
 
-typedef  std::vector<SBlockData *> BlocksVector;
 
 class SMainClass : SGeneralData
 {
@@ -17,6 +16,7 @@ public:
     ~SMainClass();
 
 
+    void clearTypesOpt();
     void optimizeData();
     void calculateData();
     void setSubstractureZ_16(SBlockData &block);

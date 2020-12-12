@@ -28,7 +28,7 @@ public:
 
     SMainClass *m;
     SGeneralData *general;
-    std::vector<SBlockData *> blocks;
+    BlocksVector blocks;
 
     void loadFromJsonOptimizeObject(TypesOfOptimizeVar *types, QJsonObject object);
 private:
