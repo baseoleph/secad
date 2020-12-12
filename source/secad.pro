@@ -20,7 +20,6 @@ SOURCES += \
     gui/jsonparserclass.cpp \
     gui/mainwindow.cpp \
     gui/optimizewidget.cpp \
-    gui/optimizewidgetprocessing.cpp \
     gui/projectmanager.cpp \
     gui/resultswidget.cpp \
     main.cpp \
@@ -38,7 +37,6 @@ HEADERS += \
     gui/jsonparserclass.h \
     gui/mainwindow.h \
     gui/optimizewidget.h \
-    gui/optimizewidgetprocessing.h \
     gui/projectmanager.h \
     gui/resultswidget.h
 
