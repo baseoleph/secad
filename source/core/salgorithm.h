@@ -7,12 +7,18 @@
 #include "typesofoptimizevar.h"
 #include "sm_algorithms.h"
 #include "sblockdata.h"
+#include <QObject>
 
-class SAlgorithm
+class SAlgorithm : public QObject
 {
+    Q_OBJECT
+
 public:
     SAlgorithm(BlocksVector new_blocks);
     void startOpt();
+
+signals:
+    void emitUpdateFormulaeSignal();
 
 private:
     BlocksVector blocks;

@@ -7,17 +7,18 @@
 #include "salgorithm.h"
 #include <QtMath>
 #include <vector>
+#include <QObject>
 
 
-class SMainClass : SGeneralData
+class SMainClass : public QObject
 {
+    Q_OBJECT
 public:
     SMainClass();
     ~SMainClass();
 
 
     void optimizeData();
-    void calculateData();
     void setSubstractureZ_16(SBlockData &block);
     void setH_19(SBlockData &block);
     void setA_17(SBlockData &block);
@@ -36,6 +37,9 @@ public:
     SGeneralData *general = nullptr;
     BlocksVector blocks;
     SAlgorithm *alg = nullptr;
+
+public slots:
+    void updateFormulaeSlot();
 };
 
 #endif // SMAINCLASS_H
