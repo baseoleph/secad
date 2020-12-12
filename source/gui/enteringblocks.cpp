@@ -9,15 +9,6 @@ EnteringBlocks::EnteringBlocks(QWidget *parent, SMainClass *m) :
     this->m = m;
 
     ui->widget_block->setEnabled(false);
-
-//    opt = new OptimizeWidget(this, "asdf");
-//    QHBoxLayout *vbox = new QHBoxLayout(opt);
-//    ui->widget->layout()->addItem(vbox);
-//    ui->widget->layout()->addWidget(opt);
-
-//    ui->widget->
-//    vbox->addWidget(opt, 0);
-//    ui->widget->setLayout(vbox);
 }
 
 EnteringBlocks::~EnteringBlocks()

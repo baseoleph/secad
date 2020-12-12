@@ -16,7 +16,6 @@ SOURCES += \
     core/typesofoptimizevar.cpp \
     gui/enteringblocks.cpp \
     gui/generaldata.cpp \
-    gui/generaldatapainter.cpp \
     gui/jsonparserclass.cpp \
     gui/mainwindow.cpp \
     gui/optimizewidget.cpp \
@@ -33,7 +32,6 @@ HEADERS += \
     core/typesofoptimizevar.h \
     gui/enteringblocks.h \
     gui/generaldata.h \
-    gui/generaldatapainter.h \
     gui/jsonparserclass.h \
     gui/mainwindow.h \
     gui/optimizewidget.h \
@@ -43,7 +41,6 @@ HEADERS += \
 FORMS += \
     gui/enteringblocks.ui \
     gui/generaldata.ui \
-    gui/generaldatapainter.ui \
     gui/mainwindow.ui \
     gui/optimizewidget.ui \
     gui/projectmanager.ui \
