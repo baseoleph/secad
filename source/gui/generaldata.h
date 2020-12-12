@@ -55,7 +55,10 @@ private:
     Ui::GeneralData *ui;
     SGeneralData *general;
     QGraphicsScene *scene;
+    QSplineSeries *series;
+    QChart *chart;
     double sef_function(double x);
+    void initChart();
 };
 
 #endif // GENERALDATA_H

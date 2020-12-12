@@ -6,7 +6,9 @@ GeneralData::GeneralData(QWidget *parent, SMainClass *m) :
     ui(new Ui::GeneralData)
 {
     ui->setupUi(this);
+    new QVBoxLayout(ui->widget_chart);
     general = m->general;
+    initChart();
 
     ui->lineEdit_wind_pressure->setText(QString::number(general->p_w));
     ui->lineEdit_wha->setText(QString::number(general->theta));
@@ -16,6 +18,9 @@ GeneralData::GeneralData(QWidget *parent, SMainClass *m) :
 
 GeneralData::~GeneralData()
 {
+    delete series;
+    delete chart;
+    delete scene;
     delete ui;
 }
 
@@ -85,6 +90,20 @@ double GeneralData::sef_function(double x)
     double a2 = general->cn[2];
     double a3 = general->cn[3];
     return a3 * pow(x, 3) + a2 * pow(x, 2) + a1 * x + a0;
+}
+
+void GeneralData::initChart()
+{
+    series = new QSplineSeries();
+    chart = new QChart();
+    chart->legend()->hide();
+    chart->addSeries(series);
+    chart->createDefaultAxes();
+
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+
+    ui->widget_chart->layout()->addWidget(chartView);
 }
 
 void GeneralData::on_lineEdit_project_name_textChanged(const QString &arg1)
@@ -161,47 +180,11 @@ void GeneralData::on_pushButton_calc_clicked()
 {
     general->calcData();
     fillForms();
-
-//    scene->clear();
-
-    QSplineSeries *series = new QSplineSeries();
-//    series->setName("spline");
+    series->clear();
     for (double i = 0; i <= general->L; ++i)
     {
         series->append(QPointF(i, sef_function(i)));
     }
-
-    QChart *chart = new QChart();
-    chart->legend()->hide();
-    chart->addSeries(series);
-//    chart->setTitle("Это полином");
-    chart->createDefaultAxes();
     chart->axes(Qt::Vertical).first()->setRange(0, general->t_ * 1.1);
     chart->axes(Qt::Horizontal).first()->setRange(0, general->L);
-
-    QChartView *chartView = new QChartView(chart);
-    chartView->setRenderHint(QPainter::Antialiasing);
-
-    QVBoxLayout *vbox = new QVBoxLayout(ui->widget_chart);
-    vbox->addWidget(chartView);
-//    ui->widget_chart->setLayout(vbox);
-    //    ui->widget_chart->layout()->addWidget(chartView);
-//    qreal width = ui->graphicsView->width();
-//    qreal height = ui->graphicsView->height();
-//    scene->setSceneRect(0, 0, width, height);
-
-////    ui->graphicsView->layout()->addWidget(chartView);
-//    ui->graphicsView->setScene(scene);
-//    scene->addItem(chart);
-//    ui->graphicsView->setRenderHint(QPainter::Antialiasing);
-//    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-//    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-//    scene->addLine(-1, height/2, width+10, height/2);
-//    scene->addLine(10, -1, 10, height+10);
-////    qreal xscale = width / general->length;
-//    QPointF origin_p(10, height/2);
-//    QPainterPath path;
-//    path.moveTo(origin_p + QPointF(0, -sef_function(0)));
-//    scene->addPath(path);
 }
