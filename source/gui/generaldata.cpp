@@ -162,24 +162,46 @@ void GeneralData::on_pushButton_calc_clicked()
     general->calcData();
     fillForms();
 
-    scene->clear();
-    qreal width = ui->graphicsView->width();
-    qreal height = ui->graphicsView->height();
-    scene->setSceneRect(0, 0, width, height);
-    ui->graphicsView->setScene(scene);
-    ui->graphicsView->setRenderHint(QPainter::Antialiasing);
-    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+//    scene->clear();
 
-    scene->addLine(-1, height/2, width+10, height/2);
-    scene->addLine(10, -1, 10, height+10);
-//    qreal xscale = width / general->length;
-    QPointF origin_p(10, height/2);
-    QPainterPath path;
-    path.moveTo(origin_p + QPointF(0, -sef_function(0)));
+    QSplineSeries *series = new QSplineSeries();
+//    series->setName("spline");
     for (double i = 0; i <= general->L; ++i)
     {
-        path.lineTo(origin_p + QPointF(i/* * xscale*/, -sef_function(i)));
+        series->append(QPointF(i, sef_function(i)));
     }
-    scene->addPath(path);
+
+    QChart *chart = new QChart();
+    chart->legend()->hide();
+    chart->addSeries(series);
+//    chart->setTitle("Это полином");
+    chart->createDefaultAxes();
+    chart->axes(Qt::Vertical).first()->setRange(0, general->t_ * 1.1);
+    chart->axes(Qt::Horizontal).first()->setRange(0, general->L);
+
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+
+    QVBoxLayout *vbox = new QVBoxLayout(ui->widget_chart);
+    vbox->addWidget(chartView);
+//    ui->widget_chart->setLayout(vbox);
+    //    ui->widget_chart->layout()->addWidget(chartView);
+//    qreal width = ui->graphicsView->width();
+//    qreal height = ui->graphicsView->height();
+//    scene->setSceneRect(0, 0, width, height);
+
+////    ui->graphicsView->layout()->addWidget(chartView);
+//    ui->graphicsView->setScene(scene);
+//    scene->addItem(chart);
+//    ui->graphicsView->setRenderHint(QPainter::Antialiasing);
+//    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+//    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+//    scene->addLine(-1, height/2, width+10, height/2);
+//    scene->addLine(10, -1, 10, height+10);
+////    qreal xscale = width / general->length;
+//    QPointF origin_p(10, height/2);
+//    QPainterPath path;
+//    path.moveTo(origin_p + QPointF(0, -sef_function(0)));
+//    scene->addPath(path);
 }

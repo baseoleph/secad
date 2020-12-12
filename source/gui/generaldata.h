@@ -3,14 +3,21 @@
 
 #include <QWidget>
 #include <QDebug>
+#include <QLogValueAxis>
+#include <QSplineSeries>
+#include <QValueAxis>
+#include <QChart>
+#include <QChartView>
 #include <QGraphicsScene>
 #include <QPainterPath>
 #include "../core/smainclass.h"
 
 
+using namespace QtCharts;
 namespace Ui {
 class GeneralData;
 }
+
 
 class GeneralData : public QWidget
 {

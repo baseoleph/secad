@@ -23,9 +23,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
-        <width>895</width>
-        <height>771</height>
+        <y>-252</y>
+        <width>881</width>
+        <height>1023</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -286,9 +286,6 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
-             <widget class="QGraphicsView" name="graphicsView"/>
-            </item>
-            <item>
              <layout class="QVBoxLayout" name="verticalLayout">
               <item>
                <widget class="QPushButton" name="pushButton_calc">
@@ -354,6 +351,19 @@
              </widget>
             </item>
            </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_5"/>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_chart" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>400</height>
+             </size>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
