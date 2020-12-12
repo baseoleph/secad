@@ -210,7 +210,7 @@ void EnteringBlocks::updateComboHBBlocks()
     ui->comboBox_hb_h->addItem("");
     ui->comboBox_hb_l->addItem("");
 
-    for (unsigned i = 0; i < m->blocks.size(); ++i)
+    for (int i = 0; i < m->blocks.size(); ++i)
     {
         ui->comboBox_hb_h->addItem(m->blocks[i]->titleblock);
         ui->comboBox_hb_l->addItem(m->blocks[i]->titleblock);

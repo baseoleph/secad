@@ -14,37 +14,13 @@ SMainClass::~SMainClass()
     }
 }
 
-void SMainClass::clearTypesOpt()
-{
-    foreach (auto e, blocks)
-    {
-        e->K_H.setRandomAvValue();
-        e->K_L.setRandomAvValue();
-        e->alpha_F.setRandomAvValue();
-        e->alpha_A.setRandomAvValue();
-        e->X.setRandomAvValue();
-    }
-}
+
 
 void SMainClass::optimizeData()
 {
     if (alg != nullptr) delete alg;
-    alg = new SAlgorithm;
-    alg->init(blocks);
-
-//    foreach (auto e, blocks)
-//    {
-//        qDebug() << "!!!!!!!!!!!!!!!!!";
-//        qDebug() << "Block " << e->titleblock;
-//        qDebug() << "K_L";
-//        alg->optimizeVal(&e->K_L);
-//        qDebug() << "K_H";
-//        alg->optimizeVal(&e->K_H);
-//        qDebug() << "alpha_A";
-//        alg->optimizeVal(&e->alpha_A);
-//        qDebug() << "alpha_F";
-//        alg->optimizeVal(&e->alpha_F);
-//    }
+    alg = new SAlgorithm(blocks);
+    alg->startOpt();
 }
 
 void SMainClass::calculateData()

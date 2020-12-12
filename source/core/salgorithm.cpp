@@ -1,25 +1,37 @@
 #include "salgorithm.h"
 
-SAlgorithm::SAlgorithm()
+SAlgorithm::SAlgorithm(BlocksVector new_blocks)
 {
-
-}
-
-void SAlgorithm::init(BlocksVector p_blocks)
-{
-    M = 1;
-
-    blocks.clear();
-    foreach (auto e, p_blocks)
-    {
-        blocks.push_back(e);
-        qDebug() << blocks.last()->titleblock;
-    }
+    blocks = new_blocks;
+    clearTypesOpt();
 
     qDebug() << "Init Opt";
-    qDebug() << "M = " << M;
-    qDebug() << "Y = " << Y;
     qDebug() << "";
+}
+
+void SAlgorithm::startOpt()
+{
+    M = 0;
+    optimizationStep();
+}
+
+
+void SAlgorithm::optimizationStep()
+{
+    ++M;
+    foreach (auto e, blocks)
+    {
+        qDebug() << "!!!!!!!!!!!!!!!!!";
+        qDebug() << "Block " << e->titleblock;
+        qDebug() << "K_L";
+        optimizeVal(&e->K_L);
+        qDebug() << "K_H";
+        optimizeVal(&e->K_H);
+        qDebug() << "alpha_A";
+        optimizeVal(&e->alpha_A);
+        qDebug() << "alpha_F";
+        optimizeVal(&e->alpha_F);
+    }
 }
 
 double SAlgorithm::generateRandomForY()
@@ -103,4 +115,16 @@ void SAlgorithm::discOpt(TypesOfOptimizeVar *var)
     }
     qDebug() << "--------------------------";
     qDebug() << "";
+}
+
+void SAlgorithm::clearTypesOpt()
+{
+    foreach (auto e, blocks)
+    {
+        e->K_H.setRandomAvValue();
+        e->K_L.setRandomAvValue();
+        e->alpha_F.setRandomAvValue();
+        e->alpha_A.setRandomAvValue();
+        e->X.setRandomAvValue();
+    }
 }

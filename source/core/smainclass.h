@@ -16,7 +16,6 @@ public:
     ~SMainClass();
 
 
-    void clearTypesOpt();
     void optimizeData();
     void calculateData();
     void setSubstractureZ_16(SBlockData &block);

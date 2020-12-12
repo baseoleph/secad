@@ -8,23 +8,24 @@
 #include "sm_algorithms.h"
 #include "sblockdata.h"
 
-//typedef  std::vector<SBlockData *> BlocksVector;
-
 class SAlgorithm
 {
 public:
-    SAlgorithm();
-    void init(BlocksVector p_blocks);
-    void optimizeVal(TypesOfOptimizeVar *var);
+    SAlgorithm(BlocksVector new_blocks);
+    void startOpt();
 
 private:
     BlocksVector blocks;
     int M = 0;
     double Y = 0;
 
+    void optimizationStep();
     double generateRandomForY();
+
+    void optimizeVal(TypesOfOptimizeVar *var);
     void contOpt(TypesOfOptimizeVar *var);
     void discOpt(TypesOfOptimizeVar *var);
+    void clearTypesOpt();
 };
 
 #endif // SALGORITHM_H
