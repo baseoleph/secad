@@ -1,4 +1,4 @@
-#ifndef SALGORITHM_H
+﻿#ifndef SALGORITHM_H
 #define SALGORITHM_H
 
 #include <QRandomGenerator>
@@ -25,6 +25,22 @@ private:
     int M = 0;
     double Y = 0;
 
+    void startChecks();
+    bool check_41(SBlockData *e);
+    bool check_42(SBlockData *e);
+    bool check_43(SBlockData *e);
+    bool check_44(SBlockData *e);
+    bool check_45(SBlockData *e);
+    bool check_46(SBlockData *e);
+    bool check_47(SBlockData *e);
+    bool check_48(SBlockData *e);
+    bool check_49(SBlockData *e);
+    bool check_50(SBlockData *e);
+    bool check_51(SBlockData *e);
+    bool check_52(SBlockData *e);
+    bool check_53(SBlockData *e);
+    bool check_54(SBlockData *e);
+    bool check_55(SBlockData *e);
     void optimizationStep();
     double generateRandomForY();
 
