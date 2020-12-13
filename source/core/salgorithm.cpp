@@ -12,7 +12,60 @@ SAlgorithm::SAlgorithm(BlocksVector new_blocks, SGeneralData *new_general)
 void SAlgorithm::startOpt()
 {
     M = 0;
-    optimizationStep();
+    EC_cnt = 0;
+    general->ECB = NOTHING_VALUE;
+    QString str;
+    while (M < 1000 && cnt < 10000000)
+    {
+        optimizationStep();
+        str = "EC_cnt = " + QString::number(EC_cnt);
+        str += "; M = " + QString::number(M);
+        emitStatusBarSignal(str);
+        qDebug() << cnt++ << EC_cnt;
+    }
+}
+
+void SAlgorithm::updateEC()
+{
+    EC = 0;
+    foreach (auto e, blocks)
+    {
+        double arg1 = general->sef_function(e->X_U_A) - (e->h + e->Z);
+        double arg2 = general->sef_function(e->X_U_F) - (e->h + e->Z);
+        EC += pow(arg1, 2) + pow(arg2, 2);
+    }
+
+    if (general->ECB == NOTHING_VALUE)
+    {
+        general->ECB = EC;
+        updateAV();
+        ++EC_cnt;
+    }
+    else
+    {
+        if (general->ECB >= EC)
+        {
+            general->ECB = EC;
+            updateAV();
+            ++EC_cnt;
+        }
+        else
+        {
+            ++M;
+        }
+    }
+}
+
+void SAlgorithm::updateAV()
+{
+    foreach (auto e, blocks)
+    {
+        e->K_H.av = e->K_H.iv;
+        e->K_L.av = e->K_L.iv;
+        e->alpha_F.av = e->alpha_A.iv;
+        e->alpha_A.av = e->alpha_F.iv;
+        e->X.av = e->X.iv;
+    }
 }
 
 bool SAlgorithm::startChecks()
@@ -269,7 +322,6 @@ void SAlgorithm::optimizationStep()
     qDebug(logInfo()) << "M = " << M;
     qDebug(logInfo()) << "__________________";
 
-    emitStatusBarSignal(QString::number(M));
 
     foreach (auto e, blocks)
     {
@@ -288,7 +340,25 @@ void SAlgorithm::optimizationStep()
     }
 
     emitUpdateFormulaeSignal();
-    qDebug() << startChecks();
+    bool check_status = startChecks();
+    qDebug(logInfo()) << ".....................";
+    qDebug(logInfo()) << check_status;
+    qDebug(logInfo()) << ".....................";
+    qDebug(logInfo()) << "";
+    qDebug(logInfo()) << "";
+    qDebug(logInfo()) << "";
+    if (startChecks())
+    {
+        EC_cnt++;
+        updateEC();
+    }
+
+    M = 0;
+}
+
+void SAlgorithm::step()
+{
+
 }
 
 double SAlgorithm::generateRandomForY()

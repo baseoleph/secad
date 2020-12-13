@@ -28,6 +28,13 @@ private:
     SGeneralData *general;
     int M = 0;
     double Y = 0;
+    double EC = NOTHING_VALUE;
+    int EC_cnt = 0;
+    int cnt = 0;
+    bool is_optimized = false;
+
+    void updateEC();
+    void updateAV();
 
     bool startChecks();
     bool check_37(SBlockData *e_h, SBlockData *e_s);
@@ -46,6 +53,7 @@ private:
     bool check_54(SBlockData *e, SBlockData *e_funn);
     bool check_55();
     void optimizationStep();
+    void step();
     double generateRandomForY();
 
     double functionV_33(double x);

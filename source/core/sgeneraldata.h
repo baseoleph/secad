@@ -27,6 +27,8 @@ public:
     double calc_q_14();
     double calc_p_15();
 
+    double sef_function(double x);
+
     d_vector calcSEFCoef_27();
     double calcC0();
     double calcC1();

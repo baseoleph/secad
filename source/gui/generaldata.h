@@ -59,7 +59,6 @@ private:
     QGraphicsScene *scene;
     QSplineSeries *series;
     QChart *chart;
-    double sef_function(double x);
     void initChart();
 };
 

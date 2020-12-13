@@ -85,14 +85,7 @@ void GeneralData::unFillForms()
     ui->lineEdit_wha->setText(QString::number(WHA));
 }
 
-double GeneralData::sef_function(double x)
-{
-    double a0 = general->cn[0];
-    double a1 = general->cn[1];
-    double a2 = general->cn[2];
-    double a3 = general->cn[3];
-    return a3 * pow(x, 3) + a2 * pow(x, 2) + a1 * x + a0;
-}
+
 
 void GeneralData::initChart()
 {
@@ -185,7 +178,7 @@ void GeneralData::on_pushButton_calc_clicked()
     series->clear();
     for (double i = 0; i <= general->L; ++i)
     {
-        series->append(QPointF(i, sef_function(i)));
+        series->append(QPointF(i, general->sef_function(i)));
     }
     chart->axes(Qt::Vertical).first()->setRange(0, general->t_ * 1.1);
     chart->axes(Qt::Horizontal).first()->setRange(0, general->L);

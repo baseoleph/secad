@@ -79,6 +79,15 @@ double SGeneralData::calc_p_15()
     return t * p_;
 }
 
+double SGeneralData::sef_function(double x)
+{
+    double a0 = cn[0];
+    double a1 = cn[1];
+    double a2 = cn[2];
+    double a3 = cn[3];
+    return a3 * pow(x, 3) + a2 * pow(x, 2) + a1 * x + a0;
+}
+
 d_vector SGeneralData::calcSEFCoef_27()
 {
     d_vector sef_coef(4);
