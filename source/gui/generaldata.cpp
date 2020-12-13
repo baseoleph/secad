@@ -41,6 +41,7 @@ void GeneralData::fillForms()
     ui->lineEdit_sef_mro->setText(QString::number(general->q_));
     ui->lineEdit_sef_apra->setText(QString::number(general->p_));
     ui->lineEdit_freeboard->setText(QString::number(general->FB));
+    ui->lineEdit_displacement->setText(QString::number(general->D));
 
     QString str_gsl = "{";
     foreach (auto e, general->GS_L)
@@ -72,6 +73,7 @@ void GeneralData::unFillForms()
     ui->lineEdit_draft->clear();
     ui->lineEdit_height->clear();
     ui->lineEdit_cb->clear();
+    ui->lineEdit_displacement->clear();
     ui->lineEdit_csd->clear();
     ui->lineEdit_gm->clear();
     ui->lineEdit_sef_mea->clear();
@@ -187,4 +189,9 @@ void GeneralData::on_pushButton_calc_clicked()
     }
     chart->axes(Qt::Vertical).first()->setRange(0, general->t_ * 1.1);
     chart->axes(Qt::Horizontal).first()->setRange(0, general->L);
+}
+
+void GeneralData::on_lineEdit_displacement_textChanged(const QString &arg1)
+{
+    general->D = arg1.toDouble();
 }

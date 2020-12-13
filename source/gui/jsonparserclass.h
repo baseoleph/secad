@@ -43,6 +43,7 @@ private:
     QString s_p_w = "p_w";
     QString s_theta = "theta";
     QString s_B = "B";
+    QString s_D = "D";
     QString s_T = "T";
     QString s_H = "H";
     QString s_delta = "delta";

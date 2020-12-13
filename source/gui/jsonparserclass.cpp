@@ -19,6 +19,7 @@ void JsonParserClass::saveGeneralData()
     json_general_user_data[s_p_w] = general->p_w;
     json_general_user_data[s_theta] = general->theta;
     json_general_user_data[s_B] = general->B;
+    json_general_user_data[s_D] = general->D;
     json_general_user_data[s_T] = general->T;
     json_general_user_data[s_H] = general->H;
     json_general_user_data[s_delta] = general->delta;
@@ -148,6 +149,7 @@ void JsonParserClass::loadGeneralData(QJsonObject general_json)
     m->general->theta = general_obj.value(s_theta).toDouble();
     m->general->L = general_obj.value(s_L).toDouble();
     m->general->B = general_obj.value(s_B).toDouble();
+    m->general->D = general_obj.value(s_D).toDouble();
     m->general->T = general_obj.value(s_T).toDouble();
     m->general->H = general_obj.value(s_H).toDouble();
     m->general->delta = general_obj.value(s_delta).toDouble();

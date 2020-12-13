@@ -51,6 +51,8 @@ private slots:
     void on_pushButton_save_clicked();
     void on_pushButton_calc_clicked();
 
+    void on_lineEdit_displacement_textChanged(const QString &arg1);
+
 private:
     Ui::GeneralData *ui;
     SGeneralData *general;

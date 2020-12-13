@@ -67,6 +67,7 @@ public:
     // metres
     double T = NOTHING_VALUE;
 
+    double D = NOTHING_VALUE;
     // Высота борта, м
     // Height
     // metres
