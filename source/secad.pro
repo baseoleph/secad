@@ -22,6 +22,7 @@ SOURCES += \
     gui/optimizewidget.cpp \
     gui/projectmanager.cpp \
     gui/resultswidget.cpp \
+    loggingcategories.cpp \
     main.cpp \
 
 HEADERS += \
@@ -38,7 +39,8 @@ HEADERS += \
     gui/mainwindow.h \
     gui/optimizewidget.h \
     gui/projectmanager.h \
-    gui/resultswidget.h
+    gui/resultswidget.h \
+    loggingcategories.h
 
 FORMS += \
     gui/enteringblocks.ui \

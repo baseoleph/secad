@@ -5,6 +5,7 @@
 #include "sblockdata.h"
 #include "sgeneraldata.h"
 #include "salgorithm.h"
+#include "loggingcategories.h"
 #include <QtMath>
 #include <vector>
 #include <QObject>

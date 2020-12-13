@@ -7,6 +7,7 @@
 #include "typesofoptimizevar.h"
 #include "sm_algorithms.h"
 #include "sblockdata.h"
+#include "loggingcategories.h"
 #include <QObject>
 
 class SAlgorithm : public QObject

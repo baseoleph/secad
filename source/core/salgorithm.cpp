@@ -5,8 +5,8 @@ SAlgorithm::SAlgorithm(BlocksVector new_blocks)
     blocks = new_blocks;
     clearTypesOpt();
 
-    qDebug() << "Init Opt";
-    qDebug() << "";
+    qDebug(logInfo()) << "Init Opt";
+    qDebug(logInfo()) << "";
 }
 
 void SAlgorithm::startOpt()
@@ -191,15 +191,15 @@ void SAlgorithm::optimizationStep()
     ++M;
     foreach (auto e, blocks)
     {
-        qDebug() << "!!!!!!!!!!!!!!!!!";
-        qDebug() << "Block " << e->titleblock;
-        qDebug() << "K_L";
+        qDebug(logInfo()) << "!!!!!!!!!!!!!!!!!";
+        qDebug(logInfo()) << "Block " << e->titleblock;
+        qDebug(logInfo()) << "K_L";
         optimizeVal(&e->K_L);
-        qDebug() << "K_H";
+        qDebug(logInfo()) << "K_H";
         optimizeVal(&e->K_H);
-        qDebug() << "alpha_A";
+        qDebug(logInfo()) << "alpha_A";
         optimizeVal(&e->alpha_A);
-        qDebug() << "alpha_F";
+        qDebug(logInfo()) << "alpha_F";
         optimizeVal(&e->alpha_F);
     }
 
@@ -217,46 +217,46 @@ void SAlgorithm::optimizeVal(TypesOfOptimizeVar *var)
     Y = generateRandomForY();
     if (var->type == DISC)
     {
-        qDebug() << "--------------------------";
-        qDebug() << "DISC, av = " << var->av;
-        qDebug() << "av_i = " << var->av_i;
+        qDebug(logInfo()) << "--------------------------";
+        qDebug(logInfo()) << "DISC, av = " << var->av;
+        qDebug(logInfo()) << "av_i = " << var->av_i;
         discOpt(var);
     }
     else if (var->type == CONT)
     {
-        qDebug() << "--------------------------";
-        qDebug() << "CONT, av = " << var->av;
+        qDebug(logInfo()) << "--------------------------";
+        qDebug(logInfo()) << "CONT, av = " << var->av;
         contOpt(var);
     }
     else
     {
-        qDebug() << "--------------------------";
-        qDebug() << "CONS, av = " << var->av;
-        qDebug() << "--------------------------";
-        qDebug() << "";
+        qDebug(logInfo()) << "--------------------------";
+        qDebug(logInfo()) << "CONS, av = " << var->av;
+        qDebug(logInfo()) << "--------------------------";
+        qDebug(logInfo()) << "";
     }
 }
 
 void SAlgorithm::contOpt(TypesOfOptimizeVar *var)
 {
     var->iv = var->av + (var->cont_max - var->cont_min) * pow(Y, M);
-    qDebug() << "min = " << var->cont_min;
-    qDebug() << "max = " << var->cont_max;
-    qDebug() << "pow(Y, M) = " << pow(Y, M);
-    qDebug() << "iv = " << var->iv;
+    qDebug(logInfo()) << "min = " << var->cont_min;
+    qDebug(logInfo()) << "max = " << var->cont_max;
+    qDebug(logInfo()) << "pow(Y, M) = " << pow(Y, M);
+    qDebug(logInfo()) << "iv = " << var->iv;
 
     if (var->iv > var->cont_max)
     {
         var->iv = var->cont_max;
-        qDebug() << "was overflow iv = " << var->iv;
+        qDebug(logInfo()) << "was overflow iv = " << var->iv;
     }
     else if (var->iv < var->cont_min)
     {
         var->iv = var->cont_min;
-        qDebug() << "was overflow iv = " << var->iv;
+        qDebug(logInfo()) << "was overflow iv = " << var->iv;
     }
-    qDebug() << "--------------------------";
-    qDebug() << "";
+    qDebug(logInfo()) << "--------------------------";
+    qDebug(logInfo()) << "";
 }
 
 void SAlgorithm::discOpt(TypesOfOptimizeVar *var)
@@ -265,28 +265,28 @@ void SAlgorithm::discOpt(TypesOfOptimizeVar *var)
     int min_i = 0;
     var->iv_i = var->av_i + max_i * pow(Y, M);
     var->iv = var->desc_link[var->iv_i];
-    qDebug() << "min_i = " << 0;
-    qDebug() << "max_i = " << var->desc_link.size()-1;
-    qDebug() << "pow(Y, M) = " << pow(Y, M);
-    qDebug() << "iv = " << var->iv;
-    qDebug() << "iv_i = " << var->iv_i;
+    qDebug(logInfo()) << "min_i = " << 0;
+    qDebug(logInfo()) << "max_i = " << var->desc_link.size()-1;
+    qDebug(logInfo()) << "pow(Y, M) = " << pow(Y, M);
+    qDebug(logInfo()) << "iv = " << var->iv;
+    qDebug(logInfo()) << "iv_i = " << var->iv_i;
 
     if (var->iv_i > max_i)
     {
         var->iv_i = max_i;
         var->iv = var->desc_link[var->iv_i];
-        qDebug() << "was overflow iv_i = " << var->iv_i;
-        qDebug() << "iv = " << var->iv;
+        qDebug(logInfo()) << "was overflow iv_i = " << var->iv_i;
+        qDebug(logInfo()) << "iv = " << var->iv;
     }
     else if (var->iv_i < min_i)
     {
         var->iv_i = min_i;
         var->iv = var->desc_link[var->iv_i];
-        qDebug() << "was overflow iv_i = " << var->iv_i;
-        qDebug() << "iv = " << var->iv;
+        qDebug(logInfo()) << "was overflow iv_i = " << var->iv_i;
+        qDebug(logInfo()) << "iv = " << var->iv;
     }
-    qDebug() << "--------------------------";
-    qDebug() << "";
+    qDebug(logInfo()) << "--------------------------";
+    qDebug(logInfo()) << "";
 }
 
 void SAlgorithm::clearTypesOpt()
