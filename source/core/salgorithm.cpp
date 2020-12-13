@@ -1,10 +1,10 @@
 #include "salgorithm.h"
 
-SAlgorithm::SAlgorithm(BlocksVector new_blocks)
+SAlgorithm::SAlgorithm(BlocksVector new_blocks, SGeneralData *new_general)
 {
+    general = new_general;
     blocks = new_blocks;
     clearTypesOpt();
-
     qDebug(logInfo()) << "Init Opt";
     qDebug(logInfo()) << "";
 }
@@ -24,15 +24,7 @@ void SAlgorithm::startChecks()
         super_bool &= check_41(e);
     }
 
-    foreach (auto e, blocks)
-    {
-        super_bool &= check_42(e);
-    }
-
-    foreach (auto e, blocks)
-    {
-        super_bool &= check_43(e);
-    }
+    super_bool &= check_43();
 
     foreach (auto e, blocks)
     {
@@ -97,19 +89,19 @@ void SAlgorithm::startChecks()
 
 bool SAlgorithm::check_41(SBlockData *e)
 {
-    Q_UNUSED(e)
-    return true;
+    bool prop = (e->b > 0);
+    return prop;
 }
 
-bool SAlgorithm::check_42(SBlockData *e)
+bool SAlgorithm::check_43()
 {
-    Q_UNUSED(e)
-    return true;
-}
+    double S_main = 0;
+    for (int i = 1; i < blocks.size(); ++i)
+    {
+        S_main += blocks[i]->S;
+    }
 
-bool SAlgorithm::check_43(SBlockData *e)
-{
-    Q_UNUSED(e)
+//    bool prop =
     return true;
 }
 
@@ -204,6 +196,8 @@ void SAlgorithm::optimizationStep()
         optimizeVal(&e->alpha_A);
         qDebug(logInfo()) << "alpha_F";
         optimizeVal(&e->alpha_F);
+        qDebug(logInfo()) << "X";
+        optimizeVal(&e->X);
     }
 
     emitUpdateFormulaeSignal();

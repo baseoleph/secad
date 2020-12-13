@@ -22,7 +22,7 @@ void SMainClass::optimizeData()
         disconnect(alg, &SAlgorithm::emitStatusBarSignal, this, &SMainClass::statusBarSlot);
         delete alg;
     }
-    alg = new SAlgorithm(blocks);
+    alg = new SAlgorithm(blocks, general);
     connect(alg, &SAlgorithm::emitUpdateFormulaeSignal, this, &SMainClass::updateFormulaeSlot);
     connect(alg, &SAlgorithm::emitStatusBarSignal, this, &SMainClass::statusBarSlot);
     alg->startOpt();
@@ -76,6 +76,15 @@ void SMainClass::set_22(SBlockData &block)
     block.M_b = my_trunc(block.b * (block.h * qCos(alpha_F_iv)/qSin(alpha_F_iv) + block.b/2));
 }
 
+void SMainClass::set_x(SBlockData &block)
+{
+    if (block.HB_L != 0)
+    {
+        SBlockData *parent_block = blocks[block.HB_L - 1];
+        block.X.iv = parent_block->X.iv + parent_block->a;
+    }
+}
+
 void SMainClass::set_23(SBlockData &block)
 {
     block.x_g = my_trunc((block.M_a + block.M_b)/(block.a + block.b)+ block.X.iv);
@@ -126,6 +135,9 @@ void SMainClass::updateFormulaeSlot()
         set_20(*e);
         set_21(*e);
         set_22(*e);
+
+        set_x(*e);
+
         set_23(*e);
         set_24(*e);
         set_25(*e);

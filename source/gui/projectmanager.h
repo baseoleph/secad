@@ -6,7 +6,7 @@
 #include <QDebug>
 
 #include "../core/smainclass.h"
-#include "loggingcategories.h"
+#include "../core/loggingcategories.h"
 
 namespace Ui {
 class ProjectManager;

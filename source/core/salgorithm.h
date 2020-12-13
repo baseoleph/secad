@@ -7,6 +7,7 @@
 #include "typesofoptimizevar.h"
 #include "sm_algorithms.h"
 #include "sblockdata.h"
+#include "sgeneraldata.h"
 #include "loggingcategories.h"
 #include <QObject>
 
@@ -15,7 +16,7 @@ class SAlgorithm : public QObject
     Q_OBJECT
 
 public:
-    SAlgorithm(BlocksVector new_blocks);
+    SAlgorithm(BlocksVector new_blocks, SGeneralData *new_general);
     void startOpt();
 
 signals:
@@ -24,13 +25,13 @@ signals:
 
 private:
     BlocksVector blocks;
+    SGeneralData *general;
     int M = 0;
     double Y = 0;
 
     void startChecks();
     bool check_41(SBlockData *e);
-    bool check_42(SBlockData *e);
-    bool check_43(SBlockData *e);
+    bool check_43();
     bool check_44(SBlockData *e);
     bool check_45(SBlockData *e);
     bool check_46(SBlockData *e);

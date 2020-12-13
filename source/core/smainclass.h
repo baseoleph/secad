@@ -27,6 +27,7 @@ public:
     void set_20(SBlockData &block);
     void set_21(SBlockData &block);
     void set_22(SBlockData &block);
+    void set_x(SBlockData &block);
     void set_23(SBlockData &block);
     void set_24(SBlockData &block);
     void set_25(SBlockData &block);
