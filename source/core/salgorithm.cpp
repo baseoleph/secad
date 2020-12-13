@@ -30,27 +30,52 @@ void SAlgorithm::startChecks()
 
     foreach (auto e, blocks)
     {
-        super_bool &= check_45(e);
+        if (e->HB_L == 0 && e->HB_H == 1)
+        {
+            super_bool &= check_45(e);
+            break;
+        }
+    }
+
+    SBlockData *e_last;
+    foreach (auto e, blocks)
+    {
+        if (e->HB_H == 1)
+        {
+            if (e->HB_L != 0)
+            {
+                e_last = e;
+                break;
+            }
+        }
+    }
+    super_bool &= check_46(e_last);
+
+    foreach (auto e, blocks)
+    {
+        if (e->funnel)
+        {
+            super_bool &= check_47(e);
+            break;
+        }
     }
 
     foreach (auto e, blocks)
     {
-        super_bool &= check_46(e);
+        if (e->foremast)
+        {
+            super_bool &= check_48(e);
+            break;
+        }
     }
 
     foreach (auto e, blocks)
     {
-        super_bool &= check_47(e);
-    }
-
-    foreach (auto e, blocks)
-    {
-        super_bool &= check_48(e);
-    }
-
-    foreach (auto e, blocks)
-    {
-        super_bool &= check_49(e);
+        if (e->mainmast)
+        {
+            super_bool &= check_49(e);
+            break;
+        }
     }
 
     foreach (auto e, blocks)
@@ -60,17 +85,29 @@ void SAlgorithm::startChecks()
 
     foreach (auto e, blocks)
     {
-        super_bool &= check_52(e);
+        if (e->pap)
+        {
+            super_bool &= check_52(e);
+            super_bool &= check_53(e);
+            break;
+        }
     }
 
+    SBlockData *e_funn = nullptr;
     foreach (auto e, blocks)
     {
-        super_bool &= check_53(e);
+        if (e->funnel)
+        {
+            e_funn = e;
+            break;
+        }
     }
-
     foreach (auto e, blocks)
     {
-        super_bool &= check_54(e, e);
+        if (e->X.iv >= e_funn->X.iv + e_funn->a)
+        {
+            super_bool &= check_54(e, e);
+        }
     }
 
     super_bool &= check_55();
@@ -87,7 +124,10 @@ bool SAlgorithm::check_43()
     double S_main_without_hal = 0;
     for (int i = 1; i < blocks.size(); ++i)
     {
-        S_main_without_hal += blocks[i]->S;
+        if (blocks[i]->habitability)
+        {
+            S_main_without_hal += blocks[i]->S;
+        }
     }
 
     bool prop = (S_main_without_hal >= (general->k_DS * general->L * general->FB));
@@ -108,7 +148,7 @@ bool SAlgorithm::check_44()
 
 bool SAlgorithm::check_45(SBlockData *e)
 {
-    bool prop = (e->X.iv <= 20);
+    bool prop = (e->X.iv >= 20);
     return prop;
 }
 
@@ -139,7 +179,7 @@ bool SAlgorithm::check_49(SBlockData *e)
 bool SAlgorithm::check_51(SBlockData *e)
 {
     double argument = e->X.iv + e->h * my_ctg(e->alpha_A.iv);
-    bool prop = (e->h + e->Z <= functionV_33(e, argument));
+    bool prop = (e->h + e->Z <= functionV_33(argument));
     return prop;
 }
 
@@ -208,8 +248,16 @@ double SAlgorithm::generateRandomForY()
     return dist(*QRandomGenerator::global());
 }
 
-double SAlgorithm::functionV_33(SBlockData *e, double x)
+double SAlgorithm::functionV_33(double x)
 {
+    SBlockData *e = nullptr;
+    foreach (auto el, blocks)
+    {
+        if (el->wheelhause)
+        {
+            e = el;
+        }
+    }
     double k_num = e->h + e->Z;
     double k_den = e->X.iv + e->a + e->h * my_ctg(e->alpha_F.iv) - general->L - general->L_V_max;
     double k = k_num / k_den;

@@ -46,7 +46,7 @@ private:
     void optimizationStep();
     double generateRandomForY();
 
-    double functionV_33(SBlockData *e, double x);
+    double functionV_33(double x);
     void optimizeVal(TypesOfOptimizeVar *var);
     void contOpt(TypesOfOptimizeVar *var);
     void discOpt(TypesOfOptimizeVar *var);
