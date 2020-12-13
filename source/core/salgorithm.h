@@ -20,6 +20,7 @@ public:
 
 signals:
     void emitUpdateFormulaeSignal();
+    void emitStatusBarSignal(const QString str);
 
 private:
     BlocksVector blocks;

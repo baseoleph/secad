@@ -39,6 +39,7 @@ void MainWindow::removeAll()
 void MainWindow::clearAll()
 {
     m = new SMainClass();
+    connect(m, &SMainClass::emitStatusBarSignal, this, &MainWindow::statusBarSlot);
     jpc = JsonParserClass(this, m);
 
     proj_man = new ProjectManager(this, m);
@@ -85,6 +86,11 @@ void MainWindow::slotSaveGeneralData()
 void MainWindow::slotSaveEnteringData()
 {
     jpc.saveData();
+}
+
+void MainWindow::statusBarSlot(const QString str)
+{
+    ui->statusbar->showMessage(str, 5000);
 }
 
 void MainWindow::fillGeneralData(QString proj_name)

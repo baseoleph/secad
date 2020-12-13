@@ -19,10 +19,12 @@ void SMainClass::optimizeData()
     if (alg != nullptr)
     {
         disconnect(alg, &SAlgorithm::emitUpdateFormulaeSignal, this, &SMainClass::updateFormulaeSlot);
+        disconnect(alg, &SAlgorithm::emitStatusBarSignal, this, &SMainClass::statusBarSlot);
         delete alg;
     }
     alg = new SAlgorithm(blocks);
     connect(alg, &SAlgorithm::emitUpdateFormulaeSignal, this, &SMainClass::updateFormulaeSlot);
+    connect(alg, &SAlgorithm::emitStatusBarSignal, this, &SMainClass::statusBarSlot);
     alg->startOpt();
 }
 
@@ -129,4 +131,9 @@ void SMainClass::updateFormulaeSlot()
         set_25(*e);
         set_26(*e);
     }
+}
+
+void SMainClass::statusBarSlot(const QString str)
+{
+    emitStatusBarSignal(str);
 }

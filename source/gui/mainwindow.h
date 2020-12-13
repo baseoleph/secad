@@ -35,6 +35,7 @@ private slots:
     void slotOpenProject(QString proj_name = "");
     void slotSaveGeneralData();
     void slotSaveEnteringData();
+    void statusBarSlot(const QString str);
 
 private:
     // Передаем значения из .json в объект класса SGeneralData

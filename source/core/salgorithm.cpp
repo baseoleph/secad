@@ -189,6 +189,9 @@ bool SAlgorithm::check_55(SBlockData *e)
 void SAlgorithm::optimizationStep()
 {
     ++M;
+
+    emitStatusBarSignal(QString::number(M));
+
     foreach (auto e, blocks)
     {
         qDebug(logInfo()) << "!!!!!!!!!!!!!!!!!";

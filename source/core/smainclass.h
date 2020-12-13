@@ -39,8 +39,14 @@ public:
     BlocksVector blocks;
     SAlgorithm *alg = nullptr;
 
+signals:
+    void emitStatusBarSignal(const QString str);
+
 public slots:
     void updateFormulaeSlot();
+
+private slots:
+    void statusBarSlot(const QString str);
 };
 
 #endif // SMAINCLASS_H
