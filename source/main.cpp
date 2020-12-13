@@ -1,7 +1,7 @@
 #include "gui/mainwindow.h"
 
 #include <QApplication>
-
+#include <iomanip>
 
 // Умный указатель на файл логирования
 QScopedPointer<QFile>   m_logFile;
@@ -39,5 +39,9 @@ void messageHandler(QtMsgType type, const QMessageLogContext &context, const QSt
         // Записываем в вывод категорию сообщения и само сообщение
         out << ": " << msg << Qt::endl;
         out.flush();    // Очищаем буферизированные данные
+    }
+    else
+    {
+        qDebug() << msg;
     }
 }

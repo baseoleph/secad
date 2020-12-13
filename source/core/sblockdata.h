@@ -84,12 +84,12 @@ public:
     // Родительский блок по высоте
     // Head Block by Height
     //
-    int HB_H = NOTHING_VALUE;
+    int HB_H = 0;
 
     // Родительский блок по длине
     // Head Block by Length
     //
-    int HB_L = NOTHING_VALUE;
+    int HB_L = 0;
 
     // Расстояние до родительского блока по длине
     // Distance To Head Block by Length
