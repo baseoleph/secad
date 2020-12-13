@@ -15,6 +15,7 @@ SOURCES += \
     core/sm_algorithms.cpp \
     core/smainclass.cpp \
     core/typesofoptimizevar.cpp \
+    core/loggingcategories.cpp \
     gui/enteringblocks.cpp \
     gui/generaldata.cpp \
     gui/jsonparserclass.cpp \
@@ -22,7 +23,7 @@ SOURCES += \
     gui/optimizewidget.cpp \
     gui/projectmanager.cpp \
     gui/resultswidget.cpp \
-    main.cpp \
+    main.cpp
 
 HEADERS += \
     core/salgorithm.h \
@@ -32,6 +33,7 @@ HEADERS += \
     core/sm_algorithms.h \
     core/smainclass.h \
     core/typesofoptimizevar.h \
+    core/loggingcategories.h \
     gui/enteringblocks.h \
     gui/generaldata.h \
     gui/jsonparserclass.h \

@@ -5,6 +5,7 @@
 #include "sblockdata.h"
 #include "sgeneraldata.h"
 #include "salgorithm.h"
+#include "loggingcategories.h"
 #include <QtMath>
 #include <vector>
 #include <QObject>
@@ -26,6 +27,7 @@ public:
     void set_20(SBlockData &block);
     void set_21(SBlockData &block);
     void set_22(SBlockData &block);
+    void set_x(SBlockData &block);
     void set_23(SBlockData &block);
     void set_24(SBlockData &block);
     void set_25(SBlockData &block);
@@ -38,8 +40,14 @@ public:
     BlocksVector blocks;
     SAlgorithm *alg = nullptr;
 
+signals:
+    void emitStatusBarSignal(const QString str);
+
 public slots:
     void updateFormulaeSlot();
+
+private slots:
+    void statusBarSlot(const QString str);
 };
 
 #endif // SMAINCLASS_H
