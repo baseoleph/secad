@@ -131,6 +131,7 @@ public:
     // metres
     double p = NOTHING_VALUE;
 
+    double ECB = NOTHING_VALUE;
     // Золотое сечение по длине
     // Golden Section by Length
     // proportions

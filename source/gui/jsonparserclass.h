@@ -60,6 +60,7 @@ private:
     QString s_GS_L = "GS_L";
     QString s_GS_H = "GS_H";
     QString s_cn = "cn";
+    QString s_ECB = "ECB";
 
     QString s_user = "user";
     QString s_calc = "calc";

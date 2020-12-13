@@ -36,6 +36,7 @@ void JsonParserClass::saveGeneralData()
     json_general_calc_data[s_t] = general->t;
     json_general_calc_data[s_q] = general->q;
     json_general_calc_data[s_p] = general->p;
+    json_general_calc_data[s_ECB] = general->ECB;
 
 
     QJsonArray json_ar_gsl;
@@ -166,6 +167,7 @@ void JsonParserClass::loadGeneralData(QJsonObject general_json)
     m->general->t = general_obj.value(s_t).toDouble();
     m->general->q = general_obj.value(s_q).toDouble();
     m->general->p = general_obj.value(s_p).toDouble();
+    m->general->ECB = general_obj.value(s_ECB).toDouble();
 
     QJsonArray json_gsl = general_obj.value(s_GS_L).toArray();
     m->general->GS_L.clear();
