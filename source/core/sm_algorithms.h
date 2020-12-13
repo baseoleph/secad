@@ -2,11 +2,13 @@
 #define SM_ALGORITHMS_H
 
 #include <cmath>
+#include <QtMath>
 
 #define PRECISION 1000000
 
 double my_trunc(double d);
 
+double my_ctg(double val_in_degrees);
 //double my_trunc(double d)
 //{
 ////    return std::trunc(d * PRECISION) / PRECISION;
