@@ -26,6 +26,7 @@ void SMainClass::optimizeData()
     connect(alg, &SAlgorithm::emitUpdateFormulaeSignal, this, &SMainClass::updateFormulaeSlot);
     connect(alg, &SAlgorithm::emitStatusBarSignal, this, &SMainClass::statusBarSlot);
     alg->startOpt();
+    qDebug() << "Opt end";
 }
 
 void SMainClass::setSubstractureZ_16(SBlockData &block)

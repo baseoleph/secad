@@ -26,10 +26,7 @@ void SAlgorithm::startChecks()
 
     super_bool &= check_43();
 
-    foreach (auto e, blocks)
-    {
-        super_bool &= check_44(e);
-    }
+    super_bool &= check_44();
 
     foreach (auto e, blocks)
     {
@@ -58,11 +55,6 @@ void SAlgorithm::startChecks()
 
     foreach (auto e, blocks)
     {
-        super_bool &= check_50(e);
-    }
-
-    foreach (auto e, blocks)
-    {
         super_bool &= check_51(e);
     }
 
@@ -78,13 +70,10 @@ void SAlgorithm::startChecks()
 
     foreach (auto e, blocks)
     {
-        super_bool &= check_54(e);
+        super_bool &= check_54(e, e);
     }
 
-    foreach (auto e, blocks)
-    {
-        super_bool &= check_55(e);
-    }
+    super_bool &= check_55();
 }
 
 bool SAlgorithm::check_41(SBlockData *e)
@@ -95,86 +84,96 @@ bool SAlgorithm::check_41(SBlockData *e)
 
 bool SAlgorithm::check_43()
 {
-    double S_main = 0;
+    double S_main_without_hal = 0;
     for (int i = 1; i < blocks.size(); ++i)
     {
-        S_main += blocks[i]->S;
+        S_main_without_hal += blocks[i]->S;
     }
 
-//    bool prop =
-    return true;
+    bool prop = (S_main_without_hal >= (general->k_DS * general->L * general->FB));
+    return prop;
 }
 
-bool SAlgorithm::check_44(SBlockData *e)
+bool SAlgorithm::check_44()
 {
-    Q_UNUSED(e)
-    return true;
+    double S_mul_Z = 0;
+    for (int i = 0; i < blocks.size(); ++i)
+    {
+        S_mul_Z += blocks[i]->S * blocks[i]->z_g;
+    }
+
+    bool prop = (general->p_w * S_mul_Z/(general->D * general->GM) <= qDegreesToRadians(15.0));
+    return prop;
 }
 
 bool SAlgorithm::check_45(SBlockData *e)
 {
-    Q_UNUSED(e)
-    return true;
+    bool prop = (e->X.iv <= 20);
+    return prop;
 }
 
 bool SAlgorithm::check_46(SBlockData *e)
 {
-    Q_UNUSED(e)
-    return true;
+    bool prop = (e->a + e->X.iv <= general->L);
+    return prop;
 }
 
 bool SAlgorithm::check_47(SBlockData *e)
 {
-    Q_UNUSED(e)
-    return true;
+    bool prop = (8.0 <= e->h and e->h <= 12.0);
+    return prop;
 }
 
 bool SAlgorithm::check_48(SBlockData *e)
 {
-    Q_UNUSED(e)
-    return true;
+    bool prop = (15.0 <= e->h and e->h <= 20.0);
+    return prop;
 }
 
 bool SAlgorithm::check_49(SBlockData *e)
 {
-    Q_UNUSED(e)
-    return true;
-}
-
-bool SAlgorithm::check_50(SBlockData *e)
-{
-    Q_UNUSED(e)
-    return true;
+    bool prop = (5.0 <= e->h and e->h <= 12.0);
+    return prop;
 }
 
 bool SAlgorithm::check_51(SBlockData *e)
 {
-    Q_UNUSED(e)
-    return true;
+    double argument = e->X.iv + e->h * my_ctg(e->alpha_A.iv);
+    bool prop = (e->h + e->Z <= functionV_33(e, argument));
+    return prop;
 }
 
 bool SAlgorithm::check_52(SBlockData *e)
 {
-    Q_UNUSED(e)
-    return true;
+    bool prop = (e->S >= 20.0);
+    return prop;
 }
 
 bool SAlgorithm::check_53(SBlockData *e)
 {
-    Q_UNUSED(e)
-    return true;
+    bool prop = (e->h >= 6.3);
+    return prop;
 }
 
-bool SAlgorithm::check_54(SBlockData *e)
+bool SAlgorithm::check_54(SBlockData *e, SBlockData *e_funn)
 {
-    Q_UNUSED(e)
-    return true;
+    bool prop = (e->Z + e->h >= e_funn->Z + e_funn->h);
+    return prop;
 }
 
-bool SAlgorithm::check_55(SBlockData *e)
+bool SAlgorithm::check_55()
 {
-    Q_UNUSED(e)
-    return true;
+    double S_mul_x_g = 0;
+    double S_main = 0;
+    foreach (auto el, blocks)
+    {
+        S_mul_x_g += el->S * el->x_g;
+        S_main += el->S;
+    }
+
+    double arg = S_mul_x_g / (general->L * S_main);
+    bool prop = (0.41 <= arg and arg <= 0.48);
+    return prop;
 }
 
 
@@ -207,6 +206,18 @@ double SAlgorithm::generateRandomForY()
 {
     std::uniform_real_distribution<> dist(-1, 1);
     return dist(*QRandomGenerator::global());
+}
+
+double SAlgorithm::functionV_33(SBlockData *e, double x)
+{
+    double k_num = e->h + e->Z;
+    double k_den = e->X.iv + e->a + e->h * my_ctg(e->alpha_F.iv) - general->L - general->L_V_max;
+    double k = k_num / k_den;
+    double g_num = (e->h + e->Z) * (-general->L - general->L_V_max);
+    double g_den = e->X.iv + e->a + e->h * my_ctg(e->alpha_F.iv) - general->L - general->L_V_max;
+    double g = g_num / g_den;
+    double v_x = k * x + g;
+    return v_x;
 }
 
 void SAlgorithm::optimizeVal(TypesOfOptimizeVar *var)

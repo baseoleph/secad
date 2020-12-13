@@ -4,7 +4,7 @@
             "HB_H": 0,
             "HB_L": 0,
             "K_H": {
-                "av": 6.333786374411034,
+                "av": 8.321967835067653,
                 "av_i": 0,
                 "cons": 1,
                 "cont_max": 9,
@@ -17,7 +17,7 @@
                     9
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 9,
                 "iv_i": 0,
                 "type": 1
             },
@@ -30,14 +30,14 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": true,
-                "iv": -6000000,
-                "iv_i": 0,
+                "iv": 0.021997,
+                "iv_i": 8,
                 "type": 2
             },
             "L_HB_L": 12,
-            "M_a": 180000000000000000,
-            "M_b": 179938560346410850,
-            "S": 11626417207158796,
+            "M_a": 2.41934,
+            "M_b": -1361166.558557,
+            "S": -23695.941513,
             "X": {
                 "av": 0,
                 "av_i": 0,
@@ -47,14 +47,14 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 0,
                 "iv_i": 0,
                 "type": 0
             },
-            "X_U_A": -617085125.168358,
-            "X_U_F": 5085125.168358,
+            "X_U_A": 2.199699,
+            "X_U_F": 1649.950894,
             "Z": 0,
-            "a": -600000000,
+            "a": 2.1997,
             "alpha_A": {
                 "av": 90,
                 "av_i": 0,
@@ -64,13 +64,13 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 90,
                 "iv_i": 0,
                 "type": 0
             },
             "alpha_F": {
                 "av": 4,
-                "av_i": 3,
+                "av_i": 2,
                 "cons": 90,
                 "cont_max": 0,
                 "cont_min": 0,
@@ -83,14 +83,14 @@
                     7
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 1,
                 "iv_i": 0,
                 "type": 2
             },
-            "b": -611085125.745708,
+            "b": -1647.751194,
             "foremast": false,
             "funnel": false,
-            "h": -19200000,
+            "h": 28.8,
             "habitability": true,
             "is_hull": true,
             "mainmast": false,
@@ -99,8 +99,8 @@
             "sb_l": "",
             "titleblock": "Корпус",
             "wheelhause": false,
-            "x_g": -303203353.170392,
-            "z_g": -9570710.231979
+            "x_g": 827.178088,
+            "z_g": 9.587167
         },
         {
             "HB_H": 1,
@@ -114,7 +114,7 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 2,
                 "iv_i": 0,
                 "type": 0
             },
@@ -127,14 +127,14 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": true,
-                "iv": -6000000,
+                "iv": 0.2,
                 "iv_i": 0,
                 "type": 0
             },
             "L_HB_L": 0,
-            "M_a": 180000000000000000,
-            "M_b": 179938560346410850,
-            "S": 11626417207158796,
+            "M_a": 200,
+            "M_b": 200,
+            "S": 128,
             "X": {
                 "av": 10,
                 "av_i": 0,
@@ -144,14 +144,14 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 10,
                 "iv_i": 0,
                 "type": 0
             },
-            "X_U_A": -617085125.168358,
-            "X_U_F": 5085125.168358,
-            "Z": -19200000,
-            "a": -600000000,
+            "X_U_A": 30,
+            "X_U_F": 10,
+            "Z": 28.8,
+            "a": 20,
             "alpha_A": {
                 "av": 90,
                 "av_i": 0,
@@ -161,7 +161,7 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 90,
                 "iv_i": 0,
                 "type": 0
             },
@@ -174,14 +174,14 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 90,
                 "iv_i": 0,
                 "type": 0
             },
-            "b": -611085125.745708,
+            "b": 20,
             "foremast": false,
             "funnel": false,
-            "h": -19200000,
+            "h": 6.4,
             "habitability": true,
             "is_hull": false,
             "mainmast": false,
@@ -190,8 +190,8 @@
             "sb_l": "",
             "titleblock": "Блок А",
             "wheelhause": true,
-            "x_g": -303203353.170392,
-            "z_g": -28770710.231979
+            "x_g": 20,
+            "z_g": 32
         },
         {
             "HB_H": 1,
@@ -205,7 +205,7 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 1,
                 "iv_i": 0,
                 "type": 0
             },
@@ -218,14 +218,14 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 0.2,
                 "iv_i": 0,
                 "type": 0
             },
             "L_HB_L": 0,
-            "M_a": 180000000000000000,
-            "M_b": 179938560346410850,
-            "S": 11626417207158796,
+            "M_a": 200,
+            "M_b": 200,
+            "S": 64,
             "X": {
                 "av": 0,
                 "av_i": 0,
@@ -235,14 +235,14 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -606000000,
+                "iv": 30,
                 "iv_i": 0,
                 "type": 0
             },
-            "X_U_A": -1217085125.168358,
-            "X_U_F": -594914874.831641,
-            "Z": -19200000,
-            "a": -600000000,
+            "X_U_A": 50,
+            "X_U_F": 30,
+            "Z": 28.8,
+            "a": 20,
             "alpha_A": {
                 "av": 90,
                 "av_i": 0,
@@ -252,7 +252,7 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 90,
                 "iv_i": 0,
                 "type": 0
             },
@@ -265,14 +265,14 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 90,
                 "iv_i": 0,
                 "type": 0
             },
-            "b": -611085125.745708,
+            "b": 20,
             "foremast": false,
             "funnel": false,
-            "h": -19200000,
+            "h": 3.2,
             "habitability": true,
             "is_hull": false,
             "mainmast": false,
@@ -281,8 +281,8 @@
             "sb_l": "",
             "titleblock": "Блок Б",
             "wheelhause": false,
-            "x_g": -903203353.170392,
-            "z_g": -28770710.231979
+            "x_g": 40,
+            "z_g": 30.4
         },
         {
             "HB_H": 1,
@@ -296,7 +296,7 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 1,
                 "iv_i": 0,
                 "type": 0
             },
@@ -309,14 +309,14 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 0.2,
                 "iv_i": 0,
                 "type": 0
             },
             "L_HB_L": 0,
-            "M_a": 180000000000000000,
-            "M_b": 179938560346410850,
-            "S": 11626417207158796,
+            "M_a": 200,
+            "M_b": 200,
+            "S": 64,
             "X": {
                 "av": 0,
                 "av_i": 0,
@@ -326,14 +326,14 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -1206000000,
+                "iv": 50,
                 "iv_i": 0,
                 "type": 0
             },
-            "X_U_A": -1817085125.168358,
-            "X_U_F": -1194914874.831642,
-            "Z": -19200000,
-            "a": -600000000,
+            "X_U_A": 70,
+            "X_U_F": 50,
+            "Z": 28.8,
+            "a": 20,
             "alpha_A": {
                 "av": 90,
                 "av_i": 0,
@@ -343,7 +343,7 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 90,
                 "iv_i": 0,
                 "type": 0
             },
@@ -356,14 +356,14 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 90,
                 "iv_i": 0,
                 "type": 0
             },
-            "b": -611085125.745708,
+            "b": 20,
             "foremast": false,
             "funnel": false,
-            "h": -19200000,
+            "h": 3.2,
             "habitability": true,
             "is_hull": false,
             "mainmast": false,
@@ -372,8 +372,8 @@
             "sb_l": "",
             "titleblock": "Блок В",
             "wheelhause": false,
-            "x_g": -1503203353.170392,
-            "z_g": -28770710.231979
+            "x_g": 60,
+            "z_g": 30.4
         }
     ],
     "General": {

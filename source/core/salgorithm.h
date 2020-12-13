@@ -32,21 +32,21 @@ private:
     void startChecks();
     bool check_41(SBlockData *e);
     bool check_43();
-    bool check_44(SBlockData *e);
+    bool check_44();
     bool check_45(SBlockData *e);
     bool check_46(SBlockData *e);
     bool check_47(SBlockData *e);
     bool check_48(SBlockData *e);
     bool check_49(SBlockData *e);
-    bool check_50(SBlockData *e);
     bool check_51(SBlockData *e);
     bool check_52(SBlockData *e);
     bool check_53(SBlockData *e);
-    bool check_54(SBlockData *e);
-    bool check_55(SBlockData *e);
+    bool check_54(SBlockData *e, SBlockData *e_funn);
+    bool check_55();
     void optimizationStep();
     double generateRandomForY();
 
+    double functionV_33(SBlockData *e, double x);
     void optimizeVal(TypesOfOptimizeVar *var);
     void contOpt(TypesOfOptimizeVar *var);
     void discOpt(TypesOfOptimizeVar *var);
