@@ -29,7 +29,9 @@ private:
     int M = 0;
     double Y = 0;
 
-    void startChecks();
+    bool startChecks();
+    bool check_37(SBlockData *e_h, SBlockData *e_s);
+    bool check_38(SBlockData *e_h, SBlockData *e_s);
     bool check_41(SBlockData *e);
     bool check_43();
     bool check_44();
