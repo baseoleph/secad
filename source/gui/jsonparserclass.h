@@ -23,7 +23,7 @@ public:
     void loadBlocksData(QJsonArray blocks_json);
     void loadData(QString proj_name);
 
-    QJsonObject addToJsonOptimizeObject(TypesOfOptimizeVar* types);
+    QJsonObject addToJsonOptimizeObject(TypesOfOptimizeVar* types, int is_gs = 0);
     QWidget *parent;
 
     SMainClass *m;
@@ -106,6 +106,7 @@ private:
     QString s_av_i = "av_i";
     QString s_iv = "iv";
     QString s_iv_i = "iv_i";
+    QString s_which_gs = "which_gs";
 };
 
 #endif // JSONPARSERCLASS_H

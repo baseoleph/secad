@@ -11,4 +11,10 @@ CONT,
 DISC
 };
 
+enum {
+NOT_GS,
+GSL,
+GSH
+};
+
 #endif // SCONSTANTS_H

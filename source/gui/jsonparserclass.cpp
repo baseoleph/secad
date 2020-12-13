@@ -103,8 +103,8 @@ void JsonParserClass::saveBlocksData()
             json_block[s_sb_l] = e->sb_l;
             json_block[s_is_hull] = e->is_hull;
             json_block[s_Z] = e->Z;
-            json_block[s_K_L] = addToJsonOptimizeObject(&e->K_L);
-            json_block[s_K_H] = addToJsonOptimizeObject(&e->K_H);
+            json_block[s_K_L] = addToJsonOptimizeObject(&e->K_L, GSL);
+            json_block[s_K_H] = addToJsonOptimizeObject(&e->K_H, GSH);
             json_block[s_alpha_F] = addToJsonOptimizeObject(&e->alpha_F);
             json_block[s_alpha_A] = addToJsonOptimizeObject(&e->alpha_A);
             json_block[s_X] = addToJsonOptimizeObject(&e->X);
@@ -221,6 +221,7 @@ void JsonParserClass::loadBlocksData(QJsonArray blocks_json)
         block_data->sb_l = e.toObject()[s_sb_l].toString();
         block_data->is_hull = e.toObject()[s_is_hull].toBool();
         block_data->Z = e.toObject()[s_Z].toDouble();
+
         loadFromJsonOptimizeObject(&block_data->K_L, e.toObject()[s_K_L].toObject());
         loadFromJsonOptimizeObject(&block_data->K_H, e.toObject()[s_K_H].toObject());
         loadFromJsonOptimizeObject(&block_data->alpha_F, e.toObject()[s_alpha_F].toObject());
@@ -253,7 +254,7 @@ void JsonParserClass::loadData(QString proj_name)
         loadBlocksData(json.value(BLOCKS).toArray());
 }
 
-QJsonObject JsonParserClass::addToJsonOptimizeObject(TypesOfOptimizeVar *types)
+QJsonObject JsonParserClass::addToJsonOptimizeObject(TypesOfOptimizeVar *types, int is_gs)
 {
     QJsonObject optimize_json;
     optimize_json[s_type] = types->type;
@@ -271,6 +272,19 @@ QJsonObject JsonParserClass::addToJsonOptimizeObject(TypesOfOptimizeVar *types)
     foreach (auto e_arr, types->desc_not_gs)
     {
         json_arr.append(e_arr);
+    }
+
+    if (is_gs == GSH)
+    {
+        optimize_json[s_which_gs] = GSH;
+    }
+    else if (is_gs == GSL)
+    {
+        optimize_json[s_which_gs] = GSL;
+    }
+    else
+    {
+        optimize_json[s_which_gs] = NOT_GS;
     }
 
     optimize_json[s_desc_not_gs] = json_arr;
@@ -296,5 +310,21 @@ void JsonParserClass::loadFromJsonOptimizeObject(TypesOfOptimizeVar *types, QJso
     foreach (auto e_arr, object_arr)
     {
         types->desc_not_gs.push_back(e_arr.toDouble());
+    }
+
+    if (types->is_golden_section)
+    {
+        if (object[s_which_gs].toInt() == GSH)
+        {
+            types->desc_link = m->general->GS_H;
+        }
+        else if (object[s_which_gs].toInt() == GSL)
+        {
+            types->desc_link = m->general->GS_L;
+        }
+    }
+    else
+    {
+        types->desc_link = types->desc_not_gs;
     }
 }

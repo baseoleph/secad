@@ -9,12 +9,6 @@ namespace Ui {
 class OptimizeWidget;
 }
 
-enum
-{
-GSH,
-GSL
-};
-
 class OptimizeWidget : public QWidget
 {
     Q_OBJECT
