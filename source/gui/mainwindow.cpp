@@ -45,7 +45,7 @@ void MainWindow::clearAll()
     proj_man = new ProjectManager(this, m);
     gen_data = new GeneralData(this, m);
     ent_blocks = new EnteringBlocks(this, m);
-    res_widget = new ResultsWidget(this);
+    res_widget = new ResultsWidget(this, m);
 
     ui->tabWidget->addTab(proj_man, "Project Manager");
     ui->tabWidget->addTab(gen_data, "General Data");
