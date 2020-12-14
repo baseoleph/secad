@@ -21,7 +21,7 @@ void SAlgorithm::startOpt()
     QString str;
     clear_supers();
 
-    while (M < 1000 && cnt < 1000000)
+    while (M < 1000 && (cnt < 1000000 || EC_cnt))
     {
         ++cnt;
         if (EC_cnt == 0)
@@ -32,32 +32,46 @@ void SAlgorithm::startOpt()
         str = "EC_cnt = " + QString::number(EC_cnt);
         str += "; M = " + QString::number(M);
         emitStatusBarSignal(str);
-//        qDebug() << cnt << M << EC_cnt;
-//        qDebug() << blocks[2]->K_L.iv << blocks[2]->K_L.iv_i << blocks[2]->K_L.desc_link;
-//        qDebug() << blocks[2]->K_L.av << blocks[2]->K_L.av_i << blocks[2]->K_L.desc_link;
-//        qDebug() << blocks[1]->K_L.iv << blocks[1]->K_L.iv_i << blocks[1]->K_L.desc_link;
-//        qDebug() << blocks[1]->K_L.av << blocks[1]->K_L.av_i << blocks[1]->K_L.desc_link;
+        if (cnt % 10000 == 0)
+        {
+            qDebug() << cnt << M << EC_cnt;
+        }
     }
 
     if (EC_cnt == 0) emitStatusBarSignal("10 k");
     updateIV();
     emitUpdateFormulaeSignal();
 //    updateAV();
-//    qDebug() << "super_37" << super_37;
-//    qDebug() << "super_38" << super_38;
-//    qDebug() << "super_41" << super_41;
-//    qDebug() << "super_43" << super_43;
-//    qDebug() << "super_44" << super_44;
-//    qDebug() << "super_45" << super_45;
-//    qDebug() << "super_46" << super_46;
-//    qDebug() << "super_47" << super_47;
-//    qDebug() << "super_48" << super_48;
-//    qDebug() << "super_49" << super_49;
-//    qDebug() << "super_51" << super_51;
-//    qDebug() << "super_52" << super_52;
-//    qDebug() << "super_53" << super_53;
-//    qDebug() << "super_54" << super_54;
-    //    qDebug() << "super_55" << super_55;
+    qDebug() << "super_37" << super_37;
+    qDebug() << "super_38" << super_38;
+    qDebug() << "super_41" << super_41;
+    qDebug() << "super_43" << super_43;
+    qDebug() << "super_44" << super_44;
+    qDebug() << "super_45" << super_45;
+    qDebug() << "super_46" << super_46;
+    qDebug() << "super_47" << super_47;
+    qDebug() << "super_48" << super_48;
+    qDebug() << "super_49" << super_49;
+    qDebug() << "super_51" << super_51;
+    qDebug() << "super_52" << super_52;
+    qDebug() << "super_53" << super_53;
+    qDebug() << "super_54" << super_54;
+    qDebug() << "super_55" << super_55;
+    qDebug() << "cnt_37" << cnt_37;
+    qDebug() << "cnt_38" << cnt_38;
+    qDebug() << "cnt_41" << cnt_41;
+    qDebug() << "cnt_43" << cnt_43;
+    qDebug() << "cnt_44" << cnt_44;
+    qDebug() << "cnt_45" << cnt_45;
+    qDebug() << "cnt_46" << cnt_46;
+    qDebug() << "cnt_47" << cnt_47;
+    qDebug() << "cnt_48" << cnt_48;
+    qDebug() << "cnt_49" << cnt_49;
+    qDebug() << "cnt_51" << cnt_51;
+    qDebug() << "cnt_52" << cnt_52;
+    qDebug() << "cnt_53" << cnt_53;
+    qDebug() << "cnt_54" << cnt_54;
+    qDebug() << "cnt_55" << cnt_55;
 }
 
 void SAlgorithm::calcedFormulae()
@@ -82,6 +96,21 @@ void SAlgorithm::clear_supers()
     super_53 = false;
     super_54 = false;
     super_55 = false;
+    cnt_37 = 0;
+    cnt_38 = 0;
+    cnt_41 = 0;
+    cnt_43 = 0;
+    cnt_44 = 0;
+    cnt_45 = 0;
+    cnt_46 = 0;
+    cnt_47 = 0;
+    cnt_48 = 0;
+    cnt_49 = 0;
+    cnt_51 = 0;
+    cnt_52 = 0;
+    cnt_53 = 0;
+    cnt_54 = 0;
+    cnt_55 = 0;
 }
 
 void SAlgorithm::updateEC()
@@ -99,6 +128,7 @@ void SAlgorithm::updateEC()
         general->ECB = EC;
         updateAV();
         ++EC_cnt;
+        M = 0;
 //        cnt = 0;
     }
     else
@@ -108,6 +138,7 @@ void SAlgorithm::updateEC()
             general->ECB = EC;
             updateAV();
             ++EC_cnt;
+            M = 0;
 //            cnt = 0;
         }
         else
@@ -176,26 +207,35 @@ bool SAlgorithm::startChecks()
             bool bl = check_37(e_host, e);
             super_37 |= bl;
             super_bool &= bl;
+            if (not bl) ++cnt_37;
+
             bl = check_38(e_host, e);
             super_bool &= bl;
             super_38 |= bl;
+            if (not bl) ++cnt_38;
         }
     }
+
+    super_37 = true;
+    super_38 = true;
 
     foreach (auto e, blocks)
     {
         bool bl = check_41(e);
         super_bool &= bl;
         super_41 |= bl;
+        if (not bl) ++cnt_41;
     }
 
     bool bl = check_43();
     super_bool &= bl;
     super_43 |= bl;
+    if (not bl) ++cnt_43;
 
     bl = check_44();
     super_bool &= bl;
     super_44 |= bl;
+    if (not bl) ++cnt_44;
 
     foreach (auto e, blocks)
     {
@@ -204,6 +244,7 @@ bool SAlgorithm::startChecks()
             bool bl = check_45(e);
             super_bool &= bl;
             super_45 |= bl;
+            if (not bl) ++cnt_45;
             break;
         }
     }
@@ -225,17 +266,20 @@ bool SAlgorithm::startChecks()
     bl = check_46(e_last);
     super_bool &= bl;
     super_46 |= bl;
+    if (not bl) ++cnt_46;
+//    super_46 = true;
 
-//    foreach (auto e, blocks)
-//    {
-//        if (e->funnel)
-//        {
-//            bool bl = check_47(e);
-//            super_bool &= bl;
-//            super_47 |= bl;
-//            break;
-//        }
-//    }
+    foreach (auto e, blocks)
+    {
+        if (e->funnel)
+        {
+            bool bl = check_47(e);
+            super_bool &= bl;
+            super_47 |= bl;
+            if (not bl) ++cnt_47;
+            break;
+        }
+    }
 
 //    foreach (auto e, blocks)
 //    {
@@ -280,6 +324,7 @@ bool SAlgorithm::startChecks()
             bool bl = check_51(e);
             super_bool &= bl;
             super_51 |= bl;
+            if (not bl) ++cnt_51;
         }
     }
 
@@ -290,10 +335,12 @@ bool SAlgorithm::startChecks()
             bool bl = check_52(e);
             super_bool &= bl;
             super_52 |= bl;
+            if (not bl) ++cnt_52;
 
             bl = check_53(e);
             super_bool &= bl;
             super_53 |= bl;
+            if (not bl) ++cnt_53;
 
 //            qDebug() << (super_53 & super_52) << super_bool;
             break;
@@ -302,30 +349,31 @@ bool SAlgorithm::startChecks()
 //    super_52 = true;
 //    super_53 = true;
 
-    SBlockData *e_funn = nullptr;
-    foreach (auto e, blocks)
-    {
-        if (e->funnel)
-        {
-            e_funn = e;
-            break;
-        }
-    }
-    foreach (auto e, blocks)
-    {
-        if (e->X.iv >= e_funn->X.iv + e_funn->a)
-        {
-            bool bl = check_54(e, e);
-            super_bool &= bl;
-            super_54 |= bl;
-        }
-    }
+//    SBlockData *e_funn = nullptr;
+//    foreach (auto e, blocks)
+//    {
+//        if (e->funnel)
+//        {
+//            e_funn = e;
+//            break;
+//        }
+//    }
+//    foreach (auto e, blocks)
+//    {
+//        if (e->X.iv >= e_funn->X.iv + e_funn->a)
+//        {
+//            bool bl = check_54(e, e);
+//            super_bool &= bl;
+//            super_54 |= bl;
+//        }
+//    }
 
-//    super_54 = true;
+    super_54 = true;
 
     bl = check_55();
     super_bool &= bl;
     super_55 |= bl;
+    if (not bl) ++cnt_55;
 
     return super_bool;
 }
@@ -363,6 +411,11 @@ bool SAlgorithm::check_41(SBlockData *e)
 
 bool SAlgorithm::check_43()
 {
+    if (blocks.size() < 2)
+    {
+        return true;
+    }
+
     double S_main_without_hal = 0;
     for (int i = 1; i < blocks.size(); ++i)
     {
@@ -392,6 +445,10 @@ bool SAlgorithm::check_44()
 
 bool SAlgorithm::check_45(SBlockData *e)
 {
+    if (blocks.size() < 2)
+    {
+        return true;
+    }
     bool prop = (e->X.iv >= 20);
 //    qDebug(logInfo()) << prop << "check_45" << e->titleblock;
     return prop;
@@ -428,6 +485,10 @@ bool SAlgorithm::check_49(SBlockData *e)
 
 bool SAlgorithm::check_51(SBlockData *e)
 {
+    if (blocks.size() < 2)
+    {
+        return true;
+    }
     double argument = e->X.iv + e->h * my_ctg(e->alpha_A.iv);
     bool prop = (e->h + e->Z <= functionV_33(argument));
 //    qDebug(logInfo()) << prop << "check_51" << e->titleblock;
@@ -457,6 +518,10 @@ bool SAlgorithm::check_54(SBlockData *e, SBlockData *e_funn)
 
 bool SAlgorithm::check_55()
 {
+    if (blocks.size() < 2)
+    {
+        return true;
+    }
     double S_mul_x_g = 0;
     double S_main = 0;
     foreach (auto el, blocks)
@@ -499,7 +564,7 @@ void SAlgorithm::optimizationStep()
 
     is_calcing_formulae = true;
 
-    SBlockData *lll = blocks[3];
+//    SBlockData *lll = blocks[3];
     emitUpdateFormulaeSignal();
     while (is_calcing_formulae)
     {
@@ -537,8 +602,13 @@ void SAlgorithm::step()
 
 double SAlgorithm::generateRandomForY()
 {
-    std::uniform_real_distribution<> dist(-1, 1);
-    return dist(*QRandomGenerator::global());
+    std::uniform_real_distribution<> dist666(-1, 1);
+    double sd = dist666(*QRandomGenerator::global());
+    if (sd < -1 and sd > 1)
+    {
+        qDebug() << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+    }
+    return sd;
 }
 
 double SAlgorithm::functionV_33(double x)
@@ -588,23 +658,28 @@ void SAlgorithm::optimizeVal(TypesOfOptimizeVar *var)
 
 void SAlgorithm::contOpt(TypesOfOptimizeVar *var)
 {
-    std::uniform_real_distribution<> dist(var->cont_min, var->av);
-    double left_val =  var->av - dist(*QRandomGenerator::global()) + var->cont_min;
-    std::uniform_real_distribution<> dist2(var->av, var->cont_max);
-    double right_val =  dist2(*QRandomGenerator::global());
+//    std::uniform_real_distribution<> dist(var->cont_min, var->av);
+//    double left_val =  var->av - dist(*QRandomGenerator::global()) + var->cont_min;
+//    std::uniform_real_distribution<> dist2(var->av, var->cont_max);
+//    double right_val =  dist2(*QRandomGenerator::global());
 
-    double val = Y > 0 ? left_val : right_val;
-//    var->iv = val * pow(0.9, M);
-    if (M == 1)
-    {
-        var->iv = val;
-    }
-    else
-    {
-        var->iv = val * pow(abs(Y), trunc(M));
-    }
+//    M = 2;
+//    double val = Y > 0 ? left_val : right_val;
+////    var->iv = val * pow(0.9, M);
+//    if (M == 1)
+//    {
+//        var->iv = val;
+//    }
+//    else
+//    {
+//        var->iv = val * pow(abs(Y), trunc(M));
+//    }
 
-//    var->iv = var->av + (var->cont_max - var->cont_min) * pow(Y, M);
+    var->iv = var->av + (var->cont_max - var->cont_min) * pow(Y, trunc(M));
+//    if (var->cont_min == 2 && var->cont_max == 98)
+//    {
+//        qDebug() << var->av;
+//    }
 //    qDebug(logInfo()) << "min = " << var->cont_min;
 //    qDebug(logInfo()) << "max = " << var->cont_max;
 //    qDebug(logInfo()) << "pow(Y, M) = " << pow(Y, trunc(M));

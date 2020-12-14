@@ -40,7 +40,7 @@ d_vector SGeneralData::calcGoldenSecionByLength_11()
     // there is my trunc
     d_vector gsl = {1, 0.618};
     double gsl_next = gsl[0] - gsl[1];
-    double criterion = 0.1;
+    double criterion = 0.05;
     while (gsl_next >= criterion)
     {
         gsl.push_back(my_trunc(gsl_next));
