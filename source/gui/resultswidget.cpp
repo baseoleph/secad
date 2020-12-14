@@ -41,6 +41,9 @@ void ResultsWidget::on_pushButton_draw_sil_clicked()
    {
         scene->addPath(createBlock(e));
    }
+
+
+   ui->label->setText(QString::number(m->general->ECB));
 }
 
 void ResultsWidget::resizeEvent(QResizeEvent *event)

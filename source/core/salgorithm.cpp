@@ -16,32 +16,39 @@ void SAlgorithm::startOpt()
     EC_cnt = 0;
     general->ECB = NOTHING_VALUE;
     QString str;
-    while (M < 1000 && cnt < 3000)
+    clear_supers();
+    while (M < 1000 && cnt < 30000)
     {
         ++cnt;
-        clear_supers();
+        if (EC_cnt == 0)
+        {
+            clearTypesOpt();
+        }
         optimizationStep();
         str = "EC_cnt = " + QString::number(EC_cnt);
         str += "; M = " + QString::number(M);
         emitStatusBarSignal(str);
-        qDebug() << cnt;
+        qDebug() << cnt << M << EC_cnt;
     }
 
-    qDebug() << super_37;
-    qDebug() << super_38;
-    qDebug() << super_41;
-    qDebug() << super_43;
-    qDebug() << super_44;
-    qDebug() << super_45;
-    qDebug() << super_46;
-    qDebug() << super_47;
-    qDebug() << super_48;
-    qDebug() << super_49;
-    qDebug() << super_51;
-    qDebug() << super_52;
-    qDebug() << super_53;
-    qDebug() << super_54;
-    qDebug() << super_55;
+    if (EC_cnt == 0) emitStatusBarSignal("10 k");
+    updateIV();
+    emitUpdateFormulaeSignal();
+    qDebug() << "super_37" << super_37;
+    qDebug() << "super_38" << super_38;
+    qDebug() << "super_41" << super_41;
+    qDebug() << "super_43" << super_43;
+    qDebug() << "super_44" << super_44;
+    qDebug() << "super_45" << super_45;
+    qDebug() << "super_46" << super_46;
+    qDebug() << "super_47" << super_47;
+    qDebug() << "super_48" << super_48;
+    qDebug() << "super_49" << super_49;
+    qDebug() << "super_51" << super_51;
+    qDebug() << "super_52" << super_52;
+    qDebug() << "super_53" << super_53;
+    qDebug() << "super_54" << super_54;
+    qDebug() << "super_55" << super_55;
 }
 
 void SAlgorithm::clear_supers()
@@ -78,6 +85,7 @@ void SAlgorithm::updateEC()
         general->ECB = EC;
         updateAV();
         ++EC_cnt;
+        cnt = 0;
     }
     else
     {
@@ -86,6 +94,7 @@ void SAlgorithm::updateEC()
             general->ECB = EC;
             updateAV();
             ++EC_cnt;
+            cnt = 0;
         }
         else
         {
@@ -112,6 +121,27 @@ void SAlgorithm::updateAV()
 
         e->X.av = e->X.iv;
         e->X.av_i = e->X.iv_i;
+    }
+}
+
+void SAlgorithm::updateIV()
+{
+    foreach (auto e, blocks)
+    {
+        e->K_H.iv = e->K_H.av;
+        e->K_H.iv_i = e->K_H.av_i;
+
+        e->K_L.iv = e->K_L.av;
+        e->K_L.iv_i = e->K_L.av_i;
+
+        e->alpha_F.iv = e->alpha_A.av;
+        e->alpha_F.iv_i = e->alpha_A.av_i;
+
+        e->alpha_A.iv = e->alpha_F.av;
+        e->alpha_A.iv_i = e->alpha_F.av_i;
+
+        e->X.iv = e->X.av;
+        e->X.iv_i = e->X.av_i;
     }
 }
 
@@ -276,15 +306,24 @@ bool SAlgorithm::startChecks()
 
 bool SAlgorithm::check_37(SBlockData *e_h, SBlockData *e_s)
 {
-    bool prop = (e_s->X.iv >= e_h->X.iv + e_h->h * my_ctg(e_h->alpha_A.iv));
+//    bool prop = (e_s->X.iv >= e_h->X.iv + e_h->h * my_ctg(e_h->alpha_A.iv));
+    bool prop = (e_s->X.iv >= e_h->X_U_F);
+    if (prop)
+    {
 
+    }
     qDebug(logInfo()) << prop << "check_37" << e_s->titleblock << "host - " << e_h->titleblock;
     return prop;
 }
 
 bool SAlgorithm::check_38(SBlockData *e_h, SBlockData *e_s)
 {
-    bool prop = (e_s->X.iv + e_s->a <= e_h->X.iv + e_h->a - e_h->h * my_ctg(e_h->alpha_A.iv));
+//    bool prop = (e_s->X.iv + e_s->a <= e_h->X.iv + e_h->a - e_h->h * my_ctg(e_h->alpha_A.iv));
+    bool prop = (e_s->X.iv + e_s->a <= e_h->X_U_A);
+    if (prop)
+    {
+
+    }
     qDebug(logInfo()) << prop << "check_38" << e_s->titleblock << "host - " << e_h->titleblock;
     return prop;
 }
@@ -334,7 +373,7 @@ bool SAlgorithm::check_45(SBlockData *e)
 
 bool SAlgorithm::check_46(SBlockData *e)
 {
-    bool prop = (e->a + e->X.iv <= general->L);
+    bool prop = (e->a + e->X.iv <= general->L - 15);
     qDebug(logInfo()) << prop << "check_46" << e->titleblock;
     return prop;
 }
@@ -502,16 +541,32 @@ void SAlgorithm::optimizeVal(TypesOfOptimizeVar *var)
     }
     else
     {
-        qDebug(logInfo()) << "--------------------------";
-        qDebug(logInfo()) << "CONS, av = " << var->av;
-        qDebug(logInfo()) << "--------------------------";
-        qDebug(logInfo()) << "";
+//        qDebug(logInfo()) << "--------------------------";
+//        qDebug(logInfo()) << "CONS, av = " << var->av;
+//        qDebug(logInfo()) << "--------------------------";
+//        qDebug(logInfo()) << "";
     }
 }
 
 void SAlgorithm::contOpt(TypesOfOptimizeVar *var)
 {
-    var->iv = var->av + (var->cont_max - var->cont_min) * pow(Y, M);
+    std::uniform_real_distribution<> dist(var->cont_min, var->av);
+    double left_val =  var->av - dist(*QRandomGenerator::global()) + var->cont_min;
+    std::uniform_real_distribution<> dist2(var->av, var->cont_max);
+    double right_val =  dist2(*QRandomGenerator::global());
+
+    double val = Y > 0 ? left_val : right_val;
+//    var->iv = val * pow(0.9, M);
+    if (M == 1)
+    {
+        var->iv = val;
+    }
+    else
+    {
+        var->iv = val * pow(abs(Y), M);
+    }
+
+//    var->iv = var->av + (var->cont_max - var->cont_min) * pow(Y, M);
     qDebug(logInfo()) << "min = " << var->cont_min;
     qDebug(logInfo()) << "max = " << var->cont_max;
     qDebug(logInfo()) << "pow(Y, M) = " << pow(Y, M);
@@ -520,15 +575,18 @@ void SAlgorithm::contOpt(TypesOfOptimizeVar *var)
     if (var->iv > var->cont_max)
     {
         var->iv = var->cont_max;
-        qDebug(logInfo()) << "was overflow iv = " << var->iv;
+        qDebug(logInfo()) << "wwas overflow iv = " << var->iv;
     }
     else if (var->iv < var->cont_min)
     {
         var->iv = var->cont_min;
-        qDebug(logInfo()) << "was overflow iv = " << var->iv;
+        qDebug(logInfo()) << "wwas overflow iv = " << var->iv;
     }
     qDebug(logInfo()) << "--------------------------";
     qDebug(logInfo()) << "";
+
+    var->iv = trunc(var->iv);
+    qDebug() << var->iv;
 }
 
 void SAlgorithm::discOpt(TypesOfOptimizeVar *var)

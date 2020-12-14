@@ -52,6 +52,7 @@ private:
 
     void updateEC();
     void updateAV();
+    void updateIV();
 
     bool startChecks();
     bool check_37(SBlockData *e_h, SBlockData *e_s);
