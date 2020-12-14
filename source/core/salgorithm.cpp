@@ -5,8 +5,6 @@ SAlgorithm::SAlgorithm(BlocksVector new_blocks, SGeneralData *new_general)
     general = new_general;
     blocks = new_blocks;
     clearTypesOpt();
-//    qDebug(logInfo()) << "Init Opt";
-//	  qDebug(logInfo()) << "";
 }
 
 SAlgorithm::~SAlgorithm()
@@ -23,7 +21,7 @@ void SAlgorithm::startOpt()
     QString str;
     clear_supers();
 
-    while (M < 1000 && cnt < 30000)
+    while (M < 1000 && cnt < 1000000)
     {
         ++cnt;
         if (EC_cnt == 0)
@@ -44,22 +42,27 @@ void SAlgorithm::startOpt()
     if (EC_cnt == 0) emitStatusBarSignal("10 k");
     updateIV();
     emitUpdateFormulaeSignal();
-    updateAV();
-    qDebug() << "super_37" << super_37;
-    qDebug() << "super_38" << super_38;
-    qDebug() << "super_41" << super_41;
-    qDebug() << "super_43" << super_43;
-    qDebug() << "super_44" << super_44;
-    qDebug() << "super_45" << super_45;
-    qDebug() << "super_46" << super_46;
-    qDebug() << "super_47" << super_47;
-    qDebug() << "super_48" << super_48;
-    qDebug() << "super_49" << super_49;
-    qDebug() << "super_51" << super_51;
-    qDebug() << "super_52" << super_52;
-    qDebug() << "super_53" << super_53;
-    qDebug() << "super_54" << super_54;
-    qDebug() << "super_55" << super_55;
+//    updateAV();
+//    qDebug() << "super_37" << super_37;
+//    qDebug() << "super_38" << super_38;
+//    qDebug() << "super_41" << super_41;
+//    qDebug() << "super_43" << super_43;
+//    qDebug() << "super_44" << super_44;
+//    qDebug() << "super_45" << super_45;
+//    qDebug() << "super_46" << super_46;
+//    qDebug() << "super_47" << super_47;
+//    qDebug() << "super_48" << super_48;
+//    qDebug() << "super_49" << super_49;
+//    qDebug() << "super_51" << super_51;
+//    qDebug() << "super_52" << super_52;
+//    qDebug() << "super_53" << super_53;
+//    qDebug() << "super_54" << super_54;
+    //    qDebug() << "super_55" << super_55;
+}
+
+void SAlgorithm::calcedFormulae()
+{
+    is_calcing_formulae = false;
 }
 
 void SAlgorithm::clear_supers()
@@ -96,7 +99,7 @@ void SAlgorithm::updateEC()
         general->ECB = EC;
         updateAV();
         ++EC_cnt;
-        cnt = 0;
+//        cnt = 0;
     }
     else
     {
@@ -105,7 +108,7 @@ void SAlgorithm::updateEC()
             general->ECB = EC;
             updateAV();
             ++EC_cnt;
-            cnt = 0;
+//            cnt = 0;
         }
         else
         {
@@ -116,6 +119,7 @@ void SAlgorithm::updateEC()
 
 void SAlgorithm::updateAV()
 {
+
     foreach (auto e, blocks)
     {
         e->K_H.av = e->K_H.iv;
@@ -204,18 +208,20 @@ bool SAlgorithm::startChecks()
         }
     }
 
-    SBlockData *e_last;
+    SBlockData *e_last = nullptr;
+
     foreach (auto e, blocks)
     {
         if (e->HB_H == 1)
         {
+
             if (e->HB_L != 0)
             {
                 e_last = e;
-                break;
             }
         }
     }
+
     bl = check_46(e_last);
     super_bool &= bl;
     super_46 |= bl;
@@ -321,10 +327,6 @@ bool SAlgorithm::startChecks()
     super_bool &= bl;
     super_55 |= bl;
 
-    if (super_bool and not (super_52 || super_53))
-    {
-        qDebug() << ":(";
-    }
     return super_bool;
 }
 
@@ -397,7 +399,8 @@ bool SAlgorithm::check_45(SBlockData *e)
 
 bool SAlgorithm::check_46(SBlockData *e)
 {
-    bool prop = (e->a + e->X.iv <= general->L - 15);
+    bool prop = ((e->a + e->X.iv) <= (general->L - 15));
+//    qDebug() << e->titleblock;
 //    qDebug(logInfo()) << prop << "check_46" << e->titleblock;
     return prop;
 }
@@ -483,10 +486,6 @@ void SAlgorithm::optimizationStep()
 //        qDebug(logInfo()) << "!!!!!!!!!!!!!!!!!";
 //        qDebug(logInfo()) << "Block " << e->titleblock;
 //        qDebug(logInfo()) << "K_L";
-        if (e->titleblock == "Блок А")
-        {
-            qDebug() << "";
-        }
         optimizeVal(&e->K_L);
 //        qDebug(logInfo()) << "K_H";
         optimizeVal(&e->K_H);
@@ -498,14 +497,23 @@ void SAlgorithm::optimizationStep()
         optimizeVal(&e->X);
     }
 
+    is_calcing_formulae = true;
+
+    SBlockData *lll = blocks[3];
     emitUpdateFormulaeSignal();
+    while (is_calcing_formulae)
+    {
+       qDebug() << "Хехехей";
+    }
+
     bool check_status = startChecks();
 //    qDebug(logInfo()) << ".....................";
 
     if (check_status)
     {
-        qDebug() << blocks[3]->X.iv << blocks[3]->a << general->L - 15;
 //        qDebug(logInfo()) << "check_status_true" << check_status;
+//        qDebug() << blocks[3]->X.iv << blocks[3]->a << general->L - 15;
+//        qDebug() << blocks[3]->X.iv + blocks[3]->a << general->L - 15;
         updateEC();
     }
     else

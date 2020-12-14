@@ -87,3 +87,9 @@ void ResultsWidget::setScene()
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
+
+void ResultsWidget::on_pushButton_opt_clicked()
+{
+    m->optimizeData();
+    on_pushButton_draw_sil_clicked();
+}

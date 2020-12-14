@@ -21,6 +21,7 @@ void SMainClass::optimizeData()
         disconnect(alg, &SAlgorithm::emitUpdateFormulaeSignal, this, &SMainClass::updateFormulaeSlot);
         disconnect(alg, &SAlgorithm::emitStatusBarSignal, this, &SMainClass::statusBarSlot);
         delete alg;
+        alg = nullptr;
     }
     alg = new SAlgorithm(blocks, general);
     connect(alg, &SAlgorithm::emitUpdateFormulaeSignal, this, &SMainClass::updateFormulaeSlot);
@@ -137,6 +138,11 @@ void SMainClass::updateFormulaeSlot()
         set_24(*e);
         set_25(*e);
         set_26(*e);
+    }
+
+    if (alg != nullptr)
+    {
+        alg->calcedFormulae();
     }
 }
 

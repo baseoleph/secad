@@ -20,6 +20,7 @@ public:
     SAlgorithm(BlocksVector new_blocks, SGeneralData *new_general);
     ~SAlgorithm();
     void startOpt();
+    void calcedFormulae();
 
 signals:
     void emitUpdateFormulaeSignal();
@@ -33,6 +34,10 @@ private:
     double iterator = 0.001;
     double Y = 0;
     double EC = NOTHING_VALUE;
+
+    double is_calcing_formulae;
+
+    double asdf = 0;
     int EC_cnt = 0;
     int cnt = 0;
     bool is_optimized = false;

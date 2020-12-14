@@ -24,6 +24,8 @@ private slots:
     void on_pushButton_draw_sil_clicked();
     void resizeEvent(QResizeEvent *event);
 
+    void on_pushButton_opt_clicked();
+
 private:
     QGraphicsScene *scene = nullptr;
    QGraphicsPathItem *item = nullptr;
