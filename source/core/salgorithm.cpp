@@ -12,16 +12,55 @@ SAlgorithm::SAlgorithm(BlocksVector new_blocks, SGeneralData *new_general)
 void SAlgorithm::startOpt()
 {
     M = 0;
+    cnt = 0;
     EC_cnt = 0;
     general->ECB = NOTHING_VALUE;
     QString str;
-    while (M < 1000)
+    while (M < 1000 && cnt < 3000)
     {
+        ++cnt;
+        clear_supers();
         optimizationStep();
         str = "EC_cnt = " + QString::number(EC_cnt);
         str += "; M = " + QString::number(M);
         emitStatusBarSignal(str);
+        qDebug() << cnt;
     }
+
+    qDebug() << super_37;
+    qDebug() << super_38;
+    qDebug() << super_41;
+    qDebug() << super_43;
+    qDebug() << super_44;
+    qDebug() << super_45;
+    qDebug() << super_46;
+    qDebug() << super_47;
+    qDebug() << super_48;
+    qDebug() << super_49;
+    qDebug() << super_51;
+    qDebug() << super_52;
+    qDebug() << super_53;
+    qDebug() << super_54;
+    qDebug() << super_55;
+}
+
+void SAlgorithm::clear_supers()
+{
+    super_37 = false;
+    super_38 = false;
+    super_41 = false;
+    super_43 = false;
+    super_44 = false;
+    super_45 = false;
+    super_46 = false;
+    super_47 = false;
+    super_48 = false;
+    super_49 = false;
+    super_51 = false;
+    super_52 = false;
+    super_53 = false;
+    super_54 = false;
+    super_55 = false;
 }
 
 void SAlgorithm::updateEC()
@@ -80,25 +119,37 @@ bool SAlgorithm::startChecks()
         if (e->HB_H != 0)
         {
             e_host = blocks[e->HB_H - 1];
-            super_bool &= check_37(e_host, e);
-            super_bool &= check_38(e_host, e);
+            bool bl = check_37(e_host, e);
+            super_37 |= bl;
+            super_bool &= bl;
+            bl = check_38(e_host, e);
+            super_bool &= bl;
+            super_38 |= bl;
         }
     }
 
     foreach (auto e, blocks)
     {
-        super_bool &= check_41(e);
+        bool bl = check_41(e);
+        super_bool &= bl;
+        super_41 |= bl;
     }
 
-    super_bool &= check_43();
+    bool bl = check_43();
+    super_bool &= bl;
+    super_43 |= bl;
 
-    super_bool &= check_44();
+    bl = check_44();
+    super_bool &= bl;
+    super_44 |= bl;
 
     foreach (auto e, blocks)
     {
         if (e->HB_L == 0 && e->HB_H == 1)
         {
-            super_bool &= check_45(e);
+            bool bl = check_45(e);
+            super_bool &= bl;
+            super_45 |= bl;
             break;
         }
     }
@@ -115,13 +166,17 @@ bool SAlgorithm::startChecks()
             }
         }
     }
-    super_bool &= check_46(e_last);
+    bl = check_46(e_last);
+    super_bool &= bl;
+    super_46 |= bl;
 
     foreach (auto e, blocks)
     {
         if (e->funnel)
         {
-            super_bool &= check_47(e);
+            bool bl = check_47(e);
+            super_bool &= bl;
+            super_47 |= bl;
             break;
         }
     }
@@ -130,7 +185,9 @@ bool SAlgorithm::startChecks()
     {
         if (e->foremast)
         {
-            super_bool &= check_48(e);
+            bool bl = check_48(e);
+            super_bool &= bl;
+            super_48 |= bl;
             break;
         }
     }
@@ -139,7 +196,9 @@ bool SAlgorithm::startChecks()
     {
         if (e->mainmast)
         {
-            super_bool &= check_49(e);
+            bool bl = check_49(e);
+            super_bool &= bl;
+            super_49 |= bl;
             break;
         }
     }
@@ -158,7 +217,9 @@ bool SAlgorithm::startChecks()
     {
         if (e->X.iv < wheel_e->X.iv)
         {
-            super_bool &= check_51(e);
+            bool bl = check_51(e);
+            super_bool &= bl;
+            super_51 |= bl;
         }
     }
 
@@ -166,8 +227,14 @@ bool SAlgorithm::startChecks()
     {
         if (e->pap)
         {
-            super_bool &= check_52(e);
-            super_bool &= check_53(e);
+            bool bl = check_52(e);
+            super_bool &= bl;
+            super_52 |= bl;
+
+            bl = check_53(e);
+            super_bool &= bl;
+            super_53 |= bl;
+
             break;
         }
     }
@@ -185,11 +252,15 @@ bool SAlgorithm::startChecks()
     {
         if (e->X.iv >= e_funn->X.iv + e_funn->a)
         {
-            super_bool &= check_54(e, e);
+            bool bl = check_54(e, e);
+            super_bool &= bl;
+            super_54 |= bl;
         }
     }
 
-    super_bool &= check_55();
+    bl = check_55();
+    super_bool &= bl;
+    super_55 |= bl;
 
     return super_bool;
 }
@@ -354,15 +425,23 @@ void SAlgorithm::optimizationStep()
     emitUpdateFormulaeSignal();
     bool check_status = startChecks();
     qDebug(logInfo()) << ".....................";
-    qDebug(logInfo()) << check_status;
+    if (check_status)
+    {
+        qDebug(logInfo()) << "check_status_true" << check_status;
+        updateEC();
+    }
+    else
+    {
+        if (general->ECB == NOTHING_VALUE)
+        {
+            M = 0;
+        }
+        qDebug(logInfo()) << "check_status_false" << check_status;
+    }
     qDebug(logInfo()) << ".....................";
     qDebug(logInfo()) << "";
     qDebug(logInfo()) << "";
     qDebug(logInfo()) << "";
-    if (check_status)
-    {
-        updateEC();
-    }
 }
 
 void SAlgorithm::step()

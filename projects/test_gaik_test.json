@@ -59,7 +59,7 @@
             "Z": 0,
             "a": 100,
             "alpha_A": {
-                "av": 100,
+                "av": 120,
                 "av_i": 0,
                 "cons": 100,
                 "cont_max": 0,
@@ -73,7 +73,7 @@
                 "which_gs": 0
             },
             "alpha_F": {
-                "av": 120,
+                "av": 100,
                 "av_i": 2,
                 "cons": 120,
                 "cont_max": 0,
@@ -111,7 +111,7 @@
             "HB_H": 1,
             "HB_L": 0,
             "K_H": {
-                "av": 2,
+                "av": 4.235998,
                 "av_i": 0,
                 "cons": 2,
                 "cont_max": 3,
@@ -119,31 +119,31 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": true,
-                "iv": 2,
+                "iv": 0.618,
                 "iv_i": 0,
-                "type": 0,
+                "type": 2,
                 "which_gs": 2
             },
             "K_L": {
-                "av": 0.2,
-                "av_i": 0,
+                "av": 0.146,
+                "av_i": 8,
                 "cons": 0.2,
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
                 ],
                 "is_golden_section": true,
-                "iv": 0.2,
-                "iv_i": 0,
-                "type": 0,
+                "iv": 0.021997,
+                "iv_i": 8,
+                "type": 2,
                 "which_gs": 1
             },
             "L_HB_L": 0,
-            "M_a": 200,
-            "M_b": 200,
-            "S": 128,
+            "M_a": 2.41934,
+            "M_b": 2.358541,
+            "S": 4.005327,
             "X": {
-                "av": 21,
+                "av": 24.449140928970607,
                 "av_i": 0,
                 "cons": 21,
                 "cont_max": 100,
@@ -151,17 +151,17 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": 21,
+                "iv": 24.449140928970607,
                 "iv_i": 0,
-                "type": 0,
+                "type": 1,
                 "which_gs": 0
             },
-            "X_U_A": 41,
-            "X_U_F": 21,
+            "X_U_A": 26.64884,
+            "X_U_F": 24.797845,
             "Z": 3.2,
-            "a": 20,
+            "a": 2.1997,
             "alpha_A": {
-                "av": 90,
+                "av": 80,
                 "av_i": 0,
                 "cons": 90,
                 "cont_max": 0,
@@ -176,7 +176,7 @@
             },
             "alpha_F": {
                 "av": 90,
-                "av_i": 0,
+                "av_i": 1,
                 "cons": 90,
                 "cont_max": 8,
                 "cont_min": 5,
@@ -186,15 +186,15 @@
                     90
                 ],
                 "is_golden_section": false,
-                "iv": 90,
-                "iv_i": 0,
-                "type": 0,
+                "iv": 80,
+                "iv_i": 1,
+                "type": 2,
                 "which_gs": 0
             },
-            "b": 20,
+            "b": 1.850995,
             "foremast": false,
             "funnel": false,
-            "h": 6.4,
+            "h": 1.9776,
             "habitability": true,
             "is_hull": false,
             "mainmast": false,
@@ -203,8 +203,8 @@
             "sb_l": "",
             "titleblock": "Блок А",
             "wheelhause": true,
-            "x_g": 31,
-            "z_g": 6.4
+            "x_g": 25.628662,
+            "z_g": 4.217173
         },
         {
             "HB_H": 1,
@@ -242,7 +242,7 @@
             "M_b": 200,
             "S": 64,
             "X": {
-                "av": 0,
+                "av": 39.04914092897061,
                 "av_i": 0,
                 "cons": 0,
                 "cont_max": 0,
@@ -250,13 +250,13 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": 41,
+                "iv": 26.648840928970607,
                 "iv_i": 0,
                 "type": 0,
                 "which_gs": 0
             },
-            "X_U_A": 61,
-            "X_U_F": 41,
+            "X_U_A": 46.64884,
+            "X_U_F": 26.64884,
             "Z": 3.2,
             "a": 20,
             "alpha_A": {
@@ -299,7 +299,7 @@
             "sb_l": "",
             "titleblock": "Блок Б",
             "wheelhause": false,
-            "x_g": 51,
+            "x_g": 36.64884,
             "z_g": 4.8
         },
         {
@@ -338,7 +338,7 @@
             "M_b": 200,
             "S": 64,
             "X": {
-                "av": 0,
+                "av": 59.04914092897061,
                 "av_i": 0,
                 "cons": 0,
                 "cont_max": 0,
@@ -346,13 +346,13 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": 61,
+                "iv": 46.64884092897061,
                 "iv_i": 0,
                 "type": 0,
                 "which_gs": 0
             },
-            "X_U_A": 81,
-            "X_U_F": 61,
+            "X_U_A": 66.64884,
+            "X_U_F": 46.64884,
             "Z": 3.2,
             "a": 20,
             "alpha_A": {
@@ -398,7 +398,7 @@
             "sb_l": "",
             "titleblock": "Блок В",
             "wheelhause": false,
-            "x_g": 71,
+            "x_g": 56.64884,
             "z_g": 4.8
         },
         {
@@ -644,7 +644,7 @@
             },
             "X_U_A": 36,
             "X_U_F": 26,
-            "Z": 9.600000000000001,
+            "Z": 5.1776,
             "a": 10,
             "alpha_A": {
                 "av": 90,
@@ -687,12 +687,12 @@
             "titleblock": "Фок-мачта",
             "wheelhause": false,
             "x_g": 30.999999,
-            "z_g": 17.6
+            "z_g": 13.1776
         }
     ],
     "General": {
         "calc": {
-            "ECB": -6000000,
+            "ECB": 1126.1348070765794,
             "FB": 3.2,
             "GS_H": [
                 0.618,
