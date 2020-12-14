@@ -59,7 +59,7 @@
             "Z": 0,
             "a": 100,
             "alpha_A": {
-                "av": 100,
+                "av": 120,
                 "av_i": 0,
                 "cons": 100,
                 "cont_max": 0,
@@ -73,7 +73,7 @@
                 "which_gs": 0
             },
             "alpha_F": {
-                "av": 120,
+                "av": 100,
                 "av_i": 2,
                 "cons": 120,
                 "cont_max": 0,
@@ -125,23 +125,23 @@
                 "which_gs": 2
             },
             "K_L": {
-                "av": 0.2,
-                "av_i": 0,
+                "av": 0.236,
+                "av_i": 1,
                 "cons": 0.2,
                 "cont_max": 0,
                 "cont_min": 0,
                 "desc_not_gs": [
                 ],
                 "is_golden_section": true,
-                "iv": 0.2,
-                "iv_i": 0,
-                "type": 0,
+                "iv": 0.618,
+                "iv_i": 1,
+                "type": 2,
                 "which_gs": 1
             },
             "L_HB_L": 0,
-            "M_a": 200,
-            "M_b": 200,
-            "S": 128,
+            "M_a": 1909.62,
+            "M_b": 1909.62,
+            "S": 395.52,
             "X": {
                 "av": 21,
                 "av_i": 0,
@@ -156,10 +156,10 @@
                 "type": 0,
                 "which_gs": 0
             },
-            "X_U_A": 41,
+            "X_U_A": 82.8,
             "X_U_F": 21,
             "Z": 3.2,
-            "a": 20,
+            "a": 61.8,
             "alpha_A": {
                 "av": 90,
                 "av_i": 0,
@@ -191,7 +191,7 @@
                 "type": 0,
                 "which_gs": 0
             },
-            "b": 20,
+            "b": 61.8,
             "foremast": false,
             "funnel": false,
             "h": 6.4,
@@ -203,7 +203,7 @@
             "sb_l": "",
             "titleblock": "Блок А",
             "wheelhause": true,
-            "x_g": 31,
+            "x_g": 51.9,
             "z_g": 6.4
         },
         {
@@ -242,7 +242,7 @@
             "M_b": 200,
             "S": 64,
             "X": {
-                "av": 0,
+                "av": 44.599999999999994,
                 "av_i": 0,
                 "cons": 0,
                 "cont_max": 0,
@@ -250,13 +250,13 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": 41,
+                "iv": 82.8,
                 "iv_i": 0,
                 "type": 0,
                 "which_gs": 0
             },
-            "X_U_A": 61,
-            "X_U_F": 41,
+            "X_U_A": 102.8,
+            "X_U_F": 82.8,
             "Z": 3.2,
             "a": 20,
             "alpha_A": {
@@ -299,7 +299,7 @@
             "sb_l": "",
             "titleblock": "Блок Б",
             "wheelhause": false,
-            "x_g": 51,
+            "x_g": 92.8,
             "z_g": 4.8
         },
         {
@@ -338,7 +338,7 @@
             "M_b": 200,
             "S": 64,
             "X": {
-                "av": 0,
+                "av": 64.6,
                 "av_i": 0,
                 "cons": 0,
                 "cont_max": 0,
@@ -346,13 +346,13 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": 61,
+                "iv": 102.8,
                 "iv_i": 0,
                 "type": 0,
                 "which_gs": 0
             },
-            "X_U_A": 81,
-            "X_U_F": 61,
+            "X_U_A": 122.8,
+            "X_U_F": 102.8,
             "Z": 3.2,
             "a": 20,
             "alpha_A": {
@@ -398,7 +398,7 @@
             "sb_l": "",
             "titleblock": "Блок В",
             "wheelhause": false,
-            "x_g": 71,
+            "x_g": 112.8,
             "z_g": 4.8
         },
         {
@@ -692,7 +692,7 @@
     ],
     "General": {
         "calc": {
-            "ECB": -6000000,
+            "ECB": 855.6000379414122,
             "FB": 3.2,
             "GS_H": [
                 0.618,
