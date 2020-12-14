@@ -5,6 +5,7 @@
 #include <QtMath>
 
 #define PRECISION 1000000
+#define GRAV 9.81
 
 double my_trunc(double d);
 

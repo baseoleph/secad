@@ -15,13 +15,12 @@ void SAlgorithm::startOpt()
     EC_cnt = 0;
     general->ECB = NOTHING_VALUE;
     QString str;
-    while (M < 1000 && cnt < 10000000)
+    while (M < 1000)
     {
         optimizationStep();
         str = "EC_cnt = " + QString::number(EC_cnt);
         str += "; M = " + QString::number(M);
         emitStatusBarSignal(str);
-        qDebug() << cnt++ << EC_cnt;
     }
 }
 
@@ -43,7 +42,7 @@ void SAlgorithm::updateEC()
     }
     else
     {
-        if (general->ECB >= EC)
+        if (general->ECB > EC)
         {
             general->ECB = EC;
             updateAV();
@@ -81,8 +80,8 @@ bool SAlgorithm::startChecks()
         if (e->HB_H != 0)
         {
             e_host = blocks[e->HB_H - 1];
-            super_bool &= check_37(e, e_host);
-            super_bool &= check_38(e, e_host);
+            super_bool &= check_37(e_host, e);
+            super_bool &= check_38(e_host, e);
         }
     }
 
@@ -145,9 +144,22 @@ bool SAlgorithm::startChecks()
         }
     }
 
+    SBlockData *wheel_e;
     foreach (auto e, blocks)
     {
-        super_bool &= check_51(e);
+        if (e->wheelhause)
+        {
+            wheel_e = e;
+            break;
+        }
+    }
+
+    foreach (auto e, blocks)
+    {
+        if (e->X.iv < wheel_e->X.iv)
+        {
+            super_bool &= check_51(e);
+        }
     }
 
     foreach (auto e, blocks)
@@ -228,7 +240,7 @@ bool SAlgorithm::check_44()
         S_mul_Z += blocks[i]->S * blocks[i]->z_g;
     }
 
-    bool prop = (general->p_w * S_mul_Z/(general->D * general->GM) <= qDegreesToRadians(15.0));
+    bool prop = (general->p_w * S_mul_Z/(general->D * general->GM * 1000 * GRAV) <= qDegreesToRadians(15.0));
     qDebug(logInfo()) << prop << "check_44" << "general";
     return prop;
 }
@@ -347,13 +359,10 @@ void SAlgorithm::optimizationStep()
     qDebug(logInfo()) << "";
     qDebug(logInfo()) << "";
     qDebug(logInfo()) << "";
-    if (startChecks())
+    if (check_status)
     {
-        EC_cnt++;
         updateEC();
     }
-
-    M = 0;
 }
 
 void SAlgorithm::step()

@@ -55,12 +55,12 @@ void SMainClass::setA_17(SBlockData &block)
 
 void SMainClass::set_18(SBlockData &block)
 {
-    block.b = my_trunc(block.a - block.h * my_ctg(block.alpha_F.iv) + my_ctg(block.alpha_A.iv));
+    block.b = my_trunc(block.a - block.h * (my_ctg(block.alpha_F.iv) + my_ctg(block.alpha_A.iv)));
 }
 
 void SMainClass::set_20(SBlockData &block)
 {
-    block.S = my_trunc((block.a + block.b)/2*block.h);
+    block.S = my_trunc((block.a + block.b)/2 * block.h);
 }
 
 void SMainClass::set_21(SBlockData &block)
