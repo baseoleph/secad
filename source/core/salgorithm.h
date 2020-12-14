@@ -32,6 +32,23 @@ private:
     int EC_cnt = 0;
     int cnt = 0;
     bool is_optimized = false;
+    bool super_dis_bool = false;
+    bool super_37 = false;
+    bool super_38 = false;
+    bool super_41 = false;
+    bool super_43 = false;
+    bool super_44 = false;
+    bool super_45 = false;
+    bool super_46 = false;
+    bool super_47 = false;
+    bool super_48 = false;
+    bool super_49 = false;
+    bool super_51 = false;
+    bool super_52 = false;
+    bool super_53 = false;
+    bool super_54 = false;
+    bool super_55 = false;
+    void clear_supers();
 
     void updateEC();
     void updateAV();
