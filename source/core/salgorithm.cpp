@@ -99,10 +99,19 @@ void SAlgorithm::updateAV()
     foreach (auto e, blocks)
     {
         e->K_H.av = e->K_H.iv;
+        e->K_H.av_i = e->K_H.iv_i;
+
         e->K_L.av = e->K_L.iv;
+        e->K_L.av_i = e->K_L.iv_i;
+
         e->alpha_F.av = e->alpha_A.iv;
+        e->alpha_F.av_i = e->alpha_A.iv_i;
+
         e->alpha_A.av = e->alpha_F.iv;
+        e->alpha_A.av_i = e->alpha_F.iv_i;
+
         e->X.av = e->X.iv;
+        e->X.av_i = e->X.iv_i;
     }
 }
 
