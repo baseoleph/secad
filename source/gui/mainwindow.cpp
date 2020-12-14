@@ -90,7 +90,7 @@ void MainWindow::slotSaveEnteringData()
 
 void MainWindow::statusBarSlot(const QString str)
 {
-    ui->statusbar->showMessage(str, 5000);
+    ui->statusbar->showMessage(str);
 }
 
 void MainWindow::fillGeneralData(QString proj_name)

@@ -29,7 +29,8 @@ private:
     QTimer *timer;
     BlocksVector blocks;
     SGeneralData *general;
-    int M = 0;
+    double M = 0;
+    double iterator = 0.001;
     double Y = 0;
     double EC = NOTHING_VALUE;
     int EC_cnt = 0;

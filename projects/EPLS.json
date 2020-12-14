@@ -1,0 +1,269 @@
+{
+    "Blocks": [
+        {
+            "HB_H": 0,
+            "HB_L": 0,
+            "K_H": {
+                "av": 1,
+                "av_i": 1,
+                "cons": 1,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                ],
+                "is_golden_section": true,
+                "iv": 1,
+                "iv_i": 1,
+                "type": 0,
+                "which_gs": 2
+            },
+            "K_L": {
+                "av": 1,
+                "av_i": -6000000,
+                "cons": 1,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                ],
+                "is_golden_section": false,
+                "iv": 1,
+                "iv_i": -6000000,
+                "type": 0,
+                "which_gs": 1
+            },
+            "L_HB_L": -6000000,
+            "M_a": 5000,
+            "M_b": 4998.499919,
+            "S": 302.598075,
+            "X": {
+                "av": 0,
+                "av_i": -6000000,
+                "cons": 0,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                ],
+                "is_golden_section": false,
+                "iv": 0,
+                "iv_i": -6000000,
+                "type": 0,
+                "which_gs": 0
+            },
+            "X_U_A": 100,
+            "X_U_F": -1.73205,
+            "Z": 0,
+            "a": 100,
+            "alpha_A": {
+                "av": 120,
+                "av_i": 1,
+                "cons": 90,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                    90,
+                    100,
+                    110,
+                    120
+                ],
+                "is_golden_section": false,
+                "iv": 90,
+                "iv_i": 3,
+                "type": 0,
+                "which_gs": 0
+            },
+            "alpha_F": {
+                "av": 90,
+                "av_i": 3,
+                "cons": 120,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                    90,
+                    100,
+                    110,
+                    120
+                ],
+                "is_golden_section": false,
+                "iv": 120,
+                "iv_i": 1,
+                "type": 0,
+                "which_gs": 0
+            },
+            "b": 101.73205,
+            "foremast": false,
+            "funnel": false,
+            "h": 3,
+            "habitability": true,
+            "is_hull": true,
+            "mainmast": false,
+            "pap": false,
+            "sb_h": "",
+            "sb_l": "",
+            "titleblock": "Корпус",
+            "wheelhause": false,
+            "x_g": 49.563269,
+            "z_g": 1.495707
+        },
+        {
+            "HB_H": 1,
+            "HB_L": 0,
+            "K_H": {
+                "av": 2.617999,
+                "av_i": 3,
+                "cons": 4,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                ],
+                "is_golden_section": true,
+                "iv": 2.617999,
+                "iv_i": 3,
+                "type": 2,
+                "which_gs": 2
+            },
+            "K_L": {
+                "av": 0.5,
+                "av_i": 2,
+                "cons": 0.236,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                    0.01,
+                    0.2,
+                    0.5
+                ],
+                "is_golden_section": false,
+                "iv": 0.5,
+                "iv_i": 2,
+                "type": 2,
+                "which_gs": 1
+            },
+            "L_HB_L": -6000000,
+            "M_a": 1250,
+            "M_b": 1107.068908,
+            "S": 370.248245,
+            "X": {
+                "av": 20.03183117716224,
+                "av_i": -6000000,
+                "cons": 25,
+                "cont_max": 100,
+                "cont_min": 0,
+                "desc_not_gs": [
+                ],
+                "is_golden_section": false,
+                "iv": 20.03183117716224,
+                "iv_i": -6000000,
+                "type": 1,
+                "which_gs": 0
+            },
+            "X_U_A": 67.17321,
+            "X_U_F": 22.890452,
+            "Z": 3,
+            "a": 50,
+            "alpha_A": {
+                "av": 70,
+                "av_i": 0,
+                "cons": 90,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                    70,
+                    80
+                ],
+                "is_golden_section": false,
+                "iv": 70,
+                "iv_i": 0,
+                "type": 2,
+                "which_gs": 0
+            },
+            "alpha_F": {
+                "av": 70,
+                "av_i": 0,
+                "cons": 90,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                    70,
+                    80
+                ],
+                "is_golden_section": false,
+                "iv": 70,
+                "iv_i": 0,
+                "type": 2,
+                "which_gs": 0
+            },
+            "b": 44.282757,
+            "foremast": false,
+            "funnel": true,
+            "h": 7.853997000000001,
+            "habitability": true,
+            "is_hull": false,
+            "mainmast": false,
+            "pap": false,
+            "sb_h": "",
+            "sb_l": "",
+            "titleblock": "А",
+            "wheelhause": true,
+            "x_g": 45.03183,
+            "z_g": 7.006375
+        }
+    ],
+    "General": {
+        "calc": {
+            "ECB": 402.4725174212629,
+            "FB": 3,
+            "GS_H": [
+                0.618,
+                1,
+                1.617999,
+                2.617999,
+                4.235998,
+                6.853997,
+                11.089995,
+                17.943992,
+                29.033987
+            ],
+            "GS_L": [
+                1,
+                0.618,
+                0.382,
+                0.236,
+                0.146,
+                0.09,
+                0.055999,
+                0.034001,
+                0.021997,
+                0.012004,
+                0.009992,
+                0.002012,
+                0.007979
+            ],
+            "L_V_max": 200,
+            "cn": [
+                3,
+                1.107,
+                -0.01188,
+                1.08e-05
+            ],
+            "p": 2.7,
+            "q": 50,
+            "t": 27
+        },
+        "user": {
+            "B": 20,
+            "D": 2000,
+            "GM": 1.25,
+            "H": 6,
+            "L": 100,
+            "T": 3,
+            "delta": 0.6,
+            "k_DS": 0.6,
+            "p_": 0.1,
+            "p_w": 1200,
+            "project_name": "Easy-peasy-lemon-squese",
+            "q_": 0.5,
+            "t_": 30,
+            "theta": 15
+        }
+    }
+}

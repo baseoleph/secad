@@ -144,8 +144,8 @@ void EnteringBlocks::on_pushButton_addBlock_clicked()
     block_data = m->blocks[current_block_index];
     QString new_title = generateNewTemplateTitle();
     block_data->titleblock = new_title;
-    block_data->HB_H = NOTHING_VALUE;
-    block_data->HB_L = NOTHING_VALUE;
+    block_data->HB_H = 0;
+    block_data->HB_L = 0;
     updateComboBlocks();
     foreach (auto e, opt_vector)
     {

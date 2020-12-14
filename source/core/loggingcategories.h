@@ -3,6 +3,6 @@
 
 #include <QLoggingCategory>
 
-Q_DECLARE_LOGGING_CATEGORY(logInfo)
+//Q_DECLARE_LOGGING_CATEGORY(logInfo)
 
 #endif // LOGGINGCATEGORIES_H

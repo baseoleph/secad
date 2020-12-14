@@ -9,12 +9,14 @@ ResultsWidget::ResultsWidget(QWidget *parent, SMainClass *m_new) :
     ui->setupUi(this);
 
     tm = new QTimer();
+    item = new QGraphicsPathItem;
     connect(tm, &QTimer::timeout, this, &ResultsWidget::setScene);
     tm->start(100);
 }
 
 ResultsWidget::~ResultsWidget()
 {
+    delete item;
     delete tm;
     delete scene;
     delete ui;
@@ -35,6 +37,7 @@ void ResultsWidget::on_pushButton_draw_sil_clicked()
    {
        path.lineTo(fromDataToScene(QPointF(i, m->general->sef_function(i))));
    }
+
    scene->addPath(path);
 
    foreach (auto e, m->blocks)
@@ -70,6 +73,7 @@ QPainterPath ResultsWidget::createBlock(SBlockData *e)
     path.lineTo(fromDataToScene(QPointF(e->X_U_A, e->Z + e->h)));
     path.lineTo(fromDataToScene(QPointF(e->X_U_F, e->Z + e->h)));
     path.lineTo(fromDataToScene(QPointF(e->X.av, e->Z)));
+
     return path;
 }
 

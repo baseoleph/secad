@@ -3,6 +3,8 @@
 
 #include "sconstants.h"
 #include <vector>
+#include <algorithm>
+#include <iomanip>
 #include <QDebug>
 #include <QRandomGenerator>
 

@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QTimer>
 #include <QPainterPath>
+#include <QGraphicsPathItem>
 #include <QGraphicsScene>
 #include "../core/smainclass.h"
 
@@ -25,6 +26,7 @@ private slots:
 
 private:
     QGraphicsScene *scene = nullptr;
+   QGraphicsPathItem *item = nullptr;
     QTimer *tm = nullptr;
     SMainClass *m = nullptr;
     Ui::ResultsWidget *ui;
