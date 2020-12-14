@@ -21,12 +21,14 @@ public:
 
 private slots:
     void on_pushButton_draw_sil_clicked();
+    void resizeEvent(QResizeEvent *event);
 
 private:
     QGraphicsScene *scene = nullptr;
     QTimer *tm = nullptr;
     SMainClass *m = nullptr;
     Ui::ResultsWidget *ui;
+    bool is_clicked = false;
 
     QPointF fromDataToScene(QPointF p);
     QPainterPath createBlock(SBlockData *e);

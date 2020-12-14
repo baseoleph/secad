@@ -22,8 +22,12 @@ ResultsWidget::~ResultsWidget()
 
 void ResultsWidget::on_pushButton_draw_sil_clicked()
 {
+   is_clicked = true;
    scene->clear();
-   scene->addRect(scene->sceneRect());
+   int margin = 40;
+//   scene->setSceneRect(-margin, margin, ui->graphicsView->width(), ui->graphicsView->height() + margin);
+   scene->setSceneRect(0, 0, ui->graphicsView->width()-margin, ui->graphicsView->height()-margin);
+//   scene->addRect(scene->sceneRect());
 
    QPainterPath path;
    path.moveTo(fromDataToScene(QPointF(0, m->general->sef_function(0))));
@@ -39,10 +43,17 @@ void ResultsWidget::on_pushButton_draw_sil_clicked()
    }
 }
 
+void ResultsWidget::resizeEvent(QResizeEvent *event)
+{
+    Q_UNUSED(event)
+   if (is_clicked) on_pushButton_draw_sil_clicked();
+}
+
 QPointF ResultsWidget::fromDataToScene(QPointF p)
 {
     QPointF new_p;
-    p *= 6;
+    double scale = (scene->sceneRect().width()/m->general->L);
+    p *= scale;
 
     new_p = QPointF(scene->sceneRect().width() - p.x(), scene->sceneRect().height() - p.y());
     return new_p;
@@ -68,8 +79,4 @@ void ResultsWidget::setScene()
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-//    scene->setSceneRect(1, 1, ui->graphicsView->width()-1, ui->graphicsView->height()-1);
-    scene->setSceneRect(1, 1, 600, 400);
-    scene->addRect(scene->sceneRect());
 }
