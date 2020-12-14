@@ -9,6 +9,10 @@ SAlgorithm::SAlgorithm(BlocksVector new_blocks, SGeneralData *new_general)
     qDebug(logInfo()) << "";
 }
 
+SAlgorithm::~SAlgorithm()
+{
+}
+
 void SAlgorithm::startOpt()
 {
     M = 0;
@@ -17,6 +21,7 @@ void SAlgorithm::startOpt()
     general->ECB = NOTHING_VALUE;
     QString str;
     clear_supers();
+
     while (M < 1000 && cnt < 30000)
     {
         ++cnt;
@@ -586,7 +591,6 @@ void SAlgorithm::contOpt(TypesOfOptimizeVar *var)
     qDebug(logInfo()) << "";
 
     var->iv = trunc(var->iv);
-    qDebug() << var->iv;
 }
 
 void SAlgorithm::discOpt(TypesOfOptimizeVar *var)

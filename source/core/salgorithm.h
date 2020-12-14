@@ -3,6 +3,7 @@
 
 #include <QRandomGenerator>
 #include <random>
+#include <QTimer>
 #include <QDebug>
 #include "typesofoptimizevar.h"
 #include "sm_algorithms.h"
@@ -17,6 +18,7 @@ class SAlgorithm : public QObject
 
 public:
     SAlgorithm(BlocksVector new_blocks, SGeneralData *new_general);
+    ~SAlgorithm();
     void startOpt();
 
 signals:
@@ -24,6 +26,7 @@ signals:
     void emitStatusBarSignal(const QString str);
 
 private:
+    QTimer *timer;
     BlocksVector blocks;
     SGeneralData *general;
     int M = 0;
