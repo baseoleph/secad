@@ -319,7 +319,7 @@ bool SAlgorithm::startChecks()
 
     foreach (auto e, blocks)
     {
-        if (e->X.iv < wheel_e->X.iv)
+        if (e->X_U_F < wheel_e->X_U_F)
         {
             bool bl = check_51(e);
             super_bool &= bl;
@@ -365,7 +365,7 @@ bool SAlgorithm::startChecks()
             super_54 = true;
             break;
         }
-        if (e->X.iv >= e_funn->X.iv + e_funn->a)
+        if (e->X_U_A >= e_funn->X_U_A)
         {
             bool bl = check_54(e, e_funn);
             super_bool &= bl;
@@ -461,6 +461,10 @@ bool SAlgorithm::check_45(SBlockData *e)
 
 bool SAlgorithm::check_46(SBlockData *e)
 {
+    if (blocks.size()<2)
+    {
+        return true;
+    }
     bool prop = ((e->a + e->X.iv) <= (general->L - 15));
 //    qDebug() << e->titleblock;
 //    qDebug(logInfo()) << prop << "check_46" << e->titleblock;
@@ -494,7 +498,7 @@ bool SAlgorithm::check_51(SBlockData *e)
     {
         return true;
     }
-    double argument = e->X.iv + e->h * my_ctg(e->alpha_A.iv);
+    double argument = e->X_U_F;
     bool prop = (e->h + e->Z <= functionV_33(argument));
 //    qDebug(logInfo()) << prop << "check_51" << e->titleblock;
     return prop;
@@ -627,10 +631,10 @@ double SAlgorithm::functionV_33(double x)
         }
     }
     double k_num = e->h + e->Z;
-    double k_den = e->X.iv + e->a + e->h * my_ctg(e->alpha_F.iv) - general->L - general->L_V_max;
+    double k_den = e->X_U_F - general->L - general->L_V_max;
     double k = k_num / k_den;
     double g_num = (e->h + e->Z) * (-general->L - general->L_V_max);
-    double g_den = e->X.iv + e->a + e->h * my_ctg(e->alpha_F.iv) - general->L - general->L_V_max;
+    double g_den = e->X_U_F - general->L - general->L_V_max;
     double g = g_num / g_den;
     double v_x = k * x + g;
     return v_x;
