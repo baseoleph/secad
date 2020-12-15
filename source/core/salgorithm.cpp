@@ -255,12 +255,16 @@ bool SAlgorithm::startChecks()
     {
         if (e->HB_H == 1)
         {
-
-            if (e->HB_L != 0)
+            if (e->HB_L == 0)
             {
                 e_last = e;
             }
+            if (e->HB_L != 0)
+            {
+                    e_last = e;
+            }
         }
+
     }
 
     bl = check_46(e_last);
@@ -631,10 +635,10 @@ double SAlgorithm::functionV_33(double x)
         }
     }
     double k_num = e->h + e->Z;
-    double k_den = e->X_U_F - general->L - general->L_V_max;
+    double k_den = e->X_U_F + general->L_V_max;
     double k = k_num / k_den;
-    double g_num = (e->h + e->Z) * (-general->L - general->L_V_max);
-    double g_den = e->X_U_F - general->L - general->L_V_max;
+    double g_num = (e->h + e->Z) * (general->L_V_max);
+    double g_den = e->X_U_F + general->L_V_max;
     double g = g_num / g_den;
     double v_x = k * x + g;
     return v_x;

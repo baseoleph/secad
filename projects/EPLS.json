@@ -4,7 +4,7 @@
             "HB_H": 0,
             "HB_L": 0,
             "K_H": {
-                "av": -6000000,
+                "av": 1,
                 "av_i": -6000000,
                 "cons": 1,
                 "cont_max": -6000000,
@@ -12,13 +12,13 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 1,
                 "iv_i": -6000000,
                 "type": 0,
                 "which_gs": 2
             },
             "K_L": {
-                "av": -6000000,
+                "av": 1,
                 "av_i": -6000000,
                 "cons": 1,
                 "cont_max": -6000000,
@@ -26,9 +26,201 @@
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
-                "iv": -6000000,
+                "iv": 1,
                 "iv_i": -6000000,
                 "type": 0,
+                "which_gs": 1
+            },
+            "L_HB_L": -6000000,
+            "M_a": 5000,
+            "M_b": 5051.537929,
+            "S": 303.391546,
+            "X": {
+                "av": 0,
+                "av_i": -6000000,
+                "cons": 0,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                ],
+                "is_golden_section": false,
+                "iv": 0,
+                "iv_i": -6000000,
+                "type": 0,
+                "which_gs": 0
+            },
+            "X_U_A": 100.52898,
+            "X_U_F": -1.73205,
+            "Z": 0,
+            "a": 100,
+            "alpha_A": {
+                "av": 120,
+                "av_i": -6000000,
+                "cons": 100,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                ],
+                "is_golden_section": false,
+                "iv": 100,
+                "iv_i": -6000000,
+                "type": 0,
+                "which_gs": 0
+            },
+            "alpha_F": {
+                "av": 100,
+                "av_i": -6000000,
+                "cons": 120,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                ],
+                "is_golden_section": false,
+                "iv": 120,
+                "iv_i": -6000000,
+                "type": 0,
+                "which_gs": 0
+            },
+            "b": 102.261031,
+            "foremast": false,
+            "funnel": false,
+            "h": 3,
+            "habitability": true,
+            "is_hull": true,
+            "mainmast": false,
+            "pap": false,
+            "sb_h": "",
+            "sb_l": "",
+            "titleblock": "Hull",
+            "wheelhause": false,
+            "x_g": 49.69587,
+            "z_g": 1.49441
+        },
+        {
+            "HB_H": 1,
+            "HB_L": 0,
+            "K_H": {
+                "av": 4.235998,
+                "av_i": 4,
+                "cons": 0.4,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                ],
+                "is_golden_section": true,
+                "iv": 4.235998,
+                "iv_i": 4,
+                "type": 2,
+                "which_gs": 2
+            },
+            "K_L": {
+                "av": 0.382,
+                "av_i": 4,
+                "cons": 0.3,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                ],
+                "is_golden_section": true,
+                "iv": 0.382,
+                "iv_i": 4,
+                "type": 2,
+                "which_gs": 1
+            },
+            "L_HB_L": -6000000,
+            "M_a": 729.62,
+            "M_b": 644.022862,
+            "S": 456.969774,
+            "X": {
+                "av": 27.774077850472406,
+                "av_i": -6000000,
+                "cons": 100,
+                "cont_max": 85,
+                "cont_min": 20,
+                "desc_not_gs": [
+                ],
+                "is_golden_section": false,
+                "iv": 27.774077850472406,
+                "iv_i": -6000000,
+                "type": 1,
+                "which_gs": 0
+            },
+            "X_U_A": 63.733315,
+            "X_U_F": 30.01484,
+            "Z": 3,
+            "a": 38.2,
+            "alpha_A": {
+                "av": 80,
+                "av_i": -6000000,
+                "cons": 90,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                ],
+                "is_golden_section": false,
+                "iv": 80,
+                "iv_i": -6000000,
+                "type": 0,
+                "which_gs": 0
+            },
+            "alpha_F": {
+                "av": 80,
+                "av_i": -6000000,
+                "cons": 80,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                ],
+                "is_golden_section": false,
+                "iv": 80,
+                "iv_i": -6000000,
+                "type": 0,
+                "which_gs": 0
+            },
+            "b": 33.718475,
+            "foremast": false,
+            "funnel": false,
+            "h": 12.707994000000001,
+            "habitability": true,
+            "is_hull": false,
+            "mainmast": false,
+            "pap": true,
+            "sb_h": "",
+            "sb_l": "",
+            "titleblock": "A",
+            "wheelhause": false,
+            "x_g": 46.874077,
+            "z_g": 9.485977
+        },
+        {
+            "HB_H": 1,
+            "HB_L": 2,
+            "K_H": {
+                "av": -6000000,
+                "av_i": -6000000,
+                "cons": 0,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                ],
+                "is_golden_section": true,
+                "iv": -6000000,
+                "iv_i": -6000000,
+                "type": 2,
+                "which_gs": 2
+            },
+            "K_L": {
+                "av": -6000000,
+                "av_i": -6000000,
+                "cons": 0,
+                "cont_max": -6000000,
+                "cont_min": -6000000,
+                "desc_not_gs": [
+                ],
+                "is_golden_section": true,
+                "iv": -6000000,
+                "iv_i": -6000000,
+                "type": 2,
                 "which_gs": 1
             },
             "L_HB_L": -6000000,
@@ -39,8 +231,8 @@
                 "av": -6000000,
                 "av_i": -6000000,
                 "cons": 0,
-                "cont_max": -6000000,
-                "cont_min": -6000000,
+                "cont_max": 0,
+                "cont_min": 0,
                 "desc_not_gs": [
                 ],
                 "is_golden_section": false,
@@ -51,103 +243,7 @@
             },
             "X_U_A": -6000000,
             "X_U_F": -6000000,
-            "Z": -4.8366978272229995e-26,
-            "a": -6000000,
-            "alpha_A": {
-                "av": -6000000,
-                "av_i": -6000000,
-                "cons": 100,
-                "cont_max": -6000000,
-                "cont_min": -6000000,
-                "desc_not_gs": [
-                ],
-                "is_golden_section": false,
-                "iv": -6000000,
-                "iv_i": -6000000,
-                "type": 0,
-                "which_gs": 0
-            },
-            "alpha_F": {
-                "av": -6000000,
-                "av_i": -6000000,
-                "cons": 120,
-                "cont_max": -6000000,
-                "cont_min": -6000000,
-                "desc_not_gs": [
-                ],
-                "is_golden_section": false,
-                "iv": -6000000,
-                "iv_i": -6000000,
-                "type": 0,
-                "which_gs": 0
-            },
-            "b": -6000000,
-            "foremast": false,
-            "funnel": false,
-            "h": -6000000,
-            "habitability": true,
-            "is_hull": true,
-            "mainmast": false,
-            "pap": false,
-            "sb_h": "",
-            "sb_l": "",
-            "titleblock": "Hull",
-            "wheelhause": false,
-            "x_g": -6000000,
-            "z_g": -6000000
-        },
-        {
-            "HB_H": 1,
-            "HB_L": 0,
-            "K_H": {
-                "av": -6000000,
-                "av_i": -6000000,
-                "cons": 3,
-                "cont_max": -6000000,
-                "cont_min": -6000000,
-                "desc_not_gs": [
-                ],
-                "is_golden_section": false,
-                "iv": -6000000,
-                "iv_i": -6000000,
-                "type": 0,
-                "which_gs": 2
-            },
-            "K_L": {
-                "av": -6000000,
-                "av_i": -6000000,
-                "cons": 0.3,
-                "cont_max": -6000000,
-                "cont_min": -6000000,
-                "desc_not_gs": [
-                ],
-                "is_golden_section": false,
-                "iv": -6000000,
-                "iv_i": -6000000,
-                "type": 0,
-                "which_gs": 1
-            },
-            "L_HB_L": -6000000,
-            "M_a": -6000000,
-            "M_b": -6000000,
-            "S": -6000000,
-            "X": {
-                "av": -6000000,
-                "av_i": -6000000,
-                "cons": 30,
-                "cont_max": -6000000,
-                "cont_min": -6000000,
-                "desc_not_gs": [
-                ],
-                "is_golden_section": false,
-                "iv": -6000000,
-                "iv_i": -6000000,
-                "type": 0,
-                "which_gs": 0
-            },
-            "X_U_A": -6000000,
-            "X_U_F": -6000000,
-            "Z": -4.8366978272229995e-26,
+            "Z": 0,
             "a": -6000000,
             "alpha_A": {
                 "av": -6000000,
@@ -166,7 +262,7 @@
             "alpha_F": {
                 "av": -6000000,
                 "av_i": -6000000,
-                "cons": 80,
+                "cons": 90,
                 "cont_max": -6000000,
                 "cont_min": -6000000,
                 "desc_not_gs": [
@@ -184,10 +280,10 @@
             "habitability": true,
             "is_hull": false,
             "mainmast": false,
-            "pap": true,
+            "pap": false,
             "sb_h": "",
             "sb_l": "",
-            "titleblock": "A",
+            "titleblock": "B",
             "wheelhause": true,
             "x_g": -6000000,
             "z_g": -6000000
@@ -195,13 +291,14 @@
     ],
     "General": {
         "calc": {
-            "ECB": -6000000,
+            "ECB": 30.971160605120886,
             "FB": 3,
             "GS_H": [
                 0.618,
                 1,
                 1.617999,
-                2.617999
+                2.617999,
+                4.235998
             ],
             "GS_L": [
                 0.055999,
@@ -215,13 +312,13 @@
             "L_V_max": 200,
             "cn": [
                 3,
-                0.287,
-                -0.00308,
-                2.8000000000000003e-06
+                0.41,
+                -0.0044,
+                4e-06
             ],
-            "p": 0.7000000000000001,
+            "p": 1,
             "q": 50,
-            "t": 7
+            "t": 10
         },
         "user": {
             "B": 20,
@@ -236,7 +333,7 @@
             "p_w": 1200,
             "project_name": "EPLS",
             "q_": 0.5,
-            "t_": 10,
+            "t_": 13,
             "theta": 15
         }
     }
