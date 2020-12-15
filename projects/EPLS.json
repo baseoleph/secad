@@ -481,7 +481,7 @@
             "z_g": 4.515138
         },
         {
-            "HB_H": 4,
+            "HB_H": 5,
             "HB_L": 0,
             "K_H": {
                 "av": 3,
@@ -563,15 +563,15 @@
             },
             "b": 1.826114,
             "foremast": false,
-            "funnel": true,
+            "funnel": false,
             "h": 9,
             "habitability": false,
             "is_hull": false,
-            "mainmast": false,
+            "mainmast": true,
             "pap": false,
             "sb_h": "",
             "sb_l": "",
-            "titleblock": "Funnel",
+            "titleblock": "Mainmast",
             "wheelhause": false,
             "x_g": 183.976642,
             "z_g": 10.051443

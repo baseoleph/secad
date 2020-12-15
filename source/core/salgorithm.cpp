@@ -21,7 +21,7 @@ void SAlgorithm::startOpt()
     QString str;
     clear_supers();
 
-    while (M < 100 && (cnt < 1000000 || EC_cnt))
+    while (M < 1000 && (cnt < 1000000 || EC_cnt))
     {
         ++cnt;
         if (EC_cnt == 0)
@@ -228,11 +228,11 @@ bool SAlgorithm::startChecks()
     }
 
     bool bl = check_43();
-//    super_bool &= bl;
-//    super_43 |= bl;
-//    if (not bl) ++cnt_43;
+    super_bool &= bl;
+    super_43 |= bl;
+    if (not bl) ++cnt_43;
 
-super_43 = true;
+//super_43 = true;
 
     bl = check_44();
     super_bool &= bl;
@@ -381,11 +381,11 @@ super_43 = true;
 
 //    super_54 = true;
 
-//    bl = check_55();
-//    super_bool &= bl;
-//    super_55 |= bl;
-//    if (not bl) ++cnt_55;
-super_55 = true;
+    bl = check_55();
+    super_bool &= bl;
+    super_55 |= bl;
+    if (not bl) ++cnt_55;
+//super_55 = true;
     return super_bool;
 }
 
