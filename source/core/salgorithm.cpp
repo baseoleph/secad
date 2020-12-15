@@ -269,17 +269,18 @@ bool SAlgorithm::startChecks()
     if (not bl) ++cnt_46;
 //    super_46 = true;
 
-    foreach (auto e, blocks)
-    {
-        if (e->funnel)
-        {
-            bool bl = check_47(e);
-            super_bool &= bl;
-            super_47 |= bl;
-            if (not bl) ++cnt_47;
-            break;
-        }
-    }
+//    foreach (auto e, blocks)
+//    {
+//        if (e->funnel)
+//        {
+//            bool bl = check_47(e);
+//            super_bool &= bl;
+//            super_47 |= bl;
+//            if (not bl) ++cnt_47;
+//            break;
+//        }
+//    }
+    super_47 = true;
 
 //    foreach (auto e, blocks)
 //    {
@@ -303,7 +304,6 @@ bool SAlgorithm::startChecks()
 //        }
 //    }
 
-    super_47 = true;
     super_48 = true;
     super_49 = true;
 
@@ -349,26 +349,31 @@ bool SAlgorithm::startChecks()
 //    super_52 = true;
 //    super_53 = true;
 
-//    SBlockData *e_funn = nullptr;
-//    foreach (auto e, blocks)
-//    {
-//        if (e->funnel)
-//        {
-//            e_funn = e;
-//            break;
-//        }
-//    }
-//    foreach (auto e, blocks)
-//    {
-//        if (e->X.iv >= e_funn->X.iv + e_funn->a)
-//        {
-//            bool bl = check_54(e, e);
-//            super_bool &= bl;
-//            super_54 |= bl;
-//        }
-//    }
+    SBlockData *e_funn = nullptr;
+    foreach (auto e, blocks)
+    {
+        if (e->funnel)
+        {
+            e_funn = e;
+            break;
+        }
+    }
+    foreach (auto e, blocks)
+    {
+        if (e_funn == nullptr)
+        {
+            super_54 = true;
+            break;
+        }
+        if (e->X.iv >= e_funn->X.iv + e_funn->a)
+        {
+            bool bl = check_54(e, e_funn);
+            super_bool &= bl;
+            super_54 |= bl;
+        }
+    }
 
-    super_54 = true;
+//    super_54 = true;
 
     bl = check_55();
     super_bool &= bl;
@@ -511,7 +516,7 @@ bool SAlgorithm::check_53(SBlockData *e)
 
 bool SAlgorithm::check_54(SBlockData *e, SBlockData *e_funn)
 {
-    bool prop = (e->Z + e->h >= e_funn->Z + e_funn->h);
+    bool prop = (e->Z + e->h < e_funn->Z + e_funn->h);
 //    qDebug(logInfo()) << prop << "check_54" << e->titleblock;
     return prop;
 }

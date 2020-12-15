@@ -55,7 +55,7 @@ d_vector SGeneralData::calcGoldenSecionByHeight_12()
     // there is my trunc
     d_vector gsh = {0.618, 1};
     double gsh_next = gsh[0] + gsh[1];
-    double criterion = my_trunc(t);
+    double criterion = t/FB;
     while (gsh_next <= criterion)
     {
         gsh.push_back(my_trunc(gsh_next));
