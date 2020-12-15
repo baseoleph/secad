@@ -21,7 +21,7 @@ void SAlgorithm::startOpt()
     QString str;
     clear_supers();
 
-    while (M < 1000 && (cnt < 1000000 || EC_cnt))
+    while (M < 100 && (cnt < 1000000 || EC_cnt))
     {
         ++cnt;
         if (EC_cnt == 0)
@@ -228,9 +228,11 @@ bool SAlgorithm::startChecks()
     }
 
     bool bl = check_43();
-    super_bool &= bl;
-    super_43 |= bl;
-    if (not bl) ++cnt_43;
+//    super_bool &= bl;
+//    super_43 |= bl;
+//    if (not bl) ++cnt_43;
+
+super_43 = true;
 
     bl = check_44();
     super_bool &= bl;
@@ -261,7 +263,7 @@ bool SAlgorithm::startChecks()
             }
             if (e->HB_L != 0)
             {
-                    e_last = e;
+                e_last = e;
             }
         }
 
@@ -271,19 +273,19 @@ bool SAlgorithm::startChecks()
     super_bool &= bl;
     super_46 |= bl;
     if (not bl) ++cnt_46;
-//    super_46 = true;
+    super_46 = true;
 
-//    foreach (auto e, blocks)
-//    {
-//        if (e->funnel)
-//        {
-//            bool bl = check_47(e);
-//            super_bool &= bl;
-//            super_47 |= bl;
-//            if (not bl) ++cnt_47;
-//            break;
-//        }
-//    }
+    foreach (auto e, blocks)
+    {
+        if (e->funnel)
+        {
+            bool bl = check_47(e);
+            super_bool &= bl;
+            super_47 |= bl;
+            if (not bl) ++cnt_47;
+            break;
+        }
+    }
     super_47 = true;
 
 //    foreach (auto e, blocks)
@@ -331,7 +333,7 @@ bool SAlgorithm::startChecks()
             if (not bl) ++cnt_51;
         }
     }
-
+//super_51 = true;
     foreach (auto e, blocks)
     {
         if (e->pap)
@@ -379,11 +381,11 @@ bool SAlgorithm::startChecks()
 
 //    super_54 = true;
 
-    bl = check_55();
-    super_bool &= bl;
-    super_55 |= bl;
-    if (not bl) ++cnt_55;
-
+//    bl = check_55();
+//    super_bool &= bl;
+//    super_55 |= bl;
+//    if (not bl) ++cnt_55;
+super_55 = true;
     return super_bool;
 }
 
@@ -561,6 +563,17 @@ void SAlgorithm::optimizationStep()
 
     foreach (auto e, blocks)
     {
+        if (e->HB_H != 0 )
+        {
+            if (e->HB_H != 1)
+            {
+                SBlockData *parent_block = blocks[e->HB_H - 1];
+                e->X.type = 1;
+                e->X.cont_min = parent_block->X_U_F;
+                e->X.cont_max = parent_block->X_U_A;
+            }
+        }
+
 //        qDebug(logInfo()) << "!!!!!!!!!!!!!!!!!";
 //        qDebug(logInfo()) << "Block " << e->titleblock;
 //        qDebug(logInfo()) << "K_L";
