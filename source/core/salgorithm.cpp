@@ -380,7 +380,9 @@ bool SAlgorithm::startChecks()
     super_bool &= bl;
     super_55 |= bl;
     if (not bl) ++cnt_55;
-//super_55 = true;
+
+//    super_55 = true;
+
     return super_bool;
 }
 
