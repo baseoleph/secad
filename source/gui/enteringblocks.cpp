@@ -48,6 +48,17 @@ void EnteringBlocks::fillForms()
         ui->widget->layout()->addWidget(opt_vector[awih]);
         ui->widget->layout()->addWidget(opt_vector[x]);
     }
+
+    if (block_data->HB_L > 0)
+    {
+        opt_vector["x"]->setEnabled(false);
+    }
+    else
+    {
+        opt_vector["x"]->setEnabled(true);
+    }
+
+
     ui->lineEdit_titleblock->setText(block_data->titleblock);
 
     setTextInLineEdit(ui->lineEdit_l_hb_l, block_data->L_HB_L);
@@ -242,6 +253,14 @@ void EnteringBlocks::on_comboBox_hb_h_activated(int index)
 void EnteringBlocks::on_comboBox_hb_l_activated(int index)
 {
     block_data->HB_L = index;
+    if (block_data->HB_L > 0)
+    {
+        opt_vector["x"]->setEnabled(false);
+    }
+    else
+    {
+        opt_vector["x"]->setEnabled(true);
+    }
 }
 
 void EnteringBlocks::on_lineEdit_l_hb_l_textChanged(const QString &arg1)
