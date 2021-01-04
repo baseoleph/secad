@@ -22,37 +22,10 @@ ResultsWidget::~ResultsWidget()
     delete ui;
 }
 
-void ResultsWidget::on_pushButton_draw_sil_clicked()
-{
-   is_clicked = true;
-   scene->clear();
-   int margin = 40;
-//   scene->setSceneRect(-margin, margin, ui->graphicsView->width(), ui->graphicsView->height() + margin);
-   scene->setSceneRect(0, 0, ui->graphicsView->width()-margin, ui->graphicsView->height()-margin);
-//   scene->addRect(scene->sceneRect());
-
-   QPainterPath path;
-   path.moveTo(fromDataToScene(QPointF(0, m->general->sef_function(0))));
-   for (double i = 0; i <= m->general->L; ++i)
-   {
-       path.lineTo(fromDataToScene(QPointF(i, m->general->sef_function(i))));
-   }
-
-   scene->addPath(path);
-
-   foreach (auto e, m->blocks)
-   {
-        scene->addPath(createBlock(e));
-   }
-
-
-   ui->label->setText(QString::number(m->general->ECB));
-}
-
 void ResultsWidget::resizeEvent(QResizeEvent *event)
 {
-    Q_UNUSED(event)
-   if (is_clicked) on_pushButton_draw_sil_clicked();
+   Q_UNUSED(event)
+   if (is_clicked) drawShip();
 }
 
 QPointF ResultsWidget::fromDataToScene(QPointF p)
@@ -88,8 +61,35 @@ void ResultsWidget::setScene()
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
+void ResultsWidget::drawShip()
+{
+   is_clicked = true;
+   scene->clear();
+   int margin = 40;
+//   scene->setSceneRect(-margin, margin, ui->graphicsView->width(), ui->graphicsView->height() + margin);
+   scene->setSceneRect(0, 0, ui->graphicsView->width()-margin, ui->graphicsView->height()-margin);
+//   scene->addRect(scene->sceneRect());
+
+   QPainterPath path;
+   path.moveTo(fromDataToScene(QPointF(0, m->general->sef_function(0))));
+   for (double i = 0; i <= m->general->L; ++i)
+   {
+       path.lineTo(fromDataToScene(QPointF(i, m->general->sef_function(i))));
+   }
+
+   scene->addPath(path);
+
+   foreach (auto e, m->blocks)
+   {
+        scene->addPath(createBlock(e));
+   }
+
+
+   ui->label->setText(QString::number(m->general->ECB));
+}
+
 void ResultsWidget::on_pushButton_opt_clicked()
 {
-    m->optimizeData();
-    on_pushButton_draw_sil_clicked();
+   m->optimizeData();
+   drawShip();
 }

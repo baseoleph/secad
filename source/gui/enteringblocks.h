@@ -52,15 +52,11 @@ private slots:
 
     void on_lineEdit_l_hb_l_textChanged(const QString &arg1);
 
-    void on_pushButton_optimize_clicked();
-
     void on_comboBox_blocks_activated(int index);
 
     void on_comboBox_hb_h_activated(int index);
 
     void on_comboBox_hb_l_activated(int index);
-
-    void on_pushButton_calc_clicked();
 
 private:
     SMainClass *m;

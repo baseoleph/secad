@@ -27,25 +27,6 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QPushButton" name="pushButton_draw_sil">
-        <property name="minimumSize">
-         <size>
-          <width>120</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>120</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Отрисовать силуэт</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QPushButton" name="pushButton_opt">
         <property name="text">
          <string>Оптимизировать и рисовать</string>
