@@ -365,12 +365,15 @@ bool SAlgorithm::startChecks()
             super_54 = true;
             break;
         }
-        if (e->X_U_A >= e_funn->X_U_A)
+        if (e->funnel == false)
         {
-            bool bl = check_54(e, e_funn);
-            super_bool &= bl;
-            super_54 |= bl;
-            if (not bl) ++cnt_54;
+            if (e->X_U_A >= e_funn->X_U_A)
+            {
+                bool bl = check_54(e, e_funn);
+                super_bool &= bl;
+                super_54 |= bl;
+                if (not bl) ++cnt_54;
+            }
         }
     }
 
@@ -442,7 +445,7 @@ bool SAlgorithm::check_44()
         S_mul_Z += blocks[i]->S * blocks[i]->z_g;
     }
 
-    bool prop = (general->p_w * S_mul_Z/(general->D * general->GM * 1000 * GRAV) <= qDegreesToRadians(15.0));
+    bool prop = ((general->p_w * S_mul_Z)/(general->D * general->GM * 1000 * GRAV) <= qDegreesToRadians(15.0));
     return prop;
 }
 
