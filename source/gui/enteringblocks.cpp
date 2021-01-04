@@ -248,3 +248,44 @@ void EnteringBlocks::on_lineEdit_l_hb_l_textChanged(const QString &arg1)
 {
     block_data->L_HB_L = arg1.toDouble();
 }
+
+void EnteringBlocks::on_pushButton_delete_block_clicked()
+{
+    if (m->blocks.size() == 0) return;
+    for (int i = 0; i < m->blocks.size(); ++i)
+    {
+        if ((unsigned)i != current_block_index)
+        {
+            if ((unsigned)m->blocks[i]->HB_H == current_block_index + 1)
+            {
+                m->blocks[i]->HB_H = 0;
+            }
+            else if ((unsigned)m->blocks[i]->HB_H > current_block_index + 1)
+            {
+                m->blocks[i]->HB_H -= 1;
+            }
+
+            if ((unsigned)m->blocks[i]->HB_L == current_block_index + 1)
+            {
+                m->blocks[i]->HB_L = 0;
+            }
+            else if ((unsigned)m->blocks[i]->HB_L > current_block_index + 1)
+            {
+                m->blocks[i]->HB_L -= 1;
+            }
+        }
+    }
+    delete m->blocks[current_block_index];
+    m->blocks.remove(current_block_index);
+    current_block_index = 0;
+
+    if (m->blocks.size() == 0)
+    {
+        ui->widget_block->setEnabled(false);
+        ui->comboBox_blocks->clear();
+    }
+    else
+    {
+        updateComboBlocks();
+    }
+}

@@ -58,6 +58,8 @@ private slots:
 
     void on_comboBox_hb_l_activated(int index);
 
+    void on_pushButton_delete_block_clicked();
+
 private:
     SMainClass *m;
     SBlockData *block_data;
