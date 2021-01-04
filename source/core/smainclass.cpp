@@ -79,7 +79,7 @@ void SMainClass::set_x(SBlockData &block)
     if (block.HB_L != 0)
     {
         SBlockData *parent_block = blocks[block.HB_L - 1];
-        block.X.iv = parent_block->X.iv + parent_block->a;
+        block.X.iv = parent_block->X.iv + parent_block->a + block.L_HB_L;
     }
 }
 

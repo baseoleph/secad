@@ -21,7 +21,7 @@ void SAlgorithm::startOpt()
     QString str;
     clear_supers();
 
-    while (M < 1000 && (cnt < 1000000 || EC_cnt))
+    while (M < 1000 && (cnt < 10000 || EC_cnt))
     {
         ++cnt;
         if (EC_cnt == 0)
