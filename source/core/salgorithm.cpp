@@ -16,6 +16,7 @@ bool SAlgorithm::startOpt()
 {
     if (not onOptimize)
     {
+        stopOpt = false;
         M = 0;
         cnt = 0;
         EC_cnt = 0;
@@ -24,59 +25,66 @@ bool SAlgorithm::startOpt()
         onOptimize = true;
     }
 
-    QString str;
-    while (M < 1000 && (cnt < 1000000 || EC_cnt))
+    if (onOptimize && not stopOpt)
     {
-        ++cnt;
-        if (EC_cnt == 0)
+        QString str;
+        while (M < 1000 && (cnt < 1000000 || EC_cnt))
         {
-            clearTypesOpt();
-        }
-        optimizationStep();
-        str = "cnt = " + QString::number(cnt);
-        str += "; EC_cnt = " + QString::number(EC_cnt);
-        str += "; M = " + QString::number(M);
-        emitStatusBarSignal(str);
-        if (cnt % 10000 == 0)
-        {
-            return onOptimize;
+            ++cnt;
+            if (EC_cnt == 0)
+            {
+                clearTypesOpt();
+            }
+            optimizationStep();
+            str = "cnt = " + QString::number(cnt);
+            str += "; EC_cnt = " + QString::number(EC_cnt);
+            str += "; M = " + QString::number(M);
+            emitStatusBarSignal(str);
+            if (cnt % 10000 == 0)
+            {
+                return onOptimize;
+            }
         }
     }
+    else
+    {
+        stopOpt = false;
+        if (EC_cnt == 0) emitStatusBarSignal("Более " + QString::number(cnt) + " итераций.");
+        updateIV();
+        emitUpdateFormulaeSignal();
 
-    if (EC_cnt == 0) emitStatusBarSignal("Более " + QString::number(cnt) + " итераций.");
-    updateIV();
-    emitUpdateFormulaeSignal();
+        qDebug() << "super_37" << super_37;
+        qDebug() << "super_38" << super_38;
+        qDebug() << "super_41" << super_41;
+        qDebug() << "super_43" << super_43;
+        qDebug() << "super_44" << super_44;
+        qDebug() << "super_45" << super_45;
+        qDebug() << "super_46" << super_46;
+        qDebug() << "super_47" << super_47;
+        qDebug() << "super_48" << super_48;
+        qDebug() << "super_49" << super_49;
+        qDebug() << "super_51" << super_51;
+        qDebug() << "super_52" << super_52;
+        qDebug() << "super_53" << super_53;
+        qDebug() << "super_54" << super_54;
+        qDebug() << "super_55" << super_55;
+        qDebug() << "cnt_37" << cnt_37;
+        qDebug() << "cnt_38" << cnt_38;
+        qDebug() << "cnt_41" << cnt_41;
+        qDebug() << "cnt_43" << cnt_43;
+        qDebug() << "cnt_44" << cnt_44;
+        qDebug() << "cnt_45" << cnt_45;
+        qDebug() << "cnt_46" << cnt_46;
+        qDebug() << "cnt_47" << cnt_47;
+        qDebug() << "cnt_48" << cnt_48;
+        qDebug() << "cnt_49" << cnt_49;
+        qDebug() << "cnt_51" << cnt_51;
+        qDebug() << "cnt_52" << cnt_52;
+        qDebug() << "cnt_53" << cnt_53;
+        qDebug() << "cnt_54" << cnt_54;
+        qDebug() << "cnt_55" << cnt_55;
 
-    qDebug() << "super_37" << super_37;
-    qDebug() << "super_38" << super_38;
-    qDebug() << "super_41" << super_41;
-    qDebug() << "super_43" << super_43;
-    qDebug() << "super_44" << super_44;
-    qDebug() << "super_45" << super_45;
-    qDebug() << "super_46" << super_46;
-    qDebug() << "super_47" << super_47;
-    qDebug() << "super_48" << super_48;
-    qDebug() << "super_49" << super_49;
-    qDebug() << "super_51" << super_51;
-    qDebug() << "super_52" << super_52;
-    qDebug() << "super_53" << super_53;
-    qDebug() << "super_54" << super_54;
-    qDebug() << "super_55" << super_55;
-    qDebug() << "cnt_37" << cnt_37;
-    qDebug() << "cnt_38" << cnt_38;
-    qDebug() << "cnt_41" << cnt_41;
-    qDebug() << "cnt_43" << cnt_43;
-    qDebug() << "cnt_44" << cnt_44;
-    qDebug() << "cnt_45" << cnt_45;
-    qDebug() << "cnt_46" << cnt_46;
-    qDebug() << "cnt_47" << cnt_47;
-    qDebug() << "cnt_48" << cnt_48;
-    qDebug() << "cnt_49" << cnt_49;
-    qDebug() << "cnt_51" << cnt_51;
-    qDebug() << "cnt_52" << cnt_52;
-    qDebug() << "cnt_53" << cnt_53;
-    qDebug() << "cnt_54" << cnt_54;
-    qDebug() << "cnt_55" << cnt_55;
+    }
 
     onOptimize = false;
     return onOptimize;

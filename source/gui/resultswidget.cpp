@@ -85,11 +85,11 @@ void ResultsWidget::drawShip()
    }
 
 
-   ui->label->setText(QString::number(m->general->ECB));
 }
 
 void ResultsWidget::on_pushButton_opt_clicked()
 {
+   ui->pushButton_stop->setEnabled(true);
    m->prepareToOptimize();
    while (m->alg->startOpt())
    {
@@ -98,4 +98,11 @@ void ResultsWidget::on_pushButton_opt_clicked()
    }
 
    drawShip();
+   ui->label->setText(QString::number(m->general->ECB));
+}
+
+void ResultsWidget::on_pushButton_stop_clicked()
+{
+    m->alg->stopOpt = true;
+    ui->pushButton_stop->setEnabled(false);
 }

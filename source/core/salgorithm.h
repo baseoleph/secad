@@ -23,13 +23,14 @@ public:
     void calcedFormulae();
     double M = 0;
     int EC_cnt = 0;
+    bool onOptimize = false;
+    bool stopOpt = false;
 
 signals:
     void emitUpdateFormulaeSignal();
     void emitStatusBarSignal(const QString str);
 
 private:
-    bool onOptimize = false;
     QTimer *timer;
     BlocksVector blocks;
     SGeneralData *general;

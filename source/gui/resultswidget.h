@@ -27,6 +27,8 @@ private slots:
 
     void on_pushButton_opt_clicked();
 
+    void on_pushButton_stop_clicked();
+
 private:
     QGraphicsScene *scene = nullptr;
    QGraphicsPathItem *item = nullptr;
