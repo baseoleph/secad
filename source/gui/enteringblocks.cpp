@@ -49,7 +49,7 @@ void EnteringBlocks::fillForms()
         ui->widget->layout()->addWidget(opt_vector[x]);
     }
 
-    if (block_data->HB_L > 0)
+    if (block_data->HB_L > 0 || block_data->HB_H > 0)
     {
         opt_vector["x"]->setEnabled(false);
     }
@@ -248,12 +248,20 @@ void EnteringBlocks::setTextInLineEdit(QLineEdit *line, double val)
 void EnteringBlocks::on_comboBox_hb_h_activated(int index)
 {
     block_data->HB_H = index;
+    if (block_data->HB_L > 0 || block_data->HB_H > 0)
+    {
+        opt_vector["x"]->setEnabled(false);
+    }
+    else
+    {
+        opt_vector["x"]->setEnabled(true);
+    }
 }
 
 void EnteringBlocks::on_comboBox_hb_l_activated(int index)
 {
     block_data->HB_L = index;
-    if (block_data->HB_L > 0)
+    if (block_data->HB_L > 0 || block_data->HB_H > 0)
     {
         opt_vector["x"]->setEnabled(false);
     }
