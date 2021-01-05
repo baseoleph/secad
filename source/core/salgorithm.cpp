@@ -6,6 +6,7 @@ SAlgorithm::SAlgorithm(BlocksVector new_blocks, SGeneralData *new_general)
     blocks = new_blocks;
     clearTypesOpt();
     onOptimize = false;
+    goodTry = false;
 }
 
 SAlgorithm::~SAlgorithm()
@@ -14,6 +15,11 @@ SAlgorithm::~SAlgorithm()
 
 bool SAlgorithm::startOpt()
 {
+    if (goodTry)
+    {
+        return goodTry;
+    }
+
     if (not onOptimize)
     {
         stopOpt = false;
@@ -35,6 +41,8 @@ bool SAlgorithm::startOpt()
             {
                 clearTypesOpt();
             }
+
+
             optimizationStep();
             str = "cnt = " + QString::number(cnt);
             str += "; EC_cnt = " + QString::number(EC_cnt);
@@ -202,6 +210,7 @@ void SAlgorithm::updateEC()
             M += iterator;
         }
     }
+    goodTry = true;
 }
 
 void SAlgorithm::updateAV()

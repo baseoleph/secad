@@ -27,6 +27,7 @@ public:
     int EC_cnt = 0;
     bool onOptimize = false;
     bool stopOpt = false;
+    bool goodTry = false;
 
 signals:
     void emitUpdateFormulaeSignal();

@@ -99,7 +99,11 @@ void ResultsWidget::on_pushButton_opt_clicked()
    while (m->alg->startOpt())
    {
        qApp->processEvents();
-       drawShip();
+       if (m->alg->goodTry)
+       {
+           m->alg->goodTry = false;
+           drawShip();
+       }
    }
 
    drawShip();
