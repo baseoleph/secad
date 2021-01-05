@@ -92,8 +92,6 @@ bool SAlgorithm::optimizationSteps()
 
         // информация для отладки
         QString log = "";
-        qDebug() << "super_37" << super_37;
-        log += "super_37 " + QString::number(super_37) + "\n";
         qDebug() << "super_38" << super_38;
         log += "super_38 " + QString::number(super_38) + "\n";
         qDebug() << "super_41" << super_41;
@@ -122,8 +120,6 @@ bool SAlgorithm::optimizationSteps()
         log += "super_54 " + QString::number(super_54) + "\n";
         qDebug() << "super_55" << super_55;
         log += "super_55 " + QString::number(super_55) + "\n";
-        qDebug() << "cnt_37" << cnt_37;
-        log += "cnt_37 " + QString::number(cnt_37) + "\n";
         qDebug() << "cnt_38" << cnt_38;
         log += "cnt_38 " + QString::number(cnt_38) + "\n";
         qDebug() << "cnt_41" << cnt_41;
@@ -175,7 +171,6 @@ void SAlgorithm::calcedFormulae()
 
 void SAlgorithm::clear_supers()
 {
-    super_37 = false;
     super_38 = false;
     super_41 = false;
     super_43 = false;
@@ -190,7 +185,6 @@ void SAlgorithm::clear_supers()
     super_53 = false;
     super_54 = false;
     super_55 = false;
-    cnt_37 = 0;
     cnt_38 = 0;
     cnt_41 = 0;
     cnt_43 = 0;
@@ -297,7 +291,6 @@ bool SAlgorithm::startChecks()
 {
     bool super_bool = true;
 
-    // проверка 37 и 38
     // проверка объектной привязки по ординате
     foreach (auto e, blocks)
     {
@@ -305,12 +298,6 @@ bool SAlgorithm::startChecks()
         if (e->HB_H != 0)
         {
             e_host = blocks[e->HB_H - 1];
-
-//            bool bl = check_37(e_host, e);
-//            super_37 |= bl;
-//            super_bool &= bl;
-//            if (not bl) ++cnt_37;
-            super_37 = true;
 
             bool bl = check_38(e_host, e);
             super_bool &= bl;
@@ -497,12 +484,6 @@ bool SAlgorithm::startChecks()
     if (not bl) ++cnt_55;
 
     return super_bool;
-}
-
-bool SAlgorithm::check_37(SBlockData *e_h, SBlockData *e_s)
-{
-    bool prop = (e_s->X.iv >= e_h->X_U_F);
-    return prop;
 }
 
 bool SAlgorithm::check_38(SBlockData *e_h, SBlockData *e_s)
