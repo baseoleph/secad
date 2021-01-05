@@ -92,6 +92,8 @@ bool SAlgorithm::optimizationSteps()
 
         // информация для отладки
         QString log = "";
+        qDebug() << "super_38" << super_38;
+        log += "super_38 " + QString::number(super_38) + "\n";
         qDebug() << "super_41" << super_41;
         log += "super_41 " + QString::number(super_41) + "\n";
         qDebug() << "super_43" << super_43;
@@ -118,6 +120,8 @@ bool SAlgorithm::optimizationSteps()
         log += "super_54 " + QString::number(super_54) + "\n";
         qDebug() << "super_55" << super_55;
         log += "super_55 " + QString::number(super_55) + "\n";
+        qDebug() << "cnt_38" << cnt_38;
+        log += "cnt_38 " + QString::number(cnt_38) + "\n";
         qDebug() << "cnt_41" << cnt_41;
         log += "cnt_41 " + QString::number(cnt_41) + "\n";
         qDebug() << "cnt_43" << cnt_43;
@@ -160,13 +164,9 @@ bool SAlgorithm::optimizationSteps()
     return onOptimize;
 }
 
-void SAlgorithm::calcedFormulae()
-{
-    is_calcing_formulae = false;
-}
-
 void SAlgorithm::clear_supers()
 {
+    super_38 = false;
     super_41 = false;
     super_43 = false;
     super_44 = false;
@@ -180,6 +180,7 @@ void SAlgorithm::clear_supers()
     super_53 = false;
     super_54 = false;
     super_55 = false;
+    cnt_38 = 0;
     cnt_41 = 0;
     cnt_43 = 0;
     cnt_44 = 0;
@@ -284,6 +285,21 @@ void SAlgorithm::updateIV()
 bool SAlgorithm::startChecks()
 {
     bool super_bool = true;
+
+    // проверка объектной привязки по ординате
+    foreach (auto e, blocks)
+    {
+        SBlockData *e_host = nullptr;
+        if (e->HB_H != 0)
+        {
+            e_host = blocks[e->HB_H - 1];
+
+            bool bl = check_38(e_host, e);
+            super_bool &= bl;
+            super_38 |= bl;
+            if (not bl) ++cnt_38;
+        }
+    }
 
     // проверка на невозможную фигуру
     foreach (auto e, blocks)
@@ -465,6 +481,12 @@ bool SAlgorithm::startChecks()
     return super_bool;
 }
 
+bool SAlgorithm::check_38(SBlockData *e_h, SBlockData *e_s)
+{
+    bool prop = (e_s->X.iv + e_s->a <= e_h->X_U_A);
+    return prop;
+}
+
 bool SAlgorithm::check_41(SBlockData *e)
 {
     bool prop = (e->b > 0);
@@ -603,15 +625,12 @@ void SAlgorithm::optimizationStep()
         // блокам
         if (e->HB_H != 0)
         {
-            if (e->HB_H != 1)
+            SBlockData *parent_block = blocks[e->HB_H - 1];
+            e->X.type = CONT;
+            if (parent_block->X_U_F < parent_block->X_U_A)
             {
-                SBlockData *parent_block = blocks[e->HB_H - 1];
-                e->X.type = 1;
-                if (parent_block->X_U_F < parent_block->X_U_A)
-                {
-                    e->X.cont_min = parent_block->X_U_F;
-                    e->X.cont_max = parent_block->X_U_A;
-                }
+                e->X.cont_min = parent_block->X_U_F;
+                e->X.cont_max = parent_block->X_U_A;
             }
         }
 
@@ -621,13 +640,8 @@ void SAlgorithm::optimizationStep()
         optimizeVal(&e->alpha_A);
         optimizeVal(&e->alpha_F);
         optimizeVal(&e->X);
+        emitUpdateFormulaeSignal();
     }
-
-    is_calcing_formulae = true;
-
-    // пересчет формул для проверки ограничений
-    emitUpdateFormulaeSignal();
-    while (is_calcing_formulae);
 
     // проверка функциональных и параметрических
     // ограничений

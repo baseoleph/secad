@@ -1,8 +1,0 @@
-#ifndef LOGGINGCATEGORIES_H
-#define LOGGINGCATEGORIES_H
-
-#include <QLoggingCategory>
-
-//Q_DECLARE_LOGGING_CATEGORY(logInfo)
-
-#endif // LOGGINGCATEGORIES_H
