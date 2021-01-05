@@ -54,7 +54,7 @@ private:
     ResultsWidget *res_widget;
     JsonParserClass jpc;
 
-    QString dir_to_projects = "/projects";
+    QString dir_to_projects = "projects";
 
     SMainClass *m;
 };
