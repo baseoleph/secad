@@ -356,30 +356,30 @@ bool SAlgorithm::startChecks()
     }
     super_47 = true;
 
-//    foreach (auto e, blocks)
-//    {
-//        if (e->foremast)
-//        {
-//            bool bl = check_48(e);
-//            super_bool &= bl;
-//            super_48 |= bl;
-//            break;
-//        }
-//    }
+    foreach (auto e, blocks)
+    {
+        if (e->foremast)
+        {
+            bool bl = check_48(e);
+            super_bool &= bl;
+            super_48 |= bl;
+            break;
+        }
+    }
 
-//    foreach (auto e, blocks)
-//    {
-//        if (e->mainmast)
-//        {
-//            bool bl = check_49(e);
-//            super_bool &= bl;
-//            super_49 |= bl;
-//            break;
-//        }
-//    }
+    foreach (auto e, blocks)
+    {
+        if (e->mainmast)
+        {
+            bool bl = check_49(e);
+            super_bool &= bl;
+            super_49 |= bl;
+            break;
+        }
+    }
 
-    super_48 = true;
-    super_49 = true;
+//    super_48 = true;
+//    super_49 = true;
 
     SBlockData *wheel_e;
     foreach (auto e, blocks)
