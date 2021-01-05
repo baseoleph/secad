@@ -36,10 +36,10 @@ QPointF ResultsWidget::fromDataToScene(QPointF p)
     {
         if (e->X_U_A > righest_xuaf) righest_xuaf = e->X_U_A;
     }
-    double scale = (scene->sceneRect().width()/m->general->L);
+    double scale = (scene->sceneRect().width()/m->general->L) - 0.3;
     p *= scale;
 
-    new_p = QPointF(scene->sceneRect().width() - p.x() - 10, scene->sceneRect().height() - p.y());
+    new_p = QPointF(scene->sceneRect().width() - p.x() - 20, scene->sceneRect().height() - p.y());
     return new_p;
 }
 
