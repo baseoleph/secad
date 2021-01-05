@@ -5,23 +5,27 @@ SAlgorithm::SAlgorithm(BlocksVector new_blocks, SGeneralData *new_general)
     general = new_general;
     blocks = new_blocks;
     clearTypesOpt();
+    onOptimize = false;
 }
 
 SAlgorithm::~SAlgorithm()
 {
 }
 
-void SAlgorithm::startOpt()
+bool SAlgorithm::startOpt()
 {
-    emitStatusBarSignal("");
-    M = 0;
-    cnt = 0;
-    EC_cnt = 0;
-    general->ECB = NOTHING_VALUE;
-    QString str;
-    clear_supers();
+    if (not onOptimize)
+    {
+        M = 0;
+        cnt = 0;
+        EC_cnt = 0;
+        general->ECB = NOTHING_VALUE;
+        clear_supers();
+        onOptimize = true;
+    }
 
-    while (M < 1000 && (cnt < 10000 || EC_cnt))
+    QString str;
+    while (M < 1000 && (cnt < 1000000 || EC_cnt))
     {
         ++cnt;
         if (EC_cnt == 0)
@@ -34,44 +38,47 @@ void SAlgorithm::startOpt()
         emitStatusBarSignal(str);
         if (cnt % 10000 == 0)
         {
-            qDebug() << cnt << M << EC_cnt;
+            return onOptimize;
         }
     }
 
-    if (EC_cnt == 0) emitStatusBarSignal("10 k");
+    if (EC_cnt == 0) emitStatusBarSignal("Более " + QString::number(cnt) + " итераций.");
     updateIV();
     emitUpdateFormulaeSignal();
 
-    qDebug() << "super_37" << super_37;
-    qDebug() << "super_38" << super_38;
-    qDebug() << "super_41" << super_41;
-    qDebug() << "super_43" << super_43;
-    qDebug() << "super_44" << super_44;
-    qDebug() << "super_45" << super_45;
-    qDebug() << "super_46" << super_46;
-    qDebug() << "super_47" << super_47;
-    qDebug() << "super_48" << super_48;
-    qDebug() << "super_49" << super_49;
-    qDebug() << "super_51" << super_51;
-    qDebug() << "super_52" << super_52;
-    qDebug() << "super_53" << super_53;
-    qDebug() << "super_54" << super_54;
-    qDebug() << "super_55" << super_55;
-    qDebug() << "cnt_37" << cnt_37;
-    qDebug() << "cnt_38" << cnt_38;
-    qDebug() << "cnt_41" << cnt_41;
-    qDebug() << "cnt_43" << cnt_43;
-    qDebug() << "cnt_44" << cnt_44;
-    qDebug() << "cnt_45" << cnt_45;
-    qDebug() << "cnt_46" << cnt_46;
-    qDebug() << "cnt_47" << cnt_47;
-    qDebug() << "cnt_48" << cnt_48;
-    qDebug() << "cnt_49" << cnt_49;
-    qDebug() << "cnt_51" << cnt_51;
-    qDebug() << "cnt_52" << cnt_52;
-    qDebug() << "cnt_53" << cnt_53;
-    qDebug() << "cnt_54" << cnt_54;
-    qDebug() << "cnt_55" << cnt_55;
+//    qDebug() << "super_37" << super_37;
+//    qDebug() << "super_38" << super_38;
+//    qDebug() << "super_41" << super_41;
+//    qDebug() << "super_43" << super_43;
+//    qDebug() << "super_44" << super_44;
+//    qDebug() << "super_45" << super_45;
+//    qDebug() << "super_46" << super_46;
+//    qDebug() << "super_47" << super_47;
+//    qDebug() << "super_48" << super_48;
+//    qDebug() << "super_49" << super_49;
+//    qDebug() << "super_51" << super_51;
+//    qDebug() << "super_52" << super_52;
+//    qDebug() << "super_53" << super_53;
+//    qDebug() << "super_54" << super_54;
+//    qDebug() << "super_55" << super_55;
+//    qDebug() << "cnt_37" << cnt_37;
+//    qDebug() << "cnt_38" << cnt_38;
+//    qDebug() << "cnt_41" << cnt_41;
+//    qDebug() << "cnt_43" << cnt_43;
+//    qDebug() << "cnt_44" << cnt_44;
+//    qDebug() << "cnt_45" << cnt_45;
+//    qDebug() << "cnt_46" << cnt_46;
+//    qDebug() << "cnt_47" << cnt_47;
+//    qDebug() << "cnt_48" << cnt_48;
+//    qDebug() << "cnt_49" << cnt_49;
+//    qDebug() << "cnt_51" << cnt_51;
+//    qDebug() << "cnt_52" << cnt_52;
+//    qDebug() << "cnt_53" << cnt_53;
+//    qDebug() << "cnt_54" << cnt_54;
+//    qDebug() << "cnt_55" << cnt_55;
+
+    onOptimize = false;
+    return onOptimize;
 }
 
 void SAlgorithm::calcedFormulae()

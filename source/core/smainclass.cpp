@@ -14,7 +14,7 @@ SMainClass::~SMainClass()
     }
 }
 
-void SMainClass::optimizeData()
+void SMainClass::prepareToOptimize()
 {
     if (alg != nullptr)
     {
@@ -26,8 +26,6 @@ void SMainClass::optimizeData()
     alg = new SAlgorithm(blocks, general);
     connect(alg, &SAlgorithm::emitUpdateFormulaeSignal, this, &SMainClass::updateFormulaeSlot);
     connect(alg, &SAlgorithm::emitStatusBarSignal, this, &SMainClass::statusBarSlot);
-    alg->startOpt();
-    qDebug() << "Opt end";
 }
 
 void SMainClass::setSubstractureZ_16(SBlockData &block)

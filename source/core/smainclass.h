@@ -19,7 +19,7 @@ public:
     ~SMainClass();
 
 
-    void optimizeData();
+    void prepareToOptimize();
     void setSubstractureZ_16(SBlockData &block);
     void setH_19(SBlockData &block);
     void setA_17(SBlockData &block);

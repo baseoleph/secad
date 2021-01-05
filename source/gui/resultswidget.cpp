@@ -90,6 +90,12 @@ void ResultsWidget::drawShip()
 
 void ResultsWidget::on_pushButton_opt_clicked()
 {
-   m->optimizeData();
+   m->prepareToOptimize();
+   while (m->alg->startOpt())
+   {
+       qApp->processEvents();
+       drawShip();
+   }
+
    drawShip();
 }

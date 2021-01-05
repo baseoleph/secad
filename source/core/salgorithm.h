@@ -19,18 +19,20 @@ class SAlgorithm : public QObject
 public:
     SAlgorithm(BlocksVector new_blocks, SGeneralData *new_general);
     ~SAlgorithm();
-    void startOpt();
+    bool startOpt();
     void calcedFormulae();
+    double M = 0;
+    int EC_cnt = 0;
 
 signals:
     void emitUpdateFormulaeSignal();
     void emitStatusBarSignal(const QString str);
 
 private:
+    bool onOptimize = false;
     QTimer *timer;
     BlocksVector blocks;
     SGeneralData *general;
-    double M = 0;
     double iterator = 0.001;
     double Y = 0;
     double EC = NOTHING_VALUE;
@@ -38,7 +40,6 @@ private:
     double is_calcing_formulae;
 
     double asdf = 0;
-    int EC_cnt = 0;
     int cnt = 0;
     bool is_optimized = false;
     bool super_dis_bool = false;

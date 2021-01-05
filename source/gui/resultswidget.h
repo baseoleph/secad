@@ -1,7 +1,9 @@
 #ifndef RESULTSWIDGET_H
 #define RESULTSWIDGET_H
 
+#include <QThread>
 #include <QWidget>
+#include <QApplication>
 #include <QTimer>
 #include <QPainterPath>
 #include <QGraphicsPathItem>
