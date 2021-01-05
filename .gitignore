@@ -54,5 +54,7 @@ compile_commands.json
 
 *_qmlcache.qrc
 
+# Personal
 ~$*.docx
 ~$*.vsdx
+projects/_test*.json
