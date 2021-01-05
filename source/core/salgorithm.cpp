@@ -15,10 +15,6 @@ SAlgorithm::~SAlgorithm()
 
 bool SAlgorithm::startOpt()
 {
-    if (goodTry)
-    {
-        return goodTry;
-    }
 
     if (not onOptimize)
     {
@@ -44,14 +40,23 @@ bool SAlgorithm::startOpt()
 
 
             optimizationStep();
+
+
             str = "cnt = " + QString::number(cnt);
             str += "; EC_cnt = " + QString::number(EC_cnt);
             str += "; M = " + QString::number(M);
-            emitStatusBarSignal(str);
-            if (cnt % 10000 == 0)
+
+            if (goodTry || cnt % 10000 == 0)
             {
+                emitStatusBarSignal(str);
                 return onOptimize;
             }
+
+//            if (cnt % 10000 == 0)
+//            {
+//                emitStatusBarSignal(str);
+//                return onOptimize;
+//            }
         }
 
         onOptimize = false;
@@ -191,6 +196,7 @@ void SAlgorithm::updateEC()
 
     if (general->ECB == NOTHING_VALUE)
     {
+        goodTry = true;
         general->ECB = EC;
         updateAV();
         ++EC_cnt;
@@ -200,6 +206,7 @@ void SAlgorithm::updateEC()
     {
         if (general->ECB > EC)
         {
+            goodTry = true;
             general->ECB = EC;
             updateAV();
             ++EC_cnt;
@@ -210,7 +217,6 @@ void SAlgorithm::updateEC()
             M += iterator;
         }
     }
-    goodTry = true;
 }
 
 void SAlgorithm::updateAV()

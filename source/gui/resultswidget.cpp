@@ -107,7 +107,7 @@ void ResultsWidget::on_pushButton_opt_clicked()
    }
 
    drawShip();
-   ui->label->setText(QString::number(m->general->ECB));
+   ui->label->setText("EC = " + QString::number(m->general->ECB));
    ui->pushButton_stop->setEnabled(false);
 }
 
