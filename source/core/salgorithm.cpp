@@ -603,15 +603,12 @@ void SAlgorithm::optimizationStep()
         // блокам
         if (e->HB_H != 0)
         {
-            if (e->HB_H != 1)
+            SBlockData *parent_block = blocks[e->HB_H - 1];
+            e->X.type = CONT;
+            if (parent_block->X_U_F < parent_block->X_U_A)
             {
-                SBlockData *parent_block = blocks[e->HB_H - 1];
-                e->X.type = 1;
-                if (parent_block->X_U_F < parent_block->X_U_A)
-                {
-                    e->X.cont_min = parent_block->X_U_F;
-                    e->X.cont_max = parent_block->X_U_A;
-                }
+                e->X.cont_min = parent_block->X_U_F;
+                e->X.cont_max = parent_block->X_U_A;
             }
         }
 
@@ -621,6 +618,7 @@ void SAlgorithm::optimizationStep()
         optimizeVal(&e->alpha_A);
         optimizeVal(&e->alpha_F);
         optimizeVal(&e->X);
+        emitUpdateFormulaeSignal();
     }
 
     is_calcing_formulae = true;
