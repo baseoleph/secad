@@ -96,7 +96,7 @@ void ResultsWidget::on_pushButton_opt_clicked()
 {
    ui->pushButton_stop->setEnabled(true);
    m->prepareToOptimize();
-   while (m->alg->startOpt())
+   while (m->alg->optimizationSteps())
    {
        qApp->processEvents();
        if (m->alg->goodTry)

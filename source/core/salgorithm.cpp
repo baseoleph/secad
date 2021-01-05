@@ -2,6 +2,7 @@
 
 SAlgorithm::SAlgorithm(BlocksVector new_blocks, SGeneralData *new_general)
 {
+    // инициализация класса
     general = new_general;
     blocks = new_blocks;
     clearTypesOpt();
@@ -13,52 +14,67 @@ SAlgorithm::~SAlgorithm()
 {
 }
 
-bool SAlgorithm::startOpt()
+// Точка начала работы алгоритма
+bool SAlgorithm::optimizationSteps()
 {
 
+    // Если оптимизация не была запущена, то
+    // устанавливаем начальные значения
     if (not onOptimize)
     {
         stopOpt = false;
+
+        // показатель шага оптимизации
         M = 0;
+
+        // общий счетчик
         cnt = 0;
+
+        // счетчик удачных вариантов
+        // которые лучше предыдущих удачных
         EC_cnt = 0;
         general->ECB = NOTHING_VALUE;
+
+        // обнуляем переменные для анализа работы проверок
         clear_supers();
+
         onOptimize = true;
     }
 
+    // Если оптимизация запущена
     if (onOptimize && not stopOpt)
     {
-        QString str;
         while (M < 1000 && (cnt < 1000000 || EC_cnt))
         {
             ++cnt;
+
+            // если еще не было удачных вариантов
+            // выставляем случайные значения оптимизируемым
+            // переменным
             if (EC_cnt == 0)
             {
                 clearTypesOpt();
             }
 
-
+            // шаг оптимизации
             optimizationStep();
 
-
-            str = "cnt = " + QString::number(cnt);
-            str += "; EC_cnt = " + QString::number(EC_cnt);
-            str += "; M = " + QString::number(M);
-
+            // код для вывода информации на экран и
+            // отрисовки удачных вариантов
             if (goodTry || cnt % 10000 == 0)
             {
+                QString str;
+                str = "cnt = " + QString::number(cnt);
+                str += "; EC_cnt = " + QString::number(EC_cnt);
+                str += "; M = " + QString::number(M);
+
                 emitStatusBarSignal(str);
+
                 return onOptimize;
             }
-
-//            if (cnt % 10000 == 0)
-//            {
-//                emitStatusBarSignal(str);
-//                return onOptimize;
-//            }
         }
 
+        // оптимизация закончилась или не удалась
         onOptimize = false;
     }
 
@@ -66,9 +82,15 @@ bool SAlgorithm::startOpt()
     {
         stopOpt = false;
         if (EC_cnt == 0) emitStatusBarSignal("Более " + QString::number(cnt) + " итераций.");
+
+        // Обновляем временные значения (приравниваем к оптимальным)
+        // после окончания оптимизации, чтобы пересчитать формулы
         updateIV();
+        // Пересчитываем формулы
         emitUpdateFormulaeSignal();
 
+
+        // информация для отладки
         QString log = "";
         qDebug() << "super_37" << super_37;
         log += "super_37 " + QString::number(super_37) + "\n";
@@ -131,6 +153,7 @@ bool SAlgorithm::startOpt()
         qDebug() << "cnt_55" << cnt_55;
         log += "cnt_55 " + QString::number(cnt_55) + "\n";
 
+        // запись отладочной информации в файл
         QFile file("log_result.txt");
         if (file.open(QIODevice::WriteOnly | QIODevice::Text))
         {
@@ -187,6 +210,8 @@ void SAlgorithm::clear_supers()
 void SAlgorithm::updateEC()
 {
     EC = 0;
+
+    // считаем критерий эффективности
     foreach (auto e, blocks)
     {
         double arg1 = general->sef_function(e->X_U_A) - (e->h + e->Z);
@@ -194,6 +219,9 @@ void SAlgorithm::updateEC()
         EC += pow(arg1, 2) + pow(arg2, 2);
     }
 
+    // обновляем лучшее значение
+    // если новое лучше предыдущего,
+    // переписываем оптимальные значения
     if (general->ECB == NOTHING_VALUE)
     {
         goodTry = true;
@@ -219,6 +247,7 @@ void SAlgorithm::updateEC()
     }
 }
 
+// присвоение переменных значений актуальным
 void SAlgorithm::updateAV()
 {
 
@@ -241,6 +270,7 @@ void SAlgorithm::updateAV()
     }
 }
 
+// присвоение актуальных значений переменным
 void SAlgorithm::updateIV()
 {
     foreach (auto e, blocks)
@@ -262,10 +292,13 @@ void SAlgorithm::updateIV()
     }
 }
 
+// проверка ограничений
 bool SAlgorithm::startChecks()
 {
     bool super_bool = true;
 
+    // проверка 37 и 38
+    // проверка объектной привязки по ординате
     foreach (auto e, blocks)
     {
         SBlockData *e_host = nullptr;
@@ -284,9 +317,7 @@ bool SAlgorithm::startChecks()
         }
     }
 
-    super_37 = true;
-    super_38 = true;
-
+    // проверка на невозможную фигуру
     foreach (auto e, blocks)
     {
         bool bl = check_41(e);
@@ -295,18 +326,21 @@ bool SAlgorithm::startChecks()
         if (not bl) ++cnt_41;
     }
 
+    // проверка объема надстроек
     bool bl = check_43();
     super_bool &= bl;
     super_43 |= bl;
     if (not bl) ++cnt_43;
 
-//super_43 = true;
 
+
+    // проверка угла крена
     bl = check_44();
     super_bool &= bl;
     super_44 |= bl;
     if (not bl) ++cnt_44;
 
+    // проверка свободного участка в носу
     foreach (auto e, blocks)
     {
         if (e->HB_L == 0 && e->HB_H == 1)
@@ -337,12 +371,14 @@ bool SAlgorithm::startChecks()
 
     }
 
+    // проверка свободного участка в кореме
     bl = check_46(e_last);
     super_bool &= bl;
     super_46 |= bl;
     if (not bl) ++cnt_46;
     super_46 = true;
 
+    // проверка высоты дымовой трубы
     foreach (auto e, blocks)
     {
         if (e->funnel)
@@ -356,6 +392,7 @@ bool SAlgorithm::startChecks()
     }
     super_47 = true;
 
+    // проверка высоты фок-мачты
     foreach (auto e, blocks)
     {
         if (e->foremast)
@@ -367,6 +404,7 @@ bool SAlgorithm::startChecks()
         }
     }
 
+    // проверка высоты грот-мачты
     foreach (auto e, blocks)
     {
         if (e->mainmast)
@@ -378,9 +416,6 @@ bool SAlgorithm::startChecks()
         }
     }
 
-//    super_48 = true;
-//    super_49 = true;
-
     SBlockData *wheel_e;
     foreach (auto e, blocks)
     {
@@ -391,6 +426,7 @@ bool SAlgorithm::startChecks()
         }
     }
 
+    // проверка условия видимости
     foreach (auto e, blocks)
     {
         if (e->X_U_F < wheel_e->X_U_F)
@@ -401,7 +437,8 @@ bool SAlgorithm::startChecks()
             if (not bl) ++cnt_51;
         }
     }
-//super_51 = true;
+
+    // проверка на размещение фар
     foreach (auto e, blocks)
     {
         if (e->pap)
@@ -419,8 +456,6 @@ bool SAlgorithm::startChecks()
             break;
         }
     }
-//    super_52 = true;
-//    super_53 = true;
 
     SBlockData *e_funn = nullptr;
     foreach (auto e, blocks)
@@ -431,6 +466,8 @@ bool SAlgorithm::startChecks()
             break;
         }
     }
+
+    // проверка на задымление
     foreach (auto e, blocks)
     {
         if (e_funn == nullptr)
@@ -450,32 +487,24 @@ bool SAlgorithm::startChecks()
         }
     }
 
-//    super_54 = true;
 
+    // проверка абсциссы центра визуальной массы
     bl = check_55();
     super_bool &= bl;
     super_55 |= bl;
     if (not bl) ++cnt_55;
-
-//    super_55 = true;
 
     return super_bool;
 }
 
 bool SAlgorithm::check_37(SBlockData *e_h, SBlockData *e_s)
 {
-//    bool prop = (e_s->X.iv >= e_h->X.iv + e_h->h * my_ctg(e_h->alpha_A.iv));
     bool prop = (e_s->X.iv >= e_h->X_U_F);
-    if (prop)
-    {
-
-    }
     return prop;
 }
 
 bool SAlgorithm::check_38(SBlockData *e_h, SBlockData *e_s)
 {
-//    bool prop = (e_s->X.iv + e_s->a <= e_h->X.iv + e_h->a - e_h->h * my_ctg(e_h->alpha_A.iv));
     bool prop = (e_s->X.iv + e_s->a <= e_h->X_U_A);
     if (prop)
     {
@@ -608,14 +637,19 @@ bool SAlgorithm::check_55()
     return prop;
 }
 
-
+// Функция шага оптимизации
 void SAlgorithm::optimizationStep()
 {
+    // Увеличиваем показатель оптимизации
     M += iterator;
 
+    // цикл по всем блокам
     foreach (auto e, blocks)
     {
-        if (e->HB_H != 0 )
+        // переназначение условий оптимизации ординат
+        // блоков надстройки, привязанных к другим
+        // блокам
+        if (e->HB_H != 0)
         {
             if (e->HB_H != 1)
             {
@@ -629,6 +663,7 @@ void SAlgorithm::optimizationStep()
             }
         }
 
+        // оптимизация конкретных переменных
         optimizeVal(&e->K_L);
         optimizeVal(&e->K_H);
         optimizeVal(&e->alpha_A);
@@ -638,13 +673,17 @@ void SAlgorithm::optimizationStep()
 
     is_calcing_formulae = true;
 
+    // пересчет формул для проверки ограничений
     emitUpdateFormulaeSignal();
     while (is_calcing_formulae);
 
+    // проверка функциональных и параметрических
+    // ограничений
     bool check_status = startChecks();
 
     if (check_status)
     {
+        // пересчет критерия эффективности
         updateEC();
     }
     else
@@ -658,11 +697,12 @@ void SAlgorithm::optimizationStep()
 
 double SAlgorithm::generateRandomForY()
 {
-    std::uniform_real_distribution<> dist666(-1, 1);
-    double sd = dist666(*QRandomGenerator::global());
+    std::uniform_real_distribution<> dist(-1, 1);
+    double sd = dist(*QRandomGenerator::global());
     return sd;
 }
 
+// функция видимости
 double SAlgorithm::functionV_33(double x)
 {
     SBlockData *e = nullptr;
@@ -685,7 +725,11 @@ double SAlgorithm::functionV_33(double x)
 
 void SAlgorithm::optimizeVal(TypesOfOptimizeVar *var)
 {
+    // генерация Y на интервале (-1, 1)
     Y = generateRandomForY();
+
+    // выбор метода оптимизации
+    // по типу переменной
     if (var->type == DISC)
     {
         discOpt(var);
@@ -696,6 +740,7 @@ void SAlgorithm::optimizeVal(TypesOfOptimizeVar *var)
     }
 }
 
+// шаг оптимизации непрерывной переменной
 void SAlgorithm::contOpt(TypesOfOptimizeVar *var)
 {
     var->iv = var->av + (var->cont_max - var->cont_min) * pow(Y, trunc(M));
@@ -710,6 +755,7 @@ void SAlgorithm::contOpt(TypesOfOptimizeVar *var)
     }
 }
 
+// шаг оптимизации дискретной переменной
 void SAlgorithm::discOpt(TypesOfOptimizeVar *var)
 {
     int max_i = var->desc_link.size() - 1;
@@ -730,6 +776,8 @@ void SAlgorithm::discOpt(TypesOfOptimizeVar *var)
 
 void SAlgorithm::clearTypesOpt()
 {
+    // Установка случайных значений оптимизируемых переменных
+    // в заданных пределах
     foreach (auto e, blocks)
     {
         e->K_H.setRandomAvValue();

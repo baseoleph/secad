@@ -21,7 +21,7 @@ class SAlgorithm : public QObject
 public:
     SAlgorithm(BlocksVector new_blocks, SGeneralData *new_general);
     ~SAlgorithm();
-    bool startOpt();
+    bool optimizationSteps();
     void calcedFormulae();
     double M = 0;
     int EC_cnt = 0;
