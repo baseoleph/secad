@@ -137,11 +137,6 @@ void SMainClass::updateFormulaeSlot()
         set_25(*e);
         set_26(*e);
     }
-
-    if (alg != nullptr)
-    {
-        alg->calcedFormulae();
-    }
 }
 
 void SMainClass::statusBarSlot(const QString str)

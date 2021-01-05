@@ -11,7 +11,6 @@
 #include "sm_algorithms.h"
 #include "sblockdata.h"
 #include "sgeneraldata.h"
-#include "loggingcategories.h"
 #include <QObject>
 
 class SAlgorithm : public QObject
@@ -22,7 +21,6 @@ public:
     SAlgorithm(BlocksVector new_blocks, SGeneralData *new_general);
     ~SAlgorithm();
     bool optimizationSteps();
-    void calcedFormulae();
     double M = 0;
     int EC_cnt = 0;
     bool onOptimize = false;
@@ -41,9 +39,6 @@ private:
     double Y = 0;
     double EC = NOTHING_VALUE;
 
-    double is_calcing_formulae;
-
-    double asdf = 0;
     int cnt = 0;
     bool is_optimized = false;
     bool super_dis_bool = false;
@@ -97,7 +92,6 @@ private:
     bool check_54(SBlockData *e, SBlockData *e_funn);
     bool check_55();
     void optimizationStep();
-    void step();
     double generateRandomForY();
 
     double functionV_33(double x);

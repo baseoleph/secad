@@ -164,11 +164,6 @@ bool SAlgorithm::optimizationSteps()
     return onOptimize;
 }
 
-void SAlgorithm::calcedFormulae()
-{
-    is_calcing_formulae = false;
-}
-
 void SAlgorithm::clear_supers()
 {
     super_38 = false;
@@ -647,12 +642,6 @@ void SAlgorithm::optimizationStep()
         optimizeVal(&e->X);
         emitUpdateFormulaeSignal();
     }
-
-    is_calcing_formulae = true;
-
-    // пересчет формул для проверки ограничений
-    emitUpdateFormulaeSignal();
-    while (is_calcing_formulae);
 
     // проверка функциональных и параметрических
     // ограничений
