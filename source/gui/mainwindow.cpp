@@ -25,7 +25,6 @@ void MainWindow::changeCurrentDir()
         QDir().mkdir(dir_to_projects);
     }
     QDir::setCurrent(QDir::currentPath() + "/" + dir_to_projects);
-    qDebug() << QDir::currentPath();
 }
 
 void MainWindow::removeAll()

@@ -56,7 +56,7 @@ private:
 
 #ifdef QT_DEBUG
     QString dir_to_projects = "../projects";
-#elif
+#else
     QString dir_to_projects = "projects";
 #endif
 
