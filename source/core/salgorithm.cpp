@@ -305,12 +305,14 @@ bool SAlgorithm::startChecks()
         if (e->HB_H != 0)
         {
             e_host = blocks[e->HB_H - 1];
-            bool bl = check_37(e_host, e);
-            super_37 |= bl;
-            super_bool &= bl;
-            if (not bl) ++cnt_37;
 
-            bl = check_38(e_host, e);
+//            bool bl = check_37(e_host, e);
+//            super_37 |= bl;
+//            super_bool &= bl;
+//            if (not bl) ++cnt_37;
+            super_37 = true;
+
+            bool bl = check_38(e_host, e);
             super_bool &= bl;
             super_38 |= bl;
             if (not bl) ++cnt_38;
@@ -506,10 +508,6 @@ bool SAlgorithm::check_37(SBlockData *e_h, SBlockData *e_s)
 bool SAlgorithm::check_38(SBlockData *e_h, SBlockData *e_s)
 {
     bool prop = (e_s->X.iv + e_s->a <= e_h->X_U_A);
-    if (prop)
-    {
-
-    }
     return prop;
 }
 
