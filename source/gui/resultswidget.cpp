@@ -31,10 +31,15 @@ void ResultsWidget::resizeEvent(QResizeEvent *event)
 QPointF ResultsWidget::fromDataToScene(QPointF p)
 {
     QPointF new_p;
+    int righest_xuaf = 0;
+    foreach (auto e, m->blocks)
+    {
+        if (e->X_U_A > righest_xuaf) righest_xuaf = e->X_U_A;
+    }
     double scale = (scene->sceneRect().width()/m->general->L);
     p *= scale;
 
-    new_p = QPointF(scene->sceneRect().width() - p.x(), scene->sceneRect().height() - p.y());
+    new_p = QPointF(scene->sceneRect().width() - p.x() - 10, scene->sceneRect().height() - p.y());
     return new_p;
 }
 
@@ -99,6 +104,7 @@ void ResultsWidget::on_pushButton_opt_clicked()
 
    drawShip();
    ui->label->setText(QString::number(m->general->ECB));
+   ui->pushButton_stop->setEnabled(false);
 }
 
 void ResultsWidget::on_pushButton_stop_clicked()
