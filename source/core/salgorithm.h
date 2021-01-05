@@ -47,10 +47,6 @@ private:
     int cnt = 0;
     bool is_optimized = false;
     bool super_dis_bool = false;
-    bool super_37 = false;
-    int cnt_37 = 0;
-    bool super_38 = false;
-    int cnt_38 = 0;
     bool super_41 = false;
     int cnt_41 = 0;
     bool super_43 = false;
@@ -84,8 +80,6 @@ private:
     void updateIV();
 
     bool startChecks();
-    bool check_37(SBlockData *e_h, SBlockData *e_s);
-    bool check_38(SBlockData *e_h, SBlockData *e_s);
     bool check_41(SBlockData *e);
     bool check_43();
     bool check_44();
