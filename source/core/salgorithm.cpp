@@ -400,7 +400,7 @@ bool SAlgorithm::startChecks()
         }
     }
 
-    SBlockData *wheel_e;
+    SBlockData *wheel_e = nullptr;
     foreach (auto e, blocks)
     {
         if (e->wheelhause)
@@ -411,8 +411,10 @@ bool SAlgorithm::startChecks()
     }
 
     // проверка условия видимости
-    foreach (auto e, blocks)
+    if (wheel_e != nullptr)
     {
+        foreach (auto e, blocks)
+        {
         if (e->X_U_F < wheel_e->X_U_F)
         {
             bool bl = check_51(e);
@@ -420,6 +422,11 @@ bool SAlgorithm::startChecks()
             super_51 |= bl;
             if (not bl) ++cnt_51;
         }
+        }
+    }
+    else
+    {
+        super_51 = true;
     }
 
     // проверка на размещение фар
