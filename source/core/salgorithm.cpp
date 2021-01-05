@@ -63,12 +63,11 @@ bool SAlgorithm::optimizationSteps()
             // отрисовки удачных вариантов
             if (goodTry || cnt % 10000 == 0)
             {
-                QString str;
-                str = "cnt = " + QString::number(cnt);
-                str += "; EC_cnt = " + QString::number(EC_cnt);
-                str += "; M = " + QString::number(M);
+                log_data = "cnt = " + QString::number(cnt);
+                log_data += "; EC_cnt = " + QString::number(EC_cnt);
+                log_data += "; M = " + QString::number(M);
 
-                emitStatusBarSignal(str);
+                emitStatusBarSignal(log_data);
 
                 return onOptimize;
             }
@@ -160,6 +159,7 @@ bool SAlgorithm::optimizationSteps()
 
     }
 
+    emitStatusBarSignal("");
     onOptimize = false;
     return onOptimize;
 }
