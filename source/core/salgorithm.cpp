@@ -45,44 +45,86 @@ bool SAlgorithm::startOpt()
                 return onOptimize;
             }
         }
+
+        onOptimize = false;
     }
-    else
+
+    if (not onOptimize || stopOpt)
     {
         stopOpt = false;
         if (EC_cnt == 0) emitStatusBarSignal("Более " + QString::number(cnt) + " итераций.");
         updateIV();
         emitUpdateFormulaeSignal();
 
+        QString log = "";
         qDebug() << "super_37" << super_37;
+        log += "super_37 " + QString::number(super_37) + "\n";
         qDebug() << "super_38" << super_38;
+        log += "super_38 " + QString::number(super_38) + "\n";
         qDebug() << "super_41" << super_41;
+        log += "super_41 " + QString::number(super_41) + "\n";
         qDebug() << "super_43" << super_43;
+        log += "super_43 " + QString::number(super_43) + "\n";
         qDebug() << "super_44" << super_44;
+        log += "super_44 " + QString::number(super_44) + "\n";
         qDebug() << "super_45" << super_45;
+        log += "super_45 " + QString::number(super_45) + "\n";
         qDebug() << "super_46" << super_46;
+        log += "super_46 " + QString::number(super_46) + "\n";
         qDebug() << "super_47" << super_47;
+        log += "super_47 " + QString::number(super_47) + "\n";
         qDebug() << "super_48" << super_48;
+        log += "super_48 " + QString::number(super_48) + "\n";
         qDebug() << "super_49" << super_49;
+        log += "super_49 " + QString::number(super_49) + "\n";
         qDebug() << "super_51" << super_51;
+        log += "super_51 " + QString::number(super_51) + "\n";
         qDebug() << "super_52" << super_52;
+        log += "super_52 " + QString::number(super_52) + "\n";
         qDebug() << "super_53" << super_53;
+        log += "super_53 " + QString::number(super_53) + "\n";
         qDebug() << "super_54" << super_54;
+        log += "super_54 " + QString::number(super_54) + "\n";
         qDebug() << "super_55" << super_55;
+        log += "super_55 " + QString::number(super_55) + "\n";
         qDebug() << "cnt_37" << cnt_37;
+        log += "cnt_37 " + QString::number(cnt_37) + "\n";
         qDebug() << "cnt_38" << cnt_38;
+        log += "cnt_38 " + QString::number(cnt_38) + "\n";
         qDebug() << "cnt_41" << cnt_41;
+        log += "cnt_41 " + QString::number(cnt_41) + "\n";
         qDebug() << "cnt_43" << cnt_43;
+        log += "cnt_43 " + QString::number(cnt_43) + "\n";
         qDebug() << "cnt_44" << cnt_44;
+        log += "cnt_44 " + QString::number(cnt_44) + "\n";
         qDebug() << "cnt_45" << cnt_45;
+        log += "cnt_45 " + QString::number(cnt_45) + "\n";
         qDebug() << "cnt_46" << cnt_46;
+        log += "cnt_46 " + QString::number(cnt_46) + "\n";
         qDebug() << "cnt_47" << cnt_47;
+        log += "cnt_47 " + QString::number(cnt_47) + "\n";
         qDebug() << "cnt_48" << cnt_48;
+        log += "cnt_48 " + QString::number(cnt_48) + "\n";
         qDebug() << "cnt_49" << cnt_49;
+        log += "cnt_49 " + QString::number(cnt_49) + "\n";
         qDebug() << "cnt_51" << cnt_51;
+        log += "cnt_51 " + QString::number(cnt_51) + "\n";
         qDebug() << "cnt_52" << cnt_52;
+        log += "cnt_52 " + QString::number(cnt_52) + "\n";
         qDebug() << "cnt_53" << cnt_53;
+        log += "cnt_53 " + QString::number(cnt_53) + "\n";
         qDebug() << "cnt_54" << cnt_54;
+        log += "cnt_54 " + QString::number(cnt_54) + "\n";
         qDebug() << "cnt_55" << cnt_55;
+        log += "cnt_55 " + QString::number(cnt_55) + "\n";
+
+        QFile file("log_result.txt");
+        if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+        {
+            QTextStream stream(&file);
+            stream << log;
+            file.close();
+        }
 
     }
 

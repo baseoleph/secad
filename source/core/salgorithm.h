@@ -1,6 +1,8 @@
 ﻿#ifndef SALGORITHM_H
 #define SALGORITHM_H
 
+#include <QFile>
+#include <QDir>
 #include <QRandomGenerator>
 #include <random>
 #include <QTimer>
