@@ -54,7 +54,11 @@ private:
     ResultsWidget *res_widget;
     JsonParserClass jpc;
 
+#ifdef QT_DEBUG
     QString dir_to_projects = "../projects";
+#elif
+    QString dir_to_projects = "projects";
+#endif
 
     SMainClass *m;
 };
