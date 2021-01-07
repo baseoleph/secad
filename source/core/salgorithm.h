@@ -26,6 +26,7 @@ public:
     bool onOptimize = false;
     bool stopOpt = false;
     bool goodTry = false;
+    QString log_data;
 
 signals:
     void emitUpdateFormulaeSignal();

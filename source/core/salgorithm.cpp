@@ -63,12 +63,11 @@ bool SAlgorithm::optimizationSteps()
             // отрисовки удачных вариантов
             if (goodTry || cnt % 10000 == 0)
             {
-                QString str;
-                str = "cnt = " + QString::number(cnt);
-                str += "; EC_cnt = " + QString::number(EC_cnt);
-                str += "; M = " + QString::number(M);
+                log_data = "cnt = " + QString::number(cnt);
+                log_data += "; EC_cnt = " + QString::number(EC_cnt);
+                log_data += "; M = " + QString::number(M);
 
-                emitStatusBarSignal(str);
+                emitStatusBarSignal(log_data);
 
                 return onOptimize;
             }
@@ -160,6 +159,7 @@ bool SAlgorithm::optimizationSteps()
 
     }
 
+    emitStatusBarSignal("");
     onOptimize = false;
     return onOptimize;
 }
@@ -363,9 +363,9 @@ bool SAlgorithm::startChecks()
     super_46 = true;
 
     // проверка высоты дымовой трубы
+    bool funnelcheck = false;
     foreach (auto e, blocks)
     {
-        bool funnelcheck = NOTHING_VALUE;
         if (e->funnel)
         {
             funnelcheck = true;
@@ -375,18 +375,18 @@ bool SAlgorithm::startChecks()
             if (not bl) ++cnt_47;
             break;
         }
-        if (funnelcheck = NOTHING_VALUE)
-        {
-            super_47 = true;
-        }
+    }
 
+    if (funnelcheck == false)
+    {
+        super_47 = true;
     }
     // super_47 = true;
 
     // проверка высоты фок-мачты
+    bool foremastcheck = false;
     foreach (auto e, blocks)
     {
-        bool foremastcheck = NOTHING_VALUE;
         if (e->foremast)
         {
             foremastcheck = true;
@@ -395,17 +395,17 @@ bool SAlgorithm::startChecks()
             super_48 |= bl;
             break;
         }
-        if (foremastcheck = NOTHING_VALUE)
-        {
-            super_48 = true;
-        }
+    }
 
+    if (foremastcheck == false)
+    {
+        super_48 = true;
     }
 
     // проверка высоты грот-мачты
+    bool mainmastcheck = false;
     foreach (auto e, blocks)
     {
-        bool mainmastcheck = NOTHING_VALUE;
         if (e->mainmast)
         {
             mainmastcheck = true;
@@ -414,10 +414,11 @@ bool SAlgorithm::startChecks()
             super_49 |= bl;
             break;
         }
-        if (mainmastcheck = NOTHING_VALUE)
-        {
-            super_49 = true;
-        }
+    }
+
+    if (mainmastcheck == false)
+    {
+        super_49 = true;
     }
 
     SBlockData *wheel_e = nullptr;
@@ -652,7 +653,7 @@ void SAlgorithm::optimizationStep()
     {
         // переназначение условий оптимизации ординат
         // блоков надстройки, привязанных к другим
-        // блока
+        // блокам
         if (e->HB_H != 0)
         {
             SBlockData *parent_block = blocks[e->HB_H - 1];

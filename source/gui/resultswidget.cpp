@@ -94,12 +94,13 @@ void ResultsWidget::drawShip()
 
 void ResultsWidget::on_pushButton_opt_clicked()
 {
+   ui->label->clear();
    ui->pushButton_stop->setEnabled(true);
    m->prepareToOptimize();
    while (m->alg->optimizationSteps())
    {
        qApp->processEvents();
-       if (m->alg->goodTry)
+       if (m->alg->goodTry || m->alg->EC_cnt == 0)
        {
            m->alg->goodTry = false;
            drawShip();
@@ -107,7 +108,7 @@ void ResultsWidget::on_pushButton_opt_clicked()
    }
 
    drawShip();
-   ui->label->setText("EC = " + QString::number(m->general->ECB));
+   ui->label->setText("EC = " + QString::number(m->general->ECB) + "; " + m->alg->log_data);
    ui->pushButton_stop->setEnabled(false);
 }
 
