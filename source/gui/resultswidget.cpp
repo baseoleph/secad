@@ -100,7 +100,7 @@ void ResultsWidget::on_pushButton_opt_clicked()
    while (m->alg->optimizationSteps())
    {
        qApp->processEvents();
-       if (m->alg->goodTry)
+       if (m->alg->goodTry || m->alg->EC_cnt == 0)
        {
            m->alg->goodTry = false;
            drawShip();
