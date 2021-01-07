@@ -363,9 +363,9 @@ bool SAlgorithm::startChecks()
     super_46 = true;
 
     // проверка высоты дымовой трубы
+    bool funnelcheck = false;
     foreach (auto e, blocks)
     {
-        bool funnelcheck = false;
         if (e->funnel)
         {
             funnelcheck = true;
@@ -375,18 +375,18 @@ bool SAlgorithm::startChecks()
             if (not bl) ++cnt_47;
             break;
         }
-        if (funnelcheck = false)
-        {
-            super_47 = true;
-        }
+    }
 
+    if (funnelcheck == false)
+    {
+        super_47 = true;
     }
     // super_47 = true;
 
     // проверка высоты фок-мачты
+    bool foremastcheck = false;
     foreach (auto e, blocks)
     {
-        bool foremastcheck = false;
         if (e->foremast)
         {
             foremastcheck = true;
@@ -395,17 +395,17 @@ bool SAlgorithm::startChecks()
             super_48 |= bl;
             break;
         }
-        if (foremastcheck = false)
-        {
-            super_48 = true;
-        }
+    }
 
+    if (foremastcheck == false)
+    {
+        super_48 = true;
     }
 
     // проверка высоты грот-мачты
+    bool mainmastcheck = false;
     foreach (auto e, blocks)
     {
-        bool mainmastcheck = false;
         if (e->mainmast)
         {
             mainmastcheck = true;
@@ -414,10 +414,11 @@ bool SAlgorithm::startChecks()
             super_49 |= bl;
             break;
         }
-        if (mainmastcheck = false)
-        {
-            super_49 = true;
-        }
+    }
+
+    if (mainmastcheck == false)
+    {
+        super_49 = true;
     }
 
     SBlockData *wheel_e = nullptr;
