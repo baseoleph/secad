@@ -355,7 +355,7 @@ bool SAlgorithm::startChecks()
 
     }
 
-    // проверка свободного участка в кореме
+    // проверка свободного участка в корме
     bl = check_46(e_last);
     super_bool &= bl;
     super_46 |= bl;
@@ -365,38 +365,58 @@ bool SAlgorithm::startChecks()
     // проверка высоты дымовой трубы
     foreach (auto e, blocks)
     {
+        bool funnelcheck = NOTHING_VALUE;
         if (e->funnel)
         {
+            funnelcheck = true;
             bool bl = check_47(e);
             super_bool &= bl;
             super_47 |= bl;
             if (not bl) ++cnt_47;
             break;
         }
+        if (funnelcheck = NOTHING_VALUE)
+        {
+            super_47 = true;
+        }
+
     }
-    super_47 = true;
+    // super_47 = true;
 
     // проверка высоты фок-мачты
     foreach (auto e, blocks)
     {
+        bool foremastcheck = NOTHING_VALUE;
         if (e->foremast)
         {
+            foremastcheck = true;
             bool bl = check_48(e);
             super_bool &= bl;
             super_48 |= bl;
             break;
         }
+        if (foremastcheck = NOTHING_VALUE)
+        {
+            super_48 = true;
+        }
+
     }
 
     // проверка высоты грот-мачты
     foreach (auto e, blocks)
     {
+        bool mainmastcheck = NOTHING_VALUE;
         if (e->mainmast)
         {
+            mainmastcheck = true;
             bool bl = check_49(e);
             super_bool &= bl;
             super_49 |= bl;
             break;
+        }
+        if (mainmastcheck = NOTHING_VALUE)
+        {
+            super_49 = true;
         }
     }
 
@@ -429,7 +449,7 @@ bool SAlgorithm::startChecks()
         super_51 = true;
     }
 
-    // проверка на размещение фар
+    // проверка на размещение ФАР
     foreach (auto e, blocks)
     {
         if (e->pap)
@@ -605,17 +625,20 @@ bool SAlgorithm::check_55()
     {
         return true;
     }
-    double S_mul_x_g = 0;
-    double S_main = 0;
-    foreach (auto el, blocks)
+    else
     {
-        S_mul_x_g += el->S * el->x_g;
-        S_main += el->S;
-    }
+        double S_mul_x_g = 0;
+        double S_main = 0;
+        foreach (auto el, blocks)
+        {
+            S_mul_x_g += el->S * el->x_g;
+            S_main += el->S;
+        }
 
-    double arg = S_mul_x_g / (general->L * S_main);
-    bool prop = (0.41 <= arg and arg <= 0.48);
-    return prop;
+        double arg = S_mul_x_g / (general->L * S_main);
+        bool prop = (0.41 <= arg and arg <= 0.48);
+        return prop;
+    }
 }
 
 // Функция шага оптимизации
@@ -629,18 +652,17 @@ void SAlgorithm::optimizationStep()
     {
         // переназначение условий оптимизации ординат
         // блоков надстройки, привязанных к другим
-        // блокам
+        // блока
         if (e->HB_H != 0)
         {
             SBlockData *parent_block = blocks[e->HB_H - 1];
             e->X.type = CONT;
             if (parent_block->X_U_F < parent_block->X_U_A)
             {
-                e->X.cont_min = parent_block->X_U_F;
-                e->X.cont_max = parent_block->X_U_A;
+                    e->X.cont_min = parent_block->X_U_F;
+                    e->X.cont_max = parent_block->X_U_A;
             }
         }
-
         // оптимизация конкретных переменных
         optimizeVal(&e->K_L);
         optimizeVal(&e->K_H);
