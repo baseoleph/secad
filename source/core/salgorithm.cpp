@@ -365,7 +365,7 @@ bool SAlgorithm::startChecks()
     // проверка высоты дымовой трубы
     foreach (auto e, blocks)
     {
-        bool funnelcheck = NOTHING_VALUE;
+        bool funnelcheck = false;
         if (e->funnel)
         {
             funnelcheck = true;
@@ -375,7 +375,7 @@ bool SAlgorithm::startChecks()
             if (not bl) ++cnt_47;
             break;
         }
-        if (funnelcheck = NOTHING_VALUE)
+        if (funnelcheck = false)
         {
             super_47 = true;
         }
@@ -386,7 +386,7 @@ bool SAlgorithm::startChecks()
     // проверка высоты фок-мачты
     foreach (auto e, blocks)
     {
-        bool foremastcheck = NOTHING_VALUE;
+        bool foremastcheck = false;
         if (e->foremast)
         {
             foremastcheck = true;
@@ -395,7 +395,7 @@ bool SAlgorithm::startChecks()
             super_48 |= bl;
             break;
         }
-        if (foremastcheck = NOTHING_VALUE)
+        if (foremastcheck = false)
         {
             super_48 = true;
         }
@@ -405,7 +405,7 @@ bool SAlgorithm::startChecks()
     // проверка высоты грот-мачты
     foreach (auto e, blocks)
     {
-        bool mainmastcheck = NOTHING_VALUE;
+        bool mainmastcheck = false;
         if (e->mainmast)
         {
             mainmastcheck = true;
@@ -414,7 +414,7 @@ bool SAlgorithm::startChecks()
             super_49 |= bl;
             break;
         }
-        if (mainmastcheck = NOTHING_VALUE)
+        if (mainmastcheck = false)
         {
             super_49 = true;
         }
@@ -652,7 +652,7 @@ void SAlgorithm::optimizationStep()
     {
         // переназначение условий оптимизации ординат
         // блоков надстройки, привязанных к другим
-        // блока
+        // блокам
         if (e->HB_H != 0)
         {
             SBlockData *parent_block = blocks[e->HB_H - 1];
