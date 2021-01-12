@@ -559,7 +559,7 @@ bool SAlgorithm::check_45(SBlockData *e)
     {
         return true;
     }
-    bool prop = (e->X.iv >= 20);
+    bool prop = (e->X.iv >= (general->L * 0.3));
     return prop;
 }
 
@@ -569,7 +569,7 @@ bool SAlgorithm::check_46(SBlockData *e)
     {
         return true;
     }
-    bool prop = ((e->a + e->X.iv) <= (general->L - 15));
+    bool prop = ((e->a + e->X.iv) <= (general->L * 0.8));
     return prop;
 }
 
