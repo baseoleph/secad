@@ -43,16 +43,16 @@ QPointF ResultsWidget::fromDataToScene(QPointF p)
     return new_p;
 }
 
-QPainterPath ResultsWidget::createBlock(SBlockData *e)
+QPolygonF ResultsWidget::createBlock(SBlockData *e)
 {
-    QPainterPath path;
-    path.moveTo(fromDataToScene(QPointF(e->X.av, e->Z)));
-    path.lineTo(fromDataToScene(QPointF(e->X.av + e->a, e->Z)));
-    path.lineTo(fromDataToScene(QPointF(e->X_U_A, e->Z + e->h)));
-    path.lineTo(fromDataToScene(QPointF(e->X_U_F, e->Z + e->h)));
-    path.lineTo(fromDataToScene(QPointF(e->X.av, e->Z)));
+    QPolygonF pol;
+    pol << fromDataToScene(QPointF(e->X.av, e->Z));
+    pol << fromDataToScene(QPointF(e->X.av + e->a, e->Z));
+    pol << fromDataToScene(QPointF(e->X_U_A, e->Z + e->h));
+    pol << fromDataToScene(QPointF(e->X_U_F, e->Z + e->h));
+    pol << fromDataToScene(QPointF(e->X.av, e->Z));
 
-    return path;
+    return pol;
 }
 
 void ResultsWidget::setScene()
@@ -71,9 +71,7 @@ void ResultsWidget::drawShip()
    is_clicked = true;
    scene->clear();
    int margin = 40;
-//   scene->setSceneRect(-margin, margin, ui->graphicsView->width(), ui->graphicsView->height() + margin);
-   scene->setSceneRect(0, 0, ui->graphicsView->width()-margin, ui->graphicsView->height()-margin);
-//   scene->addRect(scene->sceneRect());
+   scene->setSceneRect(0, 0, ui->graphicsView->width() - margin, ui->graphicsView->height() - margin);
 
    QPainterPath path;
    path.moveTo(fromDataToScene(QPointF(0, m->general->sef_function(0))));
@@ -83,10 +81,14 @@ void ResultsWidget::drawShip()
    }
 
    scene->addPath(path);
+   QBrush brush;
+   brush.setColor(Qt::black);
+   brush.setStyle(Qt::SolidPattern);
+   QPen pen(Qt::black);
 
    foreach (auto e, m->blocks)
    {
-        scene->addPath(createBlock(e));
+       scene->addPolygon(createBlock(e), pen, brush);
    }
 
 

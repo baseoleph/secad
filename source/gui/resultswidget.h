@@ -38,7 +38,7 @@ private:
     bool is_clicked = false;
 
     QPointF fromDataToScene(QPointF p);
-    QPainterPath createBlock(SBlockData *e);
+    QPolygonF createBlock(SBlockData *e);
     void setScene();
     void drawShip();
 };
