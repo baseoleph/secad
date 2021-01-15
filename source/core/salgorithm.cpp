@@ -559,7 +559,7 @@ bool SAlgorithm::check_45(SBlockData *e)
     {
         return true;
     }
-    bool prop = (e->X.iv >= (general->L * 0.3));
+    bool prop = (e->X.iv >= (general->L * 0.25));
     return prop;
 }
 
