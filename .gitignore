@@ -58,3 +58,5 @@ compile_commands.json
 ~$*.docx
 ~$*.vsdx
 projects/_test*.json
+
+/build*
