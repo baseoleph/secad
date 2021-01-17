@@ -1,6 +1,6 @@
 # Ship Exterior CAD
 # Copyright (C) 2020 baseoleph@gmail.com,
-#					  github.com/RoninHikami
+#					  nepryaho@gmail.com
 
 QT       += core gui charts
 
