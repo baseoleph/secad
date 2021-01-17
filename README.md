@@ -16,5 +16,6 @@
 
 ![photo_2021-01-17_12-51-04](https://user-images.githubusercontent.com/63150311/104836981-b1833d80-58c2-11eb-8405-f55abf4f3a8c.jpg)
 
+### Подробнее о принципах работы программы: [description.docx](https://github.com/baseoleph/secad/tree/main/descriptions/description.docx)
 ## Пример оптимизации:
 ![2021-01-17 (16)](https://user-images.githubusercontent.com/63150311/104837939-ef836000-58c8-11eb-9475-3c9548b2fd10.png)
